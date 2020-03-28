@@ -16,3 +16,7 @@ def BFS(graph, start, end):
     # other processing work 
     ...
 ```
+
+# 双向BFS
+[127. 单词接龙](https://leetcode-cn.com/problems/word-ladder/)    
+[433. 最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
