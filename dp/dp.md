@@ -6,6 +6,12 @@
 Fib: opt[i] = opt[n-1] + opt[n-2]   
 二维路径：opt[i,j] = opt[i+1][j] + opt[i][j+1] (且判断a[i,j]是否空地）
 
+动态规划做题步骤  
+* 明确 dp(i)dp(i) 应该表示什么（二维情况：dp(i)(j)dp(i)(j)）；  
+* 根据 dp(i)dp(i) 和 dp(i-1)dp(i−1) 的关系得出状态转移方程；  
+* 确定初始条件，如 dp(0)dp(0)。  
+
+
 # 题目
 [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  
 [120. 三角形最小路径和](https://leetcode-cn.com/problems/triangle/)  
