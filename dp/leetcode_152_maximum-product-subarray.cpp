@@ -1,17 +1,26 @@
+/**
+ * 152. 乘积最大子数组
+ * https://leetcode-cn.com/problems/maximum-product-subarray/
+ */
+
 class Solution {
-    public int maxProduct(int[] nums) {
-        int max = Integer.MIN_VALUE, imax = 1, imin = 1;
-        for(int i=0; i<nums.length; i++){
-            if(nums[i] < 0){ 
-              int tmp = imax;
-              imax = imin;
-              imin = tmp;
+public:
+    int maxProduct(vector<int>& nums) {
+        int len = nums.size();
+        if(len == 0) return 0;
+
+        int res = -2147483648;
+        int tmpMax = 1, tmpMin = 1;
+        for(int i = 0; i < len; i++){
+            if(nums[i] < 0){
+                swap(tmpMax, tmpMin);
             }
-            imax = Math.max(imax*nums[i], nums[i]);
-            imin = Math.min(imin*nums[i], nums[i]);
-            
-            max = Math.max(max, imax);
+            tmpMax = max(tmpMax * nums[i], nums[i]);
+            tmpMin = min(tmpMin * nums[i], nums[i]);
+
+            res = max(res, tmpMax);
         }
-        return max;
+
+        return res;
     }
-}
+};
