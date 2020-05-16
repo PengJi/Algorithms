@@ -5,6 +5,9 @@
 
 class Solution {
 public:
+    // 枚举
+    // 时间复杂度：O(n^2)
+    // 空间复杂度：O(1)
     int subarraySum(vector<int>& nums, int k) {
         int count = 0;
         for (int start = 0; start < nums.size(); ++start) {
