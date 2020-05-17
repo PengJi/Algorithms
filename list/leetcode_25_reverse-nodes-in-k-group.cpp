@@ -1,4 +1,9 @@
 /**
+ * 25. K 个一组翻转链表
+ * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+ */
+
+/**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
@@ -8,46 +13,45 @@
  */
 class Solution {
 public:
-    // 翻转一个子链表，并且返回新的头与尾
-    pair<ListNode*, ListNode*> myReverse(ListNode* head, ListNode* tail) {
-        ListNode* prev = tail->next;
-        ListNode* p = head;
-        while (prev != tail) {
-            ListNode* nex = p->next;
-            p->next = prev;
-            prev = p;
-            p = nex;
+    // 遍历
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+
+        ListNode* pre = dummy;
+        ListNode* end = dummy;
+
+        while(end->next != NULL) {
+            for(int i = 0; i < k && end != NULL; i++){
+                end = end->next;
+            } 
+            if(end == NULL) break;
+            ListNode* start = pre->next;
+            ListNode* next = end->next;
+            end->next = NULL;
+            pre->next = reverse(start);
+            start->next = next;
+            pre = start;
+
+            end = pre;
         }
-        return {tail, head};
+
+        return dummy->next;
     }
 
-    ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* hair = new ListNode(0);
-        hair->next = head;
-        ListNode* pre = hair;
+    ListNode* reverse(ListNode* head) {
+        ListNode* pre = NULL;
+        ListNode* cur = head;
 
-        while (head) {
-            ListNode* tail = pre;
-            // 查看剩余部分长度是否大于等于 k
-            for (int i = 0; i < k; ++i) {
-                tail = tail->next;
-                if (!tail) {
-                    return hair->next;
-                }
-            }
-            ListNode* nex = tail->next;
-            // 这里是 C++17 的写法，也可以写成
-            // pair<ListNode*, ListNode*> result = myReverse(head, tail);
-            // head = result.first;
-            // tail = result.second;
-            tie(head, tail) = myReverse(head, tail);
-            // 把子链表重新接回原链表
-            pre->next = head;
-            tail->next = nex;
-            pre = tail;
-            head = tail->next;
+        while(cur != NULL){
+            ListNode* next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
         }
 
-        return hair->next;
+        return pre;
     }
 };
