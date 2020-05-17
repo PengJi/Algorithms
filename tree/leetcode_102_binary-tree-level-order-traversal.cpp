@@ -28,7 +28,7 @@ public:
         while (!q.empty()) {
             currentLevelSize = q.size();
             vector<int> vec;
-            for (int i = 1; i <= currentLevelSize; ++i) {
+            for (int i = 1; i <= currentLevelSize; ++i) {  // 遍历每一层
                 TreeNode* node = q.front(); 
                 q.pop();
                 vec.push_back(node->val);
