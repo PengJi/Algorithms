@@ -6,8 +6,8 @@
 class Solution {
 public:
     // 滑动窗口
-    // 时间复杂度：O()
-    // 空间复杂度：O()
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
     vector<int> findAnagrams(string s, string t) {
         unordered_map<char, int> need, window;
         for (char c : t) need[c]++;
