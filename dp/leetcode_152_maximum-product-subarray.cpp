@@ -5,7 +5,7 @@
 
 class Solution {
 public:
-    // 动态规划：
+    // 动态规划
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     int maxProduct(vector<int>& nums) {
