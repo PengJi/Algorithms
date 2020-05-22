@@ -3,7 +3,6 @@
  * https://leetcode-cn.com/problems/jump-game/
  */
 
-
 class Solution {
 public:
     // 贪心算法，从左向右每次

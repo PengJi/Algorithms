@@ -1,5 +1,7 @@
-// 77. Combinations
-// https://leetcode.com/problems/combinations/
+/**
+ * 77. Combinations
+ * https://leetcode.com/problems/combinations/
+ */
 
 class Solution {
 public:

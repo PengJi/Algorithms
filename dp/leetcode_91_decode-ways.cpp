@@ -6,6 +6,8 @@
 class Solution {
 public:
     // 动态规划
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
     int numDecodings(string s) {
         int dp2 = 1; 
         int dp1 = s.back() == '0' ? 0 : 1;
