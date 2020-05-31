@@ -35,7 +35,7 @@ public:
         return memo;
     }
 
-    // 动态规划
+    // 动态规划（自底向上）
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     int climbStairs(int n) {

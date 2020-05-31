@@ -35,6 +35,7 @@ class Solution {
         vector<vector<int>> res;
         queue<Node *> curLevel;
         curLevel.push(root);
+        
         while(!curLevel.empty()){
             int levelSize = curLevel.size();
             vector<int> tmpLevel;

@@ -23,7 +23,28 @@ public:
 */
 class Solution {
 public:
+    // 递归
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
+    vector<int> preorder1(Node* root) {
+        vector<int> res;
+        traverse(root, res);
+        return res;
+    }
+
+    void traverse(Node* node, vector<int>& res){
+        if(node != NULL){ 
+            res.push_back(node->val);
+            
+            for(Node* child : node->children){
+                traverse(child, res);
+            }
+        }
+    }
+
     // 迭代
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
     vector<int> preorder(Node* root) {
         vector<int> res;
         if(root == nullptr){
@@ -45,24 +66,5 @@ public:
         }
         
         return res;
-    }
-    
-    // 递归
-    vector<int> preorder1(Node* root) {
-        vector<int> res;
-        travel(root, res);
-        return res;
-    }
-
-    void travel(Node* node, vector<int>& res){
-        if(node == nullptr){
-            return;
-        }
-        
-        res.push_back(node->val);
-        
-        for(Node* child : node->children){
-            travel(child, res);
-        }
     }
 };
