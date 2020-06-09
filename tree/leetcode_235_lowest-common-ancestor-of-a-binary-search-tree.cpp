@@ -15,6 +15,21 @@
 class Solution {
 public:
     // 递归
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        int pVal = p->val;
+        int qVal = q->val;
+
+        if(pVal < root->val && qVal < root->val) {
+            return lowestCommonAncestor(root->left, p, q);
+        } else if(pVal > root->val && qVal > root->val) {
+            return lowestCommonAncestor(root->right, p, q);
+        }
+        return root;
+    }
+    
+    // 递归
     // https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solution/lca-by-ai-mao-de-xiao-gen-ban/
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         //递归边界返回空或者返回存在的那个结点
