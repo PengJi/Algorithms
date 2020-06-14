@@ -3,7 +3,6 @@
  * https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
  */
 
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -16,7 +15,6 @@
 class Solution {
 public:
     TreeNode* ans;
-    
     bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
         if (root == nullptr) return false;
         bool lson = dfs(root->left, p, q);

@@ -35,12 +35,12 @@ public:
         //递归边界返回空或者返回存在的那个结点
         if(root==NULL||root==p||root==q) return root;
         //左边找一找
-        TreeNode* L=lowestCommonAncestor(root->left,p,q);
+        TreeNode* L = lowestCommonAncestor(root->left,p,q);
         //右边找一找
-        TreeNode* R=lowestCommonAncestor(root->right,p,q);
+        TreeNode* R = lowestCommonAncestor(root->right,p,q);
         //返回NULL或者有的那一侧
-        if(L==NULL)return R;
-        if(R==NULL)return L;
+        if(L == NULL) return R;
+        if(R == NULL) return L;
         //当前祖先左边有p，右边有q
         return root; 
     }

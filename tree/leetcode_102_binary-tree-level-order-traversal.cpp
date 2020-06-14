@@ -3,7 +3,6 @@
  * https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
  */
 
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -22,7 +21,7 @@ public:
         vector <vector <int>> ret;
         if (!root) return ret;
 
-        queue <TreeNode*> q;
+        queue<TreeNode*> q;
         q.push(root);
         int currentLevelSize;
         while (!q.empty()) {

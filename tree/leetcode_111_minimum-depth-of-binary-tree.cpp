@@ -19,9 +19,11 @@ public:
     // 空间复杂度：O(n)
     int minDepth(TreeNode* root) {
         if(root == nullptr) return 0;
+
         int leftHeight = minDepth(root->left);
         int rightHeight = minDepth(root->right);
         if(!leftHeight || !rightHeight) return leftHeight+rightHeight+1;
+        
         return min(leftHeight, rightHeight) + 1;
     }
 };
