@@ -31,5 +31,4 @@ public:
         if(left > 0) dfs(str+"(", left-1, right, res);
         if(right > 0) dfs(str+")", left, right-1, res);
     }
-
 };
