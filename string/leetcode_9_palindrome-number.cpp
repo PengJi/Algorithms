@@ -1,5 +1,13 @@
+/**
+ * 9. 回文数
+ * https://leetcode-cn.com/problems/palindrome-number/
+ */
+
 class Solution {
 public:
+    // 遍历一半
+    // 时间复杂度：O(logn)
+    // 空间复杂度：O(1)
     bool isPalindrome(int x) {
         // 特殊情况：
         // 如上所述，当 x < 0 时，x 不是回文数。
