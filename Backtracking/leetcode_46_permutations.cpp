@@ -5,6 +5,9 @@
 
 class Solution {
 public:
+    // 回溯
+    // 时间复杂度：O(n!)
+    // 空间复杂度：O(n! * m)
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> res;
         vector<int> track;
