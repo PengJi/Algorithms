@@ -1,5 +1,6 @@
 /**
  * 快速排序
+ * 介绍：https://zhuanlan.zhihu.com/p/63202860
  */
 
 package main
