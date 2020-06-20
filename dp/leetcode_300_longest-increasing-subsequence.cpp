@@ -6,12 +6,15 @@
 class Solution {
 public:
     // 动态规划
+    // 时间复杂度：O(n^2)
+    // 空间复杂度：O(n)
     int lengthOfLIS(vector<int>& nums) {
         int size = nums.size();
         if (size == 0) { 
             return 0; 
         } 
         
+        // 表示最长上升子序列的长度
         vector<int> dp(size, 1);
         int res = 1;
         for (int i = 1; i < size; ++i) {

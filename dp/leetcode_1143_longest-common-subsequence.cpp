@@ -15,7 +15,7 @@ public:
             return 0;
         }
 
-        vector<vector<int>> dp(len1+1, vector<int>(len2+1, 0));
+        vector<vector<int>> dp(len1+1, vector<int>(len2+1, 0));  // DP table
         for(int i = 1; i < len1 + 1 ; i++){
             for(int j = 1; j < len2 + 1; j++){
                 if(text1[i-1] == text2[j-1]){

@@ -48,7 +48,7 @@ public:
         vector<int> dp(len, 0);  // dp[i]表示前i天的最大利润
         for(int i = 1; i < len; i++){
             minPrice = min(minPrice, prices[i]);
-            dp[i] = max(dp[i-1], prices[i] - minPrice);
+            dp[i] = max(dp[i-1], prices[i] - minPrice);  // 状态转移
         }
 
         return dp[len-1];

@@ -33,5 +33,48 @@ public:
         }
         return maxVal;
     }
-};
 
+    // 遍历
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
+    int longestValidParentheses(string s) {
+        int len = s.size();
+        if(len == 0) return 0;
+
+        int left = 0, right = 0, maxlength = 0;
+
+        // 从左向右寻找最长
+        for(int i = 0; i < len; i++) {
+            if(s[i] == '(') {
+                left++;
+            } else {
+                right++;
+            }
+
+            if(left == right) {
+                maxlength = max(maxlength, right * 2);
+            } else if(left < right) {
+                left = right = 0;
+            }
+        }
+
+        left = right = 0;
+
+        // 从右向左寻找最长
+        for(int i = len-1; i >= 0; i--) {
+            if(s[i] == ')') {
+                right++;
+            } else {
+                left++;
+            }
+
+            if(left == right) {
+                maxlength = max(maxlength, left * 2);
+            } else if(left > right) {
+                left = right = 0;
+            }
+        }
+
+        return maxlength;
+    }
+};
