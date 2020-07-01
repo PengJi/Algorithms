@@ -33,6 +33,6 @@ public:
     // An empty tree has height -1
     if (root == nullptr) return -1;
 
-    return 1 + max(height(root->left), height(root->right));
+    return max(height(root->left), height(root->right)) + 1;
   }
 };
