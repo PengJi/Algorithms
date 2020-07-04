@@ -15,8 +15,9 @@ public:
         int maxLen = 1;
         string ans = s.substr(0, 1);
         vector<vector<bool>> dp(len, vector<bool>(len, false));
-        for(int i = len-1; i >= 0; i--) {
-            for(int j = i; j < len; j++) {
+        for(int i = len-1; i >= 0; i--) {  // 行倒序遍历
+            for(int j = i; j < len; j++) {  // 列从左到有，遍历右半部分
+                // 两边字符是否相等
                 dp[i][j] = s[i] == s[j] && (i+1 > j-1 || dp[i+1][j-1]);
                 if(dp[i][j] && j-i+1 > maxLen) {
                     maxLen = j-i+1;

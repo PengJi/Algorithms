@@ -5,7 +5,7 @@
 
 class Solution {
 public:
-    // dp
+    // 动态规划
     // 时间复杂度：O(n*sum)
     // 空间复杂度：O(sum)
     bool canPartition(vector<int>& nums) {
