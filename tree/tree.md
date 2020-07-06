@@ -29,6 +29,7 @@ public class TreeNode {
 ```
 
 ## 二叉树遍历
+[二叉树遍历(先序、中序、后序)](https://www.jianshu.com/p/456af5480cee)
 ```python
 def preorder(self, root):
     if root:

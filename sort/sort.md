@@ -30,7 +30,7 @@ int partion(int a[], int f, int e)
             swap (a[++i], a[j]);
         }
     }
-    swap (a[i], a[f]);
+    swap(a[i], a[f]);
     return i;
 }
 
@@ -163,6 +163,8 @@ int main()
 * 堆排序
 1. 数组元素依次建立小顶堆   
 2. 依次取堆顶元素，并删除 
+[图解排序算法(三)之堆排序](https://www.cnblogs.com/chengxiao/p/6129630.html)
+
 ```c
 #include <iostream>
 
@@ -334,8 +336,10 @@ int main()
 ## 时间复杂度
 ![时间复杂度](../images/sort.png)
 
-## 动画演示
+## 参考
 [十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/p/7674659.html)
+[【简单明了】9种经典排序算法可视化动画](https://www.bilibili.com/video/av25136272)
+[6分钟看完15种排序算法动画展示](https://www.bilibili.com/video/av63851336)
 
 ## 题目
 [1122. 数组的相对排序](https://leetcode-cn.com/problems/relative-sort-array/)
