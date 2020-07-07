@@ -62,7 +62,7 @@ bool operator<(My_Type a,My_Type b)
 struct cmp
 {
     // 定义排序规则 
-    bool operator() (My_Type a,My_Type b )
+    bool operator() (My_Type a, My_Type b )
     { 
         if(a.x==b.x) return a.y>b.y;
         return a.x>b.x; 
