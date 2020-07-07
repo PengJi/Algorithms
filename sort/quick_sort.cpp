@@ -1,8 +1,6 @@
-/**
- * 快速排序
- */
-
-#include<stdio.h>
+#include<iostream>
+#include<vector>
+using namespace std;
 
 int parittition(int arr[], int low, int high) {
     int pivot = arr[low];
