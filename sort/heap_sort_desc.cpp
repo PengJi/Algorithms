@@ -24,6 +24,7 @@ void heapSort(vector<int>& arr) {
     int len = arr.size();
     if(len == 0) return;
 
+    // 建堆
     for(int i = len/2-1; i >= 0; i--) { // 先调整最后一个非叶结点
         adjust(arr, len, i);
     }

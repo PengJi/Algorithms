@@ -27,8 +27,7 @@ public:
         }
         tail->next = head; // circle the link
 
-        if(k %= len) 
-        {
+        if(k %= len) {
             for(auto i=0; i<len-k; i++) tail = tail->next; // the tail node is the (len-k)-th node (1st node is head)
         }
         newH = tail->next; 

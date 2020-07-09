@@ -22,10 +22,10 @@ int partition(vector<int>& arr, int low, int high) {
 }
 
 void quickSort(vector<int>& arr, int low, int high) {
-    while(low < high) {
+    if(low < high) {
         int mid = partition(arr, low, high);
-        partition(arr, low, mid-1);
-        partition(arr, mid+1, high);
+        quickSort(arr, low, mid-1);
+        quickSort(arr, mid+1, high);
     }
 }
 

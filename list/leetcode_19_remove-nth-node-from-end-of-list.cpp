@@ -25,19 +25,19 @@ public:
         ListNode* pre = new ListNode(0);
         pre->next = head;
 
-        ListNode* first = pre;
-        ListNode* second = pre;
+        ListNode* fast = pre;
+        ListNode* slow = pre;
         
         while(n != 0) {
-            first = first->next;
+            fast = fast->next;
             n--;
         }
 
-        while(first->next != nullptr){
-            first = first -> next;
-            second = second -> next;
+        while(fast->next != nullptr){
+            fast = fast -> next;
+            slow = slow -> next;
         }
-        second->next = second->next->next;
+        slow->next = slow->next->next;
 
         ListNode* node = pre->next;
         delete pre;
