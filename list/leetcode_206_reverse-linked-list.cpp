@@ -13,16 +13,22 @@
  */
 class Solution {
 public:
+    // 遍历
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
     ListNode* reverseList(ListNode* head) {
+        if(head == NULL) return NULL;
+
         ListNode* cur = NULL;
         ListNode* next;
-        
-        while (head) {
-            next = head -> next;
-            head -> next = cur;
+
+        while(head) {
+            next = head->next;
+            head->next = cur;
             cur = head;
             head = next;
         }
+
         return cur;
     }
 };

@@ -22,25 +22,24 @@ public:
         // 对于链表问题，返回结果为头结点时，通常需要先初始化一个预先指针 pre，
         // 该指针的下一个节点指向真正的头结点head。使用预先指针的目的在于链表初始化时无可用节点值，
         // 而且链表构造过程需要指针移动，进而会导致头指针丢失，无法返回结果。
-        ListNode* pre = new ListNode(0);
-        pre->next = head;
+        ListNode *dummy = new ListNode(0);
+        dummy->next = head;
 
-        ListNode* fast = pre;
-        ListNode* slow = pre;
-        
-        while(n != 0) {
-            fast = fast->next;
-            n--;
+        ListNode *left = dummy;
+        ListNode *right = dummy;
+
+        while(n--) {
+            right = right->next;
         }
 
-        while(fast->next != nullptr){
-            fast = fast -> next;
-            slow = slow -> next;
+        while(right->next) {
+            left = left->next;
+            right = right->next;
         }
-        slow->next = slow->next->next;
+        left->next = left->next->next;
 
-        ListNode* node = pre->next;
-        delete pre;
+        ListNode *node = dummy->next;
+        delete dummy;
         return node;
     }
 };

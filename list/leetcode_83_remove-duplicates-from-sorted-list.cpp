@@ -1,4 +1,11 @@
 /**
+ * 83. 删除排序链表中的重复元素
+ * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+ * 
+ * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+ */
+
+/**
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
@@ -8,20 +15,30 @@
  */
 class Solution {
 public:
+    // 遍历
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
     ListNode* deleteDuplicates(ListNode* head) {
-         //如果所给链表为空直接返回，否则在执行ptr->next这部操作时会因为ptr为NULL而造成执行时错误
-        if(head == NULL) return head;
-        ListNode* ptr{ head };  //遍历的指针
-        //遍历首个元素到第倒数第二个元素，因为是逐个向后比较，最后一个元素会被比较到，这样是正确的
-        while (ptr->next != NULL) {
-            if (ptr->val == ptr->next->val) {  //和后一个元素比较
-                ListNode* p = ptr->next;  
-                ptr->next = p->next;  //删除操作
-                delete p;  //释放空间
+        if(head == NULL) return NULL;
+
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+
+        ListNode* pre = dummy;
+        ListNode* cur = head;
+
+        while(cur->next) {
+            if(cur->val == cur->next->val) {
+                pre->next = cur->next;
+                cur = cur->next;
             } else {
-                ptr = ptr->next;  //移动到后一个元素
+                pre = cur;
+                cur = cur->next;
             }
         }
-        return head;  //返回首个节点
+
+        ListNode* node = dummy->next;
+        delete  dummy;
+        return node;
     }
 };
