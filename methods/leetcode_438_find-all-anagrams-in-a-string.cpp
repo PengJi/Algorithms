@@ -20,6 +20,7 @@ public:
             char c = s[right];
             right++;
 
+            // 进行窗口内数据的一系列更新
             if(need.count(c)) {
                 window[c]++;
                 if (window[c] == need[c]) valid++;
@@ -33,6 +34,7 @@ public:
                 char d = s[left];
                 left++;
 
+                // 进行窗口内数据的一系列更新
                 if(need.count(d)) {
                     if (window[d] == need[d]) valid--;
                     window[d]--;
