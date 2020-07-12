@@ -34,28 +34,31 @@ public:
 
     }
 
-
     // 迭代
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     ListNode* swapPairs(ListNode* head) {
-        ListNode* dummy = new ListNode(-1);
-        dummy->next = head;
+        if(head == NULL) return NULL;
 
-        ListNode* prev = dummy;
-        while((head != NULL) && (head->next != NULL)){
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* pre = dummy;
+        ListNode* cur = head;
+
+        ListNode *start, *end;
+        while(cur != NULL && cur->next != NULL) {
             // 待反转的节点
-            ListNode* start = head;
-            ListNode* end = head->next;
+            start = cur;
+            end = cur->next;
 
             // 反转
-            prev->next = end;
+            pre->next = end;
             start->next = end->next;
             end->next = start;
 
             // 初始化下一个反转的节点
-            prev = start;
-            head = start->next;  // 跳到下一个节点
+            pre = start;
+            cur = start->next;
         }
 
         return dummy->next;

@@ -9,9 +9,11 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     int maxArea(vector<int>& height) {
-        int left = 0, right = height.size()-1;
         if(height.size() <= 1) return 0;
+
+        int left = 0, right = height.size()-1;
         int max = 0, area = 0;
+
         while(left < right){
             if(height[left] <= height[right]){
                 area = height[left] * (right - left);
@@ -20,9 +22,8 @@ public:
                 area = height[right] * (right - left);
                 right--;
             }
-            if(area > max){
-                max = area;
-            }
+
+            if(area > max) max = area;
         }
 
         return max;
