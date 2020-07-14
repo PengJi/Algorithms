@@ -19,14 +19,18 @@
 class Solution {
 public:
     void flatten(TreeNode* root) {
-        while (root) {
-            if (root->left && root->right) {
-                TreeNode* t = root->left;
-                while (t->right) t = t->right;
-                t->right = root->right;
+        TreeNode* tmp;
+        while(root) {
+            // 有左右子节点
+            if(root->left && root->right) {
+                tmp = root->left;
+                while(tmp->right) tmp = tmp->right;
+                tmp->right = root->right;  // 将右子节点移动到左子树上
             }
 
+            // 有左子节点，将左子节点移动到右子节点上
             if(root->left) root->right = root->left;
+
             root->left = NULL;
             root = root->right;
         }
