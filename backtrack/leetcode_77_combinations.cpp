@@ -1,5 +1,5 @@
 /**
- * 77. Combinations
+ * 77. 组合
  * https://leetcode.com/problems/combinations/
  */
 

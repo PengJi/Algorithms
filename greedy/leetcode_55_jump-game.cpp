@@ -21,7 +21,7 @@ public:
     // 贪心算法，从右向左遍历
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
-    bool canJump1(vector<int>& nums) {
+    bool canJump(vector<int>& nums) {
         int lastIndex = nums.size()-1;
         for(int i=lastIndex; i>=0; i--){
             if(i + nums[i] >= lastIndex){
