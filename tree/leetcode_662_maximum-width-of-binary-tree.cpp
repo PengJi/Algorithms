@@ -20,18 +20,24 @@ public:
     int widthOfBinaryTree(TreeNode* root) {
         if(root == NULL) return 0;
 
-        int res = 1;
-        queue<pair<TreeNode*, unsigned long>> q;
-        q.push({root, 1});
-        while(!q.empty()) {
-            int len = q.size();
-            res = max(res, int(q.back().second - q.front().second + 1));
+        int res = 0;
+        queue<pair<TreeNode*, unsigned long>> que;  // 记录节点与位置
+        que.push({root, 1});
+        TreeNode* node;
+        int len;
+        unsigned long pos;
+
+        while(!que.empty()) {
+            len = que.size();
+            res = max(res, int(que.back().second - que.front().second + 1));
+
             for(int i = 0; i < len; i++) {
-                TreeNode* node = q.front().first;
-                unsigned long pos = q.front().second;
-                if(node->left) q.push({node->left, 2*pos});
-                if(node->right) q.push({node->right, 2*pos+1});
-                q.pop();
+                node = que.front().first;
+                pos = que.front().second;
+                que.pop();
+
+                if(node->left) que.push({node->left, 2 * pos});
+                if(node->right) que.push({node->right, 2 * pos +1});
             }
         }
 

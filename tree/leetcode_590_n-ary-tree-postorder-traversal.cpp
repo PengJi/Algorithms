@@ -57,6 +57,7 @@ public:
             cur = stk.top();
             res.push_back(cur->val);
             stk.pop();
+            
             for(auto i : cur->children){
                 stk.push(i);
             }

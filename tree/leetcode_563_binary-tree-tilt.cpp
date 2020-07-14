@@ -18,18 +18,20 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     int res = 0;
+
     int findTilt(TreeNode* root) {
         traverse(root);
         return res;
     }
 
-    int traverse(TreeNode* root){
+    int traverse(TreeNode* root) {
         if(root == nullptr){
             return 0;
         }
 
         int left = traverse(root->left);
         int right = traverse(root->right);
+        
         res += abs(left - right);
         return left + right + root->val;
     }

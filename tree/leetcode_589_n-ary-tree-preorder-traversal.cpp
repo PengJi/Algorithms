@@ -58,7 +58,7 @@ public:
             stk.pop();
             res.push_back(curNode->val);
             
-            for(int i=curNode->children.size()-1; i>=0; i--){
+            for(int i = curNode->children.size()-1; i >= 0; i--){
                 if(curNode->children[i] != nullptr){
                     stk.push(curNode->children[i]);
                 }
