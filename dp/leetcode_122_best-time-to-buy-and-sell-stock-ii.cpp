@@ -5,14 +5,18 @@
 
 class Solution {
 public:
+    // 遍历
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
     int maxProfit(vector<int>& prices) {
-        int n = prices.size();
-        int dp_i_0 = 0, dp_i_1 = INT_MIN;
-        for (int i = 0; i < n; i++) {
-            int temp = dp_i_0;
-            dp_i_0 = max(dp_i_0, dp_i_1 + prices[i]);
-            dp_i_1 = max(dp_i_1, temp - prices[i]);
+        int len = prices.size();
+        if(len <= 1) return 0;
+
+        int res;
+        for(int i = 1; i < len; i++) {
+            if(prices[i] > prices[i-1]) res += prices[i] - prices[i-1];
         }
-        return dp_i_0;
+
+        return res;
     }
 };
