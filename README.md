@@ -47,6 +47,7 @@
 [83. 删除排序链表中的重复元素](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
 
 ## stack_queue
+[150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/)
 [225. 用队列实现栈](https://leetcode-cn.com/problems/implement-stack-using-queues/)
 [232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
 [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
@@ -117,6 +118,7 @@
 [139. 单词拆分](https://leetcode-cn.com/problems/word-break/)
 [152. 乘积最大子数组](https://leetcode-cn.com/problems/maximum-product-subarray/)
 [198. 打家劫舍](https://leetcode-cn.com/problems/house-robber/)
+[213. 打家劫舍 II](https://leetcode-cn.com/problems/house-robber-ii/)
 [221. 最大正方形](https://leetcode-cn.com/problems/maximal-square/)
 [300. 最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 [322. 零钱兑换](https://leetcode-cn.com/problems/coin-change/)
