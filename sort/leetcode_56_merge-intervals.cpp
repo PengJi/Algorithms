@@ -1,5 +1,7 @@
 /**
  * 56. 合并区间
+ * 给出一个区间的集合，请合并所有重叠的区间。
+ * 
  * https://leetcode-cn.com/problems/merge-intervals/
  */
 

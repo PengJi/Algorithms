@@ -31,9 +31,9 @@ public:
         int length=nums.size();
         k = k % length;  // k可能大于n，这里保证k小于n
 
-        reverse(&nums[0],&nums[length]);  // 反转所有元素
-        reverse(&nums[0],&nums[k]);  // 反转前k个元素
-        reverse(&nums[k],&nums[length]);  // 反转后n-k个元素
+        reverse(&nums[0], &nums[length]);  // 反转所有元素
+        reverse(&nums[0], &nums[k]);  // 反转前k个元素
+        reverse(&nums[k], &nums[length]);  // 反转后n-k个元素
     }
 
     // 暴力法（超出运行时间），每次移动一步

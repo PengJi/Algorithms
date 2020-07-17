@@ -1,5 +1,7 @@
 /**
  * 62. 不同路径
+ * 机器人
+ * 
  * https://leetcode-cn.com/problems/unique-paths/
  */
 
@@ -12,9 +14,11 @@ public:
         int small=min(m, n);
         int large=max(m, n);
         vector<int> dp(small, 1);
-        for(int i=1; i<large; i++){
+
+        for(int i=1; i<large; i++) {
             for(int j=1; j<small; j++) dp[j]+=dp[j-1]; 
         }
+
         return dp[small-1];
     }
 

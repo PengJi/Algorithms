@@ -13,7 +13,7 @@ public:
         int dp1 = s.back() == '0' ? 0 : 1;
         int dp = dp1;
 
-        for (int i=s.size()-2; i>=0; --i) {
+        for (int i = s.size()-2; i >= 0; --i) {
             if (s[i]=='0') {
                 dp=0;
             } else {

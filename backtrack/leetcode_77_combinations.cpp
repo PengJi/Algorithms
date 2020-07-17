@@ -1,6 +1,8 @@
 /**
  * 77. 组合
- * https://leetcode.com/problems/combinations/
+ * 给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。
+ * 
+ * https://leetcode-cn.com/problems/combinations/
  */
 
 class Solution {
