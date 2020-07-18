@@ -15,6 +15,7 @@ public:
         vector<string> res;
         if(n == 0) return res;
 
+        // 当前字符串，左括号，右括号，结果
         dfs("", n, n, res);
         return res;
     }

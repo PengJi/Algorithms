@@ -38,7 +38,12 @@ public:
                 int left = dp[i - 1][j] + 1;
                 int down = dp[i][j - 1] + 1;
                 int left_down = dp[i - 1][j - 1];
+
+                // 按照两种情况判断，当前字符相同和当前字符相同
+                // 如果当前字符不相同
                 if (word1[i - 1] != word2[j - 1]) left_down += 1;
+
+                // 包含当前字符相同的情形
                 dp[i][j] = min(left, min(down, left_down));
 
             }
