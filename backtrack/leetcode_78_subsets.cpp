@@ -22,6 +22,7 @@ public:
 
     void backtrack(vector<int>& nums, int start, vector<int>& track) {
         res.push_back(track);
+        
         for (int i = start; i < nums.size(); i++) {
             // 做选择
             track.push_back(nums[i]);

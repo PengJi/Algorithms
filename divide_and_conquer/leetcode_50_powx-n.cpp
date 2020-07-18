@@ -5,6 +5,10 @@
 
 class Solution {
 public:
+    // 分治
+    // https://leetcode-cn.com/problems/powx-n/solution/powx-n-by-leetcode-solution/
+    // 时间复杂度：O(logn)
+    // 空间复杂度：O(1)
     double myPow(double x, int n) {
         long long N = n;
         return N >= 0 ? quickMul(x, N) : 1.0 / quickMul(x, -N);

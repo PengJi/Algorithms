@@ -35,10 +35,10 @@ mid = (left + right) / 2; —> mid = (left + right) >> 1;
 5. X & ~X => 0
 
 # 题目
-[191. 为1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)  
-[231. 2的幂](https://leetcode-cn.com/problems/power-of-two/)  
-[190. 颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)  
-[51. N皇后](https://leetcode-cn.com/problems/n-queens/description/)  
-[52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
+- [ ] [191. 为1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)  
+- [ ] [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/)  
+- [x] [190. 颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)  
+- [ ] [51. N皇后](https://leetcode-cn.com/problems/n-queens/description/)  
+- [ ] [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
 
 

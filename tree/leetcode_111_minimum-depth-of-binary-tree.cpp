@@ -22,7 +22,7 @@ public:
 
         int leftHeight = minDepth(root->left);
         int rightHeight = minDepth(root->right);
-        if(!leftHeight || !rightHeight) return leftHeight+rightHeight+1;
+        if(!leftHeight || !rightHeight) return leftHeight + rightHeight + 1;
         
         return min(leftHeight, rightHeight) + 1;
     }
