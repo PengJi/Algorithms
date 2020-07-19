@@ -12,12 +12,12 @@ public:
         if(board.empty()) return;
         int row=board.size(), col=board[0].size();
 
-        for(int i = 0; i < row; ++i){
+        for(int i = 0; i < row; ++i) {
             check(board, i, 0);
             check(board, i, col-1);
         }
 
-        for(int j = 1; j < col - 1; ++j){
+        for(int j = 1; j < col - 1; ++j) {
             check(board, 0, j);
             check(board, row-1, j);
         }

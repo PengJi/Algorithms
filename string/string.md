@@ -23,7 +23,18 @@
 ### 回文串问题
 - [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 - [ ] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
-- [ ] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+### 最长子串、子序列问题
+- [x] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
+- [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+### 字符串 +DP 问题
+- [ ] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
+- [ ] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
+- [ ] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
+
 
 # 思路
 ## 滑动窗口

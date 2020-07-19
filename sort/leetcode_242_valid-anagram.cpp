@@ -7,15 +7,6 @@
 
 class Solution {
 public:
-    // 排序
-    // 时间复杂度：O(nlogn)
-    // 空间复杂度：O(nlogn)
-    bool isAnagram(string s, string t) {
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-        return s == t;
-    }
-
     // 哈希思想（推荐）
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
@@ -31,5 +22,14 @@ public:
         }
 
         return true;
+    }
+
+    // 排序
+    // 时间复杂度：O(nlogn)
+    // 空间复杂度：O(nlogn)
+    bool isAnagram(string s, string t) {
+        sort(s.begin(), s.end());
+        sort(t.begin(), t.end());
+        return s == t;
     }
 };

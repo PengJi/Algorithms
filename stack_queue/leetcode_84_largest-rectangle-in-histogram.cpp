@@ -37,6 +37,7 @@ public:
         vector<int> st;
         heights.insert(heights.begin(), 0);
         heights.push_back(0);
+
         for (int i = 0; i < heights.size(); i++)
         {
             while (!st.empty() && heights[st.back()] > heights[i])
@@ -49,6 +50,7 @@ public:
             }
             st.push_back(i);
         }
+        
         return ans;
     }
 };

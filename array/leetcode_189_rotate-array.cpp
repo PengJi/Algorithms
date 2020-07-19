@@ -21,7 +21,7 @@ public:
                 nums[next] = numToBeRotated;
                 numToBeRotated = temp;
                 current = next;
-                cntRotated++;  //统计替换元素额个数
+                cntRotated++;  //统计替换元素的个数
             } while (start != current);  // 避免循环复制
         }
     }

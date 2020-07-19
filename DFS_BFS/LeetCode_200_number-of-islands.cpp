@@ -10,9 +10,9 @@
 class Solution {
 public:
     // 深度优先搜索
+    // https://leetcode.com/problems/number-of-islands/discuss/56589/C%2B%2B-BFSDFS
     // 时间复杂度：O(mn)
     // 空间复杂度：O(1)
-    // 参考：https://leetcode.com/problems/number-of-islands/discuss/56589/C%2B%2B-BFSDFS
     int numIslands(vector<vector<char>>& grid) {
         int m = grid.size(), n = m ? grid[0].size() : 0, islands = 0;
         for(int i = 0; i < m; i++){

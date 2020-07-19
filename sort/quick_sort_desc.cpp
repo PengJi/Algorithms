@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+// 快排（降序）
+
 int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[low];
 
