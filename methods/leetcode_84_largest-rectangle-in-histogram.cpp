@@ -8,29 +8,30 @@
 
 class Solution {
 public:
-    // 单调栈
+    // 单调栈（递增）
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     int largestRectangleArea(vector<int>& heights) {
-        int ans = 0;
-        vector<int> st;
-        heights.insert(heights.begin(), 0);
-        heights.push_back(0);
+        if(heights.size() == 0) return 0;
 
-        for (int i = 0; i < heights.size(); i++)
-        {
-            while (!st.empty() && heights[st.back()] > heights[i])
-            {
-                int cur = st.back();
-                st.pop_back();
-                int left = st.back() + 1;
-                int right = i - 1;
-                ans = max(ans, (right - left + 1) * heights[cur]);
+        heights.insert(heights.begin(), 0);  // 在队首插入0
+        heights.push_back(0);  // 在队尾插入0
+
+        int res = 0;
+        int cur, left, right;
+        stack<int> stk;
+        for(int i = 0; i < heights.size(); i++) {
+            while(!stk.empty() && heights[i] < heights[stk.top()]) {
+                cur = stk.top();
+                stk.pop();
+                left = stk.top() + 1;
+                right = i - 1;
+                res = max(res, (right-left+1) * heights[cur]);
             }
-            st.push_back(i);
+            stk.push(i);
         }
-        
-        return ans;
+
+        return res;    
     }
     
     // 暴力法（超出时间限制）
