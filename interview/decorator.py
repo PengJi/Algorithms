@@ -1,3 +1,5 @@
+import functools
+
 # 不带参数的装饰器
 def raptor_decorator(func):
     @functools.wraps(func)
