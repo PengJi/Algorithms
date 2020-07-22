@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import functools
 
 # 不带参数的装饰器
@@ -58,3 +60,20 @@ def raptor_stat(t_type, t_name, report_args=True):
         return wrapper
 
     return raptor_decorator
+
+
+from retrying import retry
+def func_decorator(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        print("ddddddddddddddd")
+        return func(*args, **kwargs)
+
+    return wrapper
+
+@func_decorator
+@retry(stop_max_attempt_number=3, stop_max_delay=3000)
+def test():
+    raise Exception("Exception")
+
+test()

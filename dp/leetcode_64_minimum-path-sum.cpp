@@ -22,7 +22,7 @@ public:
 
         for (int j = 1; j < n; j++) {
             cur[0] += grid[0][j]; 
-            
+
             for (int i = 1; i < m; i++)
                 cur[i] = min(cur[i - 1], cur[i]) + grid[i][j];
         }
