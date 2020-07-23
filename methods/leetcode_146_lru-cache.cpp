@@ -19,6 +19,7 @@ private:
     DListNode *head, *tail;
 
 public:
+    // https://leetcode-cn.com/problems/lru-cache/solution/lruhuan-cun-ji-zhi-by-leetcode-solution/
     LRUCache(int capacity): cap(capacity), size(0) {
         // 创建链表
         head = new DListNode();

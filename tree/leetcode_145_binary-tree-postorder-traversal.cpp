@@ -33,7 +33,7 @@ public:
         }
     }
 
-    // 递归
+    // 遍历
     vector<int> postorderTraversal(TreeNode* root) {
         if(root == NULL) return {};
 

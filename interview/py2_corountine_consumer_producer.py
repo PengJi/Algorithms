@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# Python2 利用协程实现生产者/消费者模型
 
 # 注意 变成generator的函数，在首次调用的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行
 def consumer():

@@ -20,7 +20,7 @@ public:
         return res;
     }
 
-    void dfs(string str, int left, int right, vector<string> &res){
+    void dfs(string str, int left, int right, vector<string> &res) {
         // 因为每一次尝试，都使用新的字符串变量，所以无需回溯
         // 在递归终止的时候，直接把它添加到结果集即可，
         if(left == 0 && right == 0){
