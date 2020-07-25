@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// go实现多个生产者、多个消费者
+
 func producer(name string, buf chan<- int) {
 	for {
 		num := rand.Intn(5)

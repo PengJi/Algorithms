@@ -1,5 +1,7 @@
 /**
  * 213. 打家劫舍 II
+ * 不能偷相邻的房子，房子首尾相连
+ * 
  * https://leetcode-cn.com/problems/house-robber-ii/
  */
 

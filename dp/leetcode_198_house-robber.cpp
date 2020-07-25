@@ -1,5 +1,7 @@
 /**
  * 198. 打家劫舍
+ * 不能偷相邻的房子
+ * 
  * https://leetcode-cn.com/problems/house-robber/
  */
 

@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// go 实现单个生产者、单个消费者
+
 func producer(name string, buf chan<- int) {
 	for i := 0; i < 5; i++ {
 		fmt.Println("producer: ", name, "producing: ", i)

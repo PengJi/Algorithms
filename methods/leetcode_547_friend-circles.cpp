@@ -5,6 +5,7 @@
 
 class Solution {
 public:
+    // https://leetcode.com/problems/friend-circles/discuss/101354/C%2B%2B-Clean-Code-DFSorUnionFind
     int findCircleNum(vector<vector<int>>& M) {
         if (M.empty()) return 0;
         int len = M.size();
