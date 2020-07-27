@@ -8,14 +8,10 @@ int partition(vector<int>& arr, int low, int high) {
     int pivot = arr[low];
 
     while(low < high) {
-        while(low < high && pivot >= arr[high]) {
-            --high;
-        }
+        while(low < high && pivot >= arr[high]) high--;
         arr[low] = arr[high];
 
-        while(low < high && pivot <= arr[low]) {
-            ++low;
-        }
+        while(low < high && pivot <= arr[low]) low++;
         arr[high] = arr[low];
     }
 
@@ -32,9 +28,9 @@ void quickSort(vector<int>& arr, int low, int high) {
 }
 
 int main() {
-    vector<int> arr{3,2,3,1,2,4,5,5,6};
+    vector<int> arr{3, 2, 3, 1, 2, 4, 5, 5, 6, 8};
 
-    quickSort(arr, 0, 8);
+    quickSort(arr, 0, 9);
 
     for(int i = 0; i < 10; i++) {
         cout << arr[i] << " ";

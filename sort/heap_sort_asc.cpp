@@ -27,7 +27,7 @@ void heapSort(vector<int>& arr) {
 
     // 建堆
     for(int i = len/2 - 1; i >= 0; i--) { // 首先调整最后一个非叶节点
-        adjust(arr, len, i);
+        adjust(arr, len, i);  // 调整节点i
     }
 
     for(int i = len-1; i >= 1; i--) {
