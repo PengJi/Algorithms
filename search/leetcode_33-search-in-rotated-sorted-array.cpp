@@ -13,6 +13,7 @@ public:
             if(nums[mid] == target){
                 return mid;
             }
+            
             if(nums[left] <= nums[mid]){  // 左边递增
                 if(nums[left] <= target && target < nums[mid]){
                     right = mid - 1;

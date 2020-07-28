@@ -5,24 +5,34 @@
  */
 
 class Solution {
-public:
+   public:
     int kthSmallest(vector<vector<int>>& matrix, int k) {
-        long long l = -2e9, r = 2e9;
         int n = matrix.size();
-        while (l < r) {
-            long long mid = l + r >> 1;
-            int cnt = 0, i = n - 1, j = 0;
-            while (i >= 0 && j < n) {  // 统计矩阵中小于等于mid的元素个数
-                if (matrix[i][j] <= mid) {
-                    cnt += i + 1;
-                    j ++;
-                } else {
-                    i --;
-                }
+        int left = matrix[0][0];
+        int right = matrix[n - 1][n - 1];
+        while (left < right) {
+            int mid = left + ((right - left) >> 1);
+            if (check(matrix, mid, k, n)) {
+                right = mid;
+            } else {
+                left = mid + 1;
             }
-            if (cnt < k) l = mid + 1;
-            else r = mid;
         }
-        return l;
+        return left;
+    }
+
+    bool check(vector<vector<int>>& matrix, int mid, int k, int n) {
+        int i = n - 1;
+        int j = 0;
+        int num = 0;
+        while (i >= 0 && j < n) {
+            if (matrix[i][j] <= mid) {
+                num += i + 1;
+                j++;
+            } else {
+                i--;
+            }
+        }
+        return num >= k;
     }
 };
