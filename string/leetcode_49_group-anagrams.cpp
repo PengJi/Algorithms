@@ -12,7 +12,7 @@ public:
         unordered_map<string, vector<string>> mp;
         for(auto str:strs){
             string tmp = str;
-            sort(tmp.begin(), tmp.end());
+            sort(tmp.begin(), tmp.end());  // 单词字母排序
             mp[tmp].push_back(str);
         }
 

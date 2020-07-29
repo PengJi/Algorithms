@@ -14,6 +14,7 @@
  */
 class Solution {
 public:
+    // 递归
     TreeNode* mirrorTree(TreeNode* root) {
         if(root == NULL) return NULL;
 
@@ -24,6 +25,7 @@ public:
         return root;
     }
 
+    // 递归
     TreeNode* mirrorTree(TreeNode* root) {
         if(root == nullptr) return NULL;
 

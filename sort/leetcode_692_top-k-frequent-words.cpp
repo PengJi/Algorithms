@@ -49,7 +49,8 @@ public:
 
     struct cmp {
         bool operator()(pair<string, int> left, pair<string, int> right) {
-            return left.second < right.second;
+            // return left.second < right.second;
+            return (left.second > right.second || (left.second == right.second && left.first < right.first));
         }
     };
 };

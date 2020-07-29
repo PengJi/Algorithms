@@ -86,7 +86,8 @@ public:
         return res;
     }
 
-    // 使用STL 优先队列(堆) 最小堆 大小为K  
+    // 小顶堆
+    // 使用 STL 优先队列(堆) 最小堆 大小为K  
     // 时间复杂度：O(nlogk)
     // 空间复杂度：O(n)
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -137,6 +138,7 @@ public:
     }
 
 
+    // 大顶堆
     // 使用STL 优先队列(堆) 最大堆 大小为N 
     // 时间复杂度：O(n + klogn)
     // 空间复杂度：O(n)

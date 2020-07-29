@@ -38,7 +38,7 @@ public:
     bool hasPathSum(TreeNode* root, int sum) {
         if(root == NULL) return false;
 
-        // 判断是否为页结点
+        // 判断是否为叶结点
         if(root->left == NULL && root->right == NULL) {
             return sum-root->val == 0;
         }

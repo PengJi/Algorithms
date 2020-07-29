@@ -11,7 +11,7 @@ public:
     // 时间复杂度：O(nlogn)
     // 空间复杂度：O(n)
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        if(intervals.empty) return {};
+        if(intervals.empty()) return {};
 
         sort(intervals.begin(), intervals.end(), cmp);
         vector<vector<int>> res{intervals[0]};

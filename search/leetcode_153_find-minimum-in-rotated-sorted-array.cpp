@@ -21,6 +21,7 @@ public:
         int mid;
         while(left < right) {
             mid = left + (right-left)/2;
+            
             if(nums[mid] < nums[right])  // 在左半部分
                 right = mid;
             else  // 在右半部分

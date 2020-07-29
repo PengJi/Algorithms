@@ -19,15 +19,15 @@ public:
     // 空间复杂度：O(n)
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> res;
-        inorder(root, res);
+        preorder(root, res);
         return res;
     }
 
-    void inorder(TreeNode* root, vector<int>& node){
+    void preorder(TreeNode* root, vector<int>& node){
         if(!root) return;
         node.push_back(root->val);
-        inorder(root->left, node);
-        inorder(root->right, node);
+        preorder(root->left, node);
+        preorder(root->right, node);
     }
 
     // 使用迭代

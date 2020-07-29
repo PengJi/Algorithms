@@ -14,7 +14,7 @@ public:
         if(nums.size() < 3) return 0;
         int closest = nums[0]+nums[1]+nums[2];
 
-        sort(nums.begin(), nums.end());
+        sort(nums.begin(), nums.end());  // 排序
 
         for(int first = 0 ; first < nums.size()-2 ; ++first) {
             if(first > 0 && nums[first] == nums[first-1]) continue;
