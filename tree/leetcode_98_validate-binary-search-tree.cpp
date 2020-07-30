@@ -20,7 +20,7 @@ public:
         return isValidBST(root, NULL, NULL);
     }
 
-    bool isValidBST(TreeNode *root, TreeNode* lower, TreeNode* upper){
+    bool isValidBST(TreeNode *root, TreeNode* lower, TreeNode* upper) {
         if(root == nullptr) return true;
 
         if(lower && root->val <= lower->val || upper && root->val >= upper->val) return false;

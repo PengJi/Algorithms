@@ -29,6 +29,38 @@ public:
         preorder(root->left, node);
         preorder(root->right, node);
     }
+    
+    // 使用迭代
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
+    vector<int> preorderTraversal(TreeNode* root) {
+        if(root == NULL) return {};
+
+        stack<TreeNode*> stk;
+        vector<int> res;
+        TreeNode* cur = root;
+
+        // 当遍历到最后一个节点的时候，左右子树都为空，并且栈也为空
+        // 当不同时满足这两点，都需要进入循环
+        while(cur != NULL || !stk.empty()) {
+            // 一直往左走
+            while(cur != NULL) {
+                res.push_back(cur->val);
+                stk.push(cur);
+                cur = cur->left;
+            }
+
+            // 一直到左子树为空，开始考虑右子树
+            // 如果栈已空，就不再需要考虑
+            if(!stk.empty()) {
+                cur = stk.top();
+                stk.pop();
+                cur = cur->right;
+            }
+        }
+
+        return res;
+    }
 
     // 使用迭代
     // 时间复杂度：O(n)

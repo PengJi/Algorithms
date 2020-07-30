@@ -29,9 +29,7 @@ public:
     }
 
     int traverse(TreeNode* root) {
-        if(root == nullptr){
-            return 0;
-        }
+        if(root == nullptr) return 0;
 
         int left = traverse(root->left);
         int right = traverse(root->right);

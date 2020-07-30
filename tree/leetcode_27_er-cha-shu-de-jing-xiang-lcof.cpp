@@ -16,17 +16,6 @@ class Solution {
 public:
     // 递归
     TreeNode* mirrorTree(TreeNode* root) {
-        if(root == NULL) return NULL;
-
-        TreeNode* tmp = root->left;
-        root->left = mirrorTree(root->right);
-        root->right = mirrorTree(tmp);
-
-        return root;
-    }
-
-    // 递归
-    TreeNode* mirrorTree(TreeNode* root) {
         if(root == nullptr) return NULL;
 
         TreeNode* tmp = root->left;
@@ -35,6 +24,17 @@ public:
         
         mirrorTree(root->left);
         mirrorTree(root->right);
+
+        return root;
+    }
+
+    // 递归
+    TreeNode* mirrorTree(TreeNode* root) {
+        if(root == NULL) return NULL;
+
+        TreeNode* tmp = root->left;
+        root->left = mirrorTree(root->right);
+        root->right = mirrorTree(tmp);
 
         return root;
     }

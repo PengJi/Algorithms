@@ -35,6 +35,33 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     vector<int> inorderTraversal(TreeNode* root) {
+        if(root == NULL) return {};
+
+        stack<TreeNode*> stk;
+        vector<int> res;
+        TreeNode* cur = root;
+
+        while(cur != NULL || !stk.empty()) {
+            while(cur != NULL) {
+                stk.push(cur);
+                cur = cur->left;
+            }
+
+            if(!stk.empty()) {
+                cur = stk.top();
+                res.push_back(cur->val);
+                stk.pop();
+                cur = cur->right;
+            }
+        }
+
+        return res;
+    }
+
+    // 迭代
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         stack<TreeNode*> stk;  // 利用栈
         TreeNode* cur = root;
