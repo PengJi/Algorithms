@@ -15,7 +15,7 @@ public:
         if(length == 0) return 0;
 
         int left = 0, right=0, next = 1, max = 1;
-        while(right < length && next < length){
+        while(right < length && next < length) {
             for(int i = left; i <= right; i++) {
                 if(s[i] == s[next]) {
                     left = i+1;

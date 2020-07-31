@@ -44,7 +44,7 @@ class Solution {
             for(int i=0; i<levelSize; i++){
                 Node *tmp = curLevel.front();
                 tmpLevel.push_back(tmp->val);
-                curLevel.pop();  //将节点抛出
+                curLevel.pop();  // 将节点抛出
                 
                 // 将子节点加入队列
                 for(auto childNode:tmp->children){

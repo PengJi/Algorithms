@@ -50,7 +50,7 @@ public:
 
             node = stk.top();
 
-            if(node->right == NULL || node->right == last_visit) {
+            if(node->right == NULL || node->right == last_visit) {  // 左右节点都遍历完
                 res.push_back(node->val);
                 stk.pop();
                 last_visit = node;
