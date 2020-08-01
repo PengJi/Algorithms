@@ -8,6 +8,9 @@
 
 class Solution {
 public:
+    // 堆
+    // 时间复杂度：O(nlogk)
+    // 空间复杂度：O(n)
     vector<string> topKFrequent(vector<string>& words, int k) {
         int len = words.size();
         if(len == 0) return {};
@@ -18,28 +21,31 @@ public:
         }
 
         // 小顶堆
-        priority_queue<pair<string, int>, vector<pair<string, int>>, cmp> queue;
+        priority_queue<pair<string, int>, vector<pair<string, int>>, CmpGreater> queue;
 
-        int count = 0;
         auto iter = mp.begin();
         while(iter != mp.end()) {
-            if(count == k) break;
-            queue.push(*iter);
-            count++;
-            iter++;
+            if(queue.size() < k) {
+                queue.push(*iter);
+                iter++;
+            } else {
+                break;
+            }
         }
 
         // 将大于栈顶的元素放入，并删除栈顶
+        CmpGreater cmp;
         for(; iter != mp.end(); iter++) {
-            if(iter->second > queue.top().second) {
+            if(cmp(*iter, queue.top())) {
                 queue.pop();
                 queue.push(*iter);
             }
         }
 
-        vector<string> res;
-        for(int i = 0; i < k; i++) {
-            res.push_back(queue.top().first);
+        vector<string> res(k);
+        for (int i = k - 1; i >= 0; --i)
+        {
+            res[i] = queue.top().first;
             queue.pop();
         }
 
@@ -47,9 +53,8 @@ public:
 
     }
 
-    struct cmp {
+    struct CmpGreater {
         bool operator()(pair<string, int> left, pair<string, int> right) {
-            // return left.second < right.second;
             return (left.second > right.second || (left.second == right.second && left.first < right.first));
         }
     };

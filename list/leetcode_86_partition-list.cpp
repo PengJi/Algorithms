@@ -21,8 +21,9 @@ public:
     ListNode* partition(ListNode* head, int x) {
         if(head == NULL) return NULL;
 
-        ListNode *less_head = new ListNode(0);
-        ListNode *greater_head = new ListNode(0);
+        ListNode *less_head = new ListNode(0);  // 小于链表
+        ListNode *greater_head = new ListNode(0);  // 大于等于链表
+        // 小于指针，大于等于指针
         ListNode *p1 = less_head, *p2 = greater_head;
 
         while(head) {
