@@ -16,7 +16,7 @@ public:
             if(s[i] >= '0' && s[i] <= '9') {
                 num = num * 10 + s[i] - '0';
             }
-            else if((s[i] >= 'a' && s[i] <= 'z') ||(s[i] >= 'A' && s[i] <= 'Z')) {
+            else if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) {
                 res = res + s[i];
             }
             else if(s[i] == '[') { //将‘[’前的数字压入nums栈内， 字母字符串压入strs栈内

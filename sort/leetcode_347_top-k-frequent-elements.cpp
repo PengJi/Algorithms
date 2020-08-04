@@ -95,8 +95,7 @@ public:
         //map<int, int> m;
         unordered_map<int, int> m; //<值，次数>
 
-        for (int i = 0; i < nums.size(); ++i)
-        {
+        for (int i = 0; i < nums.size(); ++i) {
             ++m[nums.at(i)];
         }
 
@@ -105,31 +104,22 @@ public:
 
         int count = 0;
         auto iter = m.begin();
-        for (; iter != m.end(); ++iter)
-        {
-            if (count == k)
-            {
-                break;
-            }
-
+        for (; iter != m.end(); ++iter) {
+            if (count == k) break;
             heap.push(*iter);
-
             ++count;
         }
 
         //将大于堆顶的元素放入 并删除堆顶
-        for (; iter != m.end(); ++iter)
-        {
-            if (iter->second > heap.top().second)
-            {
+        for (; iter != m.end(); ++iter) {
+            if (iter->second > heap.top().second) {
                 heap.pop();
                 heap.push(*iter);
             }
         }
 
         vector<int> res(k);
-        for (int i = 0; i < k; ++i)
-        {
+        for (int i = 0; i < k; ++i) {
             res.at(i) = heap.top().first;
             heap.pop();
         }

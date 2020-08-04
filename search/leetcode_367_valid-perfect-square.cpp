@@ -16,18 +16,18 @@ public:
 
         long left = 2, right = num / 2;  // 设置左边界与右边界
         long x, guessSquared;
-        while (left <= right) {
+        while(left <= right) {
           x = left + (right - left) / 2;
           guessSquared = x * x;
 
-          if (guessSquared == num) {
-            return true;
+          if(guessSquared == num) {
+              return true;
           }
           // 重置边界
-          if (guessSquared > num) {
-            right = x - 1;
+          if(guessSquared > num) {
+              right = x - 1;
           } else {
-            left = x + 1;
+              left = x + 1;
           }
         }
 

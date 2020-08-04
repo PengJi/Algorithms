@@ -10,14 +10,15 @@ class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
         unordered_map<string, vector<string>> mp;
-        for(auto str:strs){
+
+        for(auto str : strs) {
             string tmp = str;
             sort(tmp.begin(), tmp.end());  // 单词字母排序
             mp[tmp].push_back(str);
         }
 
         vector<vector<string>> res;
-        for(auto item:mp){
+        for(auto item : mp) {
             res.push_back(item.second);
         }
 

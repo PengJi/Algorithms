@@ -24,10 +24,12 @@ public:
             while (front < back) {
                 int sum = nums[front] + nums[back];
                 
-                if (sum < target) 
+                if (sum < target) {
                     front++;
-                else if (sum > target)
+                }
+                else if (sum > target) {
                     back--;
+                }
                 else {
                     tmp.push_back(nums[i]);
                     tmp.push_back(nums[front]);

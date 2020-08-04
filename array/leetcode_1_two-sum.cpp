@@ -13,7 +13,7 @@ public:
     // 空间复杂度：O(n)，存储数据中的元素
     vector<int> twoSum(vector<int>& nums, int target) {
         vector<int> result;
-        unordered_map<int, int> vmap;  // 存储<值，建>
+        unordered_map<int, int> vmap;  // 存储<值，键>
         int length = nums.size();
         int another; // 存储在字典中，another = target - current
         vmap[nums[0]] = 0;
