@@ -9,10 +9,10 @@
 
 ### 字符串操作问题
 - [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
-- [ ] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
-- [ ] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
-- [ ] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
-- [ ] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+- [x] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
+- [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
+- [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
+- [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
 - [ ] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
 
 ### 异位词问题
