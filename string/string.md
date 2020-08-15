@@ -2,8 +2,8 @@
 
 ## 类型
 ### 字符串基础问题
-- [ ] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
-- [ ] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
+- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
+- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
 - [ ] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
 - [ ] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
 
@@ -13,7 +13,7 @@
 - [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
 - [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
 - [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
-- [ ] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
+- [x] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
 
 ### 异位词问题
 - [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
@@ -22,7 +22,7 @@
 
 ### 回文串问题
 - [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
-- [ ] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
+- [x] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
 - [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
 
 ### 最长子串、子序列问题
