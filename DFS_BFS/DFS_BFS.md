@@ -60,7 +60,6 @@ def BFS(graph, start, end):
 
 # 题目
 - [x] [102. 二叉树的层序遍历](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/#/description)  
-- [x] [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)  
 - [ ] [515. 在每个树行中找最大值](https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/)  
 - [x] [127. 单词接龙](https://leetcode-cn.com/problems/word-ladder/description/)  
 - [ ] [126. 单词接龙 II](https://leetcode-cn.com/problems/word-ladder-ii/description/) [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)  
