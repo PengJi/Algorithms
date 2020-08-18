@@ -17,7 +17,8 @@ public:
         if(head == NULL) return true;
         if(head->next == NULL) return true;
         // 两个节点
-        if(head->next != NULL && head->next->next == NULL) return head->val == head->next->val;
+        if(head->next != NULL && head->next->next == NULL) 
+            return head->val == head->next->val;
 
         ListNode *slow = head, *fast = head;
 
