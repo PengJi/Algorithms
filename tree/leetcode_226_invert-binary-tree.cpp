@@ -55,6 +55,7 @@ public:
             TreeNode* tmp = cur->left;
             cur->left = cur->right;
             cur->right = tmp;
+            
             queue.pop();
             if(cur->left != nullptr) queue.push(cur->left);
             if(cur->right != nullptr) queue.push(cur->right);

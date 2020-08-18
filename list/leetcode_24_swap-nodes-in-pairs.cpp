@@ -31,7 +31,6 @@ public:
         end->next = start;
 
         return end;
-
     }
 
     // 迭代
@@ -61,8 +60,7 @@ public:
             cur = start->next;
         }
 
-        return dummy->next;
-       
+        return dummy->next; 
     }
 
 };
