@@ -17,9 +17,9 @@ public:
 
         int res = -2147483648;
         int tmpMax = 1, tmpMin = 1;
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < len; i++) {
             // 当负数出现时则max与min进行交换再进行下一步计算
-            if(nums[i] < 0){
+            if(nums[i] < 0) {
                 swap(tmpMax, tmpMin);
             }
 

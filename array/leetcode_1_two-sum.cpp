@@ -19,7 +19,7 @@ public:
         vmap[nums[0]] = 0;
         for(int i=1; i<length; i++){
             another = target - nums[i];
-            if(vmap.find(another) != vmap.end() && vmap[another] != i){  // 判断是否存在
+            if(vmap.find(another) != vmap.end() && vmap[another] != i) {  // 判断是否存在
                 result.push_back(vmap[another]);
                 result.push_back(i);
                 return result;
