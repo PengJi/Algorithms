@@ -6,12 +6,34 @@
  * ...
  * 'Z' -> 26
  * 给定一个只包含数字的非空字符串，请计算解码方法的总数。
-
+ * 
  * https://leetcode-cn.com/problems/decode-ways/
  */
 
 class Solution {
 public:
+    // https://leetcode-cn.com/problems/decode-ways/solution/c-wo-ren-wei-hen-jian-dan-zhi-guan-de-jie-fa-by-pr/
+    int numDecodings(string s) {
+        if(s[0] == '0') return 0;
+
+        int pre = 1, curr = 1;  //dp[-1] = dp[0] = 1
+        int tmp;
+        for(int i = 1; i < s.size(); i++) {
+            tmp = curr;
+            if(s[i] == '0')
+                if(s[i - 1] == '1' || s[i - 1] == '2') 
+                    curr = pre;
+                else 
+                    return 0;
+            else if(s[i - 1] == '1' || (s[i - 1] == '2' && s[i] >= '1' && s[i] <= '6'))
+                curr = curr + pre;
+
+            pre = tmp;
+        }
+
+        return curr;
+    }
+
     // 动态规划
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
