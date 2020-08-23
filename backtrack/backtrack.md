@@ -8,17 +8,17 @@
 在最坏的情况下，回溯法会导致一次复杂度为指数时间的计算。
 
 # 题目
-[46. 全排列](https://leetcode-cn.com/problems/permutations/)  
-[47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
-[39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)  
-[40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
-[78. 子集](https://leetcode-cn.com/problems/subsets/)  
-[90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)  
+- [x] [46. 全排列](https://leetcode-cn.com/problems/permutations/)  
+- [ ] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
+- [x] [39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)  
+- [ ] [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
+- [x] [78. 子集](https://leetcode-cn.com/problems/subsets/)  
+- [ ] [90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)  
 
-[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)  
-[51. N皇后](https://leetcode-cn.com/problems/n-queens/)  
-[36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
-[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)  
-[169. 多数元素](https://leetcode-cn.com/problems/majority-element/description/)  
-[17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
+- [x] [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)  
+- [ ] [51. N皇后](https://leetcode-cn.com/problems/n-queens/)  
+- [ ] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
+- [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)  
+- [ ] [169. 多数元素](https://leetcode-cn.com/problems/majority-element/description/)  
+- [ ] [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
 
