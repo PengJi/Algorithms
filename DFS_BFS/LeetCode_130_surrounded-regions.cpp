@@ -8,37 +8,43 @@
 
 class Solution {
 public:
-    void solve(vector<vector<char>>& board){
-        if(board.empty()) return;
-        int row=board.size(), col=board[0].size();
+    int dx[4] = {1, -1, 0, 0};
+    int dy[4] = {0, 0, 1, -1};
 
-        for(int i = 0; i < row; ++i) {
+    void solve(vector<vector<char>>& board) {
+        if(board.empty()) return;
+        int row = board.size();
+        int col = board[0].size();
+
+        // 修改与边相连的节点
+        for(int i = 0; i < row; i++) {
             check(board, i, 0);
             check(board, i, col-1);
         }
 
-        for(int j = 1; j < col - 1; ++j) {
+        // 修改与边相连的节点
+        for(int j = 0; j < col; j++) {
             check(board, 0, j);
             check(board, row-1, j);
         }
 
-        for(int i = 0; i < row; ++i){
-            for(int j = 0; j < col; ++j){
-                if(board[i][j] == 'O') 
-                    board[i][j] = 'X';
-                else if(board[i][j] == '1') 
-                    board[i][j] = 'O';
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(board[i][j] == 'O') board[i][j] = 'X';
+                else if(board[i][j] == '1') board[i][j] = 'O';  // 恢复原值
             }
         }
     }
 
-    void check(vector<vector<char>> & board, int i, int j){
+    void check(vector<vector<char>>& board, int i, int j){
         if(board[i][j] == 'O'){
-            board[i][j] = '1';
-            if(i > 1) check(board, i-1, j);
-            if(j > 1) check(board, i, j-1);
-            if(i+1 < board.size()) check(board, i+1, j);
-            if(j+1 < board[0].size()) check(board, i, j+1);
+            board[i][j] = '1';  // 修改一个临时值
+            for(int k = 0; k < 4; k++) {  // 遍历四个方向
+                int nx = i + dx[k];
+                int ny = j + dy[k];
+                if(nx >= 0 && ny >= 0 && nx < board.size() && ny < board[0].size())
+                    check(board, nx, ny);
+            }
         }
     }
 };

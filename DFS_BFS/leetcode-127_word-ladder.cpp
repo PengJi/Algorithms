@@ -12,7 +12,8 @@ public:
     // BFS
     // https://leetcode-cn.com/problems/word-ladder/solution/javacong-bao-li-dao-shuang-xiang-dui-lie-zhu-bu-yo/
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> word_set(wordList.begin(), wordList.end());  // 记录是否访问过
+        // 记录是否访问过
+        unordered_set<string> word_set(wordList.begin(), wordList.end());
         queue<pair<string, int>> q;  // 队列，用于BFS
 
         if(!word_set.count(endWord)) return 0;
