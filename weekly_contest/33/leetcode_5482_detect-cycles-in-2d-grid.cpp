@@ -5,15 +5,16 @@
 
 class Solution {
 public:
-    int dx[4] = {0, 0, 1, -1};
-    int dy[4] = {1, -1, 0, 0};
-
+    int dx[4] = {1, -1, 0, 0};
+    int dy[4] = {0, 0, 1, -1};
+    
     bool containsCycle(vector<vector<char>>& grid) {
-        for (int i = 0; i < grid.size(); i++) {
-            for (int j = 0; j < grid[0].size(); j++) {
-                if (grid[i][j] > 0)  {
-                    if (dfs(grid, i, j, i, j)) return true;
-                }
+        for(int i = 0; i < grid.size(); i++) {
+            for(int j = 0; j < grid[0].size(); j++) {
+                // 是否已经判断过
+                if(grid[i][j] > 0) {
+                    if(dfs(grid, i, j, i, j)) return true;
+                }   
             }
         }
 
@@ -22,24 +23,20 @@ public:
 
     bool dfs(vector<vector<char>> &G, int x, int y, int lx, int ly) {
         G[x][y] = -G[x][y];
-        for (int i = 0; i < 4; i++) {
-            int tx = x + dx[i];
-            int ty = y + dy[i];
+        for(int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
-            if (tx == lx && ty == ly) 
-              continue;
-
-           if (!(0 <= tx && tx < G.size() && 0 <= ty && ty < G[0].size())) 
-               continue;
-
-           if (G[tx][ty] == G[x][y]) 
-               return true;
-
-           if (G[tx][ty] != -G[x][y]) 
-               continue;
-
-           if (dfs(G, tx, ty, x, y)) 
-               return true;
+            // 排除上一个节点
+            if(nx == lx && ny == ly) continue;
+            // 超出范围
+            if(!(nx >= 0 && nx < G.size() && ny >= 0 && ny < G[0].size())) continue;
+            // 搜索到已经遍历过的点，说明成环
+            if(G[nx][ny] == G[x][y]) return true;
+            // 下一个节点和当前节点不同
+            if(G[nx][ny] != -G[x][y]) continue;
+            // 判断下一个节点
+            if(dfs(G, nx, ny, x, y)) return true;
         }
 
         return false;
