@@ -10,33 +10,41 @@
 class Solution {
 public:
     // 深度优先搜索
-    // https://leetcode.com/problems/number-of-islands/discuss/56589/C%2B%2B-BFSDFS
     // 时间复杂度：O(mn)
     // 空间复杂度：O(1)
+    int dx[4] = {1, -1, 0, 0};
+    int dy[4] = {0, 0, 1, -1};
+
     int numIslands(vector<vector<char>>& grid) {
-        int m = grid.size(), n = m ? grid[0].size() : 0, islands = 0;
-        for(int i = 0; i < m; i++){
-            for(int j = 0; j < n; j++){
-                if(grid[i][j] == '1'){
-                    removeIsland(grid, i, j, m, n);
-                    islands++;
+        if(grid.empty()) return 0;
+        int row = grid.size();
+        int col = grid[0].size();
+
+        int ans = 0;
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(grid[i][j] == '1') {
+                    removeIsland(grid, i, j);
+                    ans++;
                 }
             }
         }
 
-        return islands; 
+        return ans;
     }
 
-    void removeIsland(vector<vector<char>>& grid, int m, int n, int rows, int cols){
-        if(m < 0 || m == rows || n < 0 || n == cols || grid[m][n] == '0'){
-            return;
+    void removeIsland(vector<vector<char>>& grid, int i, int j) {
+        if(grid[i][j] == '0') return; 
+
+        grid[i][j] = '0';  // 删除原值
+        for(int k = 0; k < 4; k++) {  // 遍历四个方向
+            int nx = i + dx[k];
+            int ny = j + dy[k];
+
+            if(nx >= 0 && ny >= 0 && nx < grid.size() && ny < grid[0].size()) {
+                removeIsland(grid, nx, ny);
+            }
         }
-        grid[m][n] = '0';  // 把原数组的1都删除
-        // 分别遍历四个方向
-        removeIsland(grid, m-1, n, rows, cols);
-        removeIsland(grid, m, n-1, rows, cols);
-        removeIsland(grid, m+1, n, rows, cols);
-        removeIsland(grid, m, n+1, rows, cols);
     }
 
     // 广度优先搜索
