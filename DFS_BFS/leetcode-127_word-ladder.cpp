@@ -9,36 +9,38 @@
 
 class Solution {
 public:
+    // BFS
+    // https://leetcode-cn.com/problems/word-ladder/solution/javacong-bao-li-dao-shuang-xiang-dui-lie-zhu-bu-yo/
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> wordSet(wordList.begin(), wordList.end());
-        queue<pair<string, int>> q;
-        
-        if (!wordSet.count(endWord))
-            return 0;
-        
-        q.push(make_pair(beginWord, 0));
-        wordSet.erase(beginWord);
-        
-        while (!q.empty()) {
+        unordered_set<string> word_set(wordList.begin(), wordList.end());  // 记录是否访问过
+        queue<pair<string, int>> q;  // 队列，用于BFS
+
+        if(!word_set.count(endWord)) return 0;
+
+        q.push({beginWord, 0});
+        word_set.erase(beginWord);
+
+        while(!q.empty()) {
+            // 出队，取一个元素判断
             string cur = q.front().first;
-            int level  = q.front().second;
+            int level = q.front().second;
             q.pop();
-            
-            if (cur == endWord)
-                return level + 1;
-            
-            for (int i = 0; i < cur.size(); i++) {
+
+            if(cur == endWord) return level + 1;
+
+            for(int i = 0; i < cur.size(); i++) {
                 string tmp = cur;
-                for (int j = 0; j < 26; j++) {
+                // 相差一个单词
+                for(int j = 0; j < 26; j++) {
                     tmp[i] = 'a' + j;
-                    if (wordSet.count(tmp)) {
-                        q.push(make_pair(tmp, level + 1));
-                        wordSet.erase(tmp);
+                    if(word_set.count(tmp)) {
+                        q.push({tmp, level+1});  // 入队
+                        word_set.erase(tmp);
                     }
                 }
             }
         }
-        
-        return 0;
+
+        return 0; 
     }
 };
