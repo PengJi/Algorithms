@@ -6,7 +6,7 @@
 class Solution {
 public:
     string toLowerCase(string str) {
-        for(auto& s:str)
+        for(auto& s : str)
             s |= 32;
         return str;
     }

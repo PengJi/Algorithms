@@ -11,9 +11,7 @@ public:
     // 时间复杂度：O(mn)
     // 空间复杂度：O(n)
     int maximalSquare(vector<vector<char>>& matrix) {
-        if (matrix.empty()) {
-            return 0;
-        }
+        if (matrix.empty()) return 0;
 
         int m = matrix.size(), n = matrix[0].size(), sz = 0, pre;
         vector<int> cur(n, 0);
@@ -29,6 +27,7 @@ public:
                 pre = temp;
             }
         }
+
         return sz * sz;
     }
 };

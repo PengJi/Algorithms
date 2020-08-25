@@ -17,9 +17,9 @@ public:
 
         int res = nums[0];
         vector<int> dp(len);
-        dp[0] = nums[0];
+        dp[0] = nums[0];  // 表示以 i 结尾的连续子数组的最大和
         
-        for(int i = 1; i < len; i++){
+        for(int i = 1; i < len; i++) {
             dp[i] = max(dp[i-1] + nums[i], nums[i]);
             res = max(res, dp[i]);
         }

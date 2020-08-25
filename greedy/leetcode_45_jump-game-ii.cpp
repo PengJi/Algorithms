@@ -11,7 +11,10 @@ class Solution {
 public:
     // https://leetcode-cn.com/problems/jump-game-ii/solution/tiao-yue-you-xi-ii-by-leetcode-solution/
     int jump(vector<int>& nums) {
-        int maxPos = 0, n = nums.size(), end = 0, step = 0;
+        int maxPos = 0;
+        int n = nums.size();
+        int end = 0, step = 0;
+        
         for (int i = 0; i < n - 1; ++i) {
             if (maxPos >= i) {
                 maxPos = max(maxPos, i + nums[i]);

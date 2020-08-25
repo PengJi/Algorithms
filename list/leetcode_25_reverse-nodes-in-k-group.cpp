@@ -45,8 +45,9 @@ public:
         ListNode* pre = NULL;
         ListNode* cur = head;
 
+        ListNode* next;
         while(cur != NULL){
-            ListNode* next = cur->next;
+            next = cur->next;
             cur->next = pre;
             pre = cur;
             cur = next;

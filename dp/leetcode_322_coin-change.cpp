@@ -10,6 +10,7 @@
 class Solution {
 public:
     // 动态规划（自下而上）
+    // https://leetcode-cn.com/problems/coin-change/solution/322-ling-qian-dui-huan-by-leetcode-solution/
     // 时间复杂度：O(amount * coins.size())
     // 空间复杂度：O(amount)
     int coinChange(vector<int>& coins, int amount) {
@@ -21,7 +22,7 @@ public:
         for(int i = 1; i <= amount; i++) {
             for(int j = 0; j < coins.size(); j++) {
                 if(i < coins[j]) continue;
-                dp[i] = min(dp[i], dp[i-coins[j]]+1);
+                dp[i] = min(dp[i], dp[i-coins[j]]+1);  // 相当于爬楼梯
             }
         }
 

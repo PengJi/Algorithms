@@ -12,14 +12,14 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     int minSubArrayLen(int s, vector<int>& nums) {
-        int n = nums.size();
-        if (n == 0) return 0;
+        int len = nums.size();
+        if (len == 0) return 0;
 
         int ans = INT_MAX;
         int start = 0, end = 0;
         int sum = 0;
 
-        while (end < n) {
+        while (end < len) {
             sum += nums[end];
             while (sum >= s) {
                 ans = min(ans, end - start + 1);
