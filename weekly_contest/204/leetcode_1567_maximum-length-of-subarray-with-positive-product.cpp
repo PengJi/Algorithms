@@ -6,20 +6,16 @@
 class Solution {
 public:
     int getMaxLen(vector<int>& nums) {
-
-    }
-};
-
-    int getMaxLen(vector<int>& nums) {
         int ans = 0;
         int pos = 0, neg = 0;
-        for (int num: nums) {
-            if (num == 0) {
+
+        for(int num : nums) {
+            if(num == 0) {
                 pos = neg = 0;
-            } else if (num > 0) {
-                ++pos;
-                if (neg > 0) {
-                    ++neg;
+            } else if(num > 0) {
+                pos++;
+                if(neg > 0) {
+                    neg++;
                 }
             } else {
                 int newpos = (neg > 0 ? neg + 1 : 0);
@@ -29,5 +25,7 @@ public:
             }
             ans = max(ans, pos);
         }
+
         return ans;
     }
+};
