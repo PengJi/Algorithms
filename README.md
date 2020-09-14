@@ -27,8 +27,6 @@ regex和通配符匹配
 N皇后  
 高级数据结构（Trie、BloomFilter、LRU cache、etc）
 
-最低要求：知道思路
-
 # summary
 ## array
 [1122. 数组的相对排序](https://leetcode-cn.com/problems/relative-sort-array/)  
