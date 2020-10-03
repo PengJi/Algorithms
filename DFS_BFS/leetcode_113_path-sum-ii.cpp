@@ -19,6 +19,7 @@ public:
     vector<vector<int>> ret;
     vector<int> path;
 
+    // dfs
     // https://leetcode-cn.com/problems/path-sum-ii/solution/lu-jing-zong-he-ii-by-leetcode-solution/
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
         dfs(root, sum);
@@ -26,14 +27,14 @@ public:
     }
 
     void dfs(TreeNode* root, int sum) {
-        if (root == nullptr) {
-            return;
-        }
+        if (root == nullptr) return;
+
         path.emplace_back(root->val);
         sum -= root->val;
         if (root->left == nullptr && root->right == nullptr && sum == 0) {
             ret.emplace_back(path);
         }
+
         dfs(root->left, sum);
         dfs(root->right, sum);
         path.pop_back();
