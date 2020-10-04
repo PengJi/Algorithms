@@ -10,7 +10,7 @@ class Solution {
 public:
     vector<vector<int>> res;
 
-    // 回溯
+    // 回溯法
     // 时间复杂度：O(N!)
     // 空间复杂度：O()
     vector<vector<int>> subsets(vector<int>& nums) {
