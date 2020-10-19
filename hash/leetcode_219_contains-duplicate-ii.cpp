@@ -8,6 +8,7 @@
 
 class Solution {
 public:
+    // 哈希
     // https://leetcode-cn.com/problems/contains-duplicate-ii/solution/hua-jie-suan-fa-219-cun-zai-zhong-fu-yuan-su-ii-by/
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
         set<int> st;
