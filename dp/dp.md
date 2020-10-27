@@ -28,7 +28,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [ ] [188. 买卖股票的最佳时机 IV](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/)  
 - [ ] [714. 买卖股票的最佳时机含手续费](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)  
 
-- [ ] [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)  
+- [x] [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)  
 - [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)  
 - [x] [55. 跳跃游戏](https://leetcode-cn.com/problems/jump-game/)  
 - [x] [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)  
