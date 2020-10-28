@@ -47,4 +47,4 @@ public void recur(int level, int param) {
 - [x] [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)  
 - [x] [77. 组合](https://leetcode-cn.com/problems/combinations/)  
 - [x] [46. 全排列](https://leetcode-cn.com/problems/permutations/)  
-- [ ] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
+- [x] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
