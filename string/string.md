@@ -5,7 +5,7 @@
 - [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
 - [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
 - [ ] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
-- [ ] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
+- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
 
 ### 字符串操作问题
 - [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
@@ -33,13 +33,13 @@
 ### 字符串 +DP 问题
 - [ ] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
 - [ ] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
-- [ ] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
+- [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
 
 
 # 相关算法
-- [ ] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)  
-- [ ] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)  
+- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)  
+- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)  
 - [ ] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)  
-- [ ] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
-- [ ] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
+- [x] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
 
