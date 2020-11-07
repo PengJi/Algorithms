@@ -9,7 +9,7 @@
 
 # 题目
 - [x] [46. 全排列](https://leetcode-cn.com/problems/permutations/)  
-- [ ] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
+- [x] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
 - [x] [39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)  
 - [ ] [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
 - [x] [78. 子集](https://leetcode-cn.com/problems/subsets/)  
@@ -20,5 +20,5 @@
 - [ ] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
 - [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)  
 - [ ] [169. 多数元素](https://leetcode-cn.com/problems/majority-element/description/)  
-- [ ] [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
+- [x] [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
 
