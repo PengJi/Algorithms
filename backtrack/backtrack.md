@@ -19,6 +19,5 @@
 - [ ] [51. N皇后](https://leetcode-cn.com/problems/n-queens/)  
 - [ ] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
 - [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)  
-- [ ] [169. 多数元素](https://leetcode-cn.com/problems/majority-element/description/)  
 - [x] [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
 
