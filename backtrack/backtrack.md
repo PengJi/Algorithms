@@ -11,7 +11,7 @@
 - [x] [46. 全排列](https://leetcode-cn.com/problems/permutations/)  
 - [x] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  
 - [x] [39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)  
-- [ ] [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
+- [x] [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
 - [x] [78. 子集](https://leetcode-cn.com/problems/subsets/)  
 - [ ] [90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)  
 
