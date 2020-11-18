@@ -4,6 +4,6 @@
 # 题目
 -[x] [860. 柠檬水找零](https://leetcode-cn.com/problems/lemonade-change/description/)  
 -[x] [455. 分发饼干](https://leetcode-cn.com/problems/assign-cookies/description/)  
--[ ] [874. 模拟行走机器人](https://leetcode-cn.com/problems/walking-robot-simulation/description/)  
+-[x] [874. 模拟行走机器人](https://leetcode-cn.com/problems/walking-robot-simulation/description/)  
 -[x] [55. 跳跃游戏](https://leetcode-cn.com/problems/jump-game/)  
 -[x] [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)
