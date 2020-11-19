@@ -17,7 +17,7 @@
 
 - [x] [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)  
 - [ ] [51. N皇后](https://leetcode-cn.com/problems/n-queens/)  
-- [ ] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
+- [x] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/)  
 - [ ] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/#/description)  
 - [x] [17. 电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)  
 
