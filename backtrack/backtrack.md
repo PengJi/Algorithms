@@ -13,7 +13,7 @@
 - [x] [39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)  
 - [x] [40. 组合总和 II](https://leetcode-cn.com/problems/combination-sum-ii/)  
 - [x] [78. 子集](https://leetcode-cn.com/problems/subsets/)  
-- [ ] [90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)  
+- [x] [90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/)  
 
 - [x] [22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)  
 - [ ] [51. N皇后](https://leetcode-cn.com/problems/n-queens/)   
