@@ -54,7 +54,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [300. 最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 - [x] [91. 解码方法](https://leetcode-cn.com/problems/decode-ways/)
 - [x] [32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)
-- [ ] [85. 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
+- [x] [85. 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
 - [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
 - [ ] [818. 赛车](https://leetcode-cn.com/problems/race-car/)
 
