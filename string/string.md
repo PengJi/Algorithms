@@ -31,7 +31,7 @@
 - [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
 - [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
 
-### 字符串 +DP 问题
+### 字符串 + DP 问题
 - [x] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
 - [x] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
 - [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)

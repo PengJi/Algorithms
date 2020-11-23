@@ -48,7 +48,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [ ] [621. 任务调度器](https://leetcode-cn.com/problems/task-scheduler/)  
 - [x] [647. 回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)  
 - [x] [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)  
-- [ ] [312. 戳气球](https://leetcode-cn.com/problems/burst-balloons/)  
+- [x] [312. 戳气球](https://leetcode-cn.com/problems/burst-balloons/)  
 
 # 高级动态规划
 - [x] [300. 最长上升子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
