@@ -34,7 +34,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)  
 - [x] [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)  
 - [x] [63. 不同路径 II](https://leetcode-cn.com/problems/unique-paths-ii/)  
-- [ ] [980. 不同路径 III](https://leetcode-cn.com/problems/unique-paths-iii/)  
+- [x] [980. 不同路径 III](https://leetcode-cn.com/problems/unique-paths-iii/)  
 - [x] [322. 零钱兑换](https://leetcode-cn.com/problems/coin-change/)    
 - [x] [518. 零钱兑换 II](https://leetcode-cn.com/problems/coin-change-2/)  
 - [x] [32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)   
