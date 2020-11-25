@@ -43,7 +43,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [221. 最大正方形](https://leetcode-cn.com/problems/maximal-square/)  
 - [x] [363. 矩形区域不超过 K 的最大数值和](https://leetcode-cn.com/problems/max-sum-of-rectangle-no-larger-than-k/)  
 - [ ] [403. 青蛙过河](https://leetcode-cn.com/problems/frog-jump/)  
-- [ ] [410. 分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum/)  
+- [x] [410. 分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum/)  
 - [ ] [552. 学生出勤记录 II](https://leetcode-cn.com/problems/student-attendance-record-ii/)  
 - [ ] [621. 任务调度器](https://leetcode-cn.com/problems/task-scheduler/)  
 - [x] [647. 回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)  
