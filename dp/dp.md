@@ -27,7 +27,6 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [309. 最佳买卖股票时机含冷冻期](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)  
 - [x] [188. 买卖股票的最佳时机 IV](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/)  
 - [x] [714. 买卖股票的最佳时机含手续费](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)  
-
 - [x] [279. 完全平方数](https://leetcode-cn.com/problems/perfect-squares/)  
 - [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)  
 - [x] [55. 跳跃游戏](https://leetcode-cn.com/problems/jump-game/)  
@@ -45,7 +44,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [403. 青蛙过河](https://leetcode-cn.com/problems/frog-jump/)  
 - [x] [410. 分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum/)  
 - [x] [552. 学生出勤记录 II](https://leetcode-cn.com/problems/student-attendance-record-ii/)  
-- [ ] [621. 任务调度器](https://leetcode-cn.com/problems/task-scheduler/)  
+- [x] [621. 任务调度器](https://leetcode-cn.com/problems/task-scheduler/)  
 - [x] [647. 回文子串](https://leetcode-cn.com/problems/palindromic-substrings/)  
 - [x] [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)  
 - [x] [312. 戳气球](https://leetcode-cn.com/problems/burst-balloons/)  
