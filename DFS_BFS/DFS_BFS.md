@@ -64,7 +64,7 @@ def BFS(graph, start, end):
 - [x] [127. 单词接龙](https://leetcode-cn.com/problems/word-ladder/description/)  
 - [x] [126. 单词接龙 II](https://leetcode-cn.com/problems/word-ladder-ii/description/) 
 - [x] [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)  
-- [ ] [529. 扫雷游戏](https://leetcode-cn.com/problems/minesweeper/description/) 
+- [x] [529. 扫雷游戏](https://leetcode-cn.com/problems/minesweeper/description/) 
 
 
 # 双向BFS
