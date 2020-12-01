@@ -12,5 +12,5 @@ Trie 树的核心思想是空间换时间。利用字符串的公共前缀来降
 
 # 题目
 - [x] [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/#/description)  
-- [ ] [212. 单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
+- [x] [212. 单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
 
