@@ -69,4 +69,4 @@ def BFS(graph, start, end):
 
 # 双向BFS
 - [x] [127. 单词接龙](https://leetcode-cn.com/problems/word-ladder/)    
-- [ ] [433. 最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
+- [x] [433. 最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
