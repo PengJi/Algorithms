@@ -4,6 +4,6 @@
 启发式函数是一种告知搜索方向的方法。它提供了一种明智的方法来猜测哪个邻居结点会导向一个目标。
 
 # 题目
-- [ ] [1091. 二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)  
-- [ ] [773. 滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)  
+- [x] [1091. 二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)  
+- [x] [773. 滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)  
 - [x] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)  
