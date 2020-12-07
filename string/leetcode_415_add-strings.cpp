@@ -1,6 +1,6 @@
 /**
  * 415. 字符串相加
- * 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。
+ * 给定两个字符串形式的非负整数 num1 和 num2 ，计算它们的和。
  * 
  * https://leetcode-cn.com/problems/add-strings/
  */
