@@ -18,12 +18,12 @@ public:
             return NULL;  
         }
 
-        ListNode* pA = headA, pB = headB;
-        while(pa != pb) {
+        ListNode* pA = headA, *pB = headB;
+        while(pA != pB) {
             pA = pA == NULL ? headB : pA->next;
             pB = pB == NULL ? headA : pB->next;
         }
 
-        return pA;
+        return pA; 
     }
 };
