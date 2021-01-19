@@ -1,10 +1,11 @@
 /**
- * 5655. 重新排列后的最大子矩阵
+ * 1727. 重新排列后的最大子矩阵
  * https://leetcode-cn.com/problems/largest-submatrix-with-rearrangements/
  */
 
 class Solution {
 public:
+    // https://leetcode-cn.com/problems/largest-submatrix-with-rearrangements/solution/tan-xin-huo-xue-huo-yong-zuo-ti-bu-huang-5f8v/
     int largestSubmatrix(vector<vector<int>>& matrix) {
         int h = matrix.size(), w = matrix[0].size();
         vector<vector<int>> up(h, vector<int>(w, 0));
