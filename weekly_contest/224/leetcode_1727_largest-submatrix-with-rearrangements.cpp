@@ -7,28 +7,30 @@ class Solution {
 public:
     // https://leetcode-cn.com/problems/largest-submatrix-with-rearrangements/solution/tan-xin-huo-xue-huo-yong-zuo-ti-bu-huang-5f8v/
     int largestSubmatrix(vector<vector<int>>& matrix) {
-        int h = matrix.size(), w = matrix[0].size();
-        vector<vector<int>> up(h, vector<int>(w, 0));
+        int row = matrix.size(), col = matrix[0].size();
+        vector<vector<int>> up(row, vector<int>(col, 0));
         
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < w; j++) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
                 if (matrix[i][j] == 1) {
                     up[i][j] = (i == 0 ? 0 : up[i-1][j]) + 1;
                 }
             }
         }
 
-        int ret = 0;
-        for (int i = 0; i < h; i++) {
-            vector<int> buf;
-            for (int j = 0; j < w; j++) {
-                buf.push_back(up[i][j]);
+        int ans = 0;
+        for (int i = 0; i < row; i++) {
+            vector<int> vec;
+            for (int j = 0; j < col; j++) {
+                vec.push_back(up[i][j]);
             }
-            sort(buf.begin(), buf.end());
-            for (int j = 0; j < w; j++) {
-                ret = max(ret, buf[j] * (w - j));
+
+            sort(vec.begin(), vec.end());
+
+            for (int j = 0; j < col; j++) {
+                ans = max(ans, vec[j] * (col - j));
             }
         }
-        return ret;
+        return ans;
     }
 };
