@@ -7,10 +7,10 @@
 5. 面试前
 
 # references
-[数据结构脑图](https://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c)
-[算法脑图](https://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec)
-[Know Thy Complexities!](https://www.bigocheatsheet.com/)
-[数据结构与算法之美 代码](https://github.com/wangzheng0822/algo)
+[数据结构脑图](https://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c)  
+[算法脑图](https://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec)  
+[Know Thy Complexities!](https://www.bigocheatsheet.com/)  
+[数据结构与算法之美 代码](https://github.com/wangzheng0822/algo)  
 
 # 经典习题
 爬楼梯、硬币兑换  
