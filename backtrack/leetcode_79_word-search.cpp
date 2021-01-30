@@ -28,6 +28,7 @@ public:
         if(start == word.size() - 1) {
             return word[start] == board[i][j];
         }
+        
         if(board[i][j] == word[start]) {
             marked[i][j] = true;
             int newi, newj;
