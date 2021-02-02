@@ -5,6 +5,7 @@
 
 class Solution {
 public:
+    // https://leetcode-cn.com/problems/valid-number/solution/you-xiao-shu-zi-by-leetcode-solution-298l/
     enum State {
         STATE_INITIAL,
         STATE_INT_SIGN,
