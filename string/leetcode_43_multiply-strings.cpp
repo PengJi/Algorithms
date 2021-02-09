@@ -14,6 +14,7 @@ public:
         int len1 = num1.size(), len2 = num2.size();
         vector<int> res(len1 + len2);  // 将每位的结果放入数组
         int n1, n2, sum;
+        // 从个位开始逐位相乘
         for(int i = len1 - 1; i >= 0; i--) {
             n1 = num1[i] - '0';
             for(int j = len2 - 1; j >= 0; j--) {
