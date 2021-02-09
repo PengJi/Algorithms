@@ -8,24 +8,27 @@
 class Solution {
 public:
     // https://leetcode-cn.com/problems/add-strings/solution/zi-fu-chuan-xiang-jia-by-leetcode-solution/
+    // 时间复杂度：O(max(m, n))
+    // 空间复杂度：O(1)
     string addStrings(string num1, string num2) {
-        int i = num1.length() - 1;
-        int j = num2.length() - 1;
-        int add = 0;
+        int i = num1.size() - 1;
+        int j = num2.size() - 1;
+        // 分别表示两位之和、进位、当前结果
+        int tmp = 0, carry = 0, ans = "";
 
-        string ans = "";
-        while (i >= 0 || j >= 0 || add != 0) {
-            int x = i >= 0 ? num1[i] - '0' : 0;
-            int y = j >= 0 ? num2[j] - '0' : 0;
-            int result = x + y + add;
+        int x, y;
+        while(i >= 0 || j >= 0 || carry != 0) {
+            x = i >= 0 ? num1[i] - '0' : 0;
+            y = j >= 0 ? num2[j] - '0' : 0;
 
-            ans.push_back('0' + result % 10);
-            add = result / 10;
+            tmp = x + y + carry;  // 计算两位之和
+            carry = tmp / 10;  // 计算进位
+            ans += '0' + tmp % 10;  // 计算当前结果，注意这里是逆序
             i -= 1;
             j -= 1;
         }
 
-        reverse(ans.begin(), ans.end());
+        reverse(ans.begin(), ans.end());  // 反转
         return ans;
     }
 };
