@@ -7,6 +7,8 @@ class Solution {
 public:
     // dp
     // https://leetcode-cn.com/problems/chou-shu-lcof/solution/chou-shu-ii-qing-xi-de-tui-dao-si-lu-by-mrsate/
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(n)
     int nthUglyNumber(int n) {
         vector<int> dp(n, 0);
         dp[0] = 1;
