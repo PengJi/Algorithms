@@ -15,7 +15,7 @@ public:
         return ans;
     }
 
-    dfs(string &s, vector<string> &res, int depth) {
+    void dfs(string &s, vector<string> &res, int depth) {
         if(depth >= s.size() - 1) {
             res.push_back(s);
             return;
