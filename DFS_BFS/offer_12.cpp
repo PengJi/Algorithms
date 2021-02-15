@@ -7,8 +7,8 @@ class Solution {
 public:
     // DFS + 剪枝
     // https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/solution/mian-shi-ti-12-ju-zhen-zhong-de-lu-jing-shen-du-yo/
-    // 时间复杂度：
-    // 空间复杂度：
+    // 时间复杂度：O(3^k * m * n)
+    // 空间复杂度：O(k)
     int dx[4] = {1, -1, 0, 0};
     int dy[4] = {0, 0, 1, -1};
 
