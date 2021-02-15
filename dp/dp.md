@@ -56,4 +56,3 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [85. 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
 - [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
 - [x] [818. 赛车](https://leetcode-cn.com/problems/race-car/)
-
