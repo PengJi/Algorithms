@@ -19,7 +19,7 @@ public:
         // don't add to seen_once because of presence in seen_twice
         // remove num from seen_twice
         int once = 0, twice = 0;
-        for(auto num : nums) {
+        for(int num : nums) {
             once = ~twice & (once ^ num);
             twice = ~once & (twice ^ num);
         }
