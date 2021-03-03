@@ -49,7 +49,7 @@ public:
         if (k >= arr.size()) return arr;
         return quickSort(arr, k, 0, arr.size() - 1);
     }
-    
+
     vector<int> quickSort(vector<int>& arr, int k, int l, int r) {
         int i = l, j = r;
         while (i < j) {
@@ -65,15 +65,3 @@ public:
         return res;
     }
 };
-
-
-    vector<int> getLeastNumbers(vector<int>& arr, int k) {
-
-    }
-private:
-
-
-作者：jyd
-链接：https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/solution/jian-zhi-offer-40-zui-xiao-de-k-ge-shu-j-9yze/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
