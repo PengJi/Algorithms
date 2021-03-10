@@ -1,5 +1,5 @@
 /**
- * 5697. 检查二进制字符串字段
+ * 1784. 检查二进制字符串字段
  * https://leetcode-cn.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/
  */
 
