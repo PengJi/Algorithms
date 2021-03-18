@@ -6,6 +6,8 @@
 class Solution {
 public:
     // 单调栈
+    // O(n^2)
+    // O(n)
     int maximalRectangle(vector<vector<char>>& matrix) {
         int row = matrix.size();
         if (row == 0) {
