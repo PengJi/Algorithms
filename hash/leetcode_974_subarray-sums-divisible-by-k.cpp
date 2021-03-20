@@ -39,10 +39,10 @@ public:
             ++record[modulus];
         }
 
-        int ans = 0;
+        int res = 0;
         for (auto [x, cx]: record) {
-            ans += cx * (cx - 1) / 2;
+            res += cx * (cx - 1) / 2;
         }
-        return ans;
+        return res;
     }
 };
