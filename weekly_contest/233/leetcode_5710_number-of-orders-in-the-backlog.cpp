@@ -28,11 +28,13 @@ public:
                         cur.first *= -1;
                         cur.second -= amount;
                         amount = 0;
-                        sell.push(cur);
+                        sell.push(cur);  // 加入 sell 队列
+                    } else {
+                        amount = 0;
                     }
                 }
                 if(amount > 0) {
-                    buy.push(make_pair(price, amount));
+                    buy.push(make_pair(price, amount));  // 更新 buy 队列
                 }
             } else {
                 // sell
@@ -47,16 +49,18 @@ public:
                     } else if(amount < cur.second) {
                         cur.second -= amount;
                         amount = 0;
-                        buy.push(cur);
+                        buy.push(cur);  // 加入 buy 队列
+                    } else {
+                        amount = 0;
                     }
                 }
                 if(amount > 0) {
-                    sell.push(make_pair(-price, amount));
+                    sell.push(make_pair(-price, amount));  // 更新 sell 队列
                 }
             }
         }
 
-        int res;
+        int res = 0;
         const int MOD = 1e9 + 7;
         while(!buy.empty()) {
             cur = buy.top();
@@ -70,72 +74,5 @@ public:
         }
 
         return res;
-    }
-};
-
-
-class Solution
-{
-public:
-    int getNumberOfBacklogOrders(vector<vector<int>>& orders) 
-    {
-        priority_queue<pair<int, int>> sells;
-        priority_queue<pair<int, int>> buys;
-        for (const auto o : orders) {
-            int price = o[0];
-            int amount = o[1];
-            if (o[2] == 0) {
-                // buy
-                while (!sells.empty() && amount > 0) {
-                    auto t = sells.top();
-                    t.first *= -1;
-                    if (t.first > price) {
-                        break;
-                    }
-                    sells.pop();
-                    int count = min(t.second, amount);
-                    amount -= count;
-                    t.second -= count;
-                    if (t.second > 0) {
-                        t.first *= -1;
-                        sells.push(t);
-                    }
-                }
-                if (amount > 0) {
-                    buys.push(make_pair(price, amount));
-                }
-            } else {
-                // sell
-                while (!buys.empty() && amount > 0) {
-                    auto t = buys.top();
-                    if (t.first < price) {
-                        break;
-                    }
-                    buys.pop();
-                    int count = min(t.second, amount);
-                    amount -= count;
-                    t.second -= count;
-                    if (t.second > 0) {
-                        buys.push(t);
-                    }
-                }
-                if (amount > 0) {
-                    sells.push(make_pair(-price, amount));
-                }
-            }
-        }
-        const int MOD = 1000000007;
-        int result = 0;
-        while (!sells.empty()) {
-            auto t = sells.top();
-            sells.pop();
-            result = (result + t.second) % MOD;
-        }
-        while (!buys.empty()) {
-            auto t = buys.top();
-            buys.pop();
-            result = (result + t.second) % MOD;
-        }
-        return result;
     }
 };
