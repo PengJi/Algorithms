@@ -1,6 +1,6 @@
 /**
  * 5709. 最大升序子数组和
- * https://leetcode-cn.com/contest/weekly-contest-233/problems/maximum-ascending-subarray-sum/
+ * https://leetcode-cn.com/problems/maximum-ascending-subarray-sum/
  */
 
 class Solution {
