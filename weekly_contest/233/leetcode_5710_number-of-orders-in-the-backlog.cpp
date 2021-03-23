@@ -5,6 +5,7 @@
 
 class Solution {
 public:
+    // 优先队列
     int getNumberOfBacklogOrders(vector<vector<int>>& orders) {
         priority_queue<pair<int, int>> buy;
         priority_queue<pair<int, int>> sell;
