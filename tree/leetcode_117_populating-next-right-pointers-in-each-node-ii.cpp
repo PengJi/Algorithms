@@ -25,27 +25,24 @@ class Solution {
 public:
     // https://www.acwing.com/solution/content/206/
     Node* connect(Node* root) {
-        auto head = root;
-        while (root)
-        {
-            Node *dummy = new Node(0);
-            Node *tail = dummy;
-            while (root)
-            {
-                if (root->left)
-                {
-                    tail->next = root->left;
-                    tail = tail->next;
+        Node* head = root;
+        while(root) {  // 遍历每一层
+            Node* dummy = new Node(0);
+            Node* cur = dummy;
+            while(root) {  // 按层遍历，将下层节点依次入队列
+                if(root->left) {  // 左子结点入队列
+                    cur->next = root->left;
+                    cur = cur->next;
                 }
-                if (root->right)
-                {
-                    tail->next = root->right;
-                    tail = tail->next;
+                if(root -> right) {  // 右子结点入队列
+                    cur->next = root->right;
+                    cur = cur->next;
                 }
                 root = root->next;
             }
-            root = dummy->next;
+            root = dummy->next;  // 下一层的队首结点
         }
-        return head; 
+
+        return head;
     }
 };
