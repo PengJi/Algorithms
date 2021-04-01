@@ -18,6 +18,8 @@ class Solution {
 public:
     int ans = INT_MIN;
     // https://www.acwing.com/solution/content/215/
+    // O(n)
+    // O(1)
     int maxPathSum(TreeNode* root) {
         dfs(root);
         return ans;
