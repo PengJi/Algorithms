@@ -24,6 +24,8 @@ public:
 class Solution {
 public:
     // https://www.acwing.com/solution/content/206/
+    // O(n)
+    // O(1)
     Node* connect(Node* root) {
         Node* head = root;
         while(root) {  // 遍历每一层
