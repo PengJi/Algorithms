@@ -5,39 +5,44 @@
 
 class Solution {
 public:
-    vector<vector<int>> dp;
-    vector<vector<string>> res;
+    vector<vector<string>> ans;
+    vector<string> path;
 
-    // https://www.acwing.com/solution/content/3872/
+    // https://www.acwing.com/solution/content/226/
     vector<vector<string>> partition(string s) {
-        int n = s.length();
-        dp = vector<vector<int>> (n,vector<int>(n,0));
-        dp[0][0] = 1;
-        for(int i = 1 ; i < n ; i ++) 
-            dp[i][i] = 1,dp[i - 1][i] = (s[i - 1] == s[i]);
-        for(int len = 2; len < n ; len ++)
-        {
-            for(int i = 0 ; i + len < n ; i ++)
-            {
-                int j = i +len;
-                dp[i][j] = (s[i] == s[j]) && (dp[i + 1][j - 1] == 1);
-            }
-        }
-        vector<string> path;
-        dfs(s,0,n,path);
-        return res;
+        dfs("", 0, s);
+        return ans;
     }
-    void dfs(string &s,int u,int n,vector<string> &path)
+
+    bool check(string &now)
     {
-        if(u == n){res.push_back(path);return;}
-        for(int i = u ; i < n ; i ++)
+        if (now.empty()) return false;
+        for (int i = 0, j = now.size() - 1; i < j; i ++, j -- )
+            if (now[i] != now[j])
+                return false;
+        return true;
+    }
+
+    void dfs(string now, int u, string &s)
+    {
+        if (u == s.size())
         {
-            if(dp[u][i] == 1)
+            if (check(now))
             {
-                path.push_back(s.substr(u,i - u + 1));
-                dfs(s,i + 1,n,path);
+                path.push_back(now);
+                ans.push_back(path);
                 path.pop_back();
             }
+            return;
         }
+
+        if (check(now))
+        {
+            path.push_back(now);
+            dfs("", u, s);
+            path.pop_back();
+        }
+
+        dfs(now + s[u], u + 1, s);
     }
 };
