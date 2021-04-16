@@ -10,6 +10,7 @@ public:
     unordered_set<string> hash;
     int n;
 
+    // https://www.acwing.com/activity/content/code/content/400839/
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         n = s.size();
         f.resize(n + 1);
@@ -35,3 +36,4 @@ public:
         }
     }
 };
+
