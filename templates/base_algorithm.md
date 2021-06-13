@@ -1,5 +1,5 @@
 # 二分算法
-## 将区间[l, r]划分成[l, mid]和[mid + 1, r]时，其更新操作是r = mid或者l = mid + 1;，计算mid时不需要加1。
+将区间[l, r]划分成[l, mid]和[mid + 1, r]时，其更新操作是r = mid或者l = mid + 1;，计算mid时不需要加1。
 ```cpp
 int l = 0, r = n - 1;
 while (l < r) {
@@ -9,7 +9,7 @@ while (l < r) {
 }
 if (arr[l] != x) cout << "not found" << endl;
 ```
-## 将区间[l, r]划分成[l, mid - 1]和[mid, r]时，其更新操作是r = mid - 1或者l = mid;，此时为了防止死循环，计算mid时需要加1。
+将区间[l, r]划分成[l, mid - 1]和[mid, r]时，其更新操作是r = mid - 1或者l = mid;，此时为了防止死循环，计算mid时需要加1。
 ```cpp
 int l = 0, r = n - 1;
 while (l < r) {
@@ -22,6 +22,7 @@ if (arr[l] != x) cout << "not found" << endl;
 
 
 # 前缀和
+原序列中从第 l 个数到第 r 个数的和
 ## 一维前缀和
 ```cpp
 const int N = 100010;
@@ -42,6 +43,7 @@ while(m--) {
 ```
 
 ## 二维前缀和
+输出子矩阵中所有数的和
 ```cpp
 const int N = 1010;
 
@@ -62,5 +64,75 @@ while(q--) {
     int x1, y1, x2, y2;
     scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
     printf("%d\n", s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]);  // 计算区间和
+}
+```
+
+# 差分
+序列中 [l,r] 之间的每个数加上 c
+差分数组和前缀和数组互为逆运算
+## 一维差分
+```cpp
+const int N = 100010;
+
+int n, m;
+int a[N], b[N];  // a 为原数组，b 为差分数组，即 a 为 b 的前缀和数组
+
+void insert(int l, int r, int c) {  // 区间加 c
+    b[l] += c;
+    b[r + 1] -= c;
+}
+
+scanf("%d%d", &n, &m);
+for (int i = 1; i <= n; i ++ ) scanf("%d", &a[i]);  // 初始化原数组
+for (int i = 1; i <= n; i ++ ) insert(i, i, a[i]);  // 初始化差分数组
+
+while (m -- ) {
+    int l, r, c;
+    scanf("%d%d%d", &l, &r, &c);
+    insert(l, r, c);  // 区间加 c
+}
+
+for (int i = 1; i <= n; i ++ ) b[i] += b[i - 1];  // 从差分数组得出原数组
+for (int i = 1; i <= n; i ++ ) printf("%d ", b[i]);
+```
+
+## 二维差分矩阵
+将选中的子矩阵中的每个元素的值加上 c
+```cpp
+const int N = 1010;
+
+int n, m, q;
+int a[N][N], b[N][N];
+
+void insert(int x1, int y1, int x2, int y2, int c) {  // 差分矩阵加 c
+    b[x1][y1] += c;
+    b[x2 + 1][y1] -= c;
+    b[x1][y2 + 1] -= c;
+    b[x2 + 1][y2 + 1] += c;
+}
+
+scanf("%d%d%d", &n, &m, &q);
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        scanf("%d", &a[i][j]);  // 初始换原数组
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        insert(i, j, i, j, a[i][j]);  // 初始化差分矩阵
+
+while (q -- ) {
+    int x1, y1, x2, y2, c;
+    cin >> x1 >> y1 >> x2 >> y2 >> c;
+    insert(x1, y1, x2, y2, c);  // 计算差分矩阵
+}
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        b[i][j] += b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
+
+for (int i = 1; i <= n; i ++ ) {
+    for (int j = 1; j <= m; j ++ ) printf("%d ", b[i][j]);
+    puts("");
 }
 ```
