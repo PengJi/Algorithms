@@ -136,3 +136,36 @@ for (int i = 1; i <= n; i ++ ) {
     puts("");
 }
 ```
+
+
+# 双指针
+1. 判断子序列
+   两个序列分别对应一个指针
+   ```cpp
+    int i = 0, j = 0;
+    while (i < n && j < m)
+    {
+        if (a[i] == b[j]) i ++ ;
+        j ++ ;
+    }
+   ```
+2. 最长连续不重复子序列
+   两个指正分别对应序列的首尾
+   ```cpp
+    for(int i = 0, j = 0; i < n; i++) {
+        b[a[i]]++;
+        while(b[a[i]] > 1) {
+            b[a[j]]--;
+            j++;
+        }
+        res = max(res, i-j+1);
+    }
+   ```
+3. [数组元素的目标和](https://www.acwing.com/problem/content/802/)
+   两个指针分别对应两个数组
+   ```cpp
+    for (int i = 0, j = m - 1; i < n; i ++ ){
+        while (j >= 0 && a[i] + b[j] > x) j -- ;
+        if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
+    }
+   ```
