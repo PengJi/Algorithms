@@ -136,3 +136,22 @@ for (int i = 1; i <= n; i ++ ) {
     puts("");
 }
 ```
+
+
+# 双指针
+一般形式
+```c++
+for(int i = 0, j = 0; i < n; i++) {
+    while(opt) {
+        statemnet
+    }
+}
+
+for(int i = 0, j = m-1; i < n; i++) {
+    while(j >= 0 && a[i] + b[j] > t) j--;
+    if(a[i] + b[j] == t) {
+        cout << i << " " << j << endl;
+        break;
+    }
+}
+```
