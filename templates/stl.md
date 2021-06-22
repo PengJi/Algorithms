@@ -25,9 +25,9 @@ c_str()  // 返回字符串所在字符数组的起始地址
 size()
 empty()
 push()  // 向队尾插入一个元素
+pop()  // 弹出队头元素
 front()  // 返回队头元素
 back()  // 返回队尾元素
-pop()  // 弹出队头元素
 ```
 
 `priority_queue`  
@@ -36,8 +36,8 @@ pop()  // 弹出队头元素
 size()
 empty()
 push()  插入一个元素
-top()  返回堆顶元素
 pop()  弹出堆顶元素
+top()  返回堆顶元素
 定义成小根堆的方式：priority_queue<int, vector<int>, greater<int>> q;
 ```
 
@@ -59,8 +59,8 @@ begin()/end()
 size()
 empty()
 push()  // 向栈顶插入一个元素
-top()  // 返回栈顶元素
 pop()  // 弹出栈顶元素
+top()  // 返回栈顶元素
 ```
 
 `pair<int, int>`  

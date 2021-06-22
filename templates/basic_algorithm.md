@@ -1,4 +1,5 @@
 # 二分算法
+
 将区间[l, r]划分成[l, mid]和[mid + 1, r]时，其更新操作是r = mid或者l = mid + 1;，计算mid时不需要加1。
 ```cpp
 int l = 0, r = n - 1;
@@ -9,6 +10,7 @@ while (l < r) {
 }
 if (arr[l] != x) cout << "not found" << endl;
 ```
+
 将区间[l, r]划分成[l, mid - 1]和[mid, r]时，其更新操作是r = mid - 1或者l = mid;，此时为了防止死循环，计算mid时需要加1。
 ```cpp
 int l = 0, r = n - 1;
@@ -23,6 +25,7 @@ if (arr[l] != x) cout << "not found" << endl;
 
 # 前缀和
 原序列中从第 l 个数到第 r 个数的和
+
 ## 一维前缀和
 ```cpp
 const int N = 100010;
@@ -43,6 +46,7 @@ while(m--) {
 ```
 
 ## 二维前缀和
+
 输出子矩阵中所有数的和
 ```cpp
 const int N = 1010;
@@ -71,6 +75,7 @@ while(q--) {
 # 差分
 序列中 [l,r] 之间的每个数加上 c
 差分数组和前缀和数组互为逆运算
+
 ## 一维差分
 ```cpp
 const int N = 100010;
