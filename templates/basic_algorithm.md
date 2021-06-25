@@ -1,6 +1,5 @@
 # 二分算法
-
-将区间[l, r]划分成[l, mid]和[mid + 1, r]时，其更新操作是r = mid或者l = mid + 1;，计算mid时不需要加1。
+将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，其更新操作是 `r = mid` 或者 `l = mid + 1`;，计算 `mid` 时不需要加 1。
 ```cpp
 int l = 0, r = n - 1;
 while (l < r) {
@@ -11,8 +10,8 @@ while (l < r) {
 if (arr[l] != x) cout << "not found" << endl;
 ```
 
-将区间[l, r]划分成[l, mid - 1]和[mid, r]时，其更新操作是r = mid - 1或者l = mid;，此时为了防止死循环，计算mid时需要加1。
-```cpp
+将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，其更新操作是 `r = mid - 1` 或者 `l = mid`;，此时为了防止死循环，计算mid时需要加1。
+```c++
 int l = 0, r = n - 1;
 while (l < r) {
     int mid = l + r + 1 >> 1;
