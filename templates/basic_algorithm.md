@@ -1,24 +1,49 @@
-# 二分算法
-将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，其更新操作是 `r = mid` 或者 `l = mid + 1`;，计算 `mid` 时不需要加 1。
+# 整数二分算法
+将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，  
+其更新操作是 `r = mid` 或者 `l = mid + 1`，计算 `mid` 时不需要加 1。
 ```cpp
 int l = 0, r = n - 1;
-while (l < r) {
-    int mid = l + r >> 1;
-    if (arr[mid] < target) l = mid + 1;
-    else r = mid;
+int bsearch_1(int l, int r) {
+    while (l < r) {
+        int mid = l + r >> 1;
+        if (arr[mid] < target) l = mid + 1;
+        else r = mid;
+    }
+    return l;
 }
 if (arr[l] != x) cout << "not found" << endl;
 ```
 
-将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，其更新操作是 `r = mid - 1` 或者 `l = mid`;，此时为了防止死循环，计算mid时需要加1。
-```c++
+将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，  
+其更新操作是 `r = mid - 1` 或者 `l = mid`，此时为了防止死循环，计算mid时需要加1。
+```cpp
 int l = 0, r = n - 1;
-while (l < r) {
-    int mid = l + r + 1 >> 1;
-    if (arr[mid] < target) l = mid;
-    else r = mid - 1;
+int bsearch_2(int l, int r) {
+    while (l < r) {
+        int mid = l + r + 1 >> 1;
+        if (arr[mid] < target) l = mid;
+        else r = mid - 1;
+    }
+    return l;
 }
 if (arr[l] != x) cout << "not found" << endl;
+```
+
+# 浮点数二分算法
+```cpp
+bool check(double x) {/* ... */} // 检查x是否满足某种性质
+
+double bsearch_3(double l, double r)
+{
+    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
+    while (r - l > eps)
+    {
+        double mid = (l + r) / 2;
+        if (check(mid)) r = mid;
+        else l = mid;
+    }
+    return l;
+}
 ```
 
 

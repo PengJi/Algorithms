@@ -17,7 +17,7 @@ void adjust(int arr[], int len, int index) {
     if(index != maxIdx) { // 最大值发生变化，则交换值，并重新调整
         swap(arr[index], arr[maxIdx]);
         adjust(arr, len, maxIdx);
-    } 
+    }
 }
 
 // 对列表进行排序
@@ -37,8 +37,7 @@ int main()
 {
     int array[8] = {8, 1, 14, 3, 21, 5, 7, 10};
     heapSort(array, 8);
-    for(auto it: array)
-    {
+    for(auto it: array) {
         cout<<it<<endl;
     }
     return 0;
