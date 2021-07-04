@@ -232,3 +232,29 @@ for (int i = 1; i <= n; i ++ ) {
 
 lowbit 示例：  
 > 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形势是补码，就是反码+1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的lowbit操作
+
+
+## 区间合并
+[https://www.acwing.com/problem/content/805/](https://www.acwing.com/problem/content/805/)
+```cpp
+// 将所有存在交集的区间合并
+void merge(vector<PII> &segs)
+{
+    vector<PII> res;
+
+    sort(segs.begin(), segs.end());
+
+    int st = -2e9, ed = -2e9;
+    for (auto seg : segs)
+        if (ed < seg.first)
+        {
+            if (st != -2e9) res.push_back({st, ed});
+            st = seg.first, ed = seg.second;
+        }
+        else ed = max(ed, seg.second);
+
+    if (st != -2e9) res.push_back({st, ed});
+
+    segs = res;
+}
+```
