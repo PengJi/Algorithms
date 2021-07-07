@@ -29,6 +29,7 @@ int bsearch_2(int l, int r) {
 if (arr[l] != x) cout << "not found" << endl;
 ```
 
+
 # 浮点数二分算法
 ```cpp
 bool check(double x) {/* ... */} // 检查x是否满足某种性质
@@ -233,7 +234,6 @@ for (int i = 1; i <= n; i ++ ) {
 lowbit 示例：  
 > 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形势是补码，就是反码+1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的lowbit操作
 
-
 ## 区间合并
 [803. 区间合并](https://www.acwing.com/problem/content/805/)
 ```cpp
@@ -259,6 +259,7 @@ void merge(vector<PII> &segs)
 }
 ```
 
+
 # 高精度加法
 ```cpp
 // C = A + B, A >= 0, B >= 0
@@ -279,6 +280,7 @@ vector<int> add(vector<int> &A, vector<int> &B) {
 }
 ```
 
+
 # 高精度减法
 ```cpp
 // C = A - B, 满足A >= B, A >= 0, B >= 0
@@ -296,6 +298,7 @@ vector<int> sub(vector<int> &A, vector<int> &B) {
     return C;
 }
 ```
+
 
 # 高精度乘低精度
 ```cpp
@@ -316,6 +319,7 @@ vector<int> mul(vector<int> &A, int b) {
 }
 ```
 
+
 # 高精度除以低精度
 ```cpp
 // A / b = C ... r, A >= 0, b > 0
@@ -332,6 +336,7 @@ vector<int> div(vector<int> &A, int b, int &r) {
     return C;
 }
 ```
+
 
 # 离散化
 ```cpp

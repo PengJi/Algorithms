@@ -22,6 +22,7 @@ void remove() {
 }
 ```
 
+
 # 双链表
 ```cpp
 // e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前用到了哪个节点
@@ -48,6 +49,7 @@ void remove(int a) {
 }
 ```
 
+
 # 栈
 ```cpp
 // tt表示栈顶
@@ -64,9 +66,9 @@ stk[tt];
 
 // 判断栈是否为空
 if (tt > 0) {
-
 }
 ```
+
 
 # 队列
 ## 普通队列
@@ -109,6 +111,7 @@ if (hh != tt) {
 }
 ```
 
+
 # 单调栈
 常见模型：找出每个数左边离它最近的比它大/小的数
 ```cpp
@@ -118,6 +121,7 @@ for (int i = 1; i <= n; i ++ ) {
     stk[++tt] = i;
 }
 ```
+
 
 # 单调队列
 常见模型：找出滑动窗口中的最大值/最小值
@@ -130,29 +134,28 @@ for (int i = 0; i < n; i ++ ) {
 }
 ```
 
+
 # KMP
 ```cpp
 // s[]是长文本，p[]是模式串，n是s的长度，m是p的长度
 求模式串的Next数组：
-for (int i = 2, j = 0; i <= m; i ++ )
-{
+for (int i = 2, j = 0; i <= m; i ++ ) {
     while (j && p[i] != p[j + 1]) j = ne[j];
     if (p[i] == p[j + 1]) j ++ ;
     ne[i] = j;
 }
 
 // 匹配
-for (int i = 1, j = 0; i <= n; i ++ )
-{
+for (int i = 1, j = 0; i <= n; i ++ ) {
     while (j && s[i] != p[j + 1]) j = ne[j];
     if (s[i] == p[j + 1]) j ++ ;
-    if (j == m)
-    {
+    if (j == m) {
         j = ne[j];
         // 匹配成功后的逻辑
     }
 }
 ```
+
 
 # Trie 树
 ```cpp
@@ -183,6 +186,7 @@ int query(char *str) {
     return cnt[p];
 }
 ```
+
 
 # 并查集
 ## 朴素并查集
@@ -250,6 +254,7 @@ p[find(a)] = find(b);
 d[find(a)] = distance; // 根据具体问题，初始化find(a)的偏移量
 ```
 
+
 # 堆
 ```cpp
 // h[N]存储堆中的值, h[1]是堆顶，x的左儿子是2x, 右儿子是2x + 1
@@ -284,6 +289,7 @@ void up(int u) {
 // O(n)建堆
 for (int i = n / 2; i; i -- ) down(i);
 ```
+
 
 # 一般哈希
 ## 拉链法
