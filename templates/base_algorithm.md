@@ -169,7 +169,7 @@ for (int i = 1; i <= n; i ++ ) {
         while (j >= 0 && a[i] + b[j] > x) j -- ;
         if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
     }
-   ```
+    ```
 
 
 # 并查集
