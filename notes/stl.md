@@ -35,9 +35,9 @@ back()  // 返回队尾元素
 ```cpp
 size()
 empty()
-push()  插入一个元素
-pop()  弹出堆顶元素
-top()  返回堆顶元素
+push()  // 插入一个元素
+pop()  // 弹出堆顶元素
+top()  // 返回堆顶元素
 定义成小根堆的方式：priority_queue<int, vector<int>, greater<int>> q;
 ```
 
@@ -77,7 +77,7 @@ size()
 empty()
 clear()
 begin()/end()
-++, -- 返回前驱和后继，时间复杂度 O(logn)
+++, -- // 返回前驱和后继，时间复杂度 O(logn)
 ```
 
 `set/multiset`
@@ -95,8 +95,8 @@ upper_bound(x)  // 返回大于x的最小的数的迭代器
 
 `map/multimap`
 ```cpp
-insert()  插入的数是一个pair
-erase()  输入的参数是pair或者迭代器
+insert()  // 插入的数是一个pair
+erase()  // 输入的参数是pair或者迭代器
 find()
 []  注意multimap不支持此操作。 时间复杂度是 O(logn)
 lower_bound()/upper_bound()

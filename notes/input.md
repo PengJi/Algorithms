@@ -5,7 +5,7 @@
 3
 7 4 7
 2 50
-```c
+```cpp
 int n; #先声明参数n
 cin>>n;#输入n
 vector<long long> a(n+1);
@@ -18,7 +18,7 @@ cin>>k>>d; #输入 k d
 ```
 
 ## 输入单行
-```c
+```cpp
 vector<int> v;
 int a;
 while(cin>>a){
@@ -29,7 +29,7 @@ while(cin>>a){
 ```
 
 ## 输入二维数组
-```c
+```cpp
 #include "stdlib.h"
 #include <iostream>
 #include<vector>
@@ -61,6 +61,3 @@ int main()
     return 0;
 }
 ```
-
-
-

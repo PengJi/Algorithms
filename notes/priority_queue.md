@@ -9,15 +9,15 @@ Type为数据类型， Container为保存数据的容器，Functional为元素�
 #include<queue>
 using namespace std;
  
-int main(){
+int main() {
     priority_queue<int> p;
     p.push(1);
     p.push(2);
     p.push(8);
     p.push(5);
     p.push(43);
-    for(int i=0;i<5;i++){
-        cout<<p.top()<<endl;
+    for(int i=0; i<5; i++){
+        cout << p.top() << endl;
         p.pop();
     }
     return 0;
@@ -30,15 +30,15 @@ int main(){
 #include<queue>
 using namespace std;
  
-int main(){
-    priority_queue<int, vector<int>, greater<int> >p;
+int main() {
+    priority_queue<int, vector<int>, greater<int>> p;
     p.push(1);
     p.push(2);
     p.push(8);
     p.push(5);
     p.push(43);
-    for(int i=0;i<5;i++){
-        cout<<p.top()<<endl;
+    for(int i=0; i<5; i++){
+        cout << p.top() << endl;
         p.pop();
     }
     return 0;
@@ -49,13 +49,14 @@ int main(){
 ### 重载运算符
 ```c
 // 重载 < 运算符，实现小顶堆 
-bool operator<(My_Type a,My_Type b)
+bool operator<(My_Type a, My_Type b)
 {
     // 定义排序规则 
     if(a.x==b.x) return a.y>b.y;
     return a.x>b.x; 
 }
 ```
+
 ### 仿函数
 ```c
 // 仿函数，实现小顶堆 
@@ -69,15 +70,16 @@ struct cmp
     }
 }; 
 ```
+
 示例
 ```c
-
 #include<iostream>
 #include<queue>
 #include<cstdlib>
 using namespace std;
+
 struct Node{
-    int x,y;
+    int x, y;
     Node(int a=0, int b=0):
         x(a), y(b) {}
 };
@@ -90,7 +92,7 @@ struct cmp{
 };
  
 int main(){
-    priority_queue<Node, vector<Node>, cmp>p;
+    priority_queue<Node, vector<Node>, cmp> p;
     
     for(int i=0; i<10; ++i)
         p.push(Node(rand(), rand()));
@@ -100,5 +102,6 @@ int main(){
         p.pop();
     }//while
     //getchar();
+
     return 0;
 ```
