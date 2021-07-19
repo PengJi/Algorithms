@@ -47,4 +47,25 @@ public:
         }
         return minLen == INT_MAX ? "" : s.substr(start, minLen);
     }
+
+    string minWindow(string s, string t) {
+        unordered_map<char, int> h;
+        int cnt = 0;
+        for(auto c : t) {
+            if(!h[c]) cnt++;
+            h[c]++;
+        }
+
+        string res = "";
+        for(int i=0, j=0, c=0; i < s.size(); i++) {
+            if(h[s[i]] == 1) c++;
+            h[s[i]]--;
+            while(c == cnt && h[s[j]] < 0) h[s[j++]]++;
+            if(c == cnt) {
+                if(res.empty() || res.size() > i - j + 1) res = s.substr(j, i - j + 1);
+            }
+        }
+
+        return res;
+    }
 };
