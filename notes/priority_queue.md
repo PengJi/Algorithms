@@ -4,7 +4,7 @@ Type为数据类型， Container为保存数据的容器，Functional为元素�
 如果不写后两个参数，那么容器默认用的是vector，比较方式默认用operator<，也就是优先队列是大顶堆，队头元素最大。
 
 ## 大顶堆
-```c
+```cpp
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -25,7 +25,7 @@ int main() {
 ```
 
 ## 小顶堆
-```c
+```cpp
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -47,7 +47,7 @@ int main() {
 
 ## 自定义优先级
 ### 重载运算符
-```c
+```cpp
 // 重载 < 运算符，实现小顶堆 
 bool operator<(My_Type a, My_Type b)
 {
@@ -58,7 +58,7 @@ bool operator<(My_Type a, My_Type b)
 ```
 
 ### 仿函数
-```c
+```cpp
 // 仿函数，实现小顶堆 
 struct cmp
 {
@@ -72,7 +72,7 @@ struct cmp
 ```
 
 示例
-```c
+```cpp
 #include<iostream>
 #include<queue>
 #include<cstdlib>
