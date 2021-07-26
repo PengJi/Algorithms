@@ -1,6 +1,8 @@
 /**
  * 85. 最大矩形
  * https://leetcode-cn.com/problems/maximal-rectangle/
+ * 
+ * 与 84 相关联
  */
 
 class Solution {

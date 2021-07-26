@@ -4,6 +4,8 @@
  * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
  * 
  * https://leetcode-cn.com/problems/largest-rectangle-in-histogram/
+ * 
+ * 可用于 85
  */
 
 class Solution {
@@ -12,8 +14,6 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     int largestRectangleArea(vector<int>& heights) {
-        if(heights.size() == 0) return 0;
-
         heights.insert(heights.begin(), 0);  // 在队首插入0
         heights.push_back(0);  // 在队尾插入0
 

@@ -13,6 +13,7 @@ clear()  // 清空
 front()/back()
 push_back()/pop_back()
 begin()/end()
+insert(v.begin(), 0)  // 队首插入 0
 []
 支持比较运算，按字典序
 ```
