@@ -13,8 +13,6 @@ public:
     // 空间复杂度：O(1)
     int minSubArrayLen(int s, vector<int>& nums) {
         int len = nums.size();
-        if (len == 0) return 0;
-
         int ans = INT_MAX;
         int start = 0, end = 0;
         int sum = 0;
@@ -30,5 +28,23 @@ public:
         }
         
         return ans == INT_MAX ? 0 : ans;
+    }
+
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int res = INT_MAX;
+        int len = nums.size();
+        int l = 0, r = 0;
+        int sum = 0;
+        while(r < len) {
+            sum += nums[r];
+            while(sum >= target) {
+                res = min(res, r-l+1);
+                sum -= nums[l];
+                l++;
+            }
+            r++;
+        }
+
+        return res == INT_MAX ? 0 : res;
     }
 };

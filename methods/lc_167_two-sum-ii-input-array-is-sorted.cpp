@@ -19,4 +19,22 @@ public:
 
         return {};
     }
+
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        vector<int> res;
+        int l = 0, r = numbers.size()-1;
+        int tmp;
+        while(l < r) {
+            tmp = numbers[l] + numbers[r];
+            if(tmp > target) r--;
+            else if(tmp < target) l++;
+            else {
+                res.push_back(l+1);
+                res.push_back(r+1);
+                break;
+            }
+        }
+
+        return res;
+    }
 };
