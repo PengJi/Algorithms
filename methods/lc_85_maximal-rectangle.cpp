@@ -12,9 +12,6 @@ public:
     // O(n)
     int maximalRectangle(vector<vector<char>>& matrix) {
         int row = matrix.size();
-        if (row == 0) {
-            return 0;
-        }
         int col = matrix[0].size();
 
         int ans = 0;
