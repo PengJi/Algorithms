@@ -23,4 +23,25 @@ public:
         if (nums.size()) res.push_back(to_string(st) + (st == ed ? "" : "->" + to_string(ed)));
         return res;
     }
+
+    vector<string> summaryRanges(vector<int>& nums) {
+        vector<string> res;
+        int n = nums.size();
+        int l = 0, r = 0;
+        while(r < n) {
+            while(r+1 < n){
+                if(nums[r]+1 == nums[r+1]) r++;
+                else break;
+            }
+            if(l == r) {
+                res.push_back(to_string(nums[l]));
+            } else {
+                res.push_back(to_string(nums[l]) + "->" + to_string(nums[r]));
+            }
+            r++;
+            l = r;
+        }
+
+        return res;
+    }
 };
