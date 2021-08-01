@@ -47,4 +47,21 @@ public:
 
         return res;
     }
+
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> res;
+        unordered_map<char, int> mp;
+        for(auto c : p) mp[c]++;
+        int tot = mp.size(), st = 0;
+        for(int i = 0, j = 0; i < s.size(); i++) {
+            if(--mp[s[i]] == 0) st++;
+            if(i - j + 1 > p.size()) {
+                if(mp[s[j]] == 0) st--;
+                mp[s[j++]]++;
+            }
+            if(tot == st) res.push_back(j);
+        }
+
+        return res;
+    }
 };

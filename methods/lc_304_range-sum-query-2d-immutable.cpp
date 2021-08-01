@@ -8,7 +8,6 @@ public:
     vector<vector<int>> s;
 
     NumMatrix(vector<vector<int>>& matrix) {
-        if(matrix.empty() || matrix[0].empty()) return;
         int m = matrix.size(), n = matrix[0].size();
         s = vector<vector<int>>(m+1, vector<int>(n+1));
         for(int i = 1; i <= m; i++) {
