@@ -235,7 +235,7 @@ lowbit 示例：
 
 
 ## 区间合并
-[https://www.acwing.com/problem/content/805/](https://www.acwing.com/problem/content/805/)
+[803. 区间合并](https://www.acwing.com/problem/content/805/)
 ```cpp
 // 将所有存在交集的区间合并
 void merge(vector<PII> &segs)
