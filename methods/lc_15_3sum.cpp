@@ -43,8 +43,7 @@ public:
                 
             }
 
-            while (i + 1 < nums.size() && nums[i + 1] == nums[i]) 
-                i++;
+            while (i + 1 < nums.size() && nums[i + 1] == nums[i]) i++;
 
         }
         
