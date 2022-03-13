@@ -2,6 +2,7 @@ class Solution {
 public:
     typedef pair<int, int> pii;
     
+    // 注意参数带 &，不然超时
     bool check(vector<int> &a, set<pii> &p) {
         for(int i = a[0]; i <= a[2]; i++) {
             for(int j = a[1]; j <= a[3]; j++) {
