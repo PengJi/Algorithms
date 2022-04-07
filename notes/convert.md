@@ -1,4 +1,4 @@
-string -> int
+# string -> int
 ```cpp
 string str = "111"
 int a = atoi(str.c_str())  // c 语言形式
@@ -12,8 +12,15 @@ long long c = stoll(str)
 stol(long)
 stof(float)
 stod(double)
+```
 
-// 字符串分割并转换
+# int -> string
+```cpp
+to_string(10)
+```
+
+# 字符串分割并转换
+```cpp
 t = "20:20"
 int h, m;
 sscanf(t.c_str(), "%d:%d", &h, &m);
