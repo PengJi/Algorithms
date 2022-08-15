@@ -1,3 +1,10 @@
+# 最大公约数
+```cpp
+int gcd(int a, int b) {
+    return b ? gcd(b, a % b) : a;
+}
+```
+
 # 试除法判定质数
 ```cpp
 bool is_prime(int x) {
