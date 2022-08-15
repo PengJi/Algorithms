@@ -32,4 +32,19 @@ public:
 
         return res;
     }
+
+    // 单调栈
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        stack<int> stk;
+        vector<int> res(temperatures.size());
+        for(int i = temperatures.size()-1; i >= 0; i--) {
+            while(stk.size() && temperatures[i] >= temperatures[stk.top()]) {
+                stk.pop();
+            }
+            if(stk.size()) res[i] = stk.top() - i;
+            stk.push(i);
+        }
+
+        return res;
+    }
 };
