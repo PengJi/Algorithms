@@ -53,7 +53,7 @@ bool operator<(My_Type a, My_Type b)
 {
     // 定义排序规则 
     if(a.x==b.x) return a.y>b.y;
-    return a.x>b.x; 
+    return a.x>b.x;
 }
 ```
 

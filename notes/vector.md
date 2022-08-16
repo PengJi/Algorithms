@@ -11,6 +11,3 @@ sort(strs.begin(), strs.end(), [&](pair<string, int>& a, pair<string, int>& b) {
 });
 res.push_back(strs[k-1].second);
 ```
-
-# 例题
-[6121. 裁剪数字后查询第 K 小的数字](https://leetcode.cn/problems/query-kth-smallest-trimmed-number/)

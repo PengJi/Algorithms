@@ -22,17 +22,14 @@ int main() {
     }
 
     // 可以使用for循环遍历
-    /*
     for(iter = _map.begin(); iter != _map.end(); iter++) {
         cout << iter->first << " : " << iter->second << endl;
     }
 
-    或
-
     for(auto [k, v] : _map) {
         cout << k << v << endl;
     }
-    */
+
     return 0;
 }
 ```
