@@ -77,6 +77,8 @@ top()  // 返回栈顶元素
 * multimap
 
 `set/multiset/map/multimap`
+unordered_set  
+unordered_map  
 基于平衡二叉树（红黑树），动态维护有序序列，操作：
 ```cpp
 size()
@@ -135,6 +137,7 @@ empty()
 clear()
 substr(起始下标，(子串长度))  // 返回子串
 c_str()  // 返回字符串所在字符数组的起始地址
+pop_back()  // 删除最后的元素
 ```
 
 `pair<int, int>`  
