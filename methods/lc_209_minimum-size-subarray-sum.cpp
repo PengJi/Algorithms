@@ -48,3 +48,18 @@ public:
         return res == INT_MAX ? 0 : res;
     }
 };
+
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int res = INT_MAX;
+        for(int l = 0, r = 0, s = 0; r < nums.size(); r++) {
+            s += nums[r];
+            while(s - nums[l] >= target) s -= nums[l++];
+            if(s >= target) res = min(res, r - l + 1);
+        }
+        if(res == INT_MAX) return 0;
+        return res;
+    }
+};
+
