@@ -22,12 +22,15 @@ public:
             }
         }
     }
+};
 
+class Solution {
+public:
     void moveZeroes(vector<int>& nums) {
-        int i = 0;
-        for(auto x : nums) {
-            if(x) nums[i++] = x;
+        int k = 0;
+        for(auto n: nums) {
+            if(n) nums[k++] = n;
         }
-        while(i < nums.size()) nums[i++] = 0;
+        while(k < nums.size()) nums[k++] = 0;
     }
 };
