@@ -1,6 +1,6 @@
-`#include <climits>`
-
 ```cpp
+#include <climits>
+
 name        expresses                                                    value
 CHAR_BIT    Number of bits in a char object (byte)                        8 or greater*
 

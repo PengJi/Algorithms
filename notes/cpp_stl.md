@@ -18,6 +18,12 @@ insert(v.begin(), 0)  // 队首插入 0
 支持比较运算，按字典序
 ```
 
+妙用
+```cpp
+vector<int> vec[26];  // 相当于二维数组，有 26个元素，每个元素是一个 vector
+vec.push_back(1);
+```
+
 * list
 
 * deque
