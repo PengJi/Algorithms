@@ -47,3 +47,21 @@ public:
         return strs[0];
     }
 };
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        if(strs.size() == 0) return "";
+        string res;
+        for(int i = 0; ; i++) {
+            if(i >= strs[0].size()) return res;
+            char c = strs[0][i];  // 以第一个字符串为基准，依次对比后面的字符串
+            for(auto str: strs) {
+                if(i >= str.size() || str[i] != c) return res;
+            }
+            res += c;
+        }
+
+        return res;
+    }
+};
