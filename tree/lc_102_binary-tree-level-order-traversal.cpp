@@ -40,3 +40,29 @@ public:
         return ret;
     }
 };
+
+class Solution {
+public:
+    // 广搜
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        queue<TreeNode*> q;
+        if(root) q.push(root);
+        
+        while(!q.empty()) {
+            vector<int> vec;
+            int len = q.size();
+
+            while(len--) {
+                TreeNode* cur = q.front();
+                q.pop();
+                vec.push_back(cur->val);
+                if(cur->left) q.push(cur->left);
+                if(cur->right) q.push(cur->right);
+            }
+            res.push_back(vec);
+        }
+
+        return res;
+    }
+};
