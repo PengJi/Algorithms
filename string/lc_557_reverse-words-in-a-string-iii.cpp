@@ -29,3 +29,18 @@ public:
         return s;
     }
 };
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        for(int i = 0; i < s.size(); i++) {
+            if(s[i] == ' ') continue;
+            int j = i;  // 左边界
+            while(j < s.size() && s[j] != ' ') j++;  // 右边界
+            reverse(s.begin() + i, s.begin() + j);
+            i = j;
+        }
+
+        return s;
+    }
+};
