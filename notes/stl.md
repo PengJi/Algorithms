@@ -5,39 +5,8 @@ The Standard Template Library (STL) is a set of C++ template classes to provide 
 ## Sequence Containers: implement data structures which can be accessed in a sequential manner.
 
 * vector
-变长数组，倍增的思想  
-```cpp
-size()  // 返回元素个数
-empty()  // 返回是否为空
-clear()  // 清空
-front()/back()
-push_back()/pop_back()
-begin()/end()
-insert(v.begin(), 0)  // 队首插入 0
-[]
-支持比较运算，按字典序
-```
-
-妙用
-```cpp
-vector<int> vec[26];  // 相当于二维数组，有 26个元素，每个元素是一个 vector
-vec.push_back(1);
-```
-
 * list
-
 * deque
-双端队列
-```cpp
-size()
-empty()
-clear()
-front()/back()
-push_back()/pop_back()
-push_front()/pop_front()
-begin()/end()
-[]
-```
 
 * arrays
 
