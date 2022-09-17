@@ -78,3 +78,23 @@ int main() {
     vector<int> nums = {1,2,0,1};
     slu.longestConsecutive(nums);
 }
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> st;
+        int res = 0;
+        for(auto x: nums) st.insert(x);  // 存入哈希表
+
+        for(auto x: nums) {
+            if(st.count(x) && !st.count(x-1)) {  // 判断当前元素是否是连续序列的开头的元素
+                int y = x;
+                st.erase(x);  // 删除当前的元素，避免重复判断
+                while(st.count(y+1)) st.erase(y++);  // 一直到连续序列的结尾
+                res = max(res, y-x+1);  // 获取最大长度
+            }
+        }
+
+        return res;
+    }
+};
