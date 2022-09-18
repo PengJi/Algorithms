@@ -1,10 +1,5 @@
 /**
  * 220. 存在重复元素 III
- * 在整数数组 nums 中，是否存在两个下标 i 和 j，
- * 使得 nums [i] 和 nums [j] 的差的绝对值小于等于 t ，
- * 且满足 i 和 j 的差的绝对值也小于等于 ķ 。
- * 如果存在则返回 true，不存在返回 false。
- * 
  * https://leetcode-cn.com/problems/contains-duplicate-iii/
  */
 
@@ -35,3 +30,23 @@ public:
         return false;
     }
 };
+
+class Solution {
+public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
+        typedef long long LL;
+        multiset<LL> S;
+        S.insert(1e18), S.insert(-1e18);
+        for (int i = 0, j = 0; i < nums.size(); i ++ ) {
+            if (i - j > k) S.erase(S.find(nums[j ++ ]));
+            int x = nums[i];
+            auto it = S.lower_bound(x);
+            if (*it - x <= t) return true;
+            -- it;
+            if (x - *it <= t) return true;
+            S.insert(x);
+        }
+        return false;
+    }
+};
+
