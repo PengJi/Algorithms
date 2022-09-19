@@ -1,3 +1,8 @@
+/**
+ * 529. 扫雷游戏
+ * https://leetcode.cn/problems/minesweeper/
+ */
+
 class Solution {
 public:
     int dir_x[8] = {0, 1, 0, -1, 1, 1, -1, -1};
