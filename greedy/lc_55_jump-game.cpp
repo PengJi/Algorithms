@@ -1,9 +1,5 @@
 /**
  * 55. 跳跃游戏
- * 给定一个非负整数数组，你最初位于数组的第一个位置。
- * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
- * 判断你是否能够到达最后一个位置。
- * 
  * https://leetcode-cn.com/problems/jump-game/
  */
 
@@ -35,5 +31,17 @@ public:
         }
 
         return lastIndex == 0;
+    }
+};
+
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        for(int i = 0, j = 0; i < nums.size(); i++) {
+            if(j < i) return false;
+            j = max(j, i + nums[i]);
+        }
+
+        return true;
     }
 };
