@@ -15,3 +15,12 @@ string removeOccurrences(string s, string p) {
 ```cpp
 reverse(s.begin() + 1, s.end());
 ```
+
+分割以空格分隔的字符串
+```cpp
+string s = "abc def ghi";
+stringstrem ss(s);
+vector<string> vec;
+string word;
+while(ss > word) vec.push_back(word);
+```
