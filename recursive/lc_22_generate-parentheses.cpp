@@ -1,7 +1,5 @@
 /**
  * 22. 括号生成
- * 数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
- * 
  * https://leetcode-cn.com/problems/generate-parentheses/
  */
 
@@ -9,8 +7,6 @@ class Solution {
 public:
     // dfs
     // 思路：https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
-    // 时间复杂度：
-    // 空间复杂度：
     vector<string> generateParenthesis(int n) {
         vector<string> res;
         if(n == 0) return res;
@@ -33,5 +29,23 @@ public:
 
         if(left > 0) dfs(str+"(", left-1, right, res);
         if(right > 0) dfs(str+")", left, right-1, res);
+    }
+};
+
+class Solution {
+public:
+    vector<string> res;
+
+    vector<string> generateParenthesis(int n) {
+        dfs(n, 0, 0, "");
+        return res;
+    }
+
+    void dfs(int n, int lc, int rc, string str) {
+        if(lc == n && rc == n) res.push_back(str);
+        else {
+            if(lc < n) dfs(n, lc+1, rc, str+'(');  // 当左括号数量小于 n，则可以添加左括号
+            if(rc < n && rc < lc) dfs(n, lc, rc+1, str+')');  // 当右括号数量小于 n，并且左括号数量大于右括号数量时，可以添加右括号
+        }
     }
 };
