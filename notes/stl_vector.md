@@ -1,4 +1,4 @@
-# 变长数组，倍增的思想
+* 变长数组，倍增的思想
 
 ```cpp
 size()  // 返回元素个数
@@ -16,8 +16,23 @@ insert(v.begin(), 0)  // 队首插入 0
 支持比较运算，按字典序
 ```
 
-妙用
+* 妙用
 ```cpp
 vector<int> vec[26];  // 相当于二维数组，有 26个元素，每个元素是一个 vector
 vec.push_back(1);  // 第一个 vector 插入一个元素
+```
+
+* vector 元素为 pair，排序
+```cpp
+vector<pair<string, int>> strs(n);
+
+// 首先按字符串排序，如果字符串相等，则根据第二个元素排序
+sort(strs.begin(), strs.end(), [&](pair<string, int>& a, pair<string, int>& b) {
+    for(int i = a.first.size(); i < a.first.size(); i++) {
+        if(a.first[i] < b.first[i]) return true;
+        else if(a.first[i] > b.first[i]) return false;
+    }
+    return a.second < b.second;
+});
+res.push_back(strs[k-1].second);
 ```
