@@ -1,9 +1,12 @@
+// https://leetcode.cn/problems/query-kth-smallest-trimmed-number/
+
 class Solution {
 public:
     vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {
         int n = nums.size(), m = queries.size();
         vector<pair<string, int>> strs(n);
         for(int i = 0; i < n; i++) strs[i] = {nums[i], i};
+
         vector<int> res;
         for(auto& q : queries) {
             int k = q[0], trim = q[1];
