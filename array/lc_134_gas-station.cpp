@@ -30,3 +30,26 @@ public:
         return -1;
     }
 };
+
+class Solution {
+public:
+    // O(n), O(1)
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n = gas.size();
+        int cnt;  // 走过的加油站
+        for(int i = 0; i < n;) {  // 从起点开始枚举
+            int rest = 0;
+            for(cnt = 0; cnt < n; cnt++) {
+                int k = (i+cnt) % n;
+                rest += gas[k];
+                rest -= cost[k];
+                if(rest < 0) break;  // 走不到下个加油站
+            }
+
+            if(cnt == n) return i;  // 走完了一圈
+            i = i + cnt + 1;  // 否则从当前点的下个点开始走
+        }
+
+        return -1;
+    }
+};
