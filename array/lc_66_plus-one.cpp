@@ -23,3 +23,20 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int len = digits.size();
+        for(int i = len - 1; i >= 0; i--) {
+            digits[i]++;
+            digits[i] %= 10;
+            if(digits[i] != 0) return digits;  // 不需要进位，则直接返回
+        }
+
+        // 特殊情况，对于 9、99 这种，位数加一
+        vector<int> res(len+1, 0);
+        res[0] = 1;
+        return res;
+    }
+};
