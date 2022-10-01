@@ -8,12 +8,14 @@ public:
     int findMinDifference(vector<string>& timePoints) {
         int res = INT_MAX;
         vector<int> q;
+
         for(string t : timePoints) {
             int m, n;
             sscanf(t.c_str(), "%d:%d", &m, &n);
             q.push_back(m * 60 + n);
         }
         sort(q.begin(), q.end());
+        
         for(int i = 1; i < q.size(); i++) {
             res = min(res, q[i] - q[i-1]);
         }

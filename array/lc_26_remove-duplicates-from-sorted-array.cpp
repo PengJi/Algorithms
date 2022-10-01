@@ -21,3 +21,17 @@ public:
         return i + 1;
     }
 };
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int  k = 0;  // 有效数字索引
+        for(int i = 0; i < nums.size(); i++) {
+            if(!i || nums[i] != nums[i-1]) {  // 排除第一个元素，其他元素只要不相等则为有效数字
+                nums[k++] = nums[i];
+            }
+        }
+
+        return k;
+    }
+};

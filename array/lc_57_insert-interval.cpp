@@ -35,6 +35,7 @@ public:
 
 class Solution {
 public:
+    // 将区间分为三部分，在新区建左侧，在新区建右侧，与新区建重合，重合的部分合并区间
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         vector<vector<int>> res;
         int left = newInterval[0], right = newInterval[1];
