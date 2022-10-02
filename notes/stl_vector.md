@@ -22,7 +22,7 @@ vector<int> vec[26];  // 相当于二维数组，有 26个元素，每个元素�
 vec.push_back(1);  // 第一个 vector 插入一个元素
 ```
 
-* vector 元素为 pair，排序
+* 排序元素类型为 pair 的 vector
 ```cpp
 // 首先按字符串排序，如果字符串相等，则根据第二个元素排序
 vector<pair<string, int>> strs(n);
@@ -39,3 +39,14 @@ sort(strs.begin(), strs.end(), [&](pair<string, int>& a, pair<string, int>& b) {
 });
 ```
 [2343. 裁剪数字后查询第 K 小的数字](https://www.acwing.com/activity/content/problem/content/7232/)
+
+* 排序元素类型为 int 的 vector
+```cpp
+nums = [3,30,34,5,9];
+
+// 将 vector 拼接为最大的字符串，上述 vector 结果为 "9534330"。
+sort(nums.begin(), nums.end(), [](int x, int y) {
+    string a = to_string(x), b = to_string(y);
+    return a + b > b + a;
+});
+```

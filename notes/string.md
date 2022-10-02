@@ -12,6 +12,12 @@ string word;
 while(ss > word) vec.push_back(word);
 ```
 
+字符串转换
+```cpp
+int num = 10;
+string str = to_string(10);
+```
+
 [删除字符串中的子串](https://leetcode-cn.com/problems/remove-all-occurrences-of-a-substring/)
 ```cpp
 string removeOccurrences(string s, string p) {

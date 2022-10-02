@@ -24,6 +24,7 @@ public:
 
 class Solution {
 public:
+    // 双指针
     int removeDuplicates(vector<int>& nums) {
         int  k = 0;  // 有效数字索引
         for(int i = 0; i < nums.size(); i++) {

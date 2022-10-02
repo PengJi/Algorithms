@@ -33,6 +33,9 @@ public:
 
 class Solution {
 public:
+    // 枚举每个起点，检查是否能走完全程
+    // 假设走了 cnt 个加油站，如果 cnt==n，则代表走完全程
+    // 如果 cnt!=n，则从 cnt+1 个位置开始枚举。
     // O(n), O(1)
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         int n = gas.size();
@@ -40,7 +43,7 @@ public:
         for(int i = 0; i < n;) {  // 从起点开始枚举
             int rest = 0;
             for(cnt = 0; cnt < n; cnt++) {
-                int k = (i+cnt) % n;
+                int k = (i+cnt) % n;  // 当前位于哪个加油站
                 rest += gas[k];
                 rest -= cost[k];
                 if(rest < 0) break;  // 走不到下个加油站
