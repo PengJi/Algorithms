@@ -32,7 +32,7 @@
 | 按位异或（相同为零不同为一）| ^ | 0011 ^ 1011 => 1000 |
 
 ## 位运算技巧
-1. 将 x 最右边的 n 位清零：`x& (~0 << n)`
+1. 将 x 最右边的 n 位清零：`x & (~0 << n)`
 2. 获取 x 的第 n 位值（0 或者 1）： `(x >> n) & 1`
 3. 获取 x 的第 n 位的幂值：`x& (1 << n)`
 4. 仅将第 n 位置为 1：`x | (1 << n)`
@@ -45,18 +45,29 @@
 
 ## 位运算示例
 1. 判断奇偶：  
-`x % 2 == 1 —> (x & 1) == 1`  
-`x % 2 == 0 —> (x & 1) == 0`
+`x % 2 == 1` —> `(x & 1) == 1`  
+`x % 2 == 0` —> `(x & 1) == 0`
 
-2. x >> 1 —> x / 2. 
-即： x = x / 2; —> x = x >> 1;
-mid = (left + right) / 2; —> mid = (left + right) >> 1;
+2. 除2
+即： `x = x / 2;` —> `x >>= 1;`
+`mid = (left + right) / 2;` —> `mid = (left + right) >> 1;`
 
-3. `X = X & (X-1)` 清零最低位的 1
+3. 清零最低位的 1
+`X = X & (X-1)` 
 
-4. `X & -X => 得到最低位的 1`
+4. 得到最低位的 1
+`X & -X` 
+ 
+> 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形式是补码，就是反码 +1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的 lowbit 操作
 
-5. `X & ~X => 0`
+5. 统计一个数中 1 的个数
+```cpp
+int cnt = 0;
+while(num) {
+    cnt += num & 1;
+    num >>= 1;
+}
+```
 
 ## 题目
 - [x] [191. 为1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)  
@@ -67,17 +78,53 @@ mid = (left + right) / 2; —> mid = (left + right) >> 1;
 
 
 # 二分查找
-```python
-left, right = 0, len(array) - 1 
-while left <= right: 
-    mid = (left + right) / 2 
-    if array[mid] == target: 
-        # find the target!! 
-        break or return result 
-    elif array[mid] < target: 
-        left = mid + 1 
-    else: 
-        right = mid - 1
+
+## 整数二分算法
+将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，  
+其更新操作是 `r = mid` 或者 `l = mid + 1`，计算 `mid` 时不需要加 1。
+```cpp
+int l = 0, r = n - 1;
+int bsearch_1(int l, int r) {
+    while (l < r) {
+        int mid = l + r >> 1;
+        if (arr[mid] < target) l = mid + 1;
+        else r = mid;
+    }
+    return l;
+}
+if (arr[l] != x) cout << "not found" << endl;
+```
+
+将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，  
+其更新操作是 `r = mid - 1` 或者 `l = mid`，此时为了防止死循环，计算mid时需要加1。
+```cpp
+int l = 0, r = n - 1;
+int bsearch_2(int l, int r) {
+    while (l < r) {
+        int mid = l + r + 1 >> 1;
+        if (arr[mid] < target) l = mid;
+        else r = mid - 1;
+    }
+    return l;
+}
+if (arr[l] != x) cout << "not found" << endl;
+```
+
+## 浮点数二分算法
+```cpp
+bool check(double x) {/* ... */} // 检查x是否满足某种性质
+
+double bsearch_3(double l, double r)
+{
+    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
+    while (r - l > eps)
+    {
+        double mid = (l + r) / 2;
+        if (check(mid)) r = mid;
+        else l = mid;
+    }
+    return l;
+}
 ```
 
 ## 题目
@@ -324,6 +371,41 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 # 常用方法
 
 ## 双指针
+常见问题分类：  
+(1) 对于一个序列，用两个指针维护一段区间；  
+(2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作  
+
+1. 判断子序列
+   两个序列分别对应一个指针
+   ```cpp
+    int i = 0, j = 0;
+    while (i < n && j < m)
+    {
+        if (a[i] == b[j]) i++;
+        j++;
+    }
+   ```
+2. 最长连续不重复子序列
+   两个指针分别对应序列的首尾
+   ```cpp
+    for(int i = 0, j = 0; i < n; i++) {
+        int tmp = a[i];
+        b[tmp]++;
+        while(tmp > 1) {
+            b[tmp]--;
+            j++;
+        }
+        res = max(res, i-j+1);
+    }
+   ```
+3. [数组元素的目标和](https://www.acwing.com/problem/content/802/)
+   两个指针分别对应两个数组
+   ```cpp
+    for (int i = 0, j = m - 1; i < n; i ++ ){
+        while (j >= 0 && a[i] + b[j] > x) j -- ;
+        if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
+    }
+    ```
 
 ## 滑动窗口
 - [x] [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)

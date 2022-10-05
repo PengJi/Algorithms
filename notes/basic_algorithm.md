@@ -1,51 +1,7 @@
 # 整数二分算法
-将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，  
-其更新操作是 `r = mid` 或者 `l = mid + 1`，计算 `mid` 时不需要加 1。
-```cpp
-int l = 0, r = n - 1;
-int bsearch_1(int l, int r) {
-    while (l < r) {
-        int mid = l + r >> 1;
-        if (arr[mid] < target) l = mid + 1;
-        else r = mid;
-    }
-    return l;
-}
-if (arr[l] != x) cout << "not found" << endl;
-```
-
-将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，  
-其更新操作是 `r = mid - 1` 或者 `l = mid`，此时为了防止死循环，计算mid时需要加1。
-```cpp
-int l = 0, r = n - 1;
-int bsearch_2(int l, int r) {
-    while (l < r) {
-        int mid = l + r + 1 >> 1;
-        if (arr[mid] < target) l = mid;
-        else r = mid - 1;
-    }
-    return l;
-}
-if (arr[l] != x) cout << "not found" << endl;
-```
 
 
 # 浮点数二分算法
-```cpp
-bool check(double x) {/* ... */} // 检查x是否满足某种性质
-
-double bsearch_3(double l, double r)
-{
-    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
-    while (r - l > eps)
-    {
-        double mid = (l + r) / 2;
-        if (check(mid)) r = mid;
-        else l = mid;
-    }
-    return l;
-}
-```
 
 
 # 前缀和
@@ -179,74 +135,9 @@ for (int i = 1; i <= n; i ++ ) {
 
 
 # 双指针
-常见问题分类：  
-(1) 对于一个序列，用两个指针维护一段区间；  
-(2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作  
-
-1. 判断子序列
-   两个序列分别对应一个指针
-   ```cpp
-    int i = 0, j = 0;
-    while (i < n && j < m)
-    {
-        if (a[i] == b[j]) i++;
-        j++;
-    }
-   ```
-2. 最长连续不重复子序列
-   两个指针分别对应序列的首尾
-   ```cpp
-    for(int i = 0, j = 0; i < n; i++) {
-        int tmp = a[i];
-        b[tmp]++;
-        while(tmp > 1) {
-            b[tmp]--;
-            j++;
-        }
-        res = max(res, i-j+1);
-    }
-   ```
-3. [数组元素的目标和](https://www.acwing.com/problem/content/802/)
-   两个指针分别对应两个数组
-   ```cpp
-    for (int i = 0, j = m - 1; i < n; i ++ ){
-        while (j >= 0 && a[i] + b[j] > x) j -- ;
-        if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
-    }
-    ```
 
 
 # 位运算
-求 n 的第 k 位数字: `n >> k & 1`
-返回 n 的最后一位 1：`lowbit(n) = n & -n`
-
-lowbit 示例：  
-> 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形势是补码，就是反码 +1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的 lowbit 操作
-
-## 区间合并
-[803. 区间合并](https://www.acwing.com/problem/content/805/)
-```cpp
-// 将所有存在交集的区间合并
-void merge(vector<PII> &segs)
-{
-    vector<PII> res;
-
-    sort(segs.begin(), segs.end());
-
-    int st = -2e9, ed = -2e9;
-    for (auto seg : segs)
-        if (ed < seg.first)
-        {
-            if (st != -2e9) res.push_back({st, ed});
-            st = seg.first, ed = seg.second;
-        }
-        else ed = max(ed, seg.second);
-
-    if (st != -2e9) res.push_back({st, ed});
-
-    segs = res;
-}
-```
 
 
 # 高精度加法
