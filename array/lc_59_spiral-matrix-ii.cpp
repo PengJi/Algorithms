@@ -32,3 +32,29 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    // 定义四个方向，然后依次遍历
+    vector<vector<int>> generateMatrix(int n) {
+        // 方向
+        int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+        // 前进的方向
+        int d = 0, tmpx = 0, tmpy = 0;
+        vector<vector<int>> res(n, vector<int>(n));
+        for(int i = 1, x = 0, y = 0; i <= n * n; i++) {
+            res[x][y] = i;
+            // 计算下一个坐标
+            tmpx = x + dx[d], tmpy = y + dy[d];
+            // 判断是否越界
+            if(tmpx < 0 || tmpx >= n || tmpy < 0 || tmpy >= n || res[tmpx][tmpy]) {
+                d = (d + 1) % 4;
+                // 更新下一个坐标
+                tmpx = x + dx[d], tmpy = y + dy[d];
+            }
+            x = tmpx, y = tmpy;
+        }
+
+        return res;
+    }
+};

@@ -22,6 +22,7 @@ public:
 
 class Solution {
 public:
+    // 从右向左合并
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         int k = m + n - 1;  // 填充末尾
         int i = m - 1, j = n - 1;
