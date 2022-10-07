@@ -43,3 +43,40 @@ public:
         return res;
     }
 };
+
+
+class Solution {
+public:
+    // 依次遍历四个方向
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        // 更行的方向
+        int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
+        vector<int> res;
+
+        // 记录是否访问过
+        vector<vector<bool>> st(m, vector<bool>(n));
+        // 前进的方向
+        int d = 0;
+        // 下一个坐标
+        int tx = 0, ty = 0;
+        for(int i = 0, x = 0, y = 0; i < m * n; i++) {
+            res.push_back(matrix[x][y]);
+            st[x][y] = true;
+            
+            // 更新下个坐标
+            tx = x + dx[d], ty = y + dy[d];
+            // 下个位置是否符合要求
+            if(tx < 0 || tx >= m || ty < 0 || ty >= n || st[tx][ty]) {
+                d = (d + 1) % 4;
+                // 更新下个坐标
+                tx = x + dx[d], ty = y + dy[d];
+            }
+
+            // 更新下个坐标
+            x = tx, y = ty;
+        }
+
+        return res;
+    }
+};
