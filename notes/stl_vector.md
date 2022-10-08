@@ -1,5 +1,4 @@
 * 变长数组，倍增的思想
-
 ```cpp
 size()  // 返回元素个数
 empty()  // 返回是否为空
@@ -14,6 +13,23 @@ begin()/end()
 insert(v.begin(), 0)  // 队首插入 0
 []
 支持比较运算，按字典序
+```
+
+* 初始化
+```cpp
+vector<int> vec;
+vector<int> vec(3);  // 3个元素，默认值为0
+vector<int> vce(5,3);  // 5个元素，值为3
+
+vector<int> vec1(vec);
+vector<int> vec1 = vec; 
+
+vector<int> vec = {1,2,3.0,4,5,6,7};
+vector<int> vce {1,2,3.0,4,5,6,7};
+
+vector<int> vec1(vec.begin()+2, vec.end()-1);
+
+
 ```
 
 * 妙用

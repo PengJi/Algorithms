@@ -12,6 +12,17 @@ string word;
 while(ss > word) vec.push_back(word);
 ```
 
+分割字符串 + 类型转换
+```cpp
+vector<string> vec = {"1:2", "3:4", "5:6"};
+int h, m;
+for(auto t: vec) {
+    sscanf(t.c_str(), "%d:%d", &h, &m);
+    cout << h << " " << m;
+}
+```
+
+
 字符串转换
 ```cpp
 int num = 10;
