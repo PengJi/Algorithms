@@ -24,3 +24,31 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    // 排序 + 处理特殊情况：计算末尾与开头的差距
+    int findMinDifference(vector<string>& timePoints) {
+        vector<int> hm;
+        int h, m;
+        // 将时间转换为分钟
+        for(auto t: timePoints) {
+            sscanf(t.c_str(), "%d:%d", &h, &m);
+            hm.push_back(h*60+m);
+        }
+
+        // 排序
+        sort(hm.begin(), hm.end());
+
+        int res = INT_MAX;
+        // 计算最小值
+        for(int i = 1; i < hm.size(); i++) {
+            res = min(res, hm[i] - hm[i-1]);
+        }
+        // 计算末尾与开头的差距
+        res = min(res, 24*60 - hm.back() + hm[0]);
+
+        return res;
+    }
+};
+
