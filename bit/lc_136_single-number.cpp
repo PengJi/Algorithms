@@ -20,6 +20,7 @@ public:
 
 class Solution {
 public:
+    // 异或运算
     int singleNumber(vector<int>& nums) {
         int res = 0;
         for(auto n: nums) res ^= n;
