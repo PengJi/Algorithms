@@ -26,6 +26,7 @@ public:
 
 class Solution {
 public:
+    // 排序，使用双指针对比
     int findContentChildren(vector<int>& g, vector<int>& s) {
         sort(g.begin(), g.end());
         sort(s.begin(), s.end());
