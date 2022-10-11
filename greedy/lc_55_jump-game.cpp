@@ -36,10 +36,13 @@ public:
 
 class Solution {
 public:
+    // 中心思想：对于某一个位置，判断能够到达该位置
     bool canJump(vector<int>& nums) {
-        for(int i = 0, j = 0; i < nums.size(); i++) {
-            if(j < i) return false;
-            j = max(j, i + nums[i]);
+        int jump_max = 0;
+        for(int i = 0; i < nums.size(); i++) {
+            // 如果能跳跃的最远距离小于当前的位置，则一定跳不到终点
+            if(jump_max < i) return false;
+            jump_max = max(jump_max, i + nums[i]);
         }
 
         return true;
