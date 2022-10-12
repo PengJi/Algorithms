@@ -56,3 +56,34 @@ public:
         }
     }
 };
+
+class Solution {
+public:
+    // 双指针遍历
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode(0);  // 合并链表头结点的前一个节点，方便返回头结点
+        ListNode* tail = dummy;  // 合并链表尾结点
+
+        // 比较大小并串联链表
+        while(l1 && l2) {
+            if(l1->val < l2->val) {
+                tail->next = l1;
+                l1 = l1 -> next;
+            } else {
+                tail->next = l2;
+                l2 = l2 -> next;
+            }
+
+            tail = tail->next;
+        }
+
+        // 还有未合并的链表
+        tail -> next = l1 ? l1 : l2;
+
+        // 合并链表的头结点
+        ListNode* res = dummy->next;
+        delete dummy;
+        return res;
+    }
+};
+
