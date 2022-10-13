@@ -28,6 +28,7 @@ class Solution {
 public:
     int jump(vector<int>& nums) {
         int n = nums.size();
+        // 状态数组
         vector<int> f(n);
 
         for(int i = 1, j = 0; i < n; i++) {

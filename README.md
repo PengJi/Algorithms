@@ -134,18 +134,130 @@ double bsearch_3(double l, double r)
 - [x] [33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)  
 - [x] [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)  
 - [x] [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)  
+ 
 
-
-# 启发式搜索（`A*`）
-启发式函数： `h(n)`，它用来评价哪些结点最有希望的是一个我们要找的结点，
-`h(n)` 会返回一个非负实数,也可以认为是从结点n的目标结点路径的估计成本。
-
-启发式函数是一种告知搜索方向的方法。它提供了一种明智的方法来猜测哪个邻居结点会导向一个目标。
+# 队列
 
 ## 题目
-- [x] [1091. 二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)  
-- [x] [773. 滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)  
-- [x] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)  
+- [x] [239. 滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/) 
+
+
+# 栈
+
+## 题目
+- [x] [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
+
+
+# 字符串
+
+## 字符串基础问题
+- [x] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
+- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
+- [x] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
+- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
+
+## 字符串操作问题
+- [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
+- [x] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
+- [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
+- [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
+- [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+- [x] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
+
+## 异位词问题
+- [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
+- [x] [49. 字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
+- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
+
+## 回文串问题
+- [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
+- [x] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+## 最长子串、子序列问题
+- [x] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
+- [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+## 字符串 + DP 问题
+- [x] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
+- [x] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
+- [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
+
+
+# 树
+## 二叉树结构体
+```python
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+```
+
+```c++
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+}
+```
+
+```java
+public class TreeNode {
+    public int val;
+    public TreeNode left, right;
+    public TreeNode(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+```
+
+## 二叉树遍历
+[二叉树遍历(先序、中序、后序)](https://www.jianshu.com/p/456af5480cee)
+```python
+def preorder(self, root):
+    if root:
+        self.traverse_path.append(root.val)
+        self.preorder(root.left)
+        self.preorder(root.right)
+
+def inorder(self, root):
+    if root:
+        self.inorder(root.left)
+        self.traverse_path.append(root.val)
+        self.inorder(root.right)
+
+def postorder(self, root):
+    if root:
+        self.postorder(root.left)
+        self.postorder(root.right)
+        self.traverse_path.append(root.val)
+```
+
+## 二叉树示例
+[https://visualgo.net/zh/bst](https://visualgo.net/zh/bst)
+
+# 题目
+- [x] [144. 二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)  
+- [x] [589. N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)  
+- [x] [429. N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)  
+- [x] [590. N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/)  
+- [x] [297. 二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
+- [x] [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+
+# 红黑树
+红黑树是一种近似平衡的二叉搜索树（Binary Search Tree），它能够确保任何一个结点的左右子树的高度差小于两倍。
+满足以下条件：
+* 每个节点要么是红色，要么是黑色
+* 根节点是黑色
+* 每个叶结点（nil节点，空节点）是黑色的
+* 不能有相邻接的两个红色节点
+* 从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点
 
 
 # 字典树
@@ -238,6 +350,18 @@ def BFS(graph, start, end):
 - [x] [433. 最小基因变化](https://leetcode-cn.com/problems/minimum-genetic-mutation/)
 
 
+# 启发式搜索（`A*`）
+启发式函数： `h(n)`，它用来评价哪些结点最有希望的是一个我们要找的结点，
+`h(n)` 会返回一个非负实数,也可以认为是从结点n的目标结点路径的估计成本。
+
+启发式函数是一种告知搜索方向的方法。它提供了一种明智的方法来猜测哪个邻居结点会导向一个目标。
+
+## 题目
+- [x] [1091. 二进制矩阵中的最短路径](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)  
+- [x] [773. 滑动谜题](https://leetcode-cn.com/problems/sliding-puzzle/)  
+- [x] [37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/) 
+
+
 # 回溯法
 回溯法采用试错的思想，它尝试分步的去解决一个问题。
 在分步解决问题的过程中，当它通过尝试发现现有的分步答案不能得到有效的正确的解答的时候，它将取消上一步甚至是上几步的计算，再通过其它的可能的分步解答再次尝试寻找问题的答案。  
@@ -300,7 +424,6 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 * 明确 dp[i] 应该表示什么（二维情况：dp[i][j]）； 
 * 确定初始条件，如：dp[0]。   
 * 根据 dp[i] 和 dp[i-1] 的关系得出状态转移方程； 
-
 
 ## 题目
 - [x] [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  
@@ -473,127 +596,18 @@ def recursion(level, param1, param2, ...):
 - [x] [56. 合并区间](https://leetcode-cn.com/problems/merge-intervals/)
 - [x] [493. 翻转对](https://leetcode-cn.com/problems/reverse-pairs/)  
 
-# 队列
 
-## 题目
-- [x] [239. 滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/) 
-
-
-# 栈
-
-## 题目
-- [x] [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
-
-
-# 字符串
-
-## 字符串基础问题
-- [x] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
-- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
-- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
-- [x] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
-- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
-
-## 字符串操作问题
-- [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
-- [x] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
-- [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
-- [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
-- [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
-- [x] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
-
-## 异位词问题
-- [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
-- [x] [49. 字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
-- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
-
-## 回文串问题
-- [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
-- [x] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
-- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
-
-## 最长子串、子序列问题
-- [x] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
-- [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
-- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
-
-## 字符串 + DP 问题
-- [x] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
-- [x] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
-- [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
-
-
-# 树
-## 二叉树结构体
-```python
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-```
-
-```c++
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-}
-```
-
-```java
-public class TreeNode {
-    public int val;
-    public TreeNode left, right;
-    public TreeNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
-}
-```
-
-## 二叉树遍历
-[二叉树遍历(先序、中序、后序)](https://www.jianshu.com/p/456af5480cee)
-```python
-def preorder(self, root):
-    if root:
-        self.traverse_path.append(root.val)
-        self.preorder(root.left)
-        self.preorder(root.right)
-
-def inorder(self, root):
-    if root:
-        self.inorder(root.left)
-        self.traverse_path.append(root.val)
-        self.inorder(root.right)
-
-def postorder(self, root):
-    if root:
-        self.postorder(root.left)
-        self.postorder(root.right)
-        self.traverse_path.append(root.val)
-```
-
-## 二叉树示例
-[https://visualgo.net/zh/bst](https://visualgo.net/zh/bst)
-
-# 题目
-- [x] [144. 二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)  
-- [x] [589. N叉树的前序遍历](https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/)  
-- [x] [429. N叉树的层序遍历](https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/)  
-- [x] [590. N叉树的后序遍历](https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/)  
-- [x] [297. 二叉树的序列化与反序列化](https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/)
-- [x] [105. 从前序与中序遍历序列构造二叉树](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
-
-# 红黑树
-红黑树是一种近似平衡的二叉搜索树（Binary Search Tree），它能够确保任何一个结点的左右子树的高度差小于两倍。
-满足以下条件：
-* 每个节点要么是红色，要么是黑色
-* 根节点是黑色
-* 每个叶结点（nil节点，空节点）是黑色的
-* 不能有相邻接的两个红色节点
-* 从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点
+# 经典习题
+爬楼梯、硬币兑换  
+括号匹配、括号生成
+直方图最大面积、滑动窗口  
+二叉树遍历、分层输出树、判断二叉排序树  
+股票买卖、打家劫舍
+字符串编辑距离、最长上升子序列、最长公共子序列  
+异位词（判断和归类）、回文串（最大回文串）
+regex和通配符匹配  
+N皇后  
+高级数据结构（Trie、BloomFilter、LRU cache、etc）
 
 
 # references
