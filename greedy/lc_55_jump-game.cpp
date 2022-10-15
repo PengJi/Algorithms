@@ -36,7 +36,7 @@ public:
 
 class Solution {
 public:
-    // 中心思想：对于某一个位置，判断能够到达该位置
+    // 贪心算法：对于某一个位置，判断能够到达该位置
     bool canJump(vector<int>& nums) {
         int jump_max = 0;
         for(int i = 0; i < nums.size(); i++) {

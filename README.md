@@ -1,10 +1,47 @@
-# 数组
+# 模拟
 - [x] [15. 三数之和](https://leetcode-cn.com/problems/3sum/)  
 - [x] [26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)  
 - [x] [189. 旋转数组](https://leetcode-cn.com/problems/rotate-array/)  
 - [x] [88. 合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)  
 - [x] [66. 加一](https://leetcode-cn.com/problems/plus-one/)  
 - [x] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/) 
+
+# 字符串
+
+## 字符串基础问题
+- [x] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
+- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
+- [x] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
+- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
+
+## 字符串操作问题
+- [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
+- [x] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
+- [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
+- [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
+- [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+- [x] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
+
+## 异位词问题
+- [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
+- [x] [49. 字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
+- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
+
+## 回文串问题
+- [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
+- [x] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+## 最长子串、子序列问题
+- [x] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
+- [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
+- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+## 字符串 + DP 问题
+- [x] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
+- [x] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
+- [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
 
 
 # 哈希表
@@ -148,44 +185,6 @@ double bsearch_3(double l, double r)
 - [x] [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
 
 
-# 字符串
-
-## 字符串基础问题
-- [x] [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
-- [x] [709. 转换成小写字母](https://leetcode-cn.com/problems/to-lower-case/)
-- [x] [58. 最后一个单词的长度](https://leetcode-cn.com/problems/length-of-last-word/)
-- [x] [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/)
-- [x] [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
-
-## 字符串操作问题
-- [x] [14. 最长公共前缀](https://leetcode-cn.com/problems/longest-common-prefix/description/)
-- [x] [344. 反转字符串](https://leetcode-cn.com/problems/reverse-string/)
-- [x] [541. 反转字符串 II](https://leetcode-cn.com/problems/reverse-string-ii/)
-- [x] [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
-- [x] [557. 反转字符串中的单词 III](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
-- [x] [917. 仅仅反转字母](https://leetcode-cn.com/problems/reverse-only-letters/)
-
-## 异位词问题
-- [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
-- [x] [49. 字母异位词分组](https://leetcode-cn.com/problems/group-anagrams/)
-- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
-
-## 回文串问题
-- [x] [125. 验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
-- [x] [680. 验证回文字符串 Ⅱ](https://leetcode-cn.com/problems/valid-palindrome-ii/)
-- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
-
-## 最长子串、子序列问题
-- [x] [1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)
-- [x] [72. 编辑距离](https://leetcode-cn.com/problems/edit-distance/)
-- [x] [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
-
-## 字符串 + DP 问题
-- [x] [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
-- [x] [44. 通配符匹配](https://leetcode-cn.com/problems/wildcard-matching/)
-- [x] [115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)
-
-
 # 树
 ## 二叉树结构体
 ```python
@@ -275,6 +274,17 @@ Trie 树的核心思想是空间换时间。利用字符串的公共前缀来降
 ## 题目
 - [x] [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/#/description)  
 - [x] [212. 单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
+
+
+# 链表
+
+## 题目
+- [x] [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)  
+- [x] [24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)  
+- [x] [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)  
+- [x] [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)  
+- [x] [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
+- [x] [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)  
 
 
 # 深度优先搜索
@@ -481,16 +491,6 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [55. 跳跃游戏](https://leetcode-cn.com/problems/jump-game/)  
 - [x] [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)
 
-
-# 链表
-
-## 题目
-- [x] [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)  
-- [x] [24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)  
-- [x] [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)  
-- [x] [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)  
-- [x] [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
-- [x] [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)  
 
 # 常用方法
 
