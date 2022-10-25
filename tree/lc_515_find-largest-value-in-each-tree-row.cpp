@@ -1,7 +1,5 @@
 /**
  * 515. 在每个树行中找最大值
- * 您需要在二叉树的每一行中找到最大的值。
- * 
  * https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/
  */
 
@@ -43,5 +41,29 @@ public:
         }
 
         return res;
+    }
+};
+
+class Solution {
+public:
+    // 这个算法比较巧妙，一般需要借助一个哈希表记录每一行的最大值，但这里直接使用结果数组当作哈希表。
+    vector<int> largestValues(TreeNode* root) {
+        vector<int> res;  // 充当哈希表的作用，存储每一行的最大值。
+        dfs(root, 0, res);
+        return res;
+    }
+
+    void dfs(TreeNode* node, int dep, vector<int>& vec) {
+        // 递归返回条件
+        if(node == NULL) return;
+
+        // 比较巧妙，如果结果数组的大小与当前行相等，则说明当前行没有元素，将元素加入当前行。
+        if(vec.size() == dep) vec.push_back(node->val);
+        // 比较当前元素的当前行的最大值
+        if(node->val > vec[dep]) vec[dep] = node->val;
+
+        // 遍历左子树和右子树
+        dfs(node->left, dep+1, vec);
+        dfs(node->right, dep+1, vec);
     }
 };
