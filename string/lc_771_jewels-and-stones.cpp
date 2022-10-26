@@ -22,3 +22,17 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    // 哈希表
+    int numJewelsInStones(string jewels, string stones) {
+        // 存储类型，直接初始化
+        unordered_set<char> st(jewels.begin(), jewels.end());
+        int res = 0;
+        // 统计个数
+        for(auto c: stones) res += st.count(c);
+
+        return res;
+    }
+};
