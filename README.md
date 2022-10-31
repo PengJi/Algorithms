@@ -1,3 +1,6 @@
+# 训练
+思路 -> 将思路转换为代码
+
 # 模拟
 - [x] [15. 三数之和](https://leetcode-cn.com/problems/3sum/)  
 - [x] [26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)  

@@ -35,3 +35,29 @@ public:
         return dp[len1][len2];
     }
 };
+
+class Solution {
+public:
+    // 状态表示：f(i,j) 表示第一个字符串的前 i 个字符和第二个字符串的前 j 个字符的最长公共子序列。这里的字符串的下标假设从 1 开始。
+    // 初始状态：f(0,j)=f(i,0)=0f(0,j)=f(i,0)=0，表示空串不和任何字符串有公共子序列。
+    // 状态转移：1. 如果 s1(i)==s2(j) 则 f(i,j)=max(f(i−1,j),f(i,j−1),f(i−1,j−1)+1)f(i,j)，
+    //          表示既可以忽视 s1(i)，也可以忽视 s2(j)，也可以让 s1(i) 和 s2(j) 匹配。
+    //          2. 否则，f(i,j)=max(f(i−1,j),f(i,j−1)f(i,j)，表示只能忽视 s1(i) 或忽视 s2(j)。
+    // 答案为：f(n, m)
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size(), m = text2.size();
+        vector<vector<int>> f(n+1, vector<int>(m+1, 0));
+
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= m; j++) {
+                if(text1[i-1] == text2[j-1]) {
+                    f[i][j] = max(f[i-1][j-1]+1, max(f[i-1][j], f[i][j-1]));
+                } else {
+                    f[i][j] = max(f[i-1][j], f[i][j-1]);
+                }
+            }
+        }
+
+        return f[n][m];
+    }
+};
