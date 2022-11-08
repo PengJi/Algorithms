@@ -16,3 +16,29 @@ public:
         return true;
     }
 };
+
+class Solution {
+public:
+    // 两个哈希表存储映关系
+    // 上面的算法比较简洁
+    bool isIsomorphic(string s, string t) {
+        if(s.size() != t.size()) return false;
+        unordered_map<char, char> st, ts;
+        
+        for(int i = 0; i < s.size(); i++) {
+            if(st.count(s[i])) {
+                if(st[s[i]] != t[i]) return false;
+            } else {
+                st[s[i]] = t[i];
+            }
+            
+            if(ts.count(t[i])) {
+                if(ts[t[i]] != s[i]) return false;
+            } else {
+                ts[t[i]] = s[i];
+            }
+        }
+
+        return true;
+    }
+};
