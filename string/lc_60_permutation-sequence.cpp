@@ -32,3 +32,33 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    // 从小到大依次确定每一位
+    string getPermutation(int n, int k) {
+        string res;
+
+        // 表示当前位是否用过
+        vector<bool> vec(n);
+
+        for(int i = 0; i < n; i++) {
+
+            int f = 1;
+            for(int j = 1; j < n - i; j++) f *= j;
+
+            for(int j = 0; j < n; j++) {
+                if(!vec[j]) {  // 如果当前为没有被使用过
+                    if(k <= f) {  // 
+                        res += to_string(j+1);
+                        vec[j] = true;
+                        break;
+                    }
+                    k -= f;
+                }
+            }
+        }
+
+        return res;
+    }
+};
