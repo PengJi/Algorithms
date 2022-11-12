@@ -38,3 +38,25 @@ public:
         return check(o->left, t->left) && check(o->right, t->right);
     }
 };
+
+class Solution {
+public:
+    // 对于 s 的每一个结点，都尝试与 t 进行匹配，此操作可递归执行
+    bool dfs(TreeNode *s, TreeNode *t) {
+        if (!s) return false;
+        return isSame(s, t) || dfs(s -> left, t) || dfs(s -> right, t);
+    }
+
+    // 匹配时，仍然需要递归匹配当前 s 中的子树和 t 的每一个结点
+    bool isSame(TreeNode *s, TreeNode *t) {
+        if (!s && !t) return true;
+        if (!s && t || s && !t || s -> val != t -> val)
+            return false;
+
+        return isSame(s -> left, t -> left) && isSame(s -> right, t -> right);
+    }
+
+    bool isSubtree(TreeNode* s, TreeNode* t) {
+        return dfs(s, t);
+    }
+};
