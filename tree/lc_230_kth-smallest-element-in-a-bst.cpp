@@ -34,3 +34,24 @@ public:
         dfs(root->right);
     }
 };
+
+class Solution {
+public:
+    // 中序遍历
+    // 直接按照中序遍历规则遍历整棵二叉搜索树，并用数组记录结点的值
+    void dfs(TreeNode* cur, vector<int>& vals) {
+        if (!cur) return;
+
+        dfs(cur -> left, vals);
+        vals.push_back(cur->val);
+        dfs(cur->right, vals);
+    }
+
+    int kthSmallest(TreeNode* root, int k) {
+        vector<int> vals;
+        dfs(root, vals);
+
+        // 输出第 k 个节点
+        return vals[k - 1];
+    }
+};
