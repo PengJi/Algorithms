@@ -5,6 +5,13 @@ int gcd(int a, int b) {
 }
 ```
 
+# 最小公倍数
+```cpp
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+```
+
 # 试除法判定质数
 ```cpp
 bool is_prime(int x) {
