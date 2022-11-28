@@ -1,6 +1,7 @@
 # 训练
 思路 -> 将思路转换为代码
 
+
 # 模拟
 - [x] [15. 三数之和](https://leetcode-cn.com/problems/3sum/)  
 - [x] [26. 删除排序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)  
@@ -8,6 +9,412 @@
 - [x] [88. 合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)  
 - [x] [66. 加一](https://leetcode-cn.com/problems/plus-one/)  
 - [x] [36. 有效的数独](https://leetcode-cn.com/problems/valid-sudoku/description/) 
+
+
+# 位运算
+
+## 位运算符
+|    含义   | 运算符 | 示例 |
+| ---------- | --- | --- | 
+| 左移 | << | 0011 => 0110 |
+| 右移 | >> | 0110 => 0011 | 
+| 按位或 | | | 0011 1011 => 1011 | 
+| 按位与 | & | 0011 & 1011 =>  0011 | 
+| 按位取反 | ~ | 0011 => 1100 | 
+| 按位异或（相同为零不同为一）| ^ | 0011 ^ 1011 => 1000 |
+
+## 位运算技巧
+1. 将 x 最右边的 n 位清零：`x & (~0 << n)`
+2. 获取 x 的第 n 位值（0 或者 1）： `(x >> n) & 1`
+3. 获取 x 的第 n 位的幂值：`x& (1 << n)`
+4. 仅将第 n 位置为 1：`x | (1 << n)`
+5. 仅将第 n 位置为 0：`x & (~ (1 << n))`
+6. 将 x 最高位至第 n 位（含）清零：`x & ((1 << n) -1)`
+7. 将第 n 位至第 0 位（含）清零：`x& (~ ((1 << (n + 1)) -1))`
+8. 运算特点
+异或运算：`x ^ 0 = x​ ， x ^ 1 = ~x`
+与运算：`x & 0 = 0 ， x & 1 = x`
+
+## 位运算示例
+1. 判断奇偶：  
+`x % 2 == 1` —> `(x & 1) == 1`  
+`x % 2 == 0` —> `(x & 1) == 0`
+
+2. 除2
+即： `x = x / 2;` —> `x >>= 1;`
+`mid = (left + right) / 2;` —> `mid = (left + right) >> 1;`
+
+3. 清零最低位的 1
+`X = X & (X-1)` 
+
+4. 得到最低位的 1
+`X & -X` 
+> 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形式是补码，就是反码 +1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的 lowbit 操作。
+反码加一则是补码（负数形式）：`~X + 1 = -X`
+
+
+5. 统计一个数中 1 的个数
+```cpp
+int cnt = 0;
+while(num) {
+    cnt += num & 1;
+    num >>= 1;
+}
+```
+
+## 题目
+- [x] [191. 为1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)  
+- [x] [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/)  
+- [x] [190. 颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)  
+- [x] [51. N皇后](https://leetcode-cn.com/problems/n-queens/description/)  
+- [x] [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
+
+
+# 二分查找
+
+## 整数二分算法
+将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，  
+其更新操作是 `r = mid` 或者 `l = mid + 1`，计算 `mid` 时不需要加 1。
+```cpp
+vector<int> arr(n);
+int l = 0, r = n - 1;
+int bsearch_1(int l, int r, int targe) {
+    while (l < r) {
+        int mid = l + r >> 1;
+        if (arr[mid] < target) l = mid + 1;
+        else r = mid;
+    }
+    return l;
+}
+// 如果没找到，则返回的下标是 l+1
+if (arr[l] != target) cout << "not found" << endl;
+```
+
+将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，  
+其更新操作是 `r = mid - 1` 或者 `l = mid`，此时为了防止死循环，计算mid时需要加1。
+```cpp
+vector<int> arr(n);
+int l = 0, r = n - 1;
+int bsearch_2(int l, int r, int target) {
+    while (l < r) {
+        int mid = l + r + 1 >> 1;
+        if (arr[mid] < target) l = mid;
+        else r = mid - 1;
+    }
+    return l;
+}
+if (arr[l] != target) cout << "not found" << endl;
+```
+
+## 浮点数二分算法
+```cpp
+bool check(double x) {/* ... */} // 检查x是否满足某种性质
+
+double bsearch_3(double l, double r)
+{
+    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
+    while (r - l > eps)
+    {
+        double mid = (l + r) / 2;
+        if (check(mid)) r = mid;
+        else l = mid;
+    }
+    return l;
+}
+```
+
+## 题目
+- [x] [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)  
+- [x] [367. 有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)  
+- [x] [33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)  
+- [x] [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)  
+- [x] [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)  
+
+
+# 双指针
+常见问题分类：  
+(1) 对于一个序列，用两个指针维护一段区间；  
+(2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作  
+
+1. 判断子序列
+   两个序列分别对应一个指针
+   ```cpp
+    int i = 0, j = 0;
+    while (i < n && j < m)
+    {
+        if (a[i] == b[j]) i++;
+        j++;
+    }
+   ```
+2. 最长连续不重复子序列
+   两个指针分别对应序列的首尾
+   ```cpp
+    for(int i = 0, j = 0; i < n; i++) {
+        int tmp = a[i];
+        b[tmp]++;
+        while(tmp > 1) {
+            b[tmp]--;
+            j++;
+        }
+        res = max(res, i-j+1);
+    }
+   ```
+3. [数组元素的目标和](https://www.acwing.com/problem/content/802/)
+   两个指针分别对应两个数组
+   ```cpp
+    for (int i = 0, j = m - 1; i < n; i ++ ){
+        while (j >= 0 && a[i] + b[j] > x) j -- ;
+        if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
+    }
+    ```
+
+
+# 滑动窗口
+- [x] [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+- [x] [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
+- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
+- [x] [567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)
+
+
+# 并查集
+用于组团、配对问题
+
+基本操作：  
+* makeSet(s)：建立一个新的并查集，其中包含 s 个单元素集合。
+* unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。
+* find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。
+
+- [x] [547. 朋友圈](https://leetcode-cn.com/problems/friend-circles/)
+- [x] [130. 被围绕的区域](https://leetcode-cn.com/problems/surrounded-regions/)
+- [x] [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) 
+
+
+# 前缀和
+原序列中从第 l 个数到第 r 个数的和
+
+## 一维前缀和
+`S[i] = a[1] + a[2] + ... a[i]`  
+`a[l] + ... + a[r] = S[r] - S[l - 1]`
+
+```cpp
+const int N = 100010;
+
+int n, m;
+int a[N], s[N];
+
+scanf("%d%d", &n, &m);
+for(int i = 1; i <= n; i++) scanf("%d", &a[i]);  // 初始化数组
+for(int i = 1; i <= n; i++) s[i] = s[i-1] + a[i];  // 初始化前缀和
+while(m--) {
+    int l, r;
+    scanf("%d%d", &l, &r);
+    printf("%d\n", s[r] - s[l - 1]);  // 计算区间和
+}
+```
+
+## 二维前缀和
+`S[i, j]` = 第i行j列格子左上部分所有元素的和,  
+以 `(x1, y1)` 为左上角，`(x2, y2)` 为右下角的子矩阵的和为：  
+`S[x2, y2] - S[x1 - 1, y2] - S[x2, y1 - 1] + S[x1 - 1, y1 - 1]`
+
+```cpp
+// 输出子矩阵中所有数的和
+const int N = 1010;
+
+int n, m, q;
+int s[N][N];
+
+scanf("%d%d%d", &n, &m, &q);
+
+for(int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        scanf("%d", &s[i][j]);  // 初始化数组
+
+for(int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        s[i][j] += s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1];  // 前缀和初始化
+
+while(q--) {
+    int x1, y1, x2, y2;
+    scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
+    printf("%d\n", s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]);  // 计算区间和
+}
+```
+
+
+# 差分
+序列中 `[l, r]` 之间的每个数加上 c
+差分数组和前缀和数组互为逆运算
+
+## 一维差分
+给区间 `[l, r]` 中的每个数加上c：`B[l] += c, B[r + 1] -= c`  
+
+```cpp
+const int N = 100010;
+
+int n, m;
+int a[N], b[N];  // a 为原数组，b 为差分数组，即 a 为 b 的前缀和数组
+
+void insert(int l, int r, int c) {  // 区间加 c
+    b[l] += c;
+    b[r + 1] -= c;
+}
+
+scanf("%d%d", &n, &m);
+for (int i = 1; i <= n; i ++ ) scanf("%d", &a[i]);  // 初始化原数组
+for (int i = 1; i <= n; i ++ ) insert(i, i, a[i]);  // 初始化差分数组
+
+while (m -- ) {
+    int l, r, c;
+    scanf("%d%d%d", &l, &r, &c);
+    insert(l, r, c);  // 区间加 c
+}
+
+for (int i = 1; i <= n; i ++ ) b[i] += b[i - 1];  // 从差分数组得出原数组
+for (int i = 1; i <= n; i ++ ) printf("%d ", b[i]);
+```
+
+## 二维差分矩阵
+将选中的子矩阵中的每个元素的值加上 c。
+给以 `(x1, y1)` 为左上角，`(x2, y2)` 为右下角的子矩阵中的所有元素加上c：  
+`S[x1, y1] += c, S[x2 + 1, y1] -= c, S[x1, y2 + 1] -= c, S[x2 + 1, y2 + 1] += c`
+
+```cpp
+const int N = 1010;
+
+int n, m, q;
+int a[N][N], b[N][N];
+
+void insert(int x1, int y1, int x2, int y2, int c) {  // 差分矩阵加 c
+    b[x1][y1] += c;
+    b[x2 + 1][y1] -= c;
+    b[x1][y2 + 1] -= c;
+    b[x2 + 1][y2 + 1] += c;
+}
+
+scanf("%d%d%d", &n, &m, &q);
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        scanf("%d", &a[i][j]);  // 初始换原数组
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        insert(i, j, i, j, a[i][j]);  // 初始化差分矩阵
+
+while (q -- ) {
+    int x1, y1, x2, y2, c;
+    cin >> x1 >> y1 >> x2 >> y2 >> c;
+    insert(x1, y1, x2, y2, c);  // 计算差分矩阵
+}
+
+for (int i = 1; i <= n; i ++ )
+    for (int j = 1; j <= m; j ++ )
+        b[i][j] += b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
+
+for (int i = 1; i <= n; i ++ ) {
+    for (int j = 1; j <= m; j ++ ) printf("%d ", b[i][j]);
+    puts("");
+}
+```
+
+
+# 高精度加法
+```cpp
+// C = A + B, A >= 0, B >= 0
+vector<int> add(vector<int> &A, vector<int> &B) {
+    if (A.size() < B.size()) return add(B, A);
+
+    vector<int> C;
+    int t = 0;
+    for (int i = 0; i < A.size(); i ++ ) {
+        t += A[i];
+        if (i < B.size()) t += B[i];
+        C.push_back(t % 10);
+        t /= 10;
+    }
+
+    if (t) C.push_back(t);
+    return C;
+}
+```
+
+
+# 高精度减法
+```cpp
+// C = A - B, 满足A >= B, A >= 0, B >= 0
+vector<int> sub(vector<int> &A, vector<int> &B) {
+    vector<int> C;
+    for (int i = 0, t = 0; i < A.size(); i ++ ) {
+        t = A[i] - t;
+        if (i < B.size()) t -= B[i];
+        C.push_back((t + 10) % 10);
+        if (t < 0) t = 1;
+        else t = 0;
+    }
+
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+    return C;
+}
+```
+
+
+# 高精度乘低精度
+```cpp
+// C = A * b, A >= 0, b >= 0
+vector<int> mul(vector<int> &A, int b) {
+    vector<int> C;
+
+    int t = 0;
+    for (int i = 0; i < A.size() || t; i ++ ) {
+        if (i < A.size()) t += A[i] * b;
+        C.push_back(t % 10);
+        t /= 10;
+    }
+
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+
+    return C;
+}
+```
+
+
+# 高精度除以低精度
+```cpp
+// A / b = C ... r, A >= 0, b > 0
+vector<int> div(vector<int> &A, int b, int &r) {
+    vector<int> C;
+    r = 0;
+    for (int i = A.size() - 1; i >= 0; i -- ) {
+        r = r * 10 + A[i];
+        C.push_back(r / b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());
+    while (C.size() > 1 && C.back() == 0) C.pop_back();
+    return C;
+}
+```
+
+
+# 离散化
+```cpp
+vector<int> alls; // 存储所有待离散化的值
+sort(alls.begin(), alls.end()); // 将所有值排序
+alls.erase(unique(alls.begin(), alls.end()), alls.end());   // 去掉重复元素
+
+// 二分求出x对应的离散化的值
+int find(int x) {  // 找到第一个大于等于x的位置
+    int l = 0, r = alls.size() - 1;
+    while (l < r) {
+        int mid = l + r >> 1;
+        if (alls[mid] >= x) r = mid;
+        else l = mid + 1;
+    }
+    return r + 1; // 映射到1, 2, ...n
+}
+```
+
 
 # 字符串
 
@@ -98,6 +505,14 @@ void remove(int a) {
 }
 ```
 
+## 题目
+- [x] [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)  
+- [x] [24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)  
+- [x] [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)  
+- [x] [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)  
+- [x] [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
+- [x] [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/) 
+
 
 # 栈
 ```cpp
@@ -117,6 +532,11 @@ stk[tt];
 if (tt > 0) {
 }
 ```
+
+## 题目
+- [x] [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
+
+
 
 # 队列
 ## 普通队列
@@ -249,7 +669,7 @@ int query(char *str) {
 
 ## 朴素并查集
 ```cpp
-int p[N]; //存储每个点的祖宗节点
+int p[N]; // 存储每个点的祖宗节点
 
 // 返回x的祖宗节点
 int find(int x) {
@@ -267,7 +687,7 @@ p[find(a)] = find(b);
 ## 维护size的并查集
 ```cpp
 int p[N], size[N];
-//p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义，表示祖宗节点所在集合中的点的数量
+// p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义，表示祖宗节点所在集合中的点的数量
 
 // 返回x的祖宗节点
 int find(int x) {
@@ -858,148 +1278,9 @@ for (int i = 1; i <= n1; i ++ ) {
 ```
 
 
-# 位运算
-
-## 位运算符
-|    含义   | 运算符 | 示例 |
-| ---------- | --- | --- | 
-| 左移 | << | 0011 => 0110 |
-| 右移 | >> | 0110 => 0011 | 
-| 按位或 | | | 0011 1011 => 1011 | 
-| 按位与 | & | 0011 & 1011 =>  0011 | 
-| 按位取反 | ~ | 0011 => 1100 | 
-| 按位异或（相同为零不同为一）| ^ | 0011 ^ 1011 => 1000 |
-
-## 位运算技巧
-1. 将 x 最右边的 n 位清零：`x & (~0 << n)`
-2. 获取 x 的第 n 位值（0 或者 1）： `(x >> n) & 1`
-3. 获取 x 的第 n 位的幂值：`x& (1 << n)`
-4. 仅将第 n 位置为 1：`x | (1 << n)`
-5. 仅将第 n 位置为 0：`x & (~ (1 << n))`
-6. 将 x 最高位至第 n 位（含）清零：`x & ((1 << n) -1)`
-7. 将第 n 位至第 0 位（含）清零：`x& (~ ((1 << (n + 1)) -1))`
-8. 运算特点
-异或运算：`x ^ 0 = x​ ， x ^ 1 = ~x`
-与运算：`x & 0 = 0 ， x & 1 = x`
-
-## 位运算示例
-1. 判断奇偶：  
-`x % 2 == 1` —> `(x & 1) == 1`  
-`x % 2 == 0` —> `(x & 1) == 0`
-
-2. 除2
-即： `x = x / 2;` —> `x >>= 1;`
-`mid = (left + right) / 2;` —> `mid = (left + right) >> 1;`
-
-3. 清零最低位的 1
-`X = X & (X-1)` 
-
-4. 得到最低位的 1
-`X & -X` 
-> 根据计算机负数表示的特点，如一个数字原码是 10001000，他的负数表示形式是补码，就是反码 +1，反码是 01110111，加一则是 01111000，二者按位与得到了 1000，就是我们想要的 lowbit 操作。
-反码加一则是补码（负数形式）：`~X + 1 = -X`
-
-
-5. 统计一个数中 1 的个数
-```cpp
-int cnt = 0;
-while(num) {
-    cnt += num & 1;
-    num >>= 1;
-}
-```
-
-## 题目
-- [x] [191. 为1的个数](https://leetcode-cn.com/problems/number-of-1-bits/)  
-- [x] [231. 2的幂](https://leetcode-cn.com/problems/power-of-two/)  
-- [x] [190. 颠倒二进制位](https://leetcode-cn.com/problems/reverse-bits/)  
-- [x] [51. N皇后](https://leetcode-cn.com/problems/n-queens/description/)  
-- [x] [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
-
-
-# 二分查找
-
-## 整数二分算法
-将区间 `[l, r]` 划分成 `[l, mid]` 和 `[mid + 1, r]` 时，  
-其更新操作是 `r = mid` 或者 `l = mid + 1`，计算 `mid` 时不需要加 1。
-```cpp
-vector<int> arr(n);
-int l = 0, r = n - 1;
-int bsearch_1(int l, int r, int targe) {
-    while (l < r) {
-        int mid = l + r >> 1;
-        if (arr[mid] < target) l = mid + 1;
-        else r = mid;
-    }
-    return l;
-}
-// 如果没找到，则返回的下标是 l+1
-if (arr[l] != target) cout << "not found" << endl;
-```
-
-将区间 `[l, r]` 划分成 `[l, mid - 1]` 和 `[mid, r]` 时，  
-其更新操作是 `r = mid - 1` 或者 `l = mid`，此时为了防止死循环，计算mid时需要加1。
-```cpp
-vector<int> arr(n);
-int l = 0, r = n - 1;
-int bsearch_2(int l, int r, int target) {
-    while (l < r) {
-        int mid = l + r + 1 >> 1;
-        if (arr[mid] < target) l = mid;
-        else r = mid - 1;
-    }
-    return l;
-}
-if (arr[l] != target) cout << "not found" << endl;
-```
-
-## 浮点数二分算法
-```cpp
-bool check(double x) {/* ... */} // 检查x是否满足某种性质
-
-double bsearch_3(double l, double r)
-{
-    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
-    while (r - l > eps)
-    {
-        double mid = (l + r) / 2;
-        if (check(mid)) r = mid;
-        else l = mid;
-    }
-    return l;
-}
-```
-
-## 题目
-- [x] [69. x 的平方根](https://leetcode-cn.com/problems/sqrtx/)  
-- [x] [367. 有效的完全平方数](https://leetcode-cn.com/problems/valid-perfect-square/)  
-- [x] [33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)  
-- [x] [74. 搜索二维矩阵](https://leetcode-cn.com/problems/search-a-2d-matrix/)  
-- [x] [153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)  
- 
-
-# 队列
-
-## 题目
-- [x] [239. 滑动窗口最大值](https://leetcode-cn.com/problems/sliding-window-maximum/) 
-
-
-# 栈
-
-## 题目
-- [x] [84. 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
-
-
 # 树
 ## 二叉树结构体
-```python
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
-```
-
-```c++
+```cpp
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -1008,17 +1289,6 @@ struct TreeNode {
 }
 ```
 
-```java
-public class TreeNode {
-    public int val;
-    public TreeNode left, right;
-    public TreeNode(int val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-    }
-}
-```
 
 ## 二叉树遍历
 [二叉树遍历(先序、中序、后序)](https://www.jianshu.com/p/456af5480cee)
@@ -1079,17 +1349,7 @@ Trie 树的核心思想是空间换时间。利用字符串的公共前缀来降
 ## 题目
 - [x] [208. 实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/#/description)  
 - [x] [212. 单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
-
-
-# 链表
-
-## 题目
-- [x] [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)  
-- [x] [24. 两两交换链表中的节点](https://leetcode.cn/problems/swap-nodes-in-pairs/)  
-- [x] [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)  
-- [x] [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)  
-- [x] [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/)
-- [x] [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)  
+ 
 
 
 # 深度优先搜索
@@ -1297,69 +1557,6 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 - [x] [45. 跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)
 
 
-
-## 双指针
-常见问题分类：  
-(1) 对于一个序列，用两个指针维护一段区间；  
-(2) 对于两个序列，维护某种次序，比如归并排序中合并两个有序序列的操作  
-
-1. 判断子序列
-   两个序列分别对应一个指针
-   ```cpp
-    int i = 0, j = 0;
-    while (i < n && j < m)
-    {
-        if (a[i] == b[j]) i++;
-        j++;
-    }
-   ```
-2. 最长连续不重复子序列
-   两个指针分别对应序列的首尾
-   ```cpp
-    for(int i = 0, j = 0; i < n; i++) {
-        int tmp = a[i];
-        b[tmp]++;
-        while(tmp > 1) {
-            b[tmp]--;
-            j++;
-        }
-        res = max(res, i-j+1);
-    }
-   ```
-3. [数组元素的目标和](https://www.acwing.com/problem/content/802/)
-   两个指针分别对应两个数组
-   ```cpp
-    for (int i = 0, j = m - 1; i < n; i ++ ){
-        while (j >= 0 && a[i] + b[j] > x) j -- ;
-        if (j >= 0 && a[i] + b[j] == x) cout << i << ' ' << j << endl;
-    }
-    ```
-
-## 滑动窗口
-- [x] [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
-- [x] [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
-- [x] [438. 找到字符串中所有字母异位词](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
-- [x] [567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)
-
-## 单调栈
-
-## 并查集
-用于组团、配对问题
-
-基本操作：  
-* makeSet(s)：建立一个新的并查集，其中包含 s 个单元素集合。
-* unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。
-* find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。
-
-- [x] [547. 朋友圈](https://leetcode-cn.com/problems/friend-circles/)
-- [x] [130. 被围绕的区域](https://leetcode-cn.com/problems/surrounded-regions/)
-- [x] [200. 岛屿数量](https://leetcode-cn.com/problems/number-of-islands/) 
-
-## LRU
-
-- [x] [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/#/)
-
-
 # 递归
 ```python
 def recursion(level, param1, param2, ...): 
@@ -1392,240 +1589,6 @@ def recursion(level, param1, param2, ...):
 - [x] [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)  、
 
 
-
-###
-
-
-# 前缀和
-原序列中从第 l 个数到第 r 个数的和
-
-## 一维前缀和
-`S[i] = a[1] + a[2] + ... a[i]`  
-`a[l] + ... + a[r] = S[r] - S[l - 1]`
-
-```cpp
-const int N = 100010;
-
-int n, m;
-int a[N], s[N];
-
-scanf("%d%d", &n, &m);
-for(int i = 1; i <= n; i++) scanf("%d", &a[i]);  // 初始化数组
-for(int i = 1; i <= n; i++) s[i] = s[i-1] + a[i];  // 初始化前缀和
-while(m--) {
-    int l, r;
-    scanf("%d%d", &l, &r);
-    printf("%d\n", s[r] - s[l - 1]);  // 计算区间和
-}
-```
-
-## 二维前缀和
-`S[i, j]` = 第i行j列格子左上部分所有元素的和,  
-以 `(x1, y1)` 为左上角，`(x2, y2)` 为右下角的子矩阵的和为：  
-`S[x2, y2] - S[x1 - 1, y2] - S[x2, y1 - 1] + S[x1 - 1, y1 - 1]`
-
-```cpp
-// 输出子矩阵中所有数的和
-const int N = 1010;
-
-int n, m, q;
-int s[N][N];
-
-scanf("%d%d%d", &n, &m, &q);
-
-for(int i = 1; i <= n; i ++ )
-    for (int j = 1; j <= m; j ++ )
-        scanf("%d", &s[i][j]);  // 初始化数组
-
-for(int i = 1; i <= n; i ++ )
-    for (int j = 1; j <= m; j ++ )
-        s[i][j] += s[i - 1][j] + s[i][j - 1] - s[i - 1][j - 1];  // 前缀和初始化
-
-while(q--) {
-    int x1, y1, x2, y2;
-    scanf("%d%d%d%d", &x1, &y1, &x2, &y2);
-    printf("%d\n", s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]);  // 计算区间和
-}
-```
-
-
-# 差分
-序列中 `[l, r]` 之间的每个数加上 c
-差分数组和前缀和数组互为逆运算
-
-## 一维差分
-给区间 `[l, r]` 中的每个数加上c：`B[l] += c, B[r + 1] -= c`  
-
-```cpp
-const int N = 100010;
-
-int n, m;
-int a[N], b[N];  // a 为原数组，b 为差分数组，即 a 为 b 的前缀和数组
-
-void insert(int l, int r, int c) {  // 区间加 c
-    b[l] += c;
-    b[r + 1] -= c;
-}
-
-scanf("%d%d", &n, &m);
-for (int i = 1; i <= n; i ++ ) scanf("%d", &a[i]);  // 初始化原数组
-for (int i = 1; i <= n; i ++ ) insert(i, i, a[i]);  // 初始化差分数组
-
-while (m -- ) {
-    int l, r, c;
-    scanf("%d%d%d", &l, &r, &c);
-    insert(l, r, c);  // 区间加 c
-}
-
-for (int i = 1; i <= n; i ++ ) b[i] += b[i - 1];  // 从差分数组得出原数组
-for (int i = 1; i <= n; i ++ ) printf("%d ", b[i]);
-```
-
-## 二维差分矩阵
-将选中的子矩阵中的每个元素的值加上 c。
-给以 `(x1, y1)` 为左上角，`(x2, y2)` 为右下角的子矩阵中的所有元素加上c：  
-`S[x1, y1] += c, S[x2 + 1, y1] -= c, S[x1, y2 + 1] -= c, S[x2 + 1, y2 + 1] += c`
-
-```cpp
-const int N = 1010;
-
-int n, m, q;
-int a[N][N], b[N][N];
-
-void insert(int x1, int y1, int x2, int y2, int c) {  // 差分矩阵加 c
-    b[x1][y1] += c;
-    b[x2 + 1][y1] -= c;
-    b[x1][y2 + 1] -= c;
-    b[x2 + 1][y2 + 1] += c;
-}
-
-scanf("%d%d%d", &n, &m, &q);
-
-for (int i = 1; i <= n; i ++ )
-    for (int j = 1; j <= m; j ++ )
-        scanf("%d", &a[i][j]);  // 初始换原数组
-
-for (int i = 1; i <= n; i ++ )
-    for (int j = 1; j <= m; j ++ )
-        insert(i, j, i, j, a[i][j]);  // 初始化差分矩阵
-
-while (q -- ) {
-    int x1, y1, x2, y2, c;
-    cin >> x1 >> y1 >> x2 >> y2 >> c;
-    insert(x1, y1, x2, y2, c);  // 计算差分矩阵
-}
-
-for (int i = 1; i <= n; i ++ )
-    for (int j = 1; j <= m; j ++ )
-        b[i][j] += b[i - 1][j] + b[i][j - 1] - b[i - 1][j - 1];
-
-for (int i = 1; i <= n; i ++ ) {
-    for (int j = 1; j <= m; j ++ ) printf("%d ", b[i][j]);
-    puts("");
-}
-```
-
-
-# 高精度加法
-```cpp
-// C = A + B, A >= 0, B >= 0
-vector<int> add(vector<int> &A, vector<int> &B) {
-    if (A.size() < B.size()) return add(B, A);
-
-    vector<int> C;
-    int t = 0;
-    for (int i = 0; i < A.size(); i ++ ) {
-        t += A[i];
-        if (i < B.size()) t += B[i];
-        C.push_back(t % 10);
-        t /= 10;
-    }
-
-    if (t) C.push_back(t);
-    return C;
-}
-```
-
-
-# 高精度减法
-```cpp
-// C = A - B, 满足A >= B, A >= 0, B >= 0
-vector<int> sub(vector<int> &A, vector<int> &B) {
-    vector<int> C;
-    for (int i = 0, t = 0; i < A.size(); i ++ ) {
-        t = A[i] - t;
-        if (i < B.size()) t -= B[i];
-        C.push_back((t + 10) % 10);
-        if (t < 0) t = 1;
-        else t = 0;
-    }
-
-    while (C.size() > 1 && C.back() == 0) C.pop_back();
-    return C;
-}
-```
-
-
-# 高精度乘低精度
-```cpp
-// C = A * b, A >= 0, b >= 0
-vector<int> mul(vector<int> &A, int b) {
-    vector<int> C;
-
-    int t = 0;
-    for (int i = 0; i < A.size() || t; i ++ ) {
-        if (i < A.size()) t += A[i] * b;
-        C.push_back(t % 10);
-        t /= 10;
-    }
-
-    while (C.size() > 1 && C.back() == 0) C.pop_back();
-
-    return C;
-}
-```
-
-
-# 高精度除以低精度
-```cpp
-// A / b = C ... r, A >= 0, b > 0
-vector<int> div(vector<int> &A, int b, int &r) {
-    vector<int> C;
-    r = 0;
-    for (int i = A.size() - 1; i >= 0; i -- ) {
-        r = r * 10 + A[i];
-        C.push_back(r / b);
-        r %= b;
-    }
-    reverse(C.begin(), C.end());
-    while (C.size() > 1 && C.back() == 0) C.pop_back();
-    return C;
-}
-```
-
-
-# 离散化
-```cpp
-vector<int> alls; // 存储所有待离散化的值
-sort(alls.begin(), alls.end()); // 将所有值排序
-alls.erase(unique(alls.begin(), alls.end()), alls.end());   // 去掉重复元素
-
-// 二分求出x对应的离散化的值
-int find(int x) {  // 找到第一个大于等于x的位置
-    int l = 0, r = alls.size() - 1;
-    while (l < r) {
-        int mid = l + r >> 1;
-        if (alls[mid] >= x) r = mid;
-        else l = mid + 1;
-    }
-    return r + 1; // 映射到1, 2, ...n
-}
-```
-
-
-###
-
-
 # 最大公约数
 ```cpp
 int gcd(int a, int b) {
@@ -1633,12 +1596,14 @@ int gcd(int a, int b) {
 }
 ```
 
+
 # 最小公倍数
 ```cpp
 int lcm(int a, int b) {
     return (a * b) / gcd(a, b);
 }
 ```
+
 
 # 试除法判定质数
 ```cpp
@@ -1841,6 +1806,7 @@ int gauss() {
 }
 ```
 
+
 # 求组合数
 ## 递归法求组合数
 ```cpp
@@ -1978,6 +1944,11 @@ for (int i = 0; i < cnt; i ++ )     // 用高精度乘法将所有质因子相�
 - [x] [242. 有效的字母异位词](https://leetcode-cn.com/problems/valid-anagram/)
 - [x] [56. 合并区间](https://leetcode-cn.com/problems/merge-intervals/)
 - [x] [493. 翻转对](https://leetcode-cn.com/problems/reverse-pairs/)  
+
+
+# 其他题目
+- [x] [146. LRU缓存机制](https://leetcode-cn.com/problems/lru-cache/#/)
+
 
 
 # 经典习题
