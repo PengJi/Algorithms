@@ -1,6 +1,9 @@
 反转字符串
 ```cpp
 reverse(s.begin() + 1, s.end());
+
+s = "abc";
+res = string(s.rbegin(), s.rend());
 ```
 
 分割以空格分隔的字符串
@@ -22,8 +25,7 @@ for(auto t: vec) {
 }
 ```
 
-
-字符串转换
+整型转换为字符串
 ```cpp
 int num = 10;
 string str = to_string(10);

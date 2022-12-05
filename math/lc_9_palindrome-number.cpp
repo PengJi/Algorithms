@@ -30,3 +30,34 @@ public:
         return x == revertedNumber || x == revertedNumber / 10;
     }
 };
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x < 0) return false;
+        int y = x;
+        long long res = 0;
+        while(x) {
+            res = res * 10 + x % 10;
+            x /= 10;
+        }
+
+        return res == y;
+    }
+};
+
+class Solution {
+public:
+    // 算出后一半的逆序值是否等于前一半。边生成边比较。
+    // 时间复杂度为 O(n)
+    bool isPalindrome(int x) {
+        if(x < 0 || x && x % 10 == 0) return false;  // 特判情况：负数、0、<=10
+        int s = 0;
+        while(s <= x) {
+            s = s * 10 + x % 10;  // 后一遍的逆序值
+            if(s == x || s == x/10) return true;  // 判断是否等于前一半
+            x /= 10;
+        }
+        return false;
+    }
+};
