@@ -1,6 +1,6 @@
 /**
  * 89. 格雷编码
- * https://leetcode-cn.com/problems/gray-code/
+ * https://leetcode.cn/problems/gray-code/
  */
 
 class Solution {
@@ -20,6 +20,24 @@ public:
             t += 1;
         }
         
+        return res;
+    }
+};
+
+
+class Solution {
+public:
+    // 思路比较巧妙
+    // 将后一半与前一半对称，然后后一半的每位数加一
+    vector<int> grayCode(int n) {
+        vector<int> res(1, 0);
+        while(n--) {
+            for(int i = res.size()-1; i >= 0; i--) {
+                res[i] *= 2;  // 相当于左移一位
+                res.push_back(res[i] + 1);  // 最末位加1
+            }
+        }
+
         return res;
     }
 };
