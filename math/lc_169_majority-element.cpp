@@ -16,3 +16,20 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    // 投票算法
+    // 时间复杂度和空间复杂度最小。
+    int majorityElement(vector<int>& nums) {
+        int cnt = 0, res = 0;
+
+        for(int i = 0; i < nums.size(); i++) {
+            if(cnt == 0) res = nums[i];
+            if(res == nums[i]) cnt++;
+            else cnt--;
+        }
+
+        return res;
+    }
+};
