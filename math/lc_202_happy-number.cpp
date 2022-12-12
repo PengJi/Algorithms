@@ -33,23 +33,29 @@ public:
 
 class Solution {
 public:
-    int get(int x) {
+    // 计算每位数字的平方和
+    int cal(int n) {
         int res = 0;
-        while (x) {
-            res += (x % 10) * (x % 10);
-            x /= 10;
+
+        while(n) {
+            res += (n % 10) * (n % 10);
+            n /= 10;
         }
+
         return res;
     }
 
     // 快慢指针
+    // 一定存在环，使用快慢指针找到环的入口
     bool isHappy(int n) {
-        int fast = get(n), slow = n;
-        while (fast != slow) {
-            fast = get(get(fast));
-            slow = get(slow);
+        int fast = cal(n), slow = n;
+
+        // 查找环的入口
+        while(fast != slow) {
+            fast = cal(cal(fast));
+            slow = cal(slow);
         }
-        return fast == 1;
+
+        return fast == 1;  // 环的入口是否为1
     }
 };
-
