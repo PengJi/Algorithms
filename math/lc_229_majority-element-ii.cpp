@@ -1,5 +1,5 @@
 /**
- * 229. 求众数 II
+ * 229. 多数元素 II
  * https://leetcode-cn.com/problems/majority-element-ii/
  */
 
