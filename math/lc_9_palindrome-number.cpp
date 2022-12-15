@@ -33,21 +33,6 @@ public:
 
 class Solution {
 public:
-    bool isPalindrome(int x) {
-        if(x < 0) return false;
-        int y = x;
-        long long res = 0;
-        while(x) {
-            res = res * 10 + x % 10;
-            x /= 10;
-        }
-
-        return res == y;
-    }
-};
-
-class Solution {
-public:
     // 算出后一半的逆序值是否等于前一半。边生成边比较。
     // 时间复杂度为 O(n)
     bool isPalindrome(int x) {

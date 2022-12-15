@@ -906,7 +906,7 @@ while (q.size()) {
 bool topsort() {
     int hh = 0, tt = -1;
 
-    // d[i] 存储点i的入度
+    // d[i] 存储点 i 的入度
     for (int i = 1; i <= n; i ++ )
         if (!d[i])
             q[ ++ tt] = i;
@@ -927,7 +927,7 @@ bool topsort() {
 ```
 
 
-# 朴素dijkstra算法
+# 朴素 dijkstra 算法
 时间复杂是 `O(n^2+m)`, n 表示点数，m 表示边数
 ```cpp
 int g[N][N];  // 存储每条边
@@ -958,7 +958,7 @@ int dijkstra() {
 ```
 
 
-# 堆优化版dijkstra
+# 堆优化版 dijkstra
 时间复杂度 `O(mlogn)`, n 表示点数，m 表示边数
 ```cpp
 typedef pair<int, int> PII;
@@ -1071,7 +1071,7 @@ int spfa() {
 ```
 
 
-# spfa判断图中是否存在负环
+# spfa 判断图中是否存在负环
 时间复杂度是 `O(nm)`, n 表示点数，m 表示边数
 ```cpp
 int n;      // 总点数
@@ -1168,7 +1168,7 @@ int prim() {
 ```
 
 
-# Kruskal算法 
+# Kruskal 算法 
 时间复杂度是 `O(mlogm)`, n 表示点数，m 表示边数
 ```cpp
 int n, m;       // n是点数，m是边数
@@ -1351,7 +1351,6 @@ Trie 树的核心思想是空间换时间。利用字符串的公共前缀来降
 - [x] [212. 单词搜索 II](https://leetcode-cn.com/problems/word-search-ii/)
  
 
-
 # 深度优先搜索
 
 ## 递归写法
@@ -1461,7 +1460,6 @@ def BFS(graph, start, end):
 
 
 # 分治
-
 ```python
 def divide_conquer(problem, param1, param2, ...): 
   # recursion terminator 
@@ -1687,6 +1685,7 @@ vector<int> get_divisors(int x) {
 
 
 # 欧几里得算法
+求两个正整数的最大公约数，时间复杂度 O(logn)O(logn)。
 ```cpp
 int gcd(int a, int b) {
     return b ? gcd(b, a % b) : a;
@@ -1754,6 +1753,8 @@ int qmi(int m, int k, int p) {
 
 
 # 扩展欧几里得算法
+> 裴蜀定理：若 a,ba,b 是整数,且 (a,b)=d(a,b)=d，那么对于任意的整数 x,y,ax+byx,y,ax+by 都一定是 dd 的倍数，特别地，一定存在整数 x,yx,y，使 ax+by=dax+by=d 成立。
+扩展欧几里得算法可以在 O(logn)O(logn) 的时间复杂度内求出系数 x,yx,y。
 ```cpp
 // 求x, y，使得ax + by = gcd(a, b)
 int exgcd(int a, int b, int &x, int &y) {

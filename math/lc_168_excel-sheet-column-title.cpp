@@ -28,7 +28,7 @@ public:
 class Solution {
 public:
     // 相当于进制转换
-    // 讲一个数 c 转换为其他进制都可采用下面的方法
+    // 将一个数 c 转换为其他进制都可采用下面的方法
     string convertToTitle(int c) {
         string res = "";
         int n = 0;
@@ -36,7 +36,7 @@ public:
         while(c) {
             c--;
             n = c %  26;  // 求余数
-            res += ('A' + n);  // 先求的个数，后面需要 reverse
+            res += ('A' + n);  // 先求的个位，后面需要 reverse
             c /= 26;
         }
 
