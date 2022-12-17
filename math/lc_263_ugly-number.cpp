@@ -1,7 +1,6 @@
 /**
  * 263. 丑数
  * 编写一个程序判断给定的数是否为丑数。
- * 
  * https://leetcode-cn.com/problems/ugly-number/
  */
 
@@ -14,5 +13,19 @@ public:
         while (num % 3 == 0) num /= 3;
         while (num % 5 == 0) num /= 5;
         return num == 1;
+    }
+};
+
+class Solution {
+public:
+    // 使用除法去掉质因子
+    bool isUgly(int n) {
+        if(n <= 0) return false;
+
+        while(n % 2 == 0) n /= 2;
+        while(n % 3 == 0) n /= 3;
+        while(n % 5 == 0) n /= 5;
+
+        return n == 1;
     }
 };
