@@ -48,7 +48,7 @@ public:
 class Solution {
 public:
     vector<vector<int>> ans;
-    vector<bool> st;
+    vector<bool> st;  // 当前位置是否被占用
     vector<int> path;
 
     vector<vector<int>> permute(vector<int>& nums) {
@@ -58,20 +58,18 @@ public:
         return ans;
     }
 
-    void dfs(vector<int> &nums, int u)
+    void dfs(vector<int> &nums, int idx)
     {
-        if (u == nums.size())
-        {
+        if (idx == nums.size()) {
             ans.push_back(path);
             return ;
         }
 
-        for (int i = 0; i < nums.size(); i ++ )
-            if (!st[i])
-            {
+        for (int i = 0; i < nums.size(); i++ )
+            if (!st[i]) {
                 st[i] = true;
                 path.push_back(nums[i]);
-                dfs(nums, u + 1);
+                dfs(nums, idx + 1);
                 st[i] = false;
                 path.pop_back();
             }

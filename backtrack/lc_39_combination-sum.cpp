@@ -53,19 +53,19 @@ public:
         return ans;
     }
 
-    void dfs(vector<int>& c, int u, int target) {
+    void dfs(vector<int>& c, int idx, int target) {
         if (target == 0) {
             ans.push_back(path);
             return;
         }
-        if (u == c.size()) return;
+        if (idx == c.size()) return;
 
-        for (int i = 0; c[u] * i <= target; i ++ ) {
-            dfs(c, u + 1, target - c[u] * i);
-            path.push_back(c[u]);
+        for (int i = 0; c[idx] * i <= target; i++) {
+            dfs(c, idx + 1, target - c[idx] * i);
+            path.push_back(c[idx]);
         }
 
-        for (int i = 0; c[u] * i <= target; i ++ ) {
+        for (int i = 0; c[idx] * i <= target; i++) {
             path.pop_back();
         }
     }

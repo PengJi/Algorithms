@@ -42,15 +42,15 @@ public:
         return ans;
     }
 
-    void dfs(int u, int start, int n, int k) {
-        if(u == k) {
+    void dfs(int idx, int start, int n, int k) {
+        if(idx == k) {
             ans.push_back(path);
             return;
         }
 
         for(int i = start; i <= n; i++) {
             path.push_back(i);
-            dfs(u+1, i+1, n, k);
+            dfs(idx + 1, i + 1, n, k);
             path.pop_back();
         }
     }

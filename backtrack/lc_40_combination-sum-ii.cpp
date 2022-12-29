@@ -51,25 +51,24 @@ public:
         return ans;
     }
 
-    void dfs(vector<int>& c, int u, int target) {
+    void dfs(vector<int>& c, int idx, int target) {
         if (target == 0) {
             ans.push_back(path);
             return;
         }
-        if (u == c.size()) return;
+        if (idx == c.size()) return;
 
-        int k = u + 1;
-        while (k < c.size() && c[k] == c[u]) k ++ ;
-        int cnt = k - u;
+        int k = idx + 1;
+        while (k < c.size() && c[k] == c[idx]) k ++ ;  // 与前一个算法不同之处
+        int cnt = k - idx;
 
-        for (int i = 0; c[u] * i <= target && i <= cnt; i ++ ) {
-            dfs(c, k, target - c[u] * i);
-            path.push_back(c[u]);
+        for (int i = 0; c[idx] * i <= target && i <= cnt; i++) {
+            dfs(c, k, target - c[idx] * i);
+            path.push_back(c[idx]);
         }
 
-        for (int i = 0; c[u] * i <= target && i <= cnt; i ++ ) {
+        for (int i = 0; c[idx] * i <= target && i <= cnt; i++) {
             path.pop_back();
         }
     }
 };
-
