@@ -1,6 +1,6 @@
 /**
  * 93. 复原 IP 地址
- * https://leetcode-cn.com/problems/restore-ip-addresses/
+ * https://leetcode.cn/problems/restore-ip-addresses/
  */
 
 class Solution {
@@ -76,7 +76,7 @@ public:
                 dfs(i + 1, k + 1, s);
                 path.pop_back();
             }
-            
+
             if (!t) break;
         }
     }
