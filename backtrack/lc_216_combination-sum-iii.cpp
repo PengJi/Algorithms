@@ -43,8 +43,8 @@ public:
 
     // start 表示从那个数开始枚举
     void dfs(int k, int n, int start) {
-        if (!k) {
-            if (!n) ans.push_back(path);
+        if (k == 0) {
+            if (k == 0) ans.push_back(path);
             return;
         }
 

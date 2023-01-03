@@ -52,7 +52,6 @@ public:
     vector<int> path;
 
     vector<vector<int>> permute(vector<int>& nums) {
-
         for (int i = 0; i < nums.size(); i ++ ) st.push_back(false);
         dfs(nums, 0);
         return ans;

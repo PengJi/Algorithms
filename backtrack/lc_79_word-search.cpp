@@ -1,6 +1,6 @@
 /**
  * 79. 单词搜索
- * https://leetcode-cn.com/problems/word-search/
+ * https://leetcode.cn/problems/word-search/
  */
 
 class Solution {
@@ -43,6 +43,39 @@ public:
             }
             marked[i][j] = false;
         }
+        return false;
+    }
+};
+
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        for(int i = 0; i < board.size(); i++) {
+            for(int j = 0; j < board[0].size(); j++) {
+                if(dfs(0, i, j, board, word)) return true;
+            }
+        }
+
+        return false;
+    }
+
+    // 上左下右
+    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
+
+    bool dfs(int idx, int x, int y, vector<vector<char>>& board, string& word) {
+        if(board[x][y] != word[idx]) return false;
+        if(idx == word.size()-1) return true;
+
+        char t = board[x][y];
+        board[x][y] = '*';
+        for(int i = 0; i < 4; i++) {  // 遍历四个方向
+            int a = x + dx[i], b = y + dy[i];
+            if(a >= 0 && a < board.size() && b >= 0 && b < board[0].size()) {
+                if(dfs(idx + 1, a, b, board, word)) return true;
+            }
+        }
+        board[x][y] = t;
+
         return false;
     }
 };
