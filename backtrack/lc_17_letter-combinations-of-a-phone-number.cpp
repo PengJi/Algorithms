@@ -1,6 +1,6 @@
 /**
  * 17. 电话号码的字母组合
- * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
+ * https://leetcode.cn/problems/letter-combinations-of-a-phone-number/
  */
 
 class Solution {
@@ -37,6 +37,60 @@ public:
                 backtrack(combinations, phoneMap, digits, index + 1, combination);
                 combination.pop_back();
             }
+        }
+    }
+};
+
+class Solution {
+public:
+    vector<string> res;
+    string strs[10] = {
+        "", "", "abc", "def",
+        "ghi", "jkl", "mno",
+        "pqrs", "tuv", "wxyz",
+    };
+
+    vector<string> letterCombinations(string digits) {
+        if(digits.empty()) return res;
+        dfs(digits, 0, "");
+        return res;
+    }
+
+    void dfs(string& digits, int idx, string path) {
+        if(idx == digits.size()) res.push_back(path);
+        else {
+            for(auto c: strs[digits[idx] - '0']) {
+                dfs(digits, idx + 1, path + c);  // 包含回溯，下面为完整的回溯过程
+            }
+        }
+    }
+};
+
+class Solution {
+public:
+    vector<string> ans;
+    string path;
+    string strs[10] = {
+            "", "", "abc", "def",
+            "ghi", "jkl", "mno",
+            "pqrs", "tuv", "wxyz",
+        };
+
+    vector<string> letterCombinations(string digits) {
+        if (digits.empty()) return ans;
+        dfs(digits, 0);
+        return ans;
+    }
+
+    void dfs(string& digits, int idx) {
+        if (path.size() == digits.size()){
+            ans.push_back(path);
+            return;
+        }
+        for (auto c : strs[digits[idx] - '0']){
+            path.push_back(c);
+            dfs(digits, idx + 1);
+            path.pop_back();
         }
     }
 };
