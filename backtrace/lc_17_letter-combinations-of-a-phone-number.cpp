@@ -60,7 +60,7 @@ public:
         if(idx == digits.size()) res.push_back(path);
         else {
             for(auto c: strs[digits[idx] - '0']) {
-                dfs(digits, idx + 1, path + c);  // 包含回溯，下面为完整的回溯过程
+                dfs(digits, idx + 1, path + c);  // 包含回溯，下面解法为完整的回溯过程
             }
         }
     }
@@ -71,10 +71,10 @@ public:
     vector<string> ans;
     string path;
     string strs[10] = {
-            "", "", "abc", "def",
-            "ghi", "jkl", "mno",
-            "pqrs", "tuv", "wxyz",
-        };
+        "", "", "abc", "def",
+        "ghi", "jkl", "mno",
+        "pqrs", "tuv", "wxyz",
+    };
 
     vector<string> letterCombinations(string digits) {
         if (digits.empty()) return ans;
@@ -83,11 +83,12 @@ public:
     }
 
     void dfs(string& digits, int idx) {
-        if (path.size() == digits.size()){
+        if (path.size() == digits.size()) {
             ans.push_back(path);
             return;
         }
-        for (auto c : strs[digits[idx] - '0']){
+
+        for (auto c : strs[digits[idx] - '0']) {
             path.push_back(c);
             dfs(digits, idx + 1);
             path.pop_back();

@@ -59,7 +59,7 @@ public:
         return false;
     }
 
-    // 上左下右
+    // 上右下左
     int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
 
     bool dfs(int idx, int x, int y, vector<vector<char>>& board, string& word) {

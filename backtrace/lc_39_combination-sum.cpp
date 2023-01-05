@@ -4,7 +4,7 @@
  * 找出 candidates 中所有可以使数字和为 target 的组合。
  * candidates 中的数字可以无限制重复被选取。
 
- * https://leetcode-cn.com/problems/combination-sum/
+ * https://leetcode.cn/problems/combination-sum/
  */
 
 class Solution {

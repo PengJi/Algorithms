@@ -1,6 +1,6 @@
 /**
  * 437. 路径总和 III
- * https://leetcode-cn.com/problems/path-sum-iii/
+ * https://leetcode.cn/problems/path-sum-iii/
  */
 
 /**

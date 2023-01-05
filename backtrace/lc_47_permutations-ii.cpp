@@ -52,8 +52,8 @@ public:
         return ans;
     }
 
-    void dfs(vector<int>& nums, int u, int start) {
-        if (u == nums.size()) {
+    void dfs(vector<int>& nums, int idx, int start) {
+        if (idx == nums.size()) {
             ans.push_back(path);
             return;
         }
@@ -61,11 +61,11 @@ public:
         for (int i = start; i < nums.size(); i ++ )
             if (!st[i]) {
                 st[i] = true;
-                path[i] = nums[u];
-                if (u + 1 < nums.size() && nums[u + 1] != nums[u])  // 与前一个算法的不同之处
-                    dfs(nums, u + 1, 0);
+                path[i] = nums[idx];
+                if (idx + 1 < nums.size() && nums[idx + 1] != nums[idx])  // 与前一个算法的不同之处
+                    dfs(nums, idx + 1, 0);
                 else
-                    dfs(nums, u + 1, i + 1);
+                    dfs(nums, idx + 1, i + 1);
                 st[i] = false;
             }
     }

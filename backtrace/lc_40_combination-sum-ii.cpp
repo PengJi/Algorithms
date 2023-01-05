@@ -40,18 +40,17 @@ public:
 
 class Solution {
 public:
-
     vector<vector<int>> ans;
     vector<int> path;
 
     vector<vector<int>> combinationSum2(vector<int>& c, int target) {
-        sort(c.begin(), c.end());
-        dfs(c, 0, target);
+        sort(c.begin(), c.end());  // 先排序
+        dfs(0, c, target);
 
         return ans;
     }
 
-    void dfs(vector<int>& c, int idx, int target) {
+    void dfs(int idx, vector<int>& c, int target) {
         if (target == 0) {
             ans.push_back(path);
             return;

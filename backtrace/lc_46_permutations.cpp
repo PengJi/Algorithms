@@ -53,18 +53,18 @@ public:
 
     vector<vector<int>> permute(vector<int>& nums) {
         for (int i = 0; i < nums.size(); i ++ ) st.push_back(false);
-        dfs(nums, 0);
+        dfs(0, nums);
         return ans;
     }
 
-    void dfs(vector<int> &nums, int idx)
+    void dfs(int idx, vector<int> &nums)
     {
         if (idx == nums.size()) {
             ans.push_back(path);
             return ;
         }
 
-        for (int i = 0; i < nums.size(); i++ )
+        for (int i = 0; i < nums.size(); i++)
             if (!st[i]) {
                 st[i] = true;
                 path.push_back(nums[i]);
