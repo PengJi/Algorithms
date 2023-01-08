@@ -49,3 +49,28 @@ public:
                 dfs(ver);
     }
 };
+
+class Solution {
+public:
+    unordered_map<Node*, Node*> hash;
+
+    Node* cloneGraph(Node* node) {
+        if (!node) return NULL;
+        dfs(node);  // 复制所有点
+
+        for (auto [s, d]: hash) {
+            for (auto ver: s->neighbors)
+                d->neighbors.push_back(hash[ver]);
+        }
+
+        return hash[node];
+    }
+
+    void dfs(Node* node) {
+        hash[node] = new Node(node->val);
+
+        for (auto ver: node->neighbors)
+            if (hash.count(ver) == 0)
+                dfs(ver);
+    }
+};

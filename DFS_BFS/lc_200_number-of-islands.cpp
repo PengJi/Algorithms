@@ -4,7 +4,7 @@
  * 岛屿总是被水包围，并且每座岛屿只能由水平方向或竖直方向上相邻的陆地连接形成。
  * 此外，你可以假设该网格的四条边均被水包围。
  * 
- * https://leetcode-cn.com/problems/number-of-islands/
+ * https://leetcode.cn/problems/number-of-islands/
  */
 
 class Solution {
