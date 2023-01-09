@@ -1,6 +1,6 @@
 /**
  * 133. 克隆图
- * https://leetcode-cn.com/problems/clone-graph/
+ * https://leetcode.cn/problems/clone-graph/
  */
 
 /*
@@ -52,25 +52,27 @@ public:
 
 class Solution {
 public:
-    unordered_map<Node*, Node*> hash;
+    unordered_map<Node*, Node*> mp;
 
     Node* cloneGraph(Node* node) {
-        if (!node) return NULL;
-        dfs(node);  // 复制所有点
+        if(!node) return NULL;
 
-        for (auto [s, d]: hash) {
-            for (auto ver: s->neighbors)
-                d->neighbors.push_back(hash[ver]);
+        dfs(node);  // 拷贝点
+
+        for(auto [s, d]: mp) {  // 拷贝边
+            for(auto ver: s->neighbors) {
+                d->neighbors.push_back(mp[ver]);
+            }
         }
 
-        return hash[node];
+        return mp[node];
     }
 
     void dfs(Node* node) {
-        hash[node] = new Node(node->val);
+        mp[node] = new Node(node->val);  // 创建新的点
 
-        for (auto ver: node->neighbors)
-            if (hash.count(ver) == 0)
-                dfs(ver);
+        for(auto ver: node->neighbors) {
+            if(mp.count(ver) == 0) dfs(ver);
+        }
     }
 };
