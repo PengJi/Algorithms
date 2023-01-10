@@ -44,32 +44,34 @@ public:
 
 class Solution {
 public:
-    // 拓扑排序
-    bool canFinish(int n, vector<vector<int>>& edges) {
+    // 有向无环图的拓扑排序
+    bool canFinish(int n, vector<vector<int>>& p) {
         vector<vector<int>> g(n);
         vector<int> d(n);
-        for (auto& e: edges) {
-            int b = e[0], a = e[1];
-            g[a].push_back(b);
-            d[b] ++ ;
+
+        // 组建有向无环图
+        for(auto& x: p) {
+            int a = x[0], b = x[1];
+            g[b].push_back(a);  // 建立边，b 指向 a
+            d[a]++;  // 统计入度，a 的入度加一
         }
 
-        queue<int> q;
-        for (int i = 0; i < n; i ++ )
-            if (d[i] == 0)
-                q.push(i);
+        queue<int> q;  // 存储入度为 0 的点
+        for(int i = 0; i < n; i++) {
+            if(d[i] == 0) q.push(i);
+        }
 
+        // 有向无环图去除边
         int cnt = 0;
-        while (q.size()) {
-            auto t = q.front();
+        while(!q.empty()) {
+            int t = q.front();
             q.pop();
-            cnt ++ ;
-            for (auto i : g[t])
-                if ( -- d[i] == 0)
-                    q.push(i);
+            cnt++;
+            for(auto x: g[t]) {
+                if(--d[x] == 0) q.push(x);
+            }
         }
 
-        return cnt == n;
+        return cnt == n;  // 有向无环图中，入度为 0 的点应该与总节点数相同
     }
 };
-
