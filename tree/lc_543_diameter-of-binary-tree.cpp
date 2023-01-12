@@ -33,3 +33,20 @@ public:
         return max(L, R) + 1;
     }
 };
+
+class Solution {
+public:
+    int res = 0;
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        dfs(root);
+        return res;
+    }
+
+    int dfs(TreeNode* root) {
+        if(!root) return 0;
+        int left = dfs(root->left), right = dfs(root->right);
+        res = max(res, left + right);
+        return max(left, right) + 1;
+    }
+};
