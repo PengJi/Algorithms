@@ -129,36 +129,3 @@ public:
         }
     }
 };
-
-class Solution {
-public:
-    int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
-
-    // flood fill
-    int maxAreaOfIsland(vector<vector<int>>& grid) {
-        int n = grid.size(), m = grid[0].size();
-
-        int res = 0;
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
-                if(grid[i][j])
-                    res = max(res, dfs(i, j, grid));  // 统计最大值
-            }
-        }
-
-        return res;
-    }
-
-    int dfs(int x, int y, vector<vector<int>>& grid) {
-        int res = 1;
-        grid[x][y] = 0;
-
-        for(int i = 0; i < 4; i++) {
-            int a = x + dx[i], b = y + dy[i];
-            if(a >= 0 && a < grid.size() && b >= 0 && b < grid[0].size() && grid[a][b])
-                res += dfs(a, b, grid);  // 统计面积
-        }
-
-        return res;
-    }
-};
