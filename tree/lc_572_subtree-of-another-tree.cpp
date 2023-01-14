@@ -41,6 +41,10 @@ public:
 
 class Solution {
 public:
+    bool isSubtree(TreeNode* s, TreeNode* t) {
+        return dfs(s, t);
+    }
+
     // 对于 s 的每一个结点，都尝试与 t 进行匹配，此操作可递归执行
     bool dfs(TreeNode *s, TreeNode *t) {
         if (!s) return false;
@@ -54,9 +58,5 @@ public:
             return false;
 
         return isSame(s -> left, t -> left) && isSame(s -> right, t -> right);
-    }
-
-    bool isSubtree(TreeNode* s, TreeNode* t) {
-        return dfs(s, t);
     }
 };
