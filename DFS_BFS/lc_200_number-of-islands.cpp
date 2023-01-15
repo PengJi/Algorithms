@@ -123,7 +123,7 @@ public:
 
         for(int i = 0; i < 4; i++) {  // 遍历四个方向
             int x = a + dx[i], y = b + dy[i];
-            if(x >= 0 && x < grid.size() && y >= 0 && y < grid[0].size() && grid[x][y] == '1'){
+            if(x >= 0 && x < grid.size() && y >= 0 && y < grid[0].size() && grid[x][y] == '1') {
                 dfs(grid, x, y);
             }
         }

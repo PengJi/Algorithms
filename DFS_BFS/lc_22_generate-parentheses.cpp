@@ -1,6 +1,6 @@
 /**
  * 22. 括号生成
- * https://leetcode-cn.com/problems/generate-parentheses/
+ * https://leetcode.cn/problems/generate-parentheses/
  */
 
 class Solution {
@@ -42,8 +42,9 @@ public:
     }
 
     void dfs(int n, int lc, int rc, string str) {
-        if(lc == n && rc == n) res.push_back(str);
-        else {
+        if(lc == n && rc == n) {
+            res.push_back(str);
+        } else {
             if(lc < n) dfs(n, lc+1, rc, str+'(');  // 当左括号数量小于 n，则可以添加左括号
             if(rc < n && rc < lc) dfs(n, lc, rc+1, str+')');  // 当右括号数量小于 n，并且左括号数量大于右括号数量时，可以添加右括号
         }

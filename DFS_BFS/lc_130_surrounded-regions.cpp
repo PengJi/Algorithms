@@ -53,10 +53,11 @@ class Solution {
 public:
     vector<vector<bool>> st;
     int n, m;
+    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
     
     // 逆向考虑问题
     // 开一个二维布尔数组，记录哪些区域被遍历过。
-    // 枚举所有边界上的'O'，从该位置做 Flood Fill，即做深度优先遍历，只遍历是'O'的位置，并将所有遍历到的位置都标记成true。
+    // 枚举所有边界上的'O'，从该位置做 Flood Fill，即做深度优先遍历，只遍历是'O'的位置，并将所有遍历到的位置都标记成 true。
     // 将所有未遍历到的位置变成'X'。
     void solve(vector<vector<char>>& board) {
         if(board.empty()) return;
@@ -84,10 +85,9 @@ public:
 
     }
 
-    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-
-    void dfs(int x, int y, vector<vector<char>>&board) {
+    void dfs(int x, int y, vector<vector<char>>& board) {
         st[x][y] = true;
+
         for (int i = 0; i < 4; i ++ ) {
             int a = x + dx[i], b = y + dy[i];
             if (a >= 0 && a < n && b >= 0 && b < m && !st[a][b] && board[a][b] == 'O')
