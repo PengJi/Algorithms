@@ -4,7 +4,7 @@
  * 每次转换只能改变一个字母。
  * 转换过程中的中间单词必须是字典中的单词。
  * 
- * https://leetcode-cn.com/problems/word-ladder/
+ * https://leetcode.cn/problems/word-ladder/
  */
 
 class Solution {
@@ -48,14 +48,17 @@ public:
 
 class Solution {
 public:
-    // 将单词看做点，如果两个单词可以相互转化，则在相应的点之间连一条无向边。那问题就变成了求从起点到终点的最短路。
+    // 可转换为求最短路问题。
+    // 将单词看做点，如果两个单词可以相互转化，则在相应的点之间连一条无向边，那问题就变成了求从起点到终点的最短路。
     // 枚举每个单词，然后枚举该单词的每一位字母，再枚举这一位的所有备选字母，然后再判断改变后的字符串是否存在。
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        unordered_set<string> st;
-        for(auto& s: wordList) st.insert(s);
-        unordered_map<string, int> mp;
-        mp[beginWord] = 0;
-        queue<string> q;
+        unordered_set<string> st;  // 所有单词
+        for(auto& x: wordList) st.insert(x);
+
+        unordered_map<string, int> hash;  // 从当前点到起点的最短路径
+        hash[beginWord] = 0;
+
+        queue<string> q;  // BFS
         q.push(beginWord);
 
         while(q.size()) {
@@ -63,13 +66,13 @@ public:
             q.pop();
 
             string r = t;
-            for(int i = 0; i < t.size(); i++) {
+            for(int i = 0; i < t.size(); i++) {  // 遍历单词的每一位
                 t = r;
-                for(char j = 'a'; j <= 'z'; j++) {
+                for(char j = 'a'; j <= 'z'; j++) {  // 遍历每位字母
                     t[i] = j;
-                    if(st.count(t) && !mp.count(t)) {
-                        mp[t] = mp[r] + 1;
-                        if(t == endWord) return mp[t] + 1;
+                    if(st.count(t) && !hash.count(t)) {
+                        hash[t] = hash[r] + 1;  // t 的最短路径
+                        if(t == endWord) return hash[t] + 1;  // 已经到最后一个单词
                         q.push(t);
                     }
                 }
