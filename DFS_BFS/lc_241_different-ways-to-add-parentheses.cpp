@@ -1,6 +1,6 @@
 /**
  * 241. 为运算表达式设计优先级
- * https://leetcode-cn.com/problems/different-ways-to-add-parentheses/
+ * https://leetcode.cn/problems/different-ways-to-add-parentheses/
  */
 
 class Solution {
@@ -35,5 +35,28 @@ public:
                 }
         }
         return res;
+    }
+};
+
+class Solution {
+private:
+    vector<int> solve(int l, int r, const string &s) {
+        const int n = s.size();
+
+        vector<int> ans;
+        for (int i = l; i <= r; i++) {
+            if (isdigit(s[i])) continue;
+
+            for (int a : solve(l, i - 1, s))
+                for (int b : solve(i + 1, r, s))
+                    ans.push_back(s[i] == '+' ? a + b : (s[i] == '-' ? a - b : a * b));
+        }
+
+        return ans.empty() ? vector<int>{stoi(s.substr(l, r - l + 1))} : ans;
+    }
+
+public:
+    vector<int> diffWaysToCompute(string ep) {
+        return solve(0, ep.size() - 1, ep);
     }
 };
