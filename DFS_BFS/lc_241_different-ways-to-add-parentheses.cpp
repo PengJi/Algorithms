@@ -39,7 +39,16 @@ public:
 };
 
 class Solution {
-private:
+public:
+    // https://www.acwing.com/solution/content/292/
+    // 递归
+    // 采用递归的方式，每次通过某个运算符，将当前字符串分成左右两部分，递归子问题计算。
+    // 然后根据左右两部分返回的结果，通过该运算符组合成新的结果。
+    // 递归出口为当前字符串仅有一个数字。
+    vector<int> diffWaysToCompute(string ep) {
+        return solve(0, ep.size() - 1, ep);
+    }
+
     vector<int> solve(int l, int r, const string &s) {
         const int n = s.size();
 
@@ -53,10 +62,5 @@ private:
         }
 
         return ans.empty() ? vector<int>{stoi(s.substr(l, r - l + 1))} : ans;
-    }
-
-public:
-    vector<int> diffWaysToCompute(string ep) {
-        return solve(0, ep.size() - 1, ep);
     }
 };
