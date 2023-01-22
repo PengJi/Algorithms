@@ -1,6 +1,6 @@
 /**
  * 1091. 二进制矩阵中的最短路径
- * https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/
+ * https://leetcode.cn/problems/shortest-path-in-binary-matrix/
  */
 
 class Solution {
@@ -34,5 +34,40 @@ public:
         }
         
         return -1;
+    }
+};
+
+#define x first
+#define y second
+
+typedef pair<int, int> PII;
+
+class Solution {
+public:
+    int shortestPathBinaryMatrix(vector<vector<int>>& g) {
+        if (g[0][0]) return -1;
+        int n = g.size();
+        vector<vector<int>> dist(n, vector<int>(n, -1));
+        dist[0][0] = 1;
+        queue<PII> q;
+        q.push({0, 0});
+
+        int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+        int dy[] = {-1, 0, 1, 1, 1, 0, -1, -1};
+
+        while (q.size()) {
+            auto t = q.front();
+            q.pop();
+
+            for (int i = 0; i < 8; i ++ ) {
+                int x = t.x + dx[i], y = t.y + dy[i];
+                if (x >= 0 && x < n && y >= 0 && y < n && g[x][y] == 0 && dist[x][y] == -1) {
+                    dist[x][y] = dist[t.x][t.y] + 1;
+                    q.push({x, y});
+                }
+            }
+        }
+
+        return dist[n - 1][n - 1];
     }
 };
