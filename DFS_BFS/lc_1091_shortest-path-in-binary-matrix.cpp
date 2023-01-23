@@ -44,6 +44,7 @@ typedef pair<int, int> PII;
 
 class Solution {
 public:
+    // 宽度优先搜索
     int shortestPathBinaryMatrix(vector<vector<int>>& g) {
         if (g[0][0]) return -1;
         int n = g.size();
