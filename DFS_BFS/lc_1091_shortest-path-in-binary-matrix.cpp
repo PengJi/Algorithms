@@ -37,38 +37,38 @@ public:
     }
 };
 
-#define x first
-#define y second
-
-typedef pair<int, int> PII;
-
 class Solution {
 public:
+    typedef pair<int, int> pii;
+
+    // 8 个方向
+    int dx[8] = {-1, -1, -1, 0, 1, 1, 1, 0};
+    int dy[8] = {-1, 0, 1, 1, 1, 0, -1, -1};
+
     // 宽度优先搜索
-    int shortestPathBinaryMatrix(vector<vector<int>>& g) {
-        if (g[0][0]) return -1;
-        int n = g.size();
-        vector<vector<int>> dist(n, vector<int>(n, -1));
+    // 宽度有限搜索模板：定义数组dist[i][j] 表示从(i,j) 到目标的最短路径
+    // 定义队列，入队 (0, 0)，尝试从周围 8 个方向遍历，更新 dist，记录最短路径
+    int shortestPathBinaryMatrix(vector<vector<int>>& grid) {
+        if(grid[0][0]) return -1;
+        int n = grid.size();
+        vector<vector<int>> dist(n, vector<int>(n, -1));  // 到目标的最短路径
         dist[0][0] = 1;
-        queue<PII> q;
+        queue<pii> q;
         q.push({0, 0});
 
-        int dx[] = {-1, -1, -1, 0, 1, 1, 1, 0};
-        int dy[] = {-1, 0, 1, 1, 1, 0, -1, -1};
-
-        while (q.size()) {
+        while(q.size()) {
             auto t = q.front();
             q.pop();
 
-            for (int i = 0; i < 8; i ++ ) {
-                int x = t.x + dx[i], y = t.y + dy[i];
-                if (x >= 0 && x < n && y >= 0 && y < n && g[x][y] == 0 && dist[x][y] == -1) {
-                    dist[x][y] = dist[t.x][t.y] + 1;
+            for(int i = 0; i < 8; i++) {  // 遍历 8 个方向
+                int x = t.first + dx[i], y = t.second + dy[i];
+                if(x >= 0 && x < n && y >= 0 && y < n && dist[x][y] == -1 && grid[x][y] == 0) {
+                    dist[x][y] = dist[t.first][t.second] + 1;
                     q.push({x, y});
                 }
             }
         }
 
-        return dist[n - 1][n - 1];
+        return dist[n-1][n-1];
     }
 };
