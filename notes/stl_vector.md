@@ -3,13 +3,9 @@
 size()  // 返回元素个数
 empty()  // 返回是否为空
 clear()  // 清空
-
 front()/back()
-
 push_back()/pop_back()
-
 begin()/end()
-
 insert(v.begin(), 0)  // 队首插入 0
 []
 支持比较运算，按字典序
@@ -64,5 +60,16 @@ nums = [3,30,34,5,9];
 sort(nums.begin(), nums.end(), [](int x, int y) {
     string a = to_string(x), b = to_string(y);
     return a + b > b + a;
+});
+
+
+// 根据其他元素排序
+vector<int>& sid;
+unordered_map<int, int> score;  // key 对应 sid
+sort(sid.begin(), sid.end(), [&](int x, int y) {
+    if (score[x] != score[y])  // 如果序号不等，则根据 value 排序
+        return score[x] > score[y];
+
+    return x < y;  // 如果序号相等，序号小的排在前面
 });
 ```
