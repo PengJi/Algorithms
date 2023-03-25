@@ -72,4 +72,10 @@ sort(sid.begin(), sid.end(), [&](int x, int y) {
 
     return x < y;  // 如果序号相等，序号小的排在前面
 });
+
+// 根据某一个位置的元素排序
+vector<int> id(m);
+sort(id.begin(), id.end(), [&](int x, int y) {
+    return score[x][k] > score[y][k];
+});
 ```

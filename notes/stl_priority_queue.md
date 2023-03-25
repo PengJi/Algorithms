@@ -3,6 +3,12 @@
 `Type` 为数据类型， `Container` 为保存数据的容器，`Functional` 为元素比较方式。  
 如果不写后两个参数，那么容器默认用的是 `vector`，比较方式默认用 `operator<`，也就是优先队列是大顶堆，队头元素最大。
 
+## 初始化
+```cpp
+vector<int>& nums
+priority_queue<int> heap(nums.begin(), nums.end());
+```
+
 ## 大顶堆（默认）
 ```cpp
 #include<iostream>
