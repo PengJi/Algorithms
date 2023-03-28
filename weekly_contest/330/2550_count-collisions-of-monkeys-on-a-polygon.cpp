@@ -2,6 +2,7 @@
 
 class Solution {
 public:
+    // 快速幂
     int monkeyMove(int n) {
         const int mod = 1000000007;
 
