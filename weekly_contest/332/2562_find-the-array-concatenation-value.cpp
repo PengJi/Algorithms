@@ -1,4 +1,4 @@
-#define LL long long
+typedef long long LL;
 
 class Solution {
 public:
