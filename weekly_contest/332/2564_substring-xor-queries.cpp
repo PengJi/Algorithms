@@ -1,4 +1,4 @@
-typedef long logn LL;
+typedef long long LL;
 
 class Solution {
 public:
