@@ -28,7 +28,7 @@ int main() {
     }
 
     // 第二种方式
-    for(auto [k, v] : mp) {
+    for(auto &[k, v] : mp) {
         cout << k << v << endl;
     }
 

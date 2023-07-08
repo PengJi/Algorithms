@@ -1,6 +1,12 @@
 # 集合
 
 ```cpp
+// 初始化
+vector<int>& nums1;
+vector<int>& nums2;
+unordered_set<int> s1(nums1.begin(), nums1.end());
+
+// 常用操作
 unordered_set<int> st;
 
 st.insert(x)  // 插入一个数
