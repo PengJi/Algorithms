@@ -18,32 +18,33 @@ public:
         }
         // 记录一维字符串的相邻索引
         vector<vector<int>> neighbor = {
-            { 1, 3 },
-            { 0, 4, 2 },
-            { 1, 5 },
-            { 0, 4 },
-            { 3, 1, 5 },
-            { 4, 2 }
-        };
-        
+            {1, 3},
+            {0, 4, 2},
+            {1, 5},
+            {0, 4},
+            {3, 1, 5},
+            {4, 2}};
+
         /******* BFS 算法框架开始 *******/
         queue<string> q;
         unordered_set<string> visited;
         q.push(start);
         visited.insert(start);
-        
+
         int step = 0;
         while (!q.empty()) {
             int sz = q.size();
             for (int i = 0; i < sz; i++) {
-                string cur = q.front(); q.pop();
+                string cur = q.front();
+                q.pop();
                 // 判断是否达到目标局面
                 if (target == cur) {
                     return step;
                 }
                 // 找到数字 0 的索引
                 int idx = 0;
-                for (; cur[idx] != '0'; idx++);
+                for (; cur[idx] != '0'; idx++)
+                    ;
                 // 将数字 0 和相邻的数字交换位置
                 for (int adj : neighbor[idx]) {
                     string new_board = cur;
@@ -79,11 +80,11 @@ public:
             q.pop();
 
             int x, y;
-            for (int i = 0; i < 2; i ++ )
-                for (int j = 0; j < 3; j ++ )
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 3; j++)
                     if (t[i][j] == 0)
                         x = i, y = j;
-            for (int i = 0; i < 4; i ++ ) {
+            for (int i = 0; i < 4; i++) {
                 int a = x + dx[i], b = y + dy[i];
                 if (a >= 0 && a < 2 && b >= 0 && b < 3) {
                     auto r = t;
@@ -99,8 +100,3 @@ public:
         return -1;
     }
 };
-
-作者：yxc
-链接：https://www.acwing.com/activity/content/code/content/1039626/
-来源：AcWing
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

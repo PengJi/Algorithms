@@ -9,13 +9,14 @@ public:
 
     // https://www.acwing.com/activity/content/code/content/445271/
     vector<int> diffWaysToCompute(string s) {
-        for (int i = 0; i < s.size(); i ++ ) {
+        for (int i = 0; i < s.size(); i++) {
             if (isdigit(s[i])) {
                 int j = i, x = 0;
-                while (j < s.size() && isdigit(s[j])) x = x * 10 + (s[j ++ ] - '0');
+                while (j < s.size() && isdigit(s[j])) x = x * 10 + (s[j++] - '0');
                 i = j - 1;
                 expr.push_back(to_string(x));
-            } else expr.push_back(s.substr(i, 1));
+            } else
+                expr.push_back(s.substr(i, 1));
         }
         return dfs(0, expr.size() - 1);
     }
@@ -25,12 +26,15 @@ public:
         vector<int> res;
         for (int i = l + 1; i < r; i += 2) {
             auto left = dfs(l, i - 1), right = dfs(i + 1, r);
-            for (auto x: left)
-                for (auto y: right) {
+            for (auto x : left)
+                for (auto y : right) {
                     int z;
-                    if (expr[i] == "+") z = x + y;
-                    else if (expr[i] == "-") z = x - y;
-                    else z = x * y;
+                    if (expr[i] == "+")
+                        z = x + y;
+                    else if (expr[i] == "-")
+                        z = x - y;
+                    else
+                        z = x * y;
                     res.push_back(z);
                 }
         }

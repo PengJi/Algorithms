@@ -1,7 +1,7 @@
 /**
  * 337. 打家劫舍 III
  * 房子组成一棵树
- * 
+ *
  * https://leetcode-cn.com/problems/house-robber-iii/
  */
 
@@ -28,7 +28,7 @@ public:
 
     vector<int> dfs(TreeNode* node) {
         vector<int> dp{0, 0};
-        if(node == NULL) return dp;
+        if (node == NULL) return dp;
 
         // 分类讨论的标准是：当前结点偷或者不偷
         // 由于需要后序遍历，所以先计算左右子结点，然后计算当前结点的状态值

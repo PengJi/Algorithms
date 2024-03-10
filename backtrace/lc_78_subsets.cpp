@@ -2,7 +2,7 @@
  * 78. 子集
  * 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
  * 说明：解集不能包含重复的子集。
- * 
+ *
  * https://leetcode-cn.com/problems/subsets/
  */
 
@@ -22,7 +22,7 @@ public:
 
     void backtrack(vector<int>& nums, int start, vector<int>& track) {
         res.push_back(track);
-        
+
         for (int i = start; i < nums.size(); i++) {
             // 做选择
             track.push_back(nums[i]);
@@ -39,10 +39,10 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> res;
         int n = nums.size();
-        for(int i = 0; i < (1 << n); i++) {
+        for (int i = 0; i < (1 << n); i++) {
             vector<int> tmp;
-            for(int j = 0; j < n; j++) {
-                if(i >> j & 1) tmp.push_back(nums[j]);
+            for (int j = 0; j < n; j++) {
+                if (i >> j & 1) tmp.push_back(nums[j]);
             }
             res.push_back(tmp);
         }

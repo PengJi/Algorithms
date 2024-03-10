@@ -13,7 +13,7 @@ public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         edges.resize(numCourses);
         visited.resize(numCourses);
-        for (const auto& info: prerequisites) {
+        for (const auto& info : prerequisites) {
             edges[info[1]].push_back(info[0]);
         }
         for (int i = 0; i < numCourses && valid; ++i) {
@@ -26,14 +26,13 @@ public:
 
     void dfs(int u) {
         visited[u] = 1;
-        for (int v: edges[u]) {
+        for (int v : edges[u]) {
             if (visited[v] == 0) {
                 dfs(v);
                 if (!valid) {
                     return;
                 }
-            }
-            else if (visited[v] == 1) {
+            } else if (visited[v] == 1) {
                 valid = false;
                 return;
             }
@@ -50,25 +49,25 @@ public:
         vector<int> d(n);
 
         // 组建有向无环图
-        for(auto& x: p) {
+        for (auto& x : p) {
             int a = x[0], b = x[1];
             g[b].push_back(a);  // 建立边，b 指向 a
-            d[a]++;  // 统计入度，a 的入度加一
+            d[a]++;             // 统计入度，a 的入度加一
         }
 
         queue<int> q;  // 存储入度为 0 的点
-        for(int i = 0; i < n; i++) {
-            if(d[i] == 0) q.push(i);
+        for (int i = 0; i < n; i++) {
+            if (d[i] == 0) q.push(i);
         }
 
         // 有向无环图去除边
         int cnt = 0;
-        while(!q.empty()) {
+        while (!q.empty()) {
             int t = q.front();
             q.pop();
             cnt++;
-            for(auto x: g[t]) {
-                if(--d[x] == 0) q.push(x);
+            for (auto x : g[t]) {
+                if (--d[x] == 0) q.push(x);
             }
         }
 

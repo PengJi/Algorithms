@@ -1,7 +1,7 @@
 /**
  * 46. 全排列
- * 给定一个 没有重复 数字的序列，返回其所有可能的全排列。
- * 
+ * 给定一个没有重复数字的序列，返回其所有可能的全排列。
+ *
  * https://leetcode-cn.com/problems/permutations/
  */
 
@@ -17,23 +17,23 @@ public:
         return res;
     }
 
-    void backtrack(vector<int> nums, vector<int> track, vector<vector<int>> &res) {
-        if(track.size() == nums.size()) {
+    void backtrack(vector<int> nums, vector<int> track, vector<vector<int>>& res) {
+        if (track.size() == nums.size()) {
             res.push_back(track);
             return;
         }
 
         bool flag = false;
-        for(int i = 0; i < nums.size(); i++) {
+        for (int i = 0; i < nums.size(); i++) {
             // 判断元素是否在路径中
-            for(int j = 0; j < track.size(); j++){
-                if(track[j] == nums[i]){
+            for (int j = 0; j < track.size(); j++) {
+                if (track[j] == nums[i]) {
                     flag = true;
                     break;
                 }
             }
-            
-            if(flag){
+
+            if (flag) {
                 flag = false;
                 continue;
             }
@@ -52,16 +52,15 @@ public:
     vector<int> path;
 
     vector<vector<int>> permute(vector<int>& nums) {
-        for (int i = 0; i < nums.size(); i ++ ) st.push_back(false);
+        for (int i = 0; i < nums.size(); i++) st.push_back(false);
         dfs(0, nums);
         return ans;
     }
 
-    void dfs(int idx, vector<int> &nums)
-    {
+    void dfs(int idx, vector<int>& nums) {
         if (idx == nums.size()) {
             ans.push_back(path);
-            return ;
+            return;
         }
 
         for (int i = 0; i < nums.size(); i++)

@@ -14,10 +14,10 @@ public:
     vector<string> wordBreak(string s, vector<string>& wordDict) {
         n = s.size();
         f.resize(n + 1);
-        for (auto word: wordDict) hash.insert(word);
+        for (auto word : wordDict) hash.insert(word);
         f[n] = true;
-        for (int i = n - 1; ~i; i -- )
-            for (int j = i; j < n; j ++ )
+        for (int i = n - 1; ~i; i--)
+            for (int j = i; j < n; j++)
                 if (hash.count(s.substr(i, j - i + 1)) && f[j + 1])
                     f[i] = true;
 
@@ -30,10 +30,9 @@ public:
             path.pop_back();
             ans.push_back(path);
         } else {
-            for (int i = u; i < n; i ++ )
+            for (int i = u; i < n; i++)
                 if (hash.count(s.substr(u, i - u + 1)) && f[i + 1])
                     dfs(s, i + 1, path + s.substr(u, i - u + 1) + ' ');
         }
     }
 };
-

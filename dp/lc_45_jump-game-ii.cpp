@@ -10,7 +10,7 @@ public:
         int maxPos = 0;
         int n = nums.size();
         int end = 0, step = 0;
-        
+
         for (int i = 0; i < n - 1; ++i) {
             if (maxPos >= i) {
                 maxPos = max(maxPos, i + nums[i]);
@@ -31,11 +31,11 @@ public:
         // 状态数组
         vector<int> f(n);
 
-        for(int i = 1, j = 0; i < n; i++) {
-            while(j + nums[j] < i) j++;
+        for (int i = 1, j = 0; i < n; i++) {
+            while (j + nums[j] < i) j++;
             f[i] = f[j] + 1;
         }
 
-        return f[n-1];
+        return f[n - 1];
     }
 };

@@ -14,21 +14,17 @@ public:
         return ans;
     }
 
-    bool check(string &now)
-    {
+    bool check(string &now) {
         if (now.empty()) return false;
-        for (int i = 0, j = now.size() - 1; i < j; i ++, j -- )
+        for (int i = 0, j = now.size() - 1; i < j; i++, j--)
             if (now[i] != now[j])
                 return false;
         return true;
     }
 
-    void dfs(string now, int u, string &s)
-    {
-        if (u == s.size())
-        {
-            if (check(now))
-            {
+    void dfs(string now, int u, string &s) {
+        if (u == s.size()) {
+            if (check(now)) {
                 path.push_back(now);
                 ans.push_back(path);
                 path.pop_back();
@@ -36,8 +32,7 @@ public:
             return;
         }
 
-        if (check(now))
-        {
+        if (check(now)) {
             path.push_back(now);
             dfs("", u, s);
             path.pop_back();

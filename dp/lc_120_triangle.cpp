@@ -11,12 +11,12 @@ public:
     // 空间复杂度：O(n)
     int minimumTotal(vector<vector<int>>& triangle) {
         int row = triangle.size();
-        if(row == 0) return 0;
+        if (row == 0) return 0;
 
-        vector<int> dp(row+1, 0);
-        for(int i = row-1; i >= 0; i--) {
-            for(int j = 0; j <= i; j++) {
-                dp[j] = min(dp[j], dp[j+1]) + triangle[i][j];
+        vector<int> dp(row + 1, 0);
+        for (int i = row - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[j] = min(dp[j], dp[j + 1]) + triangle[i][j];
             }
         }
 
@@ -28,14 +28,14 @@ public:
     // 空间复杂度：O(n^2)
     int minimumTotal(vector<vector<int>>& triangle) {
         int row = triangle.size();
-        if(row == 0) return 0;
+        if (row == 0) return 0;
 
         // dp[i][j] 表示从点 (i, j) 到底边的最小路径和。
-        vector<vector<int>> dp(row+1, vector<int>(row+1, 0));
+        vector<vector<int>> dp(row + 1, vector<int>(row + 1, 0));
         // 三角形的最后一行开始递推
-        for(int i = row - 1; i >= 0; i--) {
-            for(int j = 0; j <= i; j++) {
-                dp[i][j] = min(dp[i+1][j], dp[i+1][j+1]) + triangle[i][j];
+        for (int i = row - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[i][j] = min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle[i][j];
             }
         }
 
@@ -51,15 +51,14 @@ public:
     // 空间复杂度：O(1)
     int minimumTotal(vector<vector<int>>& f) {
         // 注意这里是从倒数第二行开始计算
-        for(int i = f.size()-2; i >= 0; i--) {
+        for (int i = f.size() - 2; i >= 0; i--) {
             // 需要注意 j 的范围，最大值为 i。
-            for(int j = 0; j <= i; j++) {
+            for (int j = 0; j <= i; j++) {
                 // 对每一个节点取最小值并就地修改原数组
-                f[i][j] += min(f[i+1][j], f[i+1][j+1]);
+                f[i][j] += min(f[i + 1][j], f[i + 1][j + 1]);
             }
         }
 
         return f[0][0];
     }
 };
-

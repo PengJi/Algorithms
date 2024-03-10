@@ -33,8 +33,8 @@ public:
         if (!node) return NULL;
         dfs(node);  // 复制所有点
 
-        for (auto [s, d]: hash) {
-            for (auto ver: s->neighbors)
+        for (auto [s, d] : hash) {
+            for (auto ver : s->neighbors)
                 d->neighbors.push_back(hash[ver]);
         }
 
@@ -44,7 +44,7 @@ public:
     void dfs(Node* node) {
         hash[node] = new Node(node->val);
 
-        for (auto ver: node->neighbors)
+        for (auto ver : node->neighbors)
             if (hash.count(ver) == 0)
                 dfs(ver);
     }
@@ -55,12 +55,12 @@ public:
     unordered_map<Node*, Node*> mp;
 
     Node* cloneGraph(Node* node) {
-        if(!node) return NULL;
+        if (!node) return NULL;
 
         dfs(node);  // 拷贝点
 
-        for(auto [s, d]: mp) {  // 拷贝边
-            for(auto ver: s->neighbors) {
+        for (auto [s, d] : mp) {  // 拷贝边
+            for (auto ver : s->neighbors) {
                 d->neighbors.push_back(mp[ver]);
             }
         }
@@ -71,8 +71,8 @@ public:
     void dfs(Node* node) {
         mp[node] = new Node(node->val);  // 创建新的点
 
-        for(auto ver: node->neighbors) {
-            if(mp.count(ver) == 0) dfs(ver);
+        for (auto ver : node->neighbors) {
+            if (mp.count(ver) == 0) dfs(ver);
         }
     }
 };

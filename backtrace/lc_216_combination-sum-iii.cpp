@@ -1,7 +1,7 @@
 /**
  * 216. 组合总和 III
  * 找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
- * 
+ *
  * https://leetcode.cn/problems/combination-sum-iii/
  */
 class Solution {
@@ -48,7 +48,7 @@ public:
             return;
         }
 
-        for (int i = start; i <= 10 - k; i ++ )
+        for (int i = start; i <= 10 - k; i++)
             if (n >= i) {
                 path.push_back(i);
                 dfs(k - 1, n - i, i + 1);

@@ -16,9 +16,10 @@ public:
         while (!bset.empty() and !eset.empty()) {
             if (bset.size() <= eset.size())
                 set1 = &bset, set2 = &eset;
-            else set2 = &bset, set1 = &eset;
+            else
+                set2 = &bset, set1 = &eset;
             unordered_set<string> tmp;
-            step ++;
+            step++;
             for (auto itr = set1->begin(); itr != set1->end(); ++itr) {
                 for (int i = 0; i < n; ++i) {
                     string dna = *itr;

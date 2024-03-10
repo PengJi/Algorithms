@@ -1,14 +1,14 @@
 /**
  * 47. 全排列 II
  * 给定一个可包含重复数字的序列，返回所有不重复的全排列。
- * 
+ *
  * https://leetcode-cn.com/problems/permutations-ii/
  */
 
 class Solution {
 public:
     vector<int> vis;
-    
+
     // 回溯法
     // https://leetcode-cn.com/problems/permutations-ii/solution/quan-pai-lie-ii-by-leetcode-solution/
     vector<vector<int>> permuteUnique(vector<int>& nums) {
@@ -58,7 +58,7 @@ public:
             return;
         }
 
-        for (int i = start; i < nums.size(); i ++ )
+        for (int i = start; i < nums.size(); i++)
             if (!st[i]) {
                 st[i] = true;
                 path[i] = nums[idx];

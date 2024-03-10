@@ -13,11 +13,11 @@ public:
     // 空间复杂度：O(1)
     int maxProfit(vector<int>& prices) {
         int len = prices.size();
-        if(len <= 1) return 0;
+        if (len <= 1) return 0;
 
         int res;
-        for(int i = 1; i < len; i++) {
-            if(prices[i] > prices[i-1]) res += prices[i] - prices[i-1];
+        for (int i = 1; i < len; i++) {
+            if (prices[i] > prices[i - 1]) res += prices[i] - prices[i - 1];
         }
 
         return res;

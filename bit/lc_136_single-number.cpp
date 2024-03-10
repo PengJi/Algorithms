@@ -10,7 +10,7 @@ public:
     // 空间复杂度：O(1)
     int singleNumber(vector<int>& nums) {
         int res = 0;
-        for(auto n : nums){
+        for (auto n : nums) {
             res ^= n;
         }
 
@@ -23,7 +23,7 @@ public:
     // 异或运算
     int singleNumber(vector<int>& nums) {
         int res = 0;
-        for(auto n: nums) res ^= n;
+        for (auto n : nums) res ^= n;
         return res;
     }
 };

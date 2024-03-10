@@ -10,9 +10,9 @@ public:
         int tmp = x ^ y;
         int distance = 0;
         while (tmp != 0) {
-          distance += 1;
-          // remove the rightmost bit of '1'
-          tmp = tmp & (tmp - 1);
+            distance += 1;
+            // remove the rightmost bit of '1'
+            tmp = tmp & (tmp - 1);
         }
         return distance;
     }

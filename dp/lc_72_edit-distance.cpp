@@ -45,7 +45,6 @@ public:
 
                 // 包含当前字符相同的情形
                 dp[i][j] = min(left, min(down, left_down));
-
             }
         }
         return dp[n][m];

@@ -20,6 +20,6 @@ public:
             a1l1 = a1l0;
             a1l0 = a1l0_;
         }
-        return (int) a1l0;
+        return (int)a1l0;
     }
 };

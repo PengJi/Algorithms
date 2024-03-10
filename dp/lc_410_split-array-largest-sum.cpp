@@ -15,11 +15,11 @@ public:
             right += num;
         }
         while (left <= right) {
-            ll mid = left + (right-left)/2;
+            ll mid = left + (right - left) / 2;
             if (canSplit(nums, m, mid))
-                right = mid-1;
+                right = mid - 1;
             else
-                left = mid+1;
+                left = mid + 1;
         }
         return left;
     }

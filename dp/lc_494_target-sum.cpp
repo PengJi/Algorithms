@@ -6,7 +6,7 @@
 class Solution {
 public:
     // https://leetcode-cn.com/problems/target-sum/solution/c-dfshe-01bei-bao-by-bao-bao-ke-guai-liao/
-    int findTargetSumWays(vector<int>& nums, int S) {
+    int findTargetSumWays(vector<int> &nums, int S) {
         long sum = 0;
         for (const int &it : nums) {
             sum += it;

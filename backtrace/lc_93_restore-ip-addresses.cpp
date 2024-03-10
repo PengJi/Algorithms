@@ -15,14 +15,11 @@ public:
     }
 
     // idx表示枚举到的字符串下标，cnt表示当前截断的IP个数，s表示原字符串
-    void backtrack(int idx, int cnt, string &s)
-    {
-        if (idx == s.size())
-        {
-            if (cnt == 4)
-            {
+    void backtrack(int idx, int cnt, string &s) {
+        if (idx == s.size()) {
+            if (cnt == 4) {
                 string ip = to_string(path[0]);
-                for (int i = 1; i < 4; i ++ )
+                for (int i = 1; i < 4; i++)
                     ip += '.' + to_string(path[i]);
                 ans.push_back(ip);
             }
@@ -31,11 +28,9 @@ public:
         if (cnt > 4) return;
 
         unsigned t = 0;
-        for (int i = idx; i < s.size(); i ++ )
-        {
+        for (int i = idx; i < s.size(); i++) {
             t = t * 10 + s[i] - '0';
-            if (t >= 0 && t < 256)
-            {
+            if (t >= 0 && t < 256) {
                 path.push_back(t);
                 backtrack(i + 1, cnt + 1, s);
                 path.pop_back();
@@ -60,7 +55,7 @@ public:
         if (idx == s.size()) {
             if (k == 4) {
                 string ip = to_string(path[0]);
-                for(int i = 1; i < 4; i ++ )
+                for (int i = 1; i < 4; i++)
                     ip += '.' + to_string(path[i]);
                 ans.push_back(ip);
             }
@@ -69,7 +64,7 @@ public:
         if (k > 4) return;  // 剪枝
 
         unsigned t = 0;
-        for (int i = idx; i < s.size(); i ++ ) {
+        for (int i = idx; i < s.size(); i++) {
             t = t * 10 + s[i] - '0';
             if (t >= 0 && t < 256) {
                 path.push_back(t);

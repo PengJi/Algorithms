@@ -1,7 +1,7 @@
 /**
  * 198. 打家劫舍
  * 不能偷相邻的房子
- * 
+ *
  * https://leetcode-cn.com/problems/house-robber/
  */
 
@@ -12,13 +12,13 @@ public:
     // 空间复杂度：O(n)
     int rob(vector<int>& nums) {
         int len = nums.size();
-        if(len == 0) return 0;
+        if (len == 0) return 0;
 
-        vector<int> dp(len+1);
+        vector<int> dp(len + 1);
         dp[0] = 0;
         dp[1] = nums[0];
-        for(int i = 2; i <= len; i++){
-            dp[i] = max(dp[i-1], dp[i-2] + nums[i-1]);
+        for (int i = 2; i <= len; i++) {
+            dp[i] = max(dp[i - 1], dp[i - 2] + nums[i - 1]);
         }
 
         return dp[len];
@@ -29,7 +29,7 @@ public:
     // 空间复杂度：O(1)
     int rob(vector<int>& nums) {
         int len = nums.size();
-        if(len == 0) return 0;
+        if (len == 0) return 0;
 
         int prevMax = 0;
         int currMax = 0;
