@@ -21,18 +21,18 @@ public:
                 nums[next] = numToBeRotated;
                 numToBeRotated = temp;
                 current = next;
-                cntRotated++;  //统计替换元素的个数
+                cntRotated++;            //统计替换元素的个数
             } while (start != current);  // 避免循环复制
         }
     }
 
     // 采用反转法（三次反转）
     void rotate2(vector<int>& nums, int k) {
-        int length=nums.size();
+        int length = nums.size();
         k = k % length;  // k可能大于n，这里保证k小于n
 
         reverse(&nums[0], &nums[length]);  // 反转所有元素
-        reverse(&nums[0], &nums[k]);  // 反转前k个元素
+        reverse(&nums[0], &nums[k]);       // 反转前k个元素
         reverse(&nums[k], &nums[length]);  // 反转后n-k个元素
     }
 
@@ -40,9 +40,9 @@ public:
     void rotate1(vector<int>& nums, int k) {
         int last, temp;
         int length = nums.size();
-        for(int i=0; i<k; k++){
-            last = nums[length-1];  // 第一个元素的上一个元素是最后一个元素
-            for(int j=0; j<length; j++){
+        for (int i = 0; i < k; k++) {
+            last = nums[length - 1];  // 第一个元素的上一个元素是最后一个元素
+            for (int j = 0; j < length; j++) {
                 temp = nums[j];
                 nums[j] = last;
                 last = temp;

@@ -20,7 +20,7 @@ public:
         visited[u] = 1;
         // 搜索其相邻节点
         // 只要发现有环，立刻停止搜索
-        for (int v: edges[u]) {
+        for (int v : edges[u]) {
             // 如果「未搜索」那么搜索相邻节点
             if (visited[v] == 0) {
                 dfs(v);
@@ -43,7 +43,7 @@ public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
         edges.resize(numCourses);
         visited.resize(numCourses);
-        for (const auto& info: prerequisites) {
+        for (const auto& info : prerequisites) {
             edges[info[1]].push_back(info[0]);
         }
         // 每次挑选一个「未搜索」的节点，开始进行深度优先搜索

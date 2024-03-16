@@ -15,17 +15,17 @@ public:
         // 存储每一个box的每个数是否出现过，默认初始情况下，在每个box中，每个数都没有出现过。整个board有9个box。
         vector<vector<int>> box(9, vector<int>(10, 0));
 
-        for(int i = 0; i < 9; i++) {
-            for(int j = 0; j < 9; j++) {
-                if(board[i][j] == '.') continue;
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (board[i][j] == '.') continue;
                 int cur = board[i][j] - '0';
-                if(row[i][cur]) return false;
-                if(col[j][cur]) return false;
-                if(box[j/3 + (i/3)*3][cur]) return false;
+                if (row[i][cur]) return false;
+                if (col[j][cur]) return false;
+                if (box[j / 3 + (i / 3) * 3][cur]) return false;
 
                 row[i][cur] = 1;
                 col[j][cur] = 1;
-                box[j/3 + (i/3)*3][cur] = 1;
+                box[j / 3 + (i / 3) * 3][cur] = 1;
             }
         }
 

@@ -9,13 +9,13 @@ public:
     // 时间复杂度：O(logn)
     // 空间复杂度：O(1)
     int minArray(vector<int>& numbers) {
-        int low = 0, high = numbers.size()-1;
+        int low = 0, high = numbers.size() - 1;
         int pivot;
-        while(low < high) {
-            pivot = low + (high-low)/2;
-            if(numbers[pivot] < numbers[high]) {
+        while (low < high) {
+            pivot = low + (high - low) / 2;
+            if (numbers[pivot] < numbers[high]) {
                 high = pivot;
-            } else if(numbers[pivot] > numbers[high]) {
+            } else if (numbers[pivot] > numbers[high]) {
                 low = pivot + 1;
             } else {
                 high -= 1;

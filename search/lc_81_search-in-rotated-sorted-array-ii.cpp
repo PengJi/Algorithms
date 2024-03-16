@@ -13,26 +13,30 @@ public:
         int l = 0;
 
         int t = nums.size() - 1;
-        while (t > 0 && nums[t] == nums[0]) t -- ;
+        while (t > 0 && nums[t] == nums[0]) t--;
 
         int r = t;
         // 找到最小值
-        while (l < r)
-        {
+        while (l < r) {
             int mid = l + r >> 1;
-            if (nums[mid] <= nums[t]) r = mid;
-            else l = mid + 1;
+            if (nums[mid] <= nums[t])
+                r = mid;
+            else
+                l = mid + 1;
         }
 
-        if (target <= nums[t]) r = t; // 答案在右半边
-        else l = 0, r -- ; // 答案在左半边
+        if (target <= nums[t])
+            r = t;  // 答案在右半边
+        else
+            l = 0, r--;  // 答案在左半边
 
         // 搜索答案，直接套模板
-        while (l < r)
-        {
+        while (l < r) {
             int mid = l + r >> 1;
-            if (nums[mid] >= target) r = mid;
-            else l = mid + 1;
+            if (nums[mid] >= target)
+                r = mid;
+            else
+                l = mid + 1;
         }
 
         return nums[l] == target;

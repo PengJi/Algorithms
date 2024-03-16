@@ -15,14 +15,14 @@ public:
     // 空间复杂度：O(1)
     int findMin(vector<int>& nums) {
         int len = nums.size();
-        if(len == 0) return 0;
+        if (len == 0) return 0;
 
-        int left = 0, right = len-1;
+        int left = 0, right = len - 1;
         int mid;
-        while(left < right) {
-            mid = left + (right-left)/2;
-            
-            if(nums[mid] < nums[right])  // 在左半部分
+        while (left < right) {
+            mid = left + (right - left) / 2;
+
+            if (nums[mid] < nums[right])  // 在左半部分
                 right = mid;
             else  // 在右半部分
                 left = mid + 1;

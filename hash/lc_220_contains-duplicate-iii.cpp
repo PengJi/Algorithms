@@ -6,24 +6,23 @@
 class Solution {
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
-        if(t<0) return false;
-        //t+1可能会溢出，所以要+ 1LL
+        if (t < 0) return false;
+        // t+1可能会溢出，所以要+ 1LL
         long long mod = t + 1LL;
-        unordered_map<long long,long long> buck;
-        for(int i=0;i<nums.size();i++) {
+        unordered_map<long long, long long> buck;
+        for (int i = 0; i < nums.size(); i++) {
             long long nth = nums[i] / mod;
             //可能nums[i]为负数，比如-4 / 5 以及 -4 / 5都等于0，所以负数要向下移动一位
-            if(nums[i] < 0) nth--;
+            if (nums[i] < 0) nth--;
             //这里要用find 不能直接[],因为可能本身存储的数字就为0
-            if(buck.find(nth)!=buck.end()) 
+            if (buck.find(nth) != buck.end())
                 return true;
-            else if(buck.find(nth-1)!=buck.end() && abs(nums[i] - buck[nth-1]) <= t)
+            else if (buck.find(nth - 1) != buck.end() && abs(nums[i] - buck[nth - 1]) <= t)
                 return true;
-            else if(buck.find(nth+1)!=buck.end() && abs(nums[i] - buck[nth+1]) <= t)
+            else if (buck.find(nth + 1) != buck.end() && abs(nums[i] - buck[nth + 1]) <= t)
                 return true;
             buck[nth] = nums[i];
-            if(i >= k)
-            {
+            if (i >= k) {
                 buck.erase(nums[i - k] / mod);
             }
         }
@@ -37,16 +36,15 @@ public:
         typedef long long LL;
         multiset<LL> S;
         S.insert(1e18), S.insert(-1e18);
-        for (int i = 0, j = 0; i < nums.size(); i ++ ) {
-            if (i - j > k) S.erase(S.find(nums[j ++ ]));
+        for (int i = 0, j = 0; i < nums.size(); i++) {
+            if (i - j > k) S.erase(S.find(nums[j++]));
             int x = nums[i];
             auto it = S.lower_bound(x);
             if (*it - x <= t) return true;
-            -- it;
+            --it;
             if (x - *it <= t) return true;
             S.insert(x);
         }
         return false;
     }
 };
-

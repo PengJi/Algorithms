@@ -10,9 +10,9 @@ public:
         vector<string> res;
         unordered_map<string, int> mp;
         string tmp;
-        for(int i = 0; i + 10 <= s.size(); i++) {
+        for (int i = 0; i + 10 <= s.size(); i++) {
             tmp = s.substr(i, 10);
-            if(mp[tmp] == 1) res.push_back(tmp);
+            if (mp[tmp] == 1) res.push_back(tmp);
             mp[tmp]++;
         }
 

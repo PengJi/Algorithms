@@ -11,6 +11,7 @@ private:
     };
 
     Node* root;
+
 public:
     Trie() {
         root = new Node();
@@ -32,16 +33,14 @@ public:
             auto newNode = new Node();
             currentNode->next[key] = newNode;
             insert(&word[1], currentNode->next[key]);
-        }
-        else {
+        } else {
             insert(&word[1], currentNode->next[key]);
         }
     }
 
     bool isContain(string word) {
         auto temp = root;
-       return isContain(word, temp);
-
+        return isContain(word, temp);
     }
 
     bool isContain(string word, Node* currentNode) {
@@ -52,17 +51,15 @@ public:
         auto next = currentNode->next[key];
         if (next == NULL) {
             return false;
-        }
-        else {
+        } else {
             return isContain(&word[1], next);
         }
     }
 
     bool isContainWith(string word) {
         auto temp = root;
-        return isContainWith(word,temp);
+        return isContainWith(word, temp);
     }
-
 
     bool isContainWith(string word, Node* currentNode) {
         if (word == "eat") {
@@ -75,50 +72,48 @@ public:
         auto next = currentNode->next[key];
         if (next == NULL) {
             return false;
-        }
-        else {
-            auto r= isContainWith(&word[1], currentNode->next[key]);
+        } else {
+            auto r = isContainWith(&word[1], currentNode->next[key]);
             return r;
         }
-        
     }
 };
 
 class Solution {
 public:
     int maxLength = 0;
-    pair<int, int> dir[4] = {   {0,-1}, {0,1},{-1,0},{1,0 } };
+    pair<int, int> dir[4] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}};
     Trie* Tr;
     vector<string> ans;
     int wordNum;
     bool isAllFind = false;
-    unordered_map<string, bool> myMap ;
+    unordered_map<string, bool> myMap;
     unordered_map<string, bool> myMap2;
 
     // https://leetcode-cn.com/problems/word-search-ii/solution/c-shuang-yi-bai-zi-dian-shu-jia-hui-su-ji-lu-yi-xi/
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         Tr = new Trie();
-        for (int i = 0;i < words.size();i++) {
+        for (int i = 0; i < words.size(); i++) {
             Tr->insert(words[i]);
             wordNum = i;
         }
 
         int x = board[0].size();
         int y = board.size();
-        for (int i = 0;i < y;i++) {
+        for (int i = 0; i < y; i++) {
             if (isAllFind) {
                 break;
             }
-            for (int j = 0;j < x;j++) {
+            for (int j = 0; j < x; j++) {
                 if (isAllFind) {
                     break;
                 }
                 string rt = "";
-                pair<int, int> currentPoint = { j,i };
+                pair<int, int> currentPoint = {j, i};
                 Check(board, rt, currentPoint);
             }
         }
-        return ans;  
+        return ans;
     }
 
     void Check(vector<vector<char>>& board, string& rt, pair<int, int> currPoint) {
@@ -134,36 +129,32 @@ public:
         }
         auto key = PairToStr(currPoint);
         myMap[key] = true;
-        bool isContainWith= Tr->isContainWith(rt);
+        bool isContainWith = Tr->isContainWith(rt);
         if (isContainWith) {
             bool isContain = Tr->isContain(rt);
             if (isContain) {
-             
-                    ans.push_back(rt);
-                    myMap2[rt] = true;
-                    if (ans.size() == wordNum + 1) {
-                        isAllFind = true;
-                        return;
-                    }
-
+                ans.push_back(rt);
+                myMap2[rt] = true;
+                if (ans.size() == wordNum + 1) {
+                    isAllFind = true;
+                    return;
+                }
             }
-            for (int i = 0;i < 4;i++) {
+            for (int i = 0; i < 4; i++) {
                 if (isAllFind) {
                     break;
                 }
                 int nextx = dir[i].first + x;
                 int nexty = dir[i].second + y;
-                pair<int, int> nextPoint = { nextx,nexty };
+                pair<int, int> nextPoint = {nextx, nexty};
                 string nextPointKey = PairToStr(nextPoint);
                 if (myMap.find(nextPointKey) == myMap.end()) {
                     Check(board, rt, nextPoint);
-                }
-                else if (!myMap[nextPointKey]) {
+                } else if (!myMap[nextPointKey]) {
                     Check(board, rt, nextPoint);
                 }
             }
-        }
-        else {
+        } else {
             rt.pop_back();
             myMap[key] = false;
             return;

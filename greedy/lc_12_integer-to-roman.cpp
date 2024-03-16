@@ -13,8 +13,8 @@ public:
 
         string ans = "";
         int idx = 0;
-        while(idx < 13) {
-            while(num >= nums[idx]) {
+        while (idx < 13) {
+            while (num >= nums[idx]) {
                 ans += romans[idx];
                 num -= nums[idx];
             }

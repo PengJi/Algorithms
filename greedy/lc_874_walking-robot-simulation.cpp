@@ -13,9 +13,9 @@ public:
             ( 1,  0)  -- 东：y不动，x向右一步
             (-1,  0)  -- 西：y不动，x向左一步
         */
-        int dx[4] = { 0, 1,  0, -1 };
-        int dy[4] = { 1, 0, -1,  0 };
-        int x = 0, y = 0, direction = 0;    // 方向初始化为北
+        int dx[4] = {0, 1, 0, -1};
+        int dy[4] = {1, 0, -1, 0};
+        int x = 0, y = 0, direction = 0;  // 方向初始化为北
 
         // 障碍物集合: 后续每走一步，都判断是否与障碍物坐标点相同，如果相同，则不继续移动，读取下一条指令
         unordered_map<int, unordered_set<int>> obs;
@@ -25,18 +25,17 @@ public:
         int ans = 0;
         for (auto& cmd : commands) {
             if (cmd == -1) {
-                direction = (direction + 1) % 4;    // 向右转
-            }
-            else if (cmd == -2) {
-                direction = (direction + 3) % 4;    //向左转
-            }
-            else {  // 在当前方向上，移动相应步长
+                direction = (direction + 1) % 4;  // 向右转
+            } else if (cmd == -2) {
+                direction = (direction + 3) % 4;  //向左转
+            } else {                              // 在当前方向上，移动相应步长
                 for (int i = 0; i < cmd; ++i) {
                     int nx = x + dx[direction];
                     int ny = y + dy[direction];
                     auto iter = obs.find(nx);
-                    if(iter == obs.end() || iter->second.find(ny) == iter->second.end()) {
-                        x = nx; y = ny; // 如果没遇到障碍物，则向前移动一步
+                    if (iter == obs.end() || iter->second.find(ny) == iter->second.end()) {
+                        x = nx;
+                        y = ny;  // 如果没遇到障碍物，则向前移动一步
                         ans = max(ans, x * x + y * y);
                     }
                 }

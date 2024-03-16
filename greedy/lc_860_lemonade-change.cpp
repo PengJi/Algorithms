@@ -8,7 +8,7 @@ public:
     // https://leetcode-cn.com/problems/lemonade-change/solution/ning-meng-shui-zhao-ling-by-leetcode/
     bool lemonadeChange(vector<int>& bills) {
         int five = 0, ten = 0;
-        for (int bill: bills) {
+        for (int bill : bills) {
             if (bill == 5)
                 five++;
             else if (bill == 10) {
@@ -40,7 +40,7 @@ public:
     // 收到20元，如果有10元，并且至少有一张5元，则 10+5；如果没有10元，则至少有3张5元，否则，返回false。
     bool lemonadeChange(vector<int>& bills) {
         int fives = 0, tens = 0;
-        for (auto &x : bills) {
+        for (auto& x : bills) {
             if (x == 5)
                 fives++;
             else if (x == 10) {
@@ -48,16 +48,13 @@ public:
                     return false;
                 tens++;
                 fives--;
-            }
-            else {
+            } else {
                 if (tens >= 1 && fives >= 1) {
                     tens--;
                     fives--;
-                }
-                else if (tens == 0 && fives >= 3) {
+                } else if (tens == 0 && fives >= 3) {
                     fives -= 3;
-                }
-                else
+                } else
                     return false;
             }
         }

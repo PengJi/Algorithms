@@ -8,7 +8,7 @@ public:
     // https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/solution/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-by-3zqv5/
     char firstUniqChar(string s) {
         unordered_map<int, int> frequency;
-        for (char ch: s) {
+        for (char ch : s) {
             ++frequency[ch];
         }
         for (int i = 0; i < s.size(); ++i) {

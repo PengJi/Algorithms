@@ -10,9 +10,9 @@ public:
     bool containsDuplicate(vector<int>& nums) {
         unordered_map<int, int> mp;
 
-        for(int n : nums) {
+        for (int n : nums) {
             mp[n]++;
-            if(mp[n] > 1) return true;
+            if (mp[n] > 1) return true;
         }
 
         return false;
@@ -23,9 +23,11 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
         unordered_set<int> st;
-        for(auto n: nums) {
-            if(st.count(n)) return true;
-            else st.insert(n);
+        for (auto n : nums) {
+            if (st.count(n))
+                return true;
+            else
+                st.insert(n);
         }
         return false;
     }
