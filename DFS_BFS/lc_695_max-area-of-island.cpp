@@ -79,3 +79,37 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    int dx[4] = {1, -1, 0, 0}, dy[4] = {0, 0, 1, -1};
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int n = grid.size(), m = grid[0].size();
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (grid[i][j]) {
+                    res = max(res, dfs(i, j, grid));
+                }
+            }
+        }
+
+        return res;
+    }
+
+    int dfs(int i, int j, vector<vector<int>>& grid) {
+        int res = 1;
+        grid[i][j] = 0;
+
+        for (int k = 0; k < 4; k++) {
+            int a = i + dx[k], b = j + dy[k];
+            if (a >= 0 && a < grid.size() && b >= 0 && b < grid[0].size() &&
+                grid[a][b]) {
+                res += dfs(a, b, grid);
+            }
+        }
+
+        return res;
+    }
+};
