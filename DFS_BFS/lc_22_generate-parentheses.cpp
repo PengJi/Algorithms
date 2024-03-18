@@ -50,3 +50,22 @@ public:
         }
     }
 };
+
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        dfs(n, 0, 0, "", res);
+        return res;
+    }
+
+    void dfs(int n, int lc, int rc, string str, vector<string>& res) {
+        if(lc == n && rc == n) {
+            res.push_back(str);
+            return;
+        }
+
+        if(lc < n) dfs(n, lc+1, rc, str+'(', res);
+        if(rc < n && lc > rc) dfs(n, lc, rc+1, str+')', res);
+    }
+};
