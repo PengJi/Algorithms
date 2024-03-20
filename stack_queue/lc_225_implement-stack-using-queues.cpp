@@ -10,34 +10,33 @@ public:
 
     /** Initialize your data structure here. */
     MyStack() {
-
     }
-    
+
     /** Push element x onto stack. */
     void push(int x) {
-        while(!Q.empty()) {
+        while (!Q.empty()) {
             tmpQueue.push(Q.front());
             Q.pop();
         }
         Q.push(x);
-        while(!tmpQueue.empty()) {
+        while (!tmpQueue.empty()) {
             Q.push(tmpQueue.front());
             tmpQueue.pop();
         }
     }
-    
+
     /** Removes the element on top of the stack and returns that element. */
     int pop() {
         int tmp = Q.front();
         Q.pop();
         return tmp;
     }
-    
+
     /** Get the top element. */
     int top() {
         return Q.front();
     }
-    
+
     /** Returns whether the stack is empty. */
     bool empty() {
         return Q.empty();
