@@ -15,13 +15,13 @@
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {
-        if(root == NULL) return {};
+        if (root == NULL) return {};
 
         vector<int> res;
         queue<TreeNode*> que;
         que.push(root);
 
-        while(!que.empty()) {
+        while (!que.empty()) {
             int max = INT_MIN;
             int len = que.size();
 
@@ -55,15 +55,15 @@ public:
 
     void dfs(TreeNode* node, int dep, vector<int>& vec) {
         // 递归返回条件
-        if(node == NULL) return;
+        if (node == NULL) return;
 
         // 比较巧妙，如果结果数组的大小与当前行相等，则说明当前行没有元素，将元素加入当前行。
-        if(vec.size() == dep) vec.push_back(node->val);
+        if (vec.size() == dep) vec.push_back(node->val);
         // 比较当前元素的当前行的最大值
-        if(node->val > vec[dep]) vec[dep] = node->val;
+        if (node->val > vec[dep]) vec[dep] = node->val;
 
         // 遍历左子树和右子树
-        dfs(node->left, dep+1, vec);
-        dfs(node->right, dep+1, vec);
+        dfs(node->left, dep + 1, vec);
+        dfs(node->right, dep + 1, vec);
     }
 };

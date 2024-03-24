@@ -1,7 +1,7 @@
 /**
  * 98. 验证二叉搜索树
  * 给定一个二叉树，判断其是否是一个有效的二叉搜索树。
- * 
+ *
  * https://leetcode-cn.com/problems/validate-binary-search-tree/
  */
 
@@ -20,10 +20,10 @@ public:
         return isValidBST(root, NULL, NULL);
     }
 
-    bool isValidBST(TreeNode *root, TreeNode* lower, TreeNode* upper) {
-        if(root == nullptr) return true;
+    bool isValidBST(TreeNode* root, TreeNode* lower, TreeNode* upper) {
+        if (root == nullptr) return true;
 
-        if(lower && root->val <= lower->val || upper && root->val >= upper->val) return false;
+        if (lower && root->val <= lower->val || upper && root->val >= upper->val) return false;
 
         return isValidBST(root->left, lower, root) && isValidBST(root->right, root, upper);
     }

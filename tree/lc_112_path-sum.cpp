@@ -22,10 +22,9 @@ public:
     }
 
     bool helper(TreeNode* root, int cur, int sum) {
-        if(root == NULL) return false;
+        if (root == NULL) return false;
 
-        cur += root->val
-        if(root->left == NULL && root->right == NULL) {
+        cur += root->val if (root->left == NULL && root->right == NULL) {
             return cur == sum;
         }
 
@@ -36,11 +35,11 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     bool hasPathSum(TreeNode* root, int sum) {
-        if(root == NULL) return false;
+        if (root == NULL) return false;
 
         // 判断是否为叶结点
-        if(root->left == NULL && root->right == NULL) {
-            return sum-root->val == 0;
+        if (root->left == NULL && root->right == NULL) {
+            return sum - root->val == 0;
         }
 
         return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);

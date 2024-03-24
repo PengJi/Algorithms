@@ -30,18 +30,17 @@ public:
     TreeNode* sortedListToBST(ListNode* head) {
         if (!head) return 0;
         int l = 0;
-        for (auto i = head; i; i = i->next) l ++ ;
+        for (auto i = head; i; i = i->next) l++;
         l /= 2;
 
-        ListNode*p = head;
-        for (int i = 0; i < l; i ++ ) p = p->next;
-        TreeNode *root = new TreeNode(p->val);
+        ListNode* p = head;
+        for (int i = 0; i < l; i++) p = p->next;
+        TreeNode* root = new TreeNode(p->val);
 
         root->right = sortedListToBST(p->next);
-        if (l)
-        {
+        if (l) {
             p = head;
-            for (int i = 0; i < l - 1; i ++ ) p = p->next;
+            for (int i = 0; i < l - 1; i++) p = p->next;
             p->next = 0;
             root->left = sortedListToBST(head);
         }

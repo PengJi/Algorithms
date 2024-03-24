@@ -26,7 +26,7 @@ public:
     }
 
     int dfs(TreeNode* root) {
-        if(!root) return 0;
+        if (!root) return 0;
         int left = max(0, dfs(root->left));
         int right = max(0, dfs(root->right));
         ans = max(ans, root->val + left + right);

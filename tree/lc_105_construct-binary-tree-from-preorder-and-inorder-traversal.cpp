@@ -1,7 +1,7 @@
 /**
  * 105. 从前序与中序遍历序列构造二叉树
  * 根据一棵树的前序遍历与中序遍历构造二叉树。
- * 
+ *
  * https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  */
 
@@ -35,12 +35,12 @@ public:
         if (preorder_left > preorder_right) {
             return nullptr;
         }
-        
+
         // 前序遍历中的第一个节点就是根节点
         int preorder_root = preorder_left;
         // 在中序遍历中定位根节点
         int inorder_root = index[preorder[preorder_root]];
-        
+
         // 先把根节点建立出来
         TreeNode* root = new TreeNode(preorder[preorder_root]);
         // 得到左子树中的节点数目

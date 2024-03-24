@@ -1,7 +1,7 @@
 /**
  * 297. 二叉树的序列化与反序列化
  * https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/
-*/
+ */
 
 /**
  * Definition for a binary tree node.
@@ -16,20 +16,20 @@ class Codec {
 public:
     // https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/solution/er-cha-shu-de-xu-lie-hua-yu-fan-xu-lie-hua-by-le-2/
     // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
+    string serialize(TreeNode *root) {
         if (!root) return "X";
         auto l = "(" + serialize(root->left) + ")";
         auto r = "(" + serialize(root->right) + ")";
-        return  l + to_string(root->val) + r;
+        return l + to_string(root->val) + r;
     }
 
     // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) {
+    TreeNode *deserialize(string data) {
         int ptr = 0;
         return parse(data, ptr);
     }
 
-    TreeNode* parse(const string &data, int &ptr) {
+    TreeNode *parse(const string &data, int &ptr) {
         if (data[ptr] == 'X') {
             ++ptr;
             return nullptr;
@@ -41,10 +41,10 @@ public:
         return cur;
     }
 
-    inline TreeNode* parseSubtree(const string &data, int &ptr) {
-        ++ptr; // 跳过左括号
+    inline TreeNode *parseSubtree(const string &data, int &ptr) {
+        ++ptr;  // 跳过左括号
         auto subtree = parse(data, ptr);
-        ++ptr; // 跳过右括号
+        ++ptr;  // 跳过右括号
         return subtree;
     }
 

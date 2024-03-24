@@ -27,7 +27,7 @@ public:
                 while (predecessor->right != nullptr && predecessor->right != root) {
                     predecessor = predecessor->right;
                 }
-                
+
                 // 让 predecessor 的右指针指向 root，继续遍历左子树
                 if (predecessor->right == nullptr) {
                     predecessor->right = root;

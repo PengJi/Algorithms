@@ -33,9 +33,9 @@ public:
         return res;
     }
 
-    void traverse(Node* root, vector<int> &vec){
-        if(root != NULL){
-            for(auto i : root->children){
+    void traverse(Node* root, vector<int>& vec) {
+        if (root != NULL) {
+            for (auto i : root->children) {
                 traverse(i, vec);
             }
 
@@ -48,17 +48,17 @@ public:
     // 空间复杂度：O(n)
     vector<int> postorder(Node* root) {
         vector<int> res;
-        if(root == NULL) return res;
+        if (root == NULL) return res;
         stack<Node*> stk;
         stk.push(root);
         Node* cur;
 
-        while(!stk.empty()){  // 按前序遍历
+        while (!stk.empty()) {  // 按前序遍历
             cur = stk.top();
             res.push_back(cur->val);
             stk.pop();
-            
-            for(auto i : cur->children){
+
+            for (auto i : cur->children) {
                 stk.push(i);
             }
         }

@@ -25,9 +25,9 @@ public:
     }
 
     void dfs(TreeNode* root) {
-        if(root == NULL) return;
+        if (root == NULL) return;
         dfs(root->left);
-        if(--cnt == 0) {
+        if (--cnt == 0) {
             ans = root->val;
             return;
         }
@@ -42,7 +42,7 @@ public:
     void dfs(TreeNode* cur, vector<int>& vals) {
         if (!cur) return;
 
-        dfs(cur -> left, vals);
+        dfs(cur->left, vals);
         vals.push_back(cur->val);
         dfs(cur->right, vals);
     }

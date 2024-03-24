@@ -28,15 +28,15 @@ public:
     // O(1)
     Node* connect(Node* root) {
         Node* head = root;
-        while(root) {  // 遍历每一层
+        while (root) {  // 遍历每一层
             Node* dummy = new Node(0);
             Node* cur = dummy;
-            while(root) {  // 按层遍历，将下层节点依次入队列
-                if(root->left) {  // 左子结点入队列
+            while (root) {         // 按层遍历，将下层节点依次入队列
+                if (root->left) {  // 左子结点入队列
                     cur->next = root->left;
                     cur = cur->next;
                 }
-                if(root -> right) {  // 右子结点入队列
+                if (root->right) {  // 右子结点入队列
                     cur->next = root->right;
                     cur = cur->next;
                 }

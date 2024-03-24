@@ -18,18 +18,18 @@ class Solution {
 public:
     // https://www.acwing.com/solution/content/89/
     int countNodes(TreeNode* root) {
-        if(!root) return 0;
+        if (!root) return 0;
         TreeNode *leftp = root, *rightp = root;
         int l = 0, r = 0;
-        while(leftp) {
+        while (leftp) {
             l++;
             leftp = leftp->left;
         }
-        while(rightp) {
+        while (rightp) {
             r++;
             rightp = rightp->right;
         }
-        if(l == r) return (1 << l) -1;
+        if (l == r) return (1 << l) - 1;
         return countNodes(root->left) + countNodes(root->right) + 1;
     }
 };

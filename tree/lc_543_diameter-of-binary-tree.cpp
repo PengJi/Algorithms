@@ -23,13 +23,13 @@ public:
     }
 
     int dfs(TreeNode* root) {
-        if(root == NULL) {
+        if (root == NULL) {
             return 0;
         }
 
         int L = dfs(root->left);
         int R = dfs(root->right);
-        ans = max(ans, L+R+1);
+        ans = max(ans, L + R + 1);
         return max(L, R) + 1;
     }
 };
@@ -44,7 +44,7 @@ public:
     }
 
     int dfs(TreeNode* root) {
-        if(!root) return 0;
+        if (!root) return 0;
         int left = dfs(root->left), right = dfs(root->right);
         res = max(res, left + right);
         return max(left, right) + 1;

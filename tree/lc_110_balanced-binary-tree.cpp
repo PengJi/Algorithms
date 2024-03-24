@@ -1,7 +1,7 @@
 /**
  * 110. 平衡二叉树
  * 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
- * 
+ *
  * https://leetcode-cn.com/problems/balanced-binary-tree/
  */
 
@@ -29,7 +29,7 @@ public:
     }
 
     // Recursively obtain the height of a tree. An empty tree has -1 height
-    int height(TreeNode* root) { 
+    int height(TreeNode* root) {
         // An empty tree has height -1
         if (root == nullptr) return -1;
 

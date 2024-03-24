@@ -6,14 +6,12 @@
 class WordDictionary {
 public:
     // https://www.acwing.com/solution/content/317/
-    struct Node
-    {
+    struct Node {
         bool is_end;
         Node *next[26];
-        Node()
-        {
+        Node() {
             is_end = false;
-            for (int i = 0; i < 26; i ++ )
+            for (int i = 0; i < 26; i++)
                 next[i] = 0;
         }
     };
@@ -28,8 +26,7 @@ public:
     /** Adds a word into the data structure. */
     void addWord(string word) {
         Node *p = root;
-        for (char c : word)
-        {
+        for (char c : word) {
             int son = c - 'a';
             if (!p->next[son]) p->next[son] = new Node();
             p = p->next[son];
@@ -42,18 +39,13 @@ public:
         return dfs(word, 0, root);
     }
 
-    bool dfs(string &word, int k, Node *u)
-    {
+    bool dfs(string &word, int k, Node *u) {
         if (k == word.size()) return u->is_end;
-        if (word[k] != '.')
-        {
+        if (word[k] != '.') {
             if (u->next[word[k] - 'a']) return dfs(word, k + 1, u->next[word[k] - 'a']);
-        }
-        else
-        {
-            for (int i = 0; i < 26; i ++ )
-                if (u->next[i])
-                {
+        } else {
+            for (int i = 0; i < 26; i++)
+                if (u->next[i]) {
                     if (dfs(word, k + 1, u->next[i])) return true;
                 }
         }

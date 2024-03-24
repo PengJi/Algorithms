@@ -28,7 +28,7 @@ public:
 
             stk.push_back(cur);
         }
-        
+
         return stk.front();
     }
 };

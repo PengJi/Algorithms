@@ -18,12 +18,12 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     TreeNode* invertTree(TreeNode* root) {
-        if(root == nullptr) return NULL;
+        if (root == nullptr) return NULL;
 
         TreeNode* tmp = root->left;
         root->left = root->right;
         root->right = tmp;
-        
+
         invertTree(root->left);
         invertTree(root->right);
 
@@ -34,7 +34,7 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     TreeNode* invertTree(TreeNode* root) {
-        if(root == nullptr) return NULL;
+        if (root == nullptr) return NULL;
         TreeNode* left = invertTree(root->left);
         TreeNode* right = invertTree(root->right);
         root->left = right;
@@ -47,21 +47,20 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     TreeNode* invertTree(TreeNode* root) {
-        if(root == nullptr) return NULL;
+        if (root == nullptr) return NULL;
         queue<TreeNode*> queue;
         queue.push(root);
-        while(!queue.empty()){
+        while (!queue.empty()) {
             TreeNode* cur = queue.front();
             TreeNode* tmp = cur->left;
             cur->left = cur->right;
             cur->right = tmp;
-            
+
             queue.pop();
-            if(cur->left != nullptr) queue.push(cur->left);
-            if(cur->right != nullptr) queue.push(cur->right);
+            if (cur->left != nullptr) queue.push(cur->left);
+            if (cur->right != nullptr) queue.push(cur->right);
         }
 
         return root;
     }
-
 };

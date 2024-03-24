@@ -32,11 +32,11 @@ public:
         return res;
     }
 
-    void traverse(Node* node, vector<int>& res){
-        if(node != NULL){ 
+    void traverse(Node* node, vector<int>& res) {
+        if (node != NULL) {
             res.push_back(node->val);
-            
-            for(Node* child : node->children){
+
+            for (Node* child : node->children) {
                 traverse(child, res);
             }
         }
@@ -47,24 +47,24 @@ public:
     // 空间复杂度：O(n)
     vector<int> preorder(Node* root) {
         vector<int> res;
-        if(root == nullptr){
+        if (root == nullptr) {
             return res;
         }
-        
-        stack<Node *> stk;
+
+        stack<Node*> stk;
         stk.push(root);
-        while(!stk.empty()){
+        while (!stk.empty()) {
             Node* curNode = stk.top();
             stk.pop();
             res.push_back(curNode->val);
-            
-            for(int i = curNode->children.size()-1; i >= 0; i--){
-                if(curNode->children[i] != nullptr){
+
+            for (int i = curNode->children.size() - 1; i >= 0; i--) {
+                if (curNode->children[i] != nullptr) {
                     stk.push(curNode->children[i]);
                 }
             }
         }
-        
+
         return res;
     }
 };

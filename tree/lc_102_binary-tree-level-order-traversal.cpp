@@ -18,7 +18,7 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector <vector <int>> ret;
+        vector<vector<int>> ret;
         if (!root) return ret;
 
         queue<TreeNode*> q;
@@ -28,7 +28,7 @@ public:
             currentLevelSize = q.size();
             vector<int> vec;
             for (int i = 1; i <= currentLevelSize; ++i) {  // 遍历每一层
-                TreeNode* node = q.front(); 
+                TreeNode* node = q.front();
                 q.pop();
                 vec.push_back(node->val);
                 if (node->left) q.push(node->left);
@@ -36,7 +36,7 @@ public:
             }
             ret.push_back(vec);
         }
-        
+
         return ret;
     }
 };
@@ -47,18 +47,18 @@ public:
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> res;
         queue<TreeNode*> q;
-        if(root) q.push(root);
-        
-        while(!q.empty()) {
+        if (root) q.push(root);
+
+        while (!q.empty()) {
             vector<int> vec;
             int len = q.size();
 
-            while(len--) {
+            while (len--) {
                 TreeNode* cur = q.front();
                 q.pop();
                 vec.push_back(cur->val);
-                if(cur->left) q.push(cur->left);
-                if(cur->right) q.push(cur->right);
+                if (cur->left) q.push(cur->left);
+                if (cur->right) q.push(cur->right);
             }
             res.push_back(vec);
         }

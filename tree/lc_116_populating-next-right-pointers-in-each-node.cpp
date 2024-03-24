@@ -25,15 +25,17 @@ class Solution {
 public:
     // https://www.acwing.com/solution/content/204/
     Node* connect(Node* root) {
-        if(root == NULL) return NULL;
+        if (root == NULL) return NULL;
         Node* cur = root;
         Node* tmp;
-        while(cur->left) {
+        while (cur->left) {
             tmp = cur;
-            while(tmp) {
+            while (tmp) {
                 tmp->left->next = tmp->right;
-                if(tmp->next) tmp->right->next = tmp->next->left;
-                else tmp->right->next = NULL;
+                if (tmp->next)
+                    tmp->right->next = tmp->next->left;
+                else
+                    tmp->right->next = NULL;
 
                 tmp = tmp->next;
             }

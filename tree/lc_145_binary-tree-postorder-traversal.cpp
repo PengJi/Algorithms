@@ -16,7 +16,7 @@ class Solution {
 public:
     // 递归
     vector<int> postorderTraversal(TreeNode* root) {
-        if(root == NULL) return {};
+        if (root == NULL) return {};
 
         vector<int> res;
         traverse(root, res);
@@ -25,7 +25,7 @@ public:
     }
 
     void traverse(TreeNode* node, vector<int>& res) {
-        if(node != NULL) {
+        if (node != NULL) {
             traverse(node->left, res);
             traverse(node->right, res);
 
@@ -35,22 +35,22 @@ public:
 
     // 遍历
     vector<int> postorderTraversal(TreeNode* root) {
-        if(root == NULL) return {};
+        if (root == NULL) return {};
 
         vector<int> res;
         stack<TreeNode*> stk;
         TreeNode* node = root;
         TreeNode* last_visit = root;
 
-        while(!stk.empty() || node != NULL) {
-            while(node != NULL) {
+        while (!stk.empty() || node != NULL) {
+            while (node != NULL) {
                 stk.push(node);
                 node = node->left;
             }
 
             node = stk.top();
 
-            if(node->right == NULL || node->right == last_visit) {  // 左右节点都遍历完
+            if (node->right == NULL || node->right == last_visit) {  // 左右节点都遍历完
                 res.push_back(node->val);
                 stk.pop();
                 last_visit = node;

@@ -19,24 +19,24 @@ public:
     stack<TreeNode*> stk;
     BSTIterator(TreeNode* root) {
         TreeNode* p = root;
-        while(p) {
+        while (p) {
             stk.push(p);
             p = p->left;
         }
     }
-    
+
     int next() {
         TreeNode* cur = stk.top();
         stk.pop();
         int val = cur->val;
         cur = cur->right;
-        while(cur) {
+        while (cur) {
             stk.push(cur);
             cur = cur->left;
         }
         return val;
     }
-    
+
     bool hasNext() {
         return !stk.empty();
     }

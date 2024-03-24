@@ -18,7 +18,7 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     int widthOfBinaryTree(TreeNode* root) {
-        if(root == NULL) return 0;
+        if (root == NULL) return 0;
 
         int res = 0;
         queue<pair<TreeNode*, unsigned long>> que;  // 记录节点与位置
@@ -27,17 +27,17 @@ public:
         int len;
         unsigned long pos;
 
-        while(!que.empty()) {
+        while (!que.empty()) {
             len = que.size();
             res = max(res, int(que.back().second - que.front().second + 1));
 
-            for(int i = 0; i < len; i++) {
+            for (int i = 0; i < len; i++) {
                 node = que.front().first;
                 pos = que.front().second;
                 que.pop();
 
-                if(node->left) que.push({node->left, 2 * pos});
-                if(node->right) que.push({node->right, 2 * pos +1});
+                if (node->left) que.push({node->left, 2 * pos});
+                if (node->right) que.push({node->right, 2 * pos + 1});
             }
         }
 
