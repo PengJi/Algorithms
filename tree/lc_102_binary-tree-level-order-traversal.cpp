@@ -14,36 +14,9 @@
  */
 class Solution {
 public:
-    // 层序遍历
+    // 广搜
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> ret;
-        if (!root) return ret;
-
-        queue<TreeNode*> q;
-        q.push(root);
-        int currentLevelSize;
-        while (!q.empty()) {
-            currentLevelSize = q.size();
-            vector<int> vec;
-            for (int i = 1; i <= currentLevelSize; ++i) {  // 遍历每一层
-                TreeNode* node = q.front();
-                q.pop();
-                vec.push_back(node->val);
-                if (node->left) q.push(node->left);
-                if (node->right) q.push(node->right);
-            }
-            ret.push_back(vec);
-        }
-
-        return ret;
-    }
-};
-
-class Solution {
-public:
-    // 广搜
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> res;
         queue<TreeNode*> q;
