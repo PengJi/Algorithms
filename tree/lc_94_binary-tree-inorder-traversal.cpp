@@ -24,38 +24,10 @@ public:
     }
 
     void traverse(TreeNode* root, vector<int>& vec) {
-        if (root != NULL) {
-            traverse(root->left, vec);
-            vec.push_back(root->val);  // 中序遍历
-            traverse(root->right, vec);
-        }
-    }
-
-    // 迭代
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(n)
-    vector<int> inorderTraversal(TreeNode* root) {
-        if (root == NULL) return {};
-
-        stack<TreeNode*> stk;
-        vector<int> res;
-        TreeNode* cur = root;
-
-        while (cur != NULL || !stk.empty()) {
-            while (cur != NULL) {
-                stk.push(cur);
-                cur = cur->left;
-            }
-
-            if (!stk.empty()) {
-                cur = stk.top();
-                res.push_back(cur->val);
-                stk.pop();
-                cur = cur->right;
-            }
-        }
-
-        return res;
+        if (root == NULL) return;
+        traverse(root->left, vec);
+        vec.push_back(root->val);
+        traverse(root->right, vec);
     }
 
     // 迭代

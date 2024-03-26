@@ -14,17 +14,46 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        return isValidBST(root, NULL, NULL);
+        return dfs(root, NULL, NULL);
     }
 
-    bool isValidBST(TreeNode* root, TreeNode* lower, TreeNode* upper) {
-        if (root == nullptr) return true;
-
+    // 递归
+    bool dfs(TreeNode* root, TreeNode* lower, TreeNode* upper) {
+        if (root == NULL) return true;
         if (lower && root->val <= lower->val || upper && root->val >= upper->val) return false;
+        return dfs(root->left, lower, root) && dfs(root->right, root, upper);
+    }
+};
 
-        return isValidBST(root->left, lower, root) && isValidBST(root->right, root, upper);
+class Solution {
+public:
+    // 中序遍历
+    bool isValidBST(TreeNode* root) {
+        stack<TreeNode*> stk;
+        TreeNode* cur = root;
+        long long inorder = LONG_MIN;
+
+        while(!stk.empty() || cur != NULL) {
+            while(cur) {
+                stk.push(cur);
+                cur = cur->left;
+            }
+
+            cur = stk.top();
+            stk.pop();
+
+            if(cur->val <= inorder) {
+                return false;
+            }
+
+            inorder = cur->val;
+            cur = cur-> right;
+        }
+
+        return true;
     }
 };
