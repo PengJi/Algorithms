@@ -1,8 +1,5 @@
 /**
  * 572. 另一个树的子树
- * 给定两个非空二叉树 s 和 t，检验 s 中是否包含和 t 具有相同结构和节点值的子树。
- * s 的一个子树包括 s 的一个节点和这个节点的所有子孙。s 也可以看做它自身的一棵子树。
- *
  * https://leetcode-cn.com/problems/subtree-of-another-tree/
  */
 
@@ -17,30 +14,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
     // 递归
     // 时间复杂度：O(m * n)
     // 空间复杂度：O(max(m, n))
-    bool isSubtree(TreeNode* s, TreeNode* t) {
-        return dfs(s, t);
-    }
-
-    bool dfs(TreeNode* o, TreeNode* t) {
-        if (!o) return false;
-        return check(o, t) || dfs(o->left, t) || dfs(o->right, t);
-    }
-
-    bool check(TreeNode* o, TreeNode* t) {
-        if (!o && !t) return true;
-        if ((o && !t) || (!o && t) || (o->val != t->val)) return false;
-
-        return check(o->left, t->left) && check(o->right, t->right);
-    }
-};
-
-class Solution {
-public:
     bool isSubtree(TreeNode* s, TreeNode* t) {
         return dfs(s, t);
     }
@@ -54,9 +33,23 @@ public:
     // 匹配时，仍然需要递归匹配当前 s 中的子树和 t 的每一个结点
     bool isSame(TreeNode* s, TreeNode* t) {
         if (!s && !t) return true;
-        if (!s && t || s && !t || s->val != t->val)
-            return false;
+        if (!s && t || s && !t || s->val != t->val) return false;
 
         return isSame(s->left, t->left) && isSame(s->right, t->right);
+    }
+};
+
+class Solution {
+public:
+    bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+        if (!root) return false;
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot) || isSame(root, subRoot);
+    }
+
+    bool isSame(TreeNode* t1, TreeNode* t2) {
+        if (!t1 && !t2) return true;
+        if (!t1 && t2 || t1 && !t2 || t1->val != t2->val) return false;
+
+        return isSame(t1->left, t2->left) && isSame(t1->right, t2->right);
     }
 };

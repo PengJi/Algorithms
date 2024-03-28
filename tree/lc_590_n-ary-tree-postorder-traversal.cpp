@@ -29,20 +29,23 @@ public:
     // 空间复杂度：O(n)
     vector<int> postorder(Node* root) {
         vector<int> res;
-        traverse(root, res);
+        if (!root) return res;
+        dfs(root, res);
         return res;
     }
 
-    void traverse(Node* root, vector<int>& vec) {
-        if (root != NULL) {
-            for (auto i : root->children) {
-                traverse(i, vec);
-            }
-
-            vec.push_back(root->val);
+    void dfs(Node* root, vector<int>& res) {
+        if (root == nullptr) return;
+        for (auto node : root->children) {
+            dfs(node, res);
         }
-    }
 
+        res.push_back(root->val);
+    }
+};
+
+class Solution {
+public:
     // 迭代
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
@@ -55,8 +58,8 @@ public:
 
         while (!stk.empty()) {  // 按前序遍历
             cur = stk.top();
-            res.push_back(cur->val);
             stk.pop();
+            res.push_back(cur->val);
 
             for (auto i : cur->children) {
                 stk.push(i);

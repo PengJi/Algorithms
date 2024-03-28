@@ -33,34 +33,34 @@ public:
     }
 
     void traverse(Node* node, vector<int>& res) {
-        if (node != NULL) {
-            res.push_back(node->val);
+        if (!node) return;
+        res.push_back(node->val);
 
-            for (Node* child : node->children) {
-                traverse(child, res);
-            }
+        for (Node* child : node->children) {
+            traverse(child, res);
         }
     }
+};
 
+class Solution {
+public:
     // 迭代
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
     vector<int> preorder(Node* root) {
         vector<int> res;
-        if (root == nullptr) {
-            return res;
-        }
-
+        if (root == nullptr) return res;
         stack<Node*> stk;
         stk.push(root);
-        while (!stk.empty()) {
-            Node* curNode = stk.top();
-            stk.pop();
-            res.push_back(curNode->val);
 
-            for (int i = curNode->children.size() - 1; i >= 0; i--) {
-                if (curNode->children[i] != nullptr) {
-                    stk.push(curNode->children[i]);
+        while (!stk.empty()) {
+            Node* cur = stk.top();
+            stk.pop();
+            res.push_back(cur->val);
+
+            for (int i = cur->children.size() - 1; i >= 0; i--) {
+                if (cur->children[i] != nullptr) {
+                    stk.push(cur->children[i]);
                 }
             }
         }

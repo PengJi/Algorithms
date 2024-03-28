@@ -37,8 +37,8 @@ public:
         TreeNode* cur = root;
         long long inorder = LONG_MIN;
 
-        while(!stk.empty() || cur != NULL) {
-            while(cur) {
+        while (!stk.empty() || cur != NULL) {
+            while (cur) {
                 stk.push(cur);
                 cur = cur->left;
             }
@@ -46,12 +46,12 @@ public:
             cur = stk.top();
             stk.pop();
 
-            if(cur->val <= inorder) {
+            if (cur->val <= inorder) {
                 return false;
             }
 
             inorder = cur->val;
-            cur = cur-> right;
+            cur = cur->right;
         }
 
         return true;

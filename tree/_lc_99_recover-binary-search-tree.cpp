@@ -70,7 +70,7 @@ public:
         stack<TreeNode*> stk;
         TreeNode *x = nullptr, *y = nullptr, *pred = nullptr;
 
-        while (root != nullptr || !stk.empty()) {
+        while (!stk.empty() || root != nullptr) {
             while (root) {
                 stk.push(root);
                 root = root->left;
