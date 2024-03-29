@@ -28,11 +28,8 @@ public:
             for (int i = 0; i < len; i++) {
                 max = (que.front()->val > max) ? que.front()->val : max;
 
-                if (que.front()->left)
-                    que.push(que.front()->left);
-
-                if (que.front()->right)
-                    que.push(que.front()->right);
+                if (que.front()->left) que.push(que.front()->left);
+                if (que.front()->right) que.push(que.front()->right);
 
                 que.pop();
             }
@@ -54,8 +51,7 @@ public:
     }
 
     void dfs(TreeNode* node, int dep, vector<int>& vec) {
-        // 递归返回条件
-        if (node == NULL) return;
+        if (node == NULL) return;  // 递归返回条件
 
         // 比较巧妙，如果结果数组的大小与当前行相等，则说明当前行没有元素，将元素加入当前行。
         if (vec.size() == dep) vec.push_back(node->val);
@@ -65,5 +61,32 @@ public:
         // 遍历左子树和右子树
         dfs(node->left, dep + 1, vec);
         dfs(node->right, dep + 1, vec);
+    }
+};
+
+class Solution {
+public:
+    vector<int> largestValues(TreeNode* root) {
+        vector<int> res;
+        queue<TreeNode*> q;
+        if(root) q.push(root);
+
+        while(!q.empty()) {
+            int len = q.size();
+            int max = INT_MIN;
+
+            while(len--) {
+                TreeNode* cur = q.front();
+                q.pop();
+                if(cur->val > max) max = cur->val; 
+
+                if(cur->left) q.push(cur->left);
+                if(cur->right) q.push(cur->right);
+            }
+
+            res.push_back(max);
+        }
+
+        return res;
     }
 };

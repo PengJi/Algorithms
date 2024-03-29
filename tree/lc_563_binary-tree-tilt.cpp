@@ -14,11 +14,11 @@
  */
 class Solution {
 public:
+    int res = 0;
+
     // 递归
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
-    int res = 0;
-
     int findTilt(TreeNode* root) {
         dfs(root);
         return res;
@@ -26,6 +26,7 @@ public:
 
     int dfs(TreeNode* root) {
         if (!root) return 0;
+
         int left = dfs(root->left);
         int right = dfs(root->right);
 

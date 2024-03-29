@@ -58,3 +58,33 @@ class Solution {
         return res;
     }
 };
+
+class Solution {
+public:
+    vector<vector<int>> levelOrder(Node *root) {
+        vector<vector<int>> res;
+        if (!root) return res;
+        queue<Node *> q;
+        q.push(root);
+
+        while (!q.empty()) {
+            int len = q.size();
+            vector<int> tmp;
+            Node *cur;
+
+            while (len--) {
+                cur = q.front();
+                q.pop();
+                tmp.push_back(cur->val);
+
+                for (auto i : cur->children) {
+                    q.push(i);
+                }
+            }
+
+            res.emplace_back(tmp);
+        }
+
+        return res;
+    }
+};
