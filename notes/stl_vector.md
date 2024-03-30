@@ -23,9 +23,10 @@ vector<int> vec1 = vec;
 vector<int> vec = {1,2,3.0,4,5,6,7};
 vector<int> vce {1,2,3.0,4,5,6,7};
 
+// vec 也可以是 set
+unordered_set<int> vec;
+vector<int> vec;
 vector<int> vec1(vec.begin()+2, vec.end()-1);
-
-
 ```
 
 * 妙用
