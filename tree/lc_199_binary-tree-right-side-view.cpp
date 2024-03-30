@@ -1,7 +1,5 @@
 /**
  * 199. 二叉树的右视图
- * 给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
- *
  * https://leetcode-cn.com/problems/binary-tree-right-side-view/
  */
 
@@ -17,34 +15,25 @@
 class Solution {
 public:
     vector<int> rightSideView(TreeNode* root) {
-        if (root == nullptr) return {};
+        vector<int> res;
+        if (!root) return res;
+        queue<TreeNode*> q;
+        q.push(root);
 
-        vector<int> ans;
-        queue<TreeNode*> que;
-        que.push(root);
-
-        int len;
-        TreeNode* q;
-        while (!que.empty()) {
-            len = que.size();
+        while (!q.empty()) {
+            int len = q.size();
+            TreeNode* node;
 
             for (int i = 0; i < len; i++) {
-                q = que.front();
-                que.pop();
+                node = q.front();
+                q.pop();
 
-                if (i == len - 1) {
-                    ans.push_back(q->val);
-                }
-
-                if (q->left) {
-                    que.push(q->left);
-                }
-                if (q->right) {
-                    que.push(q->right);
-                }
+                if (i == len - 1) res.emplace_back(node->val);
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
             }
         }
 
-        return ans;
+        return res;
     }
 };

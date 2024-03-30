@@ -17,6 +17,7 @@
 class BSTIterator {
 public:
     stack<TreeNode*> stk;
+
     BSTIterator(TreeNode* root) {
         TreeNode* p = root;
         while (p) {

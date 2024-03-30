@@ -16,20 +16,21 @@
  */
 class Solution {
 public:
-    int ans = INT_MIN;
+    int res = INT_MIN;
+
     // https://www.acwing.com/solution/content/215/
     // O(n)
     // O(1)
     int maxPathSum(TreeNode* root) {
         dfs(root);
-        return ans;
+        return res;
     }
 
     int dfs(TreeNode* root) {
         if (!root) return 0;
         int left = max(0, dfs(root->left));
         int right = max(0, dfs(root->right));
-        ans = max(ans, root->val + left + right);
+        res = max(res, root->val + left + right);
         return root->val + max(left, right);
     }
 };

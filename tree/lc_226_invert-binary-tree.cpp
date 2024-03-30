@@ -35,6 +35,7 @@ public:
     // 空间复杂度：O(n)
     TreeNode* invertTree(TreeNode* root) {
         if (root == nullptr) return nullptr;
+
         TreeNode* left = invertTree(root->left);
         TreeNode* right = invertTree(root->right);
         root->left = right;

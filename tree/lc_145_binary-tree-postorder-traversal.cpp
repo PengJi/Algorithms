@@ -16,47 +16,46 @@ class Solution {
 public:
     // 递归
     vector<int> postorderTraversal(TreeNode* root) {
-        if (root == NULL) return {};
+        if (!root) return;
 
         vector<int> res;
-        traverse(root, res);
+        dfs(root, res);
 
         return res;
     }
 
-    void traverse(TreeNode* node, vector<int>& res) {
-        if (node != NULL) {
-            traverse(node->left, res);
-            traverse(node->right, res);
+    void dfs(TreeNode* node, vector<int>& res) {
+        if (!node) return;
+        dfs(node->left, res);
+        dfs(node->right, res);
 
-            res.push_back(node->val);
-        }
+        res.push_back(node->val);
     }
+};
 
-    // 遍历
+class Solution {
+public:
     vector<int> postorderTraversal(TreeNode* root) {
-        if (root == NULL) return {};
-
         vector<int> res;
+        if(!root) return res;
         stack<TreeNode*> stk;
-        TreeNode* node = root;
-        TreeNode* last_visit = root;
+        TreeNode* cur = root;
+        TreeNode* last = root;
 
-        while (!stk.empty() || node != NULL) {
-            while (node != NULL) {
-                stk.push(node);
-                node = node->left;
+        while(!stk.empty() || cur != nullptr) {
+            while(cur != nullptr) {
+                stk.push(cur);
+                cur = cur->left;
             }
 
-            node = stk.top();
-
-            if (node->right == NULL || node->right == last_visit) {  // 左右节点都遍历完
-                res.push_back(node->val);
+            cur = stk.top();
+            if(cur->right == nullptr || cur->right == last) {  // 左右节点都遍历完
+                res.emplace_back(cur->val);
                 stk.pop();
-                last_visit = node;
-                node = NULL;
+                last = cur;
+                cur = nullptr;
             } else {
-                node = node->right;
+                cur = cur->right;
             }
         }
 

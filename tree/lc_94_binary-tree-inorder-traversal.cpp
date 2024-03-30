@@ -41,7 +41,7 @@ public:
         while (!stk.empty() || cur != NULL) {
             while (cur != NULL) {
                 stk.push(cur);
-                cur = cur->left;
+                cur = cur->left;  // 注意这里！！！
             }
             cur = stk.top();
             res.push_back(cur->val);
