@@ -1,7 +1,5 @@
 /**
  * 257. 二叉树的所有路径
- * 给定一个二叉树，返回所有从根节点到叶子节点的路径。
- *
  * https://leetcode-cn.com/problems/binary-tree-paths/
  */
 
@@ -25,11 +23,11 @@ public:
     }
 
     void dfs(TreeNode* root, string path, vector<string>& paths) {
-        if (root == NULL) return;
+        if (!root) return;
 
         path += to_string(root->val);
 
-        if (root->left == NULL && root->right == NULL) {
+        if (!root->left && !root->right) {
             paths.push_back(path);
             return;
         }

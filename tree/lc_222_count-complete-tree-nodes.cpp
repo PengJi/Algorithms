@@ -16,20 +16,35 @@
  */
 class Solution {
 public:
-    // https://www.acwing.com/solution/content/89/
     int countNodes(TreeNode* root) {
         if (!root) return 0;
-        TreeNode *leftp = root, *rightp = root;
+        TreeNode* ln = root;
+        TreeNode* rn = root;
         int l = 0, r = 0;
-        while (leftp) {
+
+        while (ln) {
             l++;
-            leftp = leftp->left;
+            ln = ln->left;
         }
-        while (rightp) {
+        while (rn) {
             r++;
-            rightp = rightp->right;
+            rn = rn->right;
         }
+
         if (l == r) return (1 << l) - 1;
+
         return countNodes(root->left) + countNodes(root->right) + 1;
+    }
+};
+
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if (!root) return 0;
+
+        int left = countNodes(root->left);
+        int right = countNodes(root->right);
+
+        return left + right + 1;
     }
 };
