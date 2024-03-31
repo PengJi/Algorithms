@@ -1,8 +1,5 @@
 /**
  * 107. 二叉树的层次遍历 II
- * 给定一个二叉树，返回其节点值自底向上的层次遍历。
- * （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）
- *
  * https://leetcode-cn.com/problems/binary-tree-level-order-traversal-ii/
  */
 
@@ -45,20 +42,27 @@ class Solution {
 public:
     vector<vector<int>> levelOrderBottom(TreeNode* root) {
         vector<vector<int>> res;
+        if(!root) return res;
         queue<TreeNode*> q;
-        if (root) q.push(root);
-        while (!q.empty()) {
+        q.push(root);
+
+        while(!q.empty()) {
             int len = q.size();
-            vector<int> vec;
-            while (len--) {
-                TreeNode* node = q.front();
+            vector<int> tmp;
+            TreeNode* cur;
+
+            while(len--) {
+                cur = q.front();
                 q.pop();
-                vec.push_back(node->val);
-                if (node->left) q.push(node->left);
-                if (node->right) q.push(node->right);
+                tmp.emplace_back(cur->val);
+
+                if(cur->left) q.push(cur->left);
+                if(cur->right) q.push(cur->right);
             }
-            res.push_back(vec);
+
+            res.emplace_back(tmp);
         }
+
         reverse(res.begin(), res.end());
 
         return res;

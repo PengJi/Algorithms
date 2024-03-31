@@ -16,23 +16,23 @@
  */
 class Solution {
 public:
-    vector<vector<int>> ret;
+    vector<vector<int>> res;
     vector<int> path;
 
     // dfs
     // https://leetcode-cn.com/problems/path-sum-ii/solution/lu-jing-zong-he-ii-by-leetcode-solution/
     vector<vector<int>> pathSum(TreeNode* root, int sum) {
         dfs(root, sum);
-        return ret;
+        return res;
     }
 
     void dfs(TreeNode* root, int sum) {
-        if (root == nullptr) return;
+        if (!root) return;
 
         path.emplace_back(root->val);
         sum -= root->val;
-        if (root->left == nullptr && root->right == nullptr && sum == 0) {
-            ret.emplace_back(path);
+        if (!root->left && !root->right && sum == 0) {
+            res.emplace_back(path);
         }
 
         dfs(root->left, sum);

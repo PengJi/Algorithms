@@ -16,14 +16,16 @@ class Solution {
 public:
     // 递归
     // 时间复杂度：O(n)
-    // 空间复杂度：O(n)
+    // 空间复杂度：O(H)
     int minDepth(TreeNode* root) {
-        if (root == nullptr) return 0;
+        if (!root) return 0;
 
-        int leftHeight = minDepth(root->left);
-        int rightHeight = minDepth(root->right);
-        if (!leftHeight || !rightHeight) return leftHeight + rightHeight + 1;
+        if (!root->left && !root->right) return 1;
 
-        return min(leftHeight, rightHeight) + 1;
+        int d = INT_MAX;
+        if (root->left) d = min(d, minDepth(root->left));
+        if (root->right) d = min(d, minDepth(root->right));
+
+        return d + 1;
     }
 };

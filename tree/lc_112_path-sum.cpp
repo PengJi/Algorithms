@@ -30,18 +30,17 @@ public:
 
         return helper(root->left, cur, sum) || helper(root->right, cur, sum);
     }
+};
 
-    // 递归，减去路径和
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
-    bool hasPathSum(TreeNode* root, int sum) {
-        if (root == NULL) return false;
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if(!root) return false;
 
-        // 判断是否为叶结点
-        if (root->left == NULL && root->right == NULL) {
-            return sum - root->val == 0;
+        if(!root->left && !root->right) {
+            return targetSum - root->val == 0;
         }
 
-        return hasPathSum(root->left, sum - root->val) || hasPathSum(root->right, sum - root->val);
+        return hasPathSum(root->left, targetSum-root->val) || hasPathSum(root->right, targetSum-root->val);
     }
 };

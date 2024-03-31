@@ -26,7 +26,6 @@
  */
 class Solution {
 public:
-    // https://www.acwing.com/solution/content/197/
     TreeNode* sortedListToBST(ListNode* head) {
         if (!head) return 0;
         int l = 0;

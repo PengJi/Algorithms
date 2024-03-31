@@ -16,23 +16,37 @@
  */
 class Solution {
 public:
-    // 递归
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(n)
+    // 从上到下遍历
+    // O(n^2)
+    // O(n)
     bool isBalanced(TreeNode* root) {
-        // An empty tree satisfies the definition of a balanced tree
-        if (root == nullptr) return true;
-
-        // Check if subtrees have height within 1. If they do, check if the
-        // subtrees are balanced
-        return abs(height(root->left) - height(root->right)) < 2 && isBalanced(root->left) && isBalanced(root->right);
+        if (!root) return true;
+        return abs(dfs(root->left) - dfs(root->right)) <= 1 && isBalanced(root->left) && isBalanced(root->right);
     }
 
-    // Recursively obtain the height of a tree. An empty tree has -1 height
-    int height(TreeNode* root) {
-        // An empty tree has height -1
-        if (root == nullptr) return -1;
+    int dfs(TreeNode* root) {
+        if (!root) return 0;
+        return max(dfs(root->left), dfs(root->right)) + 1;
+    }
+};
 
-        return max(height(root->left), height(root->right)) + 1;
+class Solution {
+public:
+    // 从下到上遍历
+    // O(n)
+    // O(n)
+    bool isBalanced(TreeNode* root) {
+        return dfs(root) >= 0;
+    }
+
+    int dfs(TreeNode* root) {
+        if (!root) return 0;
+
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+
+        if (left == -1 || right == -1 || abs(left - right) > 1) return -1;
+
+        return max(left, right) + 1;
     }
 };
