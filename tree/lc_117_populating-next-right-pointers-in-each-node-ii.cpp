@@ -28,6 +28,7 @@ public:
     // O(1)
     Node* connect(Node* root) {
         Node* head = root;
+
         while (root) {  // 遍历每一层
             Node* dummy = new Node(0);
             Node* cur = dummy;
@@ -46,5 +47,34 @@ public:
         }
 
         return head;
+    }
+};
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root) return nullptr;
+
+        Node* head = root;
+        while (head) {  // 当前层的首结点
+            Node* last = nullptr;  // 当前层中某个结点的上一个结点
+            Node* ns = nullptr;    // 下一层的首结点
+
+            for (Node* p = head; p != nullptr; p = p->next) {
+                if (p->left) {                       // 右结点做同样处理
+                    if (!ns) ns = p->left;           // 下一层的首结点
+                    if (last) last->next = p->left;  // 修改上个结点的 next 指针
+                    last = p->left;                  // 记录上一个结点
+                }
+                if (p->right) {
+                    if (!ns) ns = p->right;
+                    if (last) last->next = p->right;
+                    last = p->right;
+                }
+            }
+            head = ns;
+        }
+
+        return root;
     }
 };

@@ -46,3 +46,31 @@ public:
         return root;
     }
 };
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (!root) return nullptr;
+
+        Node* head = root;  // 当前层的首结点
+        while (head) {
+            Node* next_head = nullptr;  //记录下一层的首结点
+            if (head->left) {
+                next_head = head->left;
+            } else {
+                break;
+            }
+
+            for (Node* p = head; p != nullptr; p = p->next) {
+                p->left->next = p->right;  // 左结点的下一个结点
+                if (p->next) {
+                    p->right->next = p->next->left;  // 右结点的下一个结点
+                }
+            }
+
+            head = next_head;  // 遍历下一层
+        }
+
+        return root;
+    }
+};
