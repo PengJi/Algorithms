@@ -27,3 +27,34 @@ public:
         return ans;
     }
 };
+
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int len = max(a.size(), b.size());
+        reverse(a.begin(), a.end());
+        reverse(b.begin(), b.end());
+
+        string res = "";
+        int carry = 0;  // 关键点，存储进位
+        for (int i = 0; i < len; i++) {
+            if (i < a.size()) {
+                carry += (a[i] == '1' ? 1 : 0);
+            } else {
+                carry += 0;
+            }
+            if (i < b.size()) {
+                carry += (b[i] == '1' ? 1 : 0);
+            } else {
+                carry += 0;
+            }
+
+            res += (carry % 2 ? '1' : '0');
+            carry /= 2;
+        }
+        if (carry) res += '1';
+
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
