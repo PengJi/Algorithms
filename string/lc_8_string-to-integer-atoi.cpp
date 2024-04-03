@@ -5,50 +5,79 @@
 
 class Solution {
 public:
-    // https://leetcode-cn.com/problems/string-to-integer-atoi/solution/jin-liang-bu-shi-yong-ku-han-shu-nai-xin-diao-shi-/
-    int myAtoi(string str) {
-        unsigned int len = str.length();
-
-        // 去除前导空格
-        int index = 0;
-        while (index < len) {
-            if (str[index] != ' ') {
-                break;
-            }
-            index++;
-        }
-
-        if (index == len) {
-            return 0;
-        }
-
-        int sign = 1;
-        // 处理第 1 个非空字符为正负符号，这两个判断需要写在一起
-        if (str[index] == '+') {
-            index++;
-        } else if (str[index] == '-') {
-            sign = -1;
-            index++;
-        }
-
-        // 根据题目限制，只能使用 int 类型
+    int myAtoi(string s) {
         int res = 0;
-        while (index < len) {
-            char curChar = str[index];
-            if (curChar < '0' || curChar > '9') {
-                break;
-            }
+        int n = s.size();
+        if (n == 0) return res;
+        int k = 0;
 
-            if (res > INT_MAX / 10 || (res == INT_MAX / 10 && (curChar - '0') > INT_MAX % 10)) {
-                return INT_MAX;
-            }
-            if (res < INT_MIN / 10 || (res == INT_MIN / 10 && (curChar - '0') > -(INT_MIN % 10))) {
-                return INT_MIN;
-            }
+        // 取出前导空白字符
+        while (k < n && s[k] == ' ') k++;
+        if (k == n) return res;
 
-            res = res * 10 + sign * (curChar - '0');
-            index++;
+        // 判断符号
+        int sign = 1;
+        if (s[k] == '-') {
+            sign = -1;
+            k++;
+        } else if (s[k] == '+') {
+            k++;
         }
+
+        // 计算数值
+        while (k < n && s[k] >= '0' && s[k] <= '9') {
+            int x = s[k] - '0';
+            // res * 10 + x > INT_MAX
+            if (sign == 1 && res > (INT_MAX - x) / 10) return INT_MAX;
+            // -res * 10 -x < INT_MIN
+            if (sign == -1 && -res < (INT_MIN + x) / 10) return INT_MIN;
+            // 特判
+            // -res * 10 - x = -2147483648
+            // 而
+            // res* 10 + x = 2147483648，会溢出，所以需要提前返回，不执行 res = res * 10 + x
+            if (-res * 10 - x == INT_MIN) return INT_MIN;
+            res = res * 10 + x;
+            k++;
+        }
+
+        return res * sign;
+    }
+};
+
+class Solution {
+public:
+    int myAtoi(string s) {
+        int res = 0;
+        int n = s.size();
+        if (n == 0) return res;
+        int k = 0;
+
+        // 取出前导空白字符
+        while (k < n && s[k] == ' ') k++;
+        if (k == n) return res;
+
+        // 判断符号
+        int sign = 1;
+        if (s[k] == '-') {
+            sign = -1;
+            k++;
+        } else if (s[k] == '+') {
+            k++;
+        }
+
+        // 计算数值
+        while (k < n && s[k] >= '0' && s[k] <= '9') {
+            int x = s[k] - '0';
+            if (sign == 1) {
+                if (res > (INT_MAX - x) / 10) return INT_MAX;
+            } else if (sign == -1) {  // 负数当成正数计算
+                x = -x;
+                if (res < (INT_MIN - x) / 10) return INT_MIN;
+            }
+            res = res * 10 + x;
+            k++;
+        }
+
         return res;
     }
 };

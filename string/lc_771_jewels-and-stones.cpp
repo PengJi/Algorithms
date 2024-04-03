@@ -8,13 +8,13 @@ public:
     // 哈希
     int numJewelsInStones(string J, string S) {
         unordered_set<char> jewel;
-        for(int i = 0; i < J.size(); i++) {
+        for (int i = 0; i < J.size(); i++) {
             jewel.insert(J[i]);
         }
 
         int ans = 0;
-        for(int i = 0; i < S.size(); i++) {
-            if(jewel.count(S[i])) {
+        for (int i = 0; i < S.size(); i++) {
+            if (jewel.count(S[i])) {
                 ans++;
             }
         }
@@ -31,7 +31,7 @@ public:
         unordered_set<char> st(jewels.begin(), jewels.end());
         int res = 0;
         // 统计个数
-        for(auto c: stones) res += st.count(c);
+        for (auto c : stones) res += st.count(c);
 
         return res;
     }
