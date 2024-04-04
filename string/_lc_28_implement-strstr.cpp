@@ -10,14 +10,17 @@ public:
     // 空间复杂度：O(1)
     int strStr(string haystack, string needle) {
         int m = haystack.size(), n = needle.size();
-        if(n == 0) return 0;
-        for(int i = 0; i <= m-n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(haystack[i+j] != needle[j]) break;
-                if(j == n-1) return i;
+        if (n == 0) return 0;
+
+        for (int i = 0; i <= m - n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (haystack[i + j] != needle[j]) break;
+                if (j == n - 1) return i;
             }
         }
 
         return -1;
     }
 };
+
+// 另一种算法使用 KMP

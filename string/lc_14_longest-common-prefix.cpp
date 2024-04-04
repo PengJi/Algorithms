@@ -1,8 +1,5 @@
 /**
  * 14. 最长公共前缀
- * 编写一个函数来查找字符串数组中的最长公共前缀。
- * 如果不存在公共前缀，返回空字符串 ""。
- * 
  * https://leetcode-cn.com/problems/longest-common-prefix/
  */
 
@@ -13,16 +10,16 @@ public:
     // 空间复杂度：O(1)
     string longestCommonPrefix(vector<string>& strs) {
         int len = strs.size();
-        if(len == 0) return "";
+        if (len == 0) return "";
 
         string ans = strs[0];
-        for(int i = 1; i < len; i++) {
+        for (int i = 1; i < len; i++) {
             int j = 0;
-            for(; j < ans.size() && j < strs[i].size(); j++) {
-                if(ans[j] != strs[i][j]) break;
+            for (; j < ans.size() && j < strs[i].size(); j++) {
+                if (ans[j] != strs[i][j]) break;
             }
-            ans  = ans.substr(0, j);
-            if(ans.equal("")) return ans;
+            ans = ans.substr(0, j);
+            if (ans.equal("")) return ans;
         }
 
         return ans;
@@ -33,15 +30,15 @@ public:
     // 时间复杂度：O(nlogn + m)，n为字符串数组的长度，m为最短字符串的长度
     // 空间复杂度：O(1)
     string longestCommonPrefix(vector<string>& strs) {
-        int n=strs.size();
-        if(strs.empty())  return "";
+        int n = strs.size();
+        if (strs.empty()) return "";
 
         // 排序
         sort(strs.begin(), strs.end());
 
         // 比较最短和最长的字符串
-        for(int i = 0; i < min(strs[0].size(),strs[n-1].size()); ++i){
-            if(strs[0][i] != strs[n-1][i]) return strs[0].substr(0, i);
+        for (int i = 0; i < min(strs[0].size(), strs[n - 1].size()); ++i) {
+            if (strs[0][i] != strs[n - 1][i]) return strs[0].substr(0, i);
         }
 
         return strs[0];
@@ -51,17 +48,42 @@ public:
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        if(strs.size() == 0) return "";
+        if (strs.size() == 0) return "";
+
         string res;
-        for(int i = 0; ; i++) {
-            if(i >= strs[0].size()) return res;
+        for (int i = 0;; i++) {
+            if (i >= strs[0].size()) return res;
+
             char c = strs[0][i];  // 以第一个字符串为基准，依次对比后面的字符串
-            for(auto str: strs) {
-                if(i >= str.size() || str[i] != c) return res;
+            for (auto str : strs) {
+                if (i >= str.size() || str[i] != c) return res;
             }
             res += c;
         }
 
         return res;
+    }
+};
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        string res;
+        int n = strs.size();
+        if (n == 0) return res;
+
+        int idx = 0;
+        while (true) {
+            char c = strs[0][idx];
+
+            int i = 0;
+            for (; i < n; i++) {
+                if (idx == strs[i].size() || strs[i][idx] != c) break;
+            }
+            if (i != n) return res;
+
+            res += c;
+            idx++;
+        }
     }
 };
