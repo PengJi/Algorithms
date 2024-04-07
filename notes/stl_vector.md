@@ -53,6 +53,19 @@ sort(strs.begin(), strs.end(), [&](pair<string, int>& a, pair<string, int>& b) {
 ```
 [2343. 裁剪数字后查询第 K 小的数字](https://www.acwing.com/activity/content/problem/content/7232/)
 
+* 排序元素类型为 vector 的 vector
+```cpp
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    sort(intervals.begin(), intervals.end(), cmp);
+    ...
+}
+
+static bool cmp(vector<int> a, vector<int> b) {
+    return a[0] < b[0];
+}
+```
+[56. 合并区间](https://leetcode.cn/problems/merge-intervals/description/)
+
 * 排序元素类型为 int 的 vector
 ```cpp
 nums = [3,30,34,5,9];
