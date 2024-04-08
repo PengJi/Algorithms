@@ -6,24 +6,11 @@
 class Solution {
 public:
     int lengthOfLastWord(string s) {
-        int end = s.size() - 1;
-        while(end >= 0 && s[end] == ' ') end--;
-        if(end < 0) return 0;
-
-        int start = end;
-        while(start >= 0 && s[start] != ' ') start--;
-        return end - start;
-    }
-};
-
-class Solution {
-public:
-    int lengthOfLastWord(string s) {
-        for(int i = s.size()-1; i >= 0; i--) {
-            if(s[i] == ' ') continue;
-            int j = i-1;
-            while(j >= 0 && s[j] != ' ') j--;
-            return i-j;
+        for (int i = s.size() - 1; i >= 0; i--) {
+            if (s[i] == ' ') continue;
+            int j = i - 1;
+            while (j >= 0 && s[j] != ' ') j--;
+            return i - j;
         }
 
         return 0;

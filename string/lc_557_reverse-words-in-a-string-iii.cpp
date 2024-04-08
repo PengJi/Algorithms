@@ -5,38 +5,11 @@
 
 class Solution {
 public:
-    // 遍历
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
     string reverseWords(string s) {
-        if(s.size()== 0) return "";
-
-        int left = 0, right = 0;
-        int next;
-        while(right < s.size()) {
-            // 当前单词的右边界
-            while(right < s.size() && s[right] != ' ') right++;
-            int next = right + 1;
-            right--;
-            // 反转当前单词
-            while(left < right) swap(s[left++], s[right--]); 
-            
-            // 下一个单词
-            left = next;
-            right = next;
-        }
-
-        return s;
-    }
-};
-
-class Solution {
-public:
-    string reverseWords(string s) {
-        for(int i = 0; i < s.size(); i++) {
-            if(s[i] == ' ') continue;
-            int j = i;  // 左边界
-            while(j < s.size() && s[j] != ' ') j++;  // 右边界
+        int j;  // 右边界
+        for (int i = 0; i < s.size(); i++) {
+            j = i;
+            while (j < s.size() && s[j] != ' ') j++;
             reverse(s.begin() + i, s.begin() + j);
             i = j;
         }

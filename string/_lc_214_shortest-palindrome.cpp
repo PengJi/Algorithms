@@ -11,9 +11,9 @@ public:
         int n = s.size();
         s = ' ' + s + '#' + t;
         vector<int> ne(n * 2 + 2);
-        for (int i = 2, j = 0; i <= n * 2 + 1; i ++ ) {
+        for (int i = 2, j = 0; i <= n * 2 + 1; i++) {
             while (j && s[i] != s[j + 1]) j = ne[j];
-            if (s[i] == s[j + 1]) j ++ ;
+            if (s[i] == s[j + 1]) j++;
             ne[i] = j;
         }
         int len = ne[n * 2 + 1];

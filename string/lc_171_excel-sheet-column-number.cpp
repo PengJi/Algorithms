@@ -7,8 +7,10 @@ class Solution {
 public:
     int titleToNumber(string columnTitle) {
         long long res = 0;
-        for(auto c : columnTitle) {
-            res = res * 26 + c - 'A' + 1;
+
+        // 相当于 26 进制
+        for (auto c : columnTitle) {
+            res = res * 26 + (c - 'A' + 1);
         }
 
         return res;
