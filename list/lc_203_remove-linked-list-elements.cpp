@@ -1,7 +1,5 @@
 /**
  * 203. 移除链表元素
- * 删除链表中等于给定值 val 的所有节点。
- * 
  * https://leetcode-cn.com/problems/remove-linked-list-elements/
  */
 
@@ -15,22 +13,21 @@
  */
 class Solution {
 public:
-    // 遍历
     ListNode* removeElements(ListNode* head, int val) {
-        if(head == NULL) return NULL;
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* pre = dummy;
 
-        ListNode* to_del;
-        ListNode* cur = head;
-        while(cur->next) {
-            if(cur->next->val == val) {
-                to_del = cur->next;
-                cur->next = to_del->next;
-                delete to_del;
+        while (head) {
+            if (head->val == val) {
+                pre->next = head->next;
+                head = head->next;
             } else {
-                cur = cur->next;
+                pre = head;
+                head = head->next;
             }
         }
 
-        return head->val == val ? head->next : head;
+        return dummy->next;
     }
 };
