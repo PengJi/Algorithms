@@ -21,11 +21,10 @@ public:
         while (head) {
             if (head->val == val) {
                 pre->next = head->next;
-                head = head->next;
             } else {
                 pre = head;
-                head = head->next;
             }
+            head = head->next;
         }
 
         return dummy->next;

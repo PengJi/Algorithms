@@ -14,27 +14,25 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        if(headA == NULL || headB == NULL) {
-            return NULL;  
-        }
+        if (headA == NULL || headB == NULL) return NULL;
 
-        ListNode* pA = headA, *pB = headB;
-        while(pA != pB) {
+        ListNode *pA = headA, *pB = headB;
+        while (pA != pB) {
             pA = pA == NULL ? headB : pA->next;
             pB = pB == NULL ? headA : pB->next;
         }
 
-        return pA; 
+        return pA;
     }
 };
 
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode* p = headA, *q = headB;
-        while(p != q) {  // 两个指针相交的点为两个指针走的距离相等
-            p = p ? p -> next : headB;
-            q = q ? q -> next : headA;
+        ListNode *p = headA, *q = headB;
+        while (p != q) {  // 两个指针相交的点为两个指针走的距离相等
+            p = p ? p->next : headB;
+            q = q ? q->next : headA;
         }
         return p;
     }

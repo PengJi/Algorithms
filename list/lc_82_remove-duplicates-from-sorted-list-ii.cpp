@@ -15,22 +15,24 @@
  */
 class Solution {
 public:
-    // https://www.acwing.com/solution/content/166/
-    // 时间复杂度：O(n)
-    // 空间复杂度：o(1)
     ListNode* deleteDuplicates(ListNode* head) {
+        if (!head) return nullptr;
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
-        ListNode* p = dummy;
-        ListNode* q;
-        while (p->next) {
-            q = p->next;
-            while (q && q->val == p->next->val)
-                q = q->next;
-            if (p->next->next == q) p = p->next;
-            else p->next = q;
+        ListNode* pre = dummy;
+        ListNode* cur;
+
+        while (pre->next) {
+            cur = pre->next;
+            while (cur && cur->val == pre->next->val) cur = cur->next;
+
+            if (pre->next->next == cur) {  // 没有重复
+                pre = pre->next;
+            } else {  // 重复，删除重复节点
+                pre->next = cur;
+            }
         }
-        
+
         return dummy->next;
     }
 };
