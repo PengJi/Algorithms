@@ -16,8 +16,8 @@ public:
     // 快慢指针
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
-    ListNode* removeNthFromEnd(ListNode* head, int n) {
-        if(head == nullptr) return NULL;
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
+        if (head == nullptr) return NULL;
 
         // 对于链表问题，返回结果为头结点时，通常需要先初始化一个预先指针 pre，
         // 该指针的下一个节点指向真正的头结点head。
@@ -29,11 +29,11 @@ public:
         ListNode *left = dummy;
         ListNode *right = dummy;
 
-        while(n--) {
+        while (n--) {
             right = right->next;
         }
 
-        while(right->next) {
+        while (right->next) {
             left = left->next;
             right = right->next;
         }
