@@ -13,38 +13,52 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        ListNode* ans = NULL;
-        for(int i = 0; i < lists.size(); i++) {
-            ans = mergeTwoLists(ans, lists[i]);
+        ListNode* head = nullptr;
+
+        // 依次合并链表
+        for (int i = 0; i < lists.size(); i++) {
+            head = merge(head, lists[i]);
         }
 
-        return ans;
+        return head;
     }
 
-    ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
-        if ((!a) || (!b)) return a ? a : b;
-        ListNode* head = new ListNode(0);
-        ListNode* tail = head;
-        ListNode* aPtr = a, *bPtr = b;
+    // 合并两个链表
+    ListNode* merge(ListNode* l1, ListNode* l2) {
+        if (!l1 || !l2) return l1 ? l1 : l2;
 
-        while (aPtr && bPtr) {
-            if (aPtr->val < bPtr->val) {
-                tail->next = aPtr; 
-                aPtr = aPtr->next;
+        ListNode* dummy = new ListNode(0);
+        ListNode* tail = dummy;
+
+        while (l1 && l2) {
+            if (l1->val < l2->val) {
+                tail->next = l1;
+                l1 = l1->next;
             } else {
-                tail->next = bPtr; 
-                bPtr = bPtr->next;
+                tail->next = l2;
+                l2 = l2->next;
             }
+
             tail = tail->next;
         }
 
-        tail->next = (aPtr ? aPtr : bPtr);
-        ListNode* h = head->next;
-        delete head;
+        tail->next = l1 ? l1 : l2;
 
-        return h;
+        ListNode* head = dummy->next;
+        delete dummy;
+        return head;
     }
 };

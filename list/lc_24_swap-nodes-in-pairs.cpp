@@ -14,11 +14,10 @@
 class Solution {
 public:
     // 递归
-    // 时间复杂度：O(n)
-    // 空闲复杂度：O(n)
+    // O(n)/O(1)
     ListNode* swapPairs(ListNode* head) {
         // 如果有一个节点或者没有节点
-        if((head == NULL) || (head->next == NULL)){
+        if ((head == NULL) || (head->next == NULL)) {
             return head;
         }
 
@@ -32,35 +31,27 @@ public:
 
         return end;
     }
+};
 
-    // 迭代
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
+class Solution {
+public:
     ListNode* swapPairs(ListNode* head) {
-        if(head == NULL) return NULL;
-
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
         ListNode* pre = dummy;
         ListNode* cur = head;
+        ListNode* tmp;  // 存储当前节点的下一个节点
 
-        ListNode *start, *end;
-        while(cur != NULL && cur->next != NULL) {
-            // 待反转的节点
-            start = cur;
-            end = cur->next;
+        while (cur && cur->next) {
+            pre->next = cur->next;
+            tmp = cur->next->next;
+            cur->next->next = cur;
+            cur->next = tmp;
 
-            // 反转
-            pre->next = end;
-            start->next = end->next;
-            end->next = start;
-
-            // 初始化下一个反转的节点
-            pre = start;
-            cur = start->next;
+            pre = cur;
+            cur = cur->next;
         }
 
-        return dummy->next; 
+        return dummy->next;
     }
-
 };
