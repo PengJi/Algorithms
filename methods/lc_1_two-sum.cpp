@@ -1,45 +1,41 @@
 /**
  * 1. 两数之和
- * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那两个整数，
- * 并返回他们的数组下标。
- * 
  * https://leetcode-cn.com/problems/two-sum/
  */
 
 class Solution {
 public:
-    // 利用哈希表，用空间换时间
-    // 时间复杂度：O(n)，只需遍历一遍数组
-    // 空间复杂度：O(n)，存储数据中的元素
     vector<int> twoSum(vector<int>& nums, int target) {
-        vector<int> result;
-        unordered_map<int, int> vmap;  // 存储<值，键>
-        int length = nums.size();
-        int another; // 存储在字典中，another = target - current
-        vmap[nums[0]] = 0;
-        for(int i=1; i<length; i++){
-            another = target - nums[i];
-            if(vmap.find(another) != vmap.end() && vmap[another] != i) {  // 判断是否存在
-                result.push_back(vmap[another]);
-                result.push_back(i);
-                return result;
-            }
+        vector<int> res;
+        unordered_map<int, int> mp;  // 存储<值，键>
+        mp[nums[0]] = 0;
+        int cur;
 
-            vmap[nums[i]] = i;
+        for (int i = 1; i < nums.size(); i++) {
+            cur = target - nums[i];
+            if (mp.count(cur) != 0 && mp[cur] != i) {
+                res.push_back(i);
+                res.push_back(mp[cur]);
+                break;
+            }
+            mp[nums[i]] = i;
         }
 
-        return result;
+        return res;
     }
+};
 
+class Solution {
+public:
     // 暴力法
     // 时间复杂度：O(n^2)
     // 空间复杂度：O(1)
     vector<int> twoSum1(vector<int>& nums, int target) {
         vector<int> v;
         int length = nums.size();
-        for(int i=0; i<length-1; i++){
-            for(int j=i+1; j<length; j++){
-                if(nums[i] + nums[j] == target){
+        for (int i = 0; i < length - 1; i++) {
+            for (int j = i + 1; j < length; j++) {
+                if (nums[i] + nums[j] == target) {
                     v.push_back(i);
                     v.push_back(j);
                 }

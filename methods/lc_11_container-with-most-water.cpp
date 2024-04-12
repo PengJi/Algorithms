@@ -9,13 +9,13 @@ public:
     // 时间复杂度：O(n)
     // 空间复杂度：O(1)
     int maxArea(vector<int>& height) {
-        if(height.size() <= 1) return 0;
+        if (height.size() <= 1) return 0;
 
-        int left = 0, right = height.size()-1;
+        int left = 0, right = height.size() - 1;
         int max = 0, area = 0;
 
-        while(left < right) {
-            if(height[left] <= height[right]) {
+        while (left < right) {
+            if (height[left] <= height[right]) {
                 area = height[left] * (right - left);
                 left++;
             } else {
@@ -23,7 +23,7 @@ public:
                 right--;
             }
 
-            if(area > max) max = area;
+            if (area > max) max = area;
         }
 
         return max;
@@ -32,16 +32,19 @@ public:
 
 class Solution {
 public:
+    // 双指针
+    // O(n)/O(1)
     int maxArea(vector<int>& height) {
-        int l = 0, r = height.size()-1;
-        int res = INT_MIN;
-        while(l < r) {
-            res = max(res, (r-l) * min(height[l], height[r]));
-            if(height[l] < height[r]) l++;
-            else r--;
+        int res = 0;
+        int n = height.size();
+        int left = 0, right = n-1;
+
+        while(n--) {
+            res = max(res, (right - left) * min(height[left], height[right]));
+            if(height[left] < height[right]) left++;
+            else right--;
         }
 
         return res;
     }
 };
-

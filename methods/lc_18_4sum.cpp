@@ -5,7 +5,7 @@
 
 class Solution {
 public:
-    // 双指针法
+    // 排序 + 双指针法
     // https://leetcode-cn.com/problems/4sum/solution/shuang-zhi-zhen-jie-fa-can-zhao-san-shu-zhi-he-ge-/
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         sort(nums.begin(), nums.end());

@@ -70,7 +70,7 @@ public:
 
 class Solution {
 public:
-    // 双指针法（ACK）
+    // 双指针法
     // 左右边界可只用一个变量表示
     // O(n)/O(1)
     int trap(vector<int>& height) {
