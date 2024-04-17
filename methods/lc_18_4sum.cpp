@@ -5,37 +5,39 @@
 
 class Solution {
 public:
-    // 排序 + 双指针法
-    // https://leetcode-cn.com/problems/4sum/solution/shuang-zhi-zhen-jie-fa-can-zhao-san-shu-zhi-he-ge-/
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> res;
         sort(nums.begin(), nums.end());
-        vector<vector<int>> ans;
-        if(nums.size() < 4) return ans;
+        int n = nums.size();
 
-        int a, b, c, d, len = nums.size();
-        for(a = 0; a <= len-4; a++) {
-            if(a > 0 && nums[a] == nums[a-1]) continue;
-            for(b = a+1; b <= len-3; b++) {
-                if(b > a+1 && nums[b] == nums[b-1]) continue;
-                c = b+1, d = len-1;
-                while(c < d) {
-                    if(nums[a] + nums[b] + nums[c] + nums[d] < target) 
-                        c++;
-                    else if(nums[a] + nums[b] + nums[c] + nums[d] > target)
-                        d--;
-                    else {
-                        ans.push_back({nums[a], nums[b], nums[c], nums[d]});
-                        while(c < d && nums[c+1] == nums[c])
-                            c++;
-                        while(c < d && nums[d-1] == nums[d])
-                            d--;
-                        c++;
-                        d--;
+        for (int i = 0; i < n; i++) {
+            while (i > 0 && i < n && nums[i] == nums[i - 1]) i++;
+
+            for (int j = i + 1; j < n; j++) {
+                while (j != i + 1 && j < n && nums[j] == nums[j - 1]) j++;
+                int left = j + 1, right = n - 1;
+                
+                while (left < right) {
+                    if ((long)nums[i] + nums[j] + nums[left] + nums[right] == target) {
+                        res.push_back({nums[i], nums[j], nums[left], nums[right]});
+                        do {
+                            left++;
+                        } while (left < right && nums[left - 1] == nums[left]);
+                        do {
+                            right--;
+                        } while (left < right && nums[right] == nums[right + 1]);
+                    } else if ((long)nums[i] + nums[j] + nums[left] + nums[right] < target) {
+                        do {
+                            left++;
+                        } while (left < right && nums[left - 1] == nums[left]);
+                    } else {
+                        do {
+                            right--;
+                        } while (left < right && nums[right] == nums[right + 1]);
                     }
                 }
             }
         }
-
-        return ans;
+        return res;
     }
 };

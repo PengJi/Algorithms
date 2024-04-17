@@ -8,38 +8,37 @@ public:
     // 排序 + 双指针
     // 时间复杂度：O(n^2)
     // 空间复杂度：O(n)
+    // https://www.acwing.com/solution/content/60/
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int> > res;
-        vector<int> tmp;
         sort(nums.begin(), nums.end());
+        int n = nums.size();
+        vector<vector<int>> res;
 
-        for (int i = 0; i < nums.size(); i++) {
-            int target = -nums[i];
-            int front = i + 1;
-            int back = nums.size() - 1;
+        for (int i = 0; i < n; i++) {
+            while (i != 0 && i < n && nums[i] == nums[i - 1]) i++;
 
-            while (front < back) {
-                int sum = nums[front] + nums[back];
-                
-                if (sum < target) {
-                    front++;
-                } else if (sum > target) {
-                    back--;
+            int left = i + 1, right = n - 1;
+            while (left < right) {
+                if (nums[i] + nums[left] + nums[right] == 0) {
+                    res.push_back({nums[i], nums[left], nums[right]});
+                    do {
+                        left++;
+                    } while (left < right && nums[left - 1] == nums[left]);
+                    do {
+                        right--;
+                    } while (left < right && nums[right] == nums[right + 1]);
+                } else if (nums[i] + nums[left] + nums[right] < 0) {
+                    do {
+                        left++;
+                    } while (left < right && nums[left - 1] == nums[left]);
                 } else {
-                    tmp.push_back(nums[i]);
-                    tmp.push_back(nums[front]);
-                    tmp.push_back(nums[back]);
-                    res.push_back(tmp);
-                    tmp.clear();
-                    
-                    while (front < back && nums[front] == tmp[1]) front++;
-                    while (front < back && nums[back] == tmp[2]) back--;
+                    do {
+                        right--;
+                    } while (left < right && nums[right] == nums[right + 1]);
                 }
             }
-
-            while (i + 1 < nums.size() && nums[i + 1] == nums[i]) i++;
         }
-        
+
         return res;
     }
 };
