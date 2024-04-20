@@ -5,32 +5,20 @@
 
 class Solution {
 public:
-    // https://www.acwing.com/solution/content/306/
     vector<int> twoSum(vector<int>& numbers, int target) {
-        for(int i = 0, j = numbers.size() - 1; i < j; i++) {
-            while(numbers[j] + numbers[i] > target) j--;
-            if(numbers[j] + numbers[i] == target) {
-                vector<int> res;
-                res.push_back(i+1);
-                res.push_back(j+1);
-                return res;
-            }
-        }
-
-        return {};
-    }
-
-    vector<int> twoSum(vector<int>& numbers, int target) {
+        int left = 0, right = numbers.size() - 1;
         vector<int> res;
-        int l = 0, r = numbers.size()-1;
-        int tmp;
-        while(l < r) {
-            tmp = numbers[l] + numbers[r];
-            if(tmp > target) r--;
-            else if(tmp < target) l++;
-            else {
-                res.push_back(l+1);
-                res.push_back(r+1);
+        int cur;
+
+        while (left < right) {
+            cur = numbers[left] + numbers[right];
+            if (cur < target) {
+                left++;
+            } else if (cur > target) {
+                right--;
+            } else {
+                res.push_back(left + 1);
+                res.push_back(right + 1);
                 break;
             }
         }
