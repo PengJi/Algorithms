@@ -5,19 +5,20 @@
 
 class NumArray {
 public:
-    vector<int> v;
+    vector<int> vec;
 
     NumArray(vector<int>& nums) {
-        v.resize(nums.size() + 1);
-        for(int i = 1; i <= nums.size(); i++) {
-            v[i] = v[i-1] + nums[i-1];
+        vec.resize(nums.size() + 1);
+        for (int i = 1; i <= nums.size(); i++) {
+            vec[i] = vec[i - 1] + nums[i - 1];
         }
     }
-    
+
+    // 前缀和
     int sumRange(int left, int right) {
-        ++left;
-        ++right;
-        return v[right] - v[left-1];
+        left++;
+        right++;
+        return vec[right] - vec[left - 1];
     }
 };
 
