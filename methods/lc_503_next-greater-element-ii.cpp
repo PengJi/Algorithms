@@ -7,17 +7,17 @@ class Solution {
 public:
     // 单调栈
     vector<int> nextGreaterElements(vector<int>& nums) {
-        int len = nums.size();
+        int n = nums.size();
+        vector<int> res(n, -1);
         stack<int> stk;
-        vector<int> res(len, -1);
 
-        for (int i = 0; i < len * 2 - 1; i++) {  // 拉直循环数组
-            while (!stk.empty() && nums[stk.top()] < nums[i % len]) {
-                res[stk.top()] = nums[i % len];
+        for (int i = 0; i < n * 2; i++) {  // 拉直循环数组
+            while (!stk.empty() && nums[i % n] > nums[stk.top()]) {
+                res[stk.top()] = nums[i % n];
                 stk.pop();
             }
 
-            stk.push(i % len);
+            stk.push(i % n);
         }
 
         return res;
