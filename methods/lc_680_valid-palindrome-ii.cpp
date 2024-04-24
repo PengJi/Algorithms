@@ -7,44 +7,19 @@ class Solution {
 public:
     // 双指针，一个从前往后，一个从后往前，依次遍历，
     // 遇到不同时，由于只删除一个字符，要么删除左边，要么删除右边
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
     bool validPalindrome(string s) {
-        int len = s.size();
-        for(int i = 0, j = len -1; i < j; i++, j--) {
-            if(s[i] != s[j]) return (judge(s, i+1, j) || judge(s, i, j-1));
-        }
-
-        return true;
-    }
-
-    bool judge(string s, int i, int j) {
-        while(i < j) {
-            if(s[i++] != s[j--]) return false;
-        }
-
-        return true;
-    }
-};
-
-
-class Solution {
-public:
-    bool check(string& s, int i, int j) {
-        while(i < j) {
-            if(s[i] != s[j]) return false;
-            i++;
-            j--;
-        }
-        return true;
-    }
-
-    bool validPalindrome(string s) {
-        for(int i = 0, j = s.size()-1; i < j; i++, j--) {
-            if(s[i] != s[j]) {
-                if(check(s, i+1, j) || check(s, i, j-1)) return true;
+        for (int i = 0, j = s.size() - 1; i < j; i++, j--) {
+            if (s[i] != s[j]) {
+                if (check(s, i + 1, j) || check(s, i, j - 1)) return true;
                 return false;
             }
+        }
+        return true;
+    }
+
+    bool check(string& s, int i, int j) {
+        while (i < j) {
+            if (s[i++] != s[j--]) return false;
         }
         return true;
     }
