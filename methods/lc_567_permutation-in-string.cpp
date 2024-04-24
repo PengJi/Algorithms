@@ -1,8 +1,5 @@
 /**
  * 567. 字符串的排列
- * 给定两个字符串 s1 和 s2，写一个函数来判断 s2 是否包含 s1 的排列。
- * 换句话说，第一个字符串的排列之一是第二个字符串的子串。
- * 
  * https://leetcode-cn.com/problems/permutation-in-string/
  */
 
@@ -48,30 +45,26 @@ public:
 
 class Solution {
 public:
-    unordered_map<char, int> m1, m2;
-
-    bool check(char a) {
-        if(m1.count(a) && m1[a] == m2[a]) return true;
-        return false;
-    }
-
+    // 滑动窗口
+    // 与 438 算法相同
     bool checkInclusion(string s1, string s2) {
-        for(auto& x : s1) m1[x]++;
-        for(int i = 0, j = 0, cnt = 0; i < s2.size(); i++) {
-            if(check(s2[i])) cnt--;
-            m2[s2[i]]++;
-            if(check(s2[i])) cnt++;
+        unordered_map<char, int> mp;
+        for (auto& c : s1) mp[c]++;
+        int tot = mp.size(), ret = 0;
 
-            if(i - j >= s1.size()) {
-                if(check(s2[j])) cnt--;
-                m2[s2[j]]--;
-                if(check(s2[j])) cnt++;
-                j++;
+        int j = 0;
+        for (int i = 0; i < s2.size(); i++) {
+            mp[s2[i]]--;  // 在滑动窗口中的元素个数减一
+            if (mp[s2[i]] == 0) ret++;
+
+            if (i - j + 1 > s1.size()) {
+                if (mp[s2[j]] == 0) ret--;
+                mp[s2[j++]]++;  // 不在滑动窗口中的元素加一
             }
-            if(cnt == m1.size()) return true;
+
+            if (tot == ret) return true;
         }
 
         return false;
     }
 };
-

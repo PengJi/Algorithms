@@ -6,25 +6,9 @@
 class Solution {
 public:
     // 前缀和
-    // https://zhuanlan.zhihu.com/p/107778275
-    int subarraySum(vector<int>& nums, int k) {
-        if (nums.size() == 0) return 0;
-
-        unordered_map<int, int> mp;
-        mp[0] = 1;
-        int ans = 0, pre_sum = 0;
-        for (auto num : nums) {
-            pre_sum += num;
-            if (mp.find(pre_sum - k) != mp.end()) ans += mp[pre_sum - k];
-            mp[pre_sum]++;
-        }
-
-        return ans;
-    }
-};
-
-class Solution {
-public:
+    // 对原数组求前缀和后，一个和为 k 的子数组即为一对前缀和的差值为 k 的位置。
+    // 遍历前缀和数组，用 unordered_map 哈希表记录每个前缀和出现的次数。特别地，初始时前缀和为 0 需要被额外记录一次。
+    // 遍历过程中，对于当前前缀和 tot，累加之前 tot - k 前缀和出现的次数。
     int subarraySum(vector<int>& nums, int k) {
         int n = nums.size();
         vector<int> s(n + 1);
