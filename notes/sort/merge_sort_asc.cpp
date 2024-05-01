@@ -3,7 +3,6 @@
 using namespace std;
 
 // 归并排序（升序）
-
 void merge(vector<int>& arr, int left, int mid, int right) {
     vector<int> tmp(right - left + 1);
     int i = left, j = mid+1, k = 0;
