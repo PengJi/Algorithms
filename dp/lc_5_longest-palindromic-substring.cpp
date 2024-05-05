@@ -1,7 +1,5 @@
 /**
  * 5. 最长回文子串
- * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
- *
  * https://leetcode-cn.com/problems/longest-palindromic-substring/
  */
 
@@ -32,28 +30,40 @@ public:
 
         return ans;
     }
+};
 
-    // 动态规划
-    // 时间复杂度：O(n^2)
-    // 空间复杂度：O(n^2)
+
+class Solution {
+public:
+    // 暴力解法
+    // 以当前节点为中心，左右两边遍历
+    // O(n^2)/O(1)
     string longestPalindrome(string s) {
-        if (s.size() <= 1) return s;
+        int maxLen = 0;
+        string res;
+        int len = s.size();
 
-        int start = 0, maxLen = 1, n = s.size();
-        bool isPal[1000][1000] = {false};
+        for(int i = 0; i < s.size(); i++) {
+            int step = 0;
+            // 长度为奇数
+            while(i-step >=0 && i+step <len && s[i-step] == s[i+step]) step++;
+            step--;
+            if(step*2+1 > maxLen) {
+                maxLen = step*2+1;
+                res = s.substr(i-step, maxLen);
+            }
 
-        for (int i = n - 1; i >= 0; i--) {
-            for (int j = i; j < n; j++) {
-                if ((i + 1 > j - 1 || isPal[i + 1][j - 1]) && s[i] == s[j]) {
-                    isPal[i][j] = true;
-                    if (j - i + 1 > maxLen) {
-                        maxLen = j - i + 1;
-                        start = i;
-                    }
-                }
+            // 长度为偶数
+            step = 0;
+            int left = i, right = i+1;
+            while(left-step >= 0 && right+step < len && s[left-step] == s[right+step]) step++;
+            step--;
+            if((step+1)*2 > maxLen) {
+                maxLen = (step+1)*2;
+                res = s.substr(left-step, maxLen);
             }
         }
 
-        return s.substr(start, maxLen);
+        return res;
     }
 };
