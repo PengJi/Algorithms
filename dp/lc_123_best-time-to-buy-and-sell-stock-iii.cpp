@@ -21,3 +21,31 @@ public:
         return max(dp[0], max(dp[2], dp[4]));  //进行0笔，1笔，2笔交易的最大值的最大值
     }
 };
+
+class Solution {
+public:
+    // 前后缀分解
+    // 以 i 为分界点，i 为第二次买入的天
+    int maxProfit(vector<int>& prices) {
+        int res = 0;
+        int len = prices.size();
+        vector<int> f(len);
+        int minPrice = INT_MAX;
+
+        // i 左边的最大值，记录在 f 数组中
+        for (int i = 0; i < len; i++) {
+            minPrice = min(minPrice, prices[i]);
+            res = max(res, prices[i] - minPrice);
+            f[i] = res;
+        }
+
+        // 计算 i 右边的最大值
+        int maxPrice = INT_MIN;
+        for (int i = len - 1; i >= 0; i--) {
+            maxPrice = max(maxPrice, prices[i]);
+            res = max(res, f[i] + maxPrice - prices[i]);
+        }
+
+        return res;
+    }
+};

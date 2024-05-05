@@ -8,18 +8,32 @@
 
 class Solution {
 public:
-    // 遍历
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
+    // 贪心
+    // O(n)/O(1)
     int maxProfit(vector<int>& prices) {
-        int len = prices.size();
-        if (len <= 1) return 0;
+        int res = 0;
 
-        int res;
-        for (int i = 1; i < len; i++) {
-            if (prices[i] > prices[i - 1]) res += prices[i] - prices[i - 1];
+        for (int i = 1; i < prices.size(); i++) {
+            res += max(0, prices[i] - prices[i - 1]);
         }
 
         return res;
+    }
+};
+
+class Solution {
+public:
+    // 动态规划
+    // O(n)/O(n)
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int dp0 = 0, dp1 = -prices[0];
+        for (int i = 1; i < n; ++i) {
+            int newDp0 = max(dp0, dp1 + prices[i]);
+            int newDp1 = max(dp1, dp0 - prices[i]);
+            dp0 = newDp0;
+            dp1 = newDp1;
+        }
+        return dp0;
     }
 };
