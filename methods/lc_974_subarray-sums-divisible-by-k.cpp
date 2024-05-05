@@ -16,7 +16,7 @@ public:
 
         for (auto num : A) {
             sum += num;
-            key = (sum % K + K) % K;  // 注意 C++ 取模的特殊性，当被除数为负数时取模结果为负数，需要纠正
+            key = (sum % K + K) % K;  // 注意：C++ 取模的特殊性，当被除数为负数时取模结果为负数，需要纠正
             res += mp[key];
             mp[key]++;
         }

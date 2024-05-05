@@ -7,6 +7,7 @@ class NumArray {
 public:
     vector<int> vec;
 
+    // 前缀和
     NumArray(vector<int>& nums) {
         vec.resize(nums.size() + 1);
         for (int i = 1; i <= nums.size(); i++) {
@@ -14,11 +15,8 @@ public:
         }
     }
 
-    // 前缀和
     int sumRange(int left, int right) {
-        left++;
-        right++;
-        return vec[right] - vec[left - 1];
+        return vec[++right] - vec[left];
     }
 };
 
