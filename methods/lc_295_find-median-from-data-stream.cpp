@@ -9,7 +9,7 @@ public:
     // 根据上述定义，我们每次可以通过大根堆的堆顶或者两个堆的堆顶元素的平均数求出中位数。
     // 维护时，如果新加入的元素小于等于大根堆的堆顶，则加入大根堆；否则加入小根堆。
     // 然后如果发现两个堆的大小关系不满足上述要求，则可以通过弹出一个堆的元素放到另一个堆中。
-    priority_queue<int> smaller;                            // 大根堆
+    priority_queue<int> smaller;                            // 大根堆（默认）
     priority_queue<int, vector<int>, greater<int>> larger;  // 小根堆
 
     MedianFinder() {
