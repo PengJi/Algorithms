@@ -1,7 +1,5 @@
 /**
  * 110. 平衡二叉树
- * 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
- *
  * https://leetcode-cn.com/problems/balanced-binary-tree/
  */
 
@@ -17,8 +15,7 @@
 class Solution {
 public:
     // 从上到下遍历
-    // O(n^2)
-    // O(n)
+    // O(n^2)/O(n)
     bool isBalanced(TreeNode* root) {
         if (!root) return true;
         return abs(dfs(root->left) - dfs(root->right)) <= 1 && isBalanced(root->left) && isBalanced(root->right);
@@ -33,8 +30,7 @@ public:
 class Solution {
 public:
     // 从下到上遍历
-    // O(n)
-    // O(n)
+    // O(n)/O(n)
     bool isBalanced(TreeNode* root) {
         return dfs(root) >= 0;
     }

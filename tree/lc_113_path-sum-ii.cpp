@@ -1,7 +1,5 @@
 /**
  * 113. 路径总和 II
- * 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
- *
  * https://leetcode-cn.com/problems/path-sum-ii/
  */
 
@@ -29,14 +27,14 @@ public:
     void dfs(TreeNode* root, int sum) {
         if (!root) return;
 
-        path.emplace_back(root->val);
+        path.push_back(root->val);
         sum -= root->val;
         if (!root->left && !root->right && sum == 0) {
-            res.emplace_back(path);
+            res.push_back(path);
         }
 
         dfs(root->left, sum);
         dfs(root->right, sum);
-        path.pop_back();
+        path.pop_back();  // 注意：需要记录路径，所以需要 pop;
     }
 };
