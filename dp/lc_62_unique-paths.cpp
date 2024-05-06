@@ -1,7 +1,5 @@
 /**
  * 62. 不同路径
- * 机器人从左上角走到右下角
- *
  * https://leetcode-cn.com/problems/unique-paths/
  */
 

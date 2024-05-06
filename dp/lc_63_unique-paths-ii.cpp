@@ -1,7 +1,5 @@
 /**
  * 63. 不同路径 II
- * 机器人，网格中有障碍物
- *
  * https://leetcode-cn.com/problems/unique-paths-ii/
  */
 
@@ -37,7 +35,10 @@ public:
 
         return dp[n - 1];
     }
+};
 
+class Solution {
+public:
     // https://leetcode-cn.com/problems/unique-paths-ii/solution/jian-dan-dpbi-xu-miao-dong-by-sweetiee/
     int uniquePathsWithObstacles(int[][] obstacleGrid) {
         if (obstacleGrid == null || obstacleGrid.length == 0) {
