@@ -94,10 +94,10 @@ int main(){
     while(!p.empty()){
         cout<<p.top().x<<' '<<p.top().y<<endl;
         p.pop();
-    }//while
-    //getchar();
+    }
 
     return 0;
+}
 ```
 
 示例

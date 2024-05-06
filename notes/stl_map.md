@@ -1,4 +1,4 @@
-# 遍历map
+# 遍历 map
 
 ```cpp
 #include <iostream>
@@ -7,22 +7,20 @@
 using namespace std;
 
 int main() {
-    map<int, int> mp;
+    map<int, int> mp;  // 对于 mp[k], 如果 k 不存在则 v 默认为 0
     mp[0] = 1;
     mp[1] = 2;
     mp[10] = 10;
-    /*
-    对于 mp[k], 如果 k 不存在则 v 默认为 0
-    */
 
     map<int, int>::iterator iter;
+
+    // 通过迭代器过滤
     iter = mp.begin();
     while(iter != mp.end()) {
         cout << iter->first << " : " << iter->second << endl;
         iter++;
     }
 
-    // 可以使用for循环遍历
     for(iter = mp.begin(); iter != mp.end(); iter++) {
         cout << iter->first << " : " << iter->second << endl;
     }
@@ -33,7 +31,7 @@ int main() {
     }
 
     // 第三种方式
-    for(auto item: mp) {
+    for(auto& item: mp) {
         cout << item.first << item.second << endl;
     }
 
