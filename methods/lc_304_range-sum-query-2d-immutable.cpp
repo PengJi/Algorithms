@@ -7,6 +7,7 @@ class NumMatrix {
 public:
     vector<vector<int>> s;
 
+    // 前缀和
     NumMatrix(vector<vector<int>>& matrix) {
         int m = matrix.size(), n = matrix[0].size();
         s = vector<vector<int>>(m + 1, vector<int>(n + 1));
@@ -18,7 +19,6 @@ public:
         }
     }
 
-    // 前缀和
     int sumRegion(int row1, int col1, int row2, int col2) {
         ++row1, ++col1, ++row2, ++col2;
         return s[row2][col2] - s[row1 - 1][col2] - s[row2][col1 - 1] + s[row1 - 1][col1 - 1];

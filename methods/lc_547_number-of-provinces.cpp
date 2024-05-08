@@ -5,9 +5,9 @@
 
 class Solution {
 public:
-    // 并查集
     vector<int> p;
 
+    // 并查集
     int find(int x) {
         if (p[x] != x) p[x] = find(p[x]);
         return p[x];

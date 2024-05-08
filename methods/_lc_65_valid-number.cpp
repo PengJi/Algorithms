@@ -5,136 +5,46 @@
 
 class Solution {
 public:
-    // https://leetcode-cn.com/problems/valid-number/solution/you-xiao-shu-zi-by-leetcode-solution-298l/
-    enum State {
-        STATE_INITIAL,
-        STATE_INT_SIGN,
-        STATE_INTEGER,
-        STATE_POINT,
-        STATE_POINT_WITHOUT_INT,
-        STATE_FRACTION,
-        STATE_EXP,
-        STATE_EXP_SIGN,
-        STATE_EXP_NUMBER,
-        STATE_END,
-    };
+    // https://www.acwing.com/solution/content/13813/
+    // 1. 找到字符串中第一次字符 e 的地方，记为 e_pos。
+    // 2. 如果 e_pos 存在，则将字符分为两部分判断，e 之前的部分需要为一个整数或者浮点数。e 之后的部分需要为一个整数。
+    // 3. 如果 e_pos 不存在，则整个字符串需要为一个整数或者浮点数。
+    // 4. 判断整数或者浮点数时，需要满足一下几点
+    // 正负号仅能出现开头
+    // 字符串中需要至少有一个数字
+    // 判断浮点数时，. 不能出现多次
+    bool isNumber(string s) {
+        size_t e_pos = s.find('e');
+        size_t E_pos = s.find('E');
 
-    enum CharType {
-        CHAR_NUMBER,
-        CHAR_EXP,
-        CHAR_POINT,
-        CHAR_SIGN,
-        CHAR_ILLEGAL,
-    };
+        if (e_pos != string::npos)
+            return isPureNumber(s.substr(0, e_pos), false) && isPureNumber(s.substr(e_pos + 1), true);
 
-    CharType toCharType(char ch) {
-        if (ch >= '0' && ch <= '9') {
-            return CHAR_NUMBER;
-        } else if (ch == 'e' || ch == 'E') {
-            return CHAR_EXP;
-        } else if (ch == '.') {
-            return CHAR_POINT;
-        } else if (ch == '+' || ch == '-') {
-            return CHAR_SIGN;
-        } else {
-            return CHAR_ILLEGAL;
-        }
+        if (E_pos != string::npos)
+            return isPureNumber(s.substr(0, E_pos), false) && isPureNumber(s.substr(E_pos + 1), true);
+
+        return isPureNumber(s, false);
     }
 
-    bool isNumber(string s) {
-        unordered_map<State, unordered_map<CharType, State>> transfer{
-            {
-                STATE_INITIAL, {
-                    {CHAR_NUMBER, STATE_INTEGER},
-                    {CHAR_POINT, STATE_POINT_WITHOUT_INT},
-                    {CHAR_SIGN, STATE_INT_SIGN},
-                }
-            }, {
-                STATE_INT_SIGN, {
-                    {CHAR_NUMBER, STATE_INTEGER},
-                    {CHAR_POINT, STATE_POINT_WITHOUT_INT},
-                }
-            }, {
-                STATE_INTEGER, {
-                    {CHAR_NUMBER, STATE_INTEGER},
-                    {CHAR_EXP, STATE_EXP},
-                    {CHAR_POINT, STATE_POINT},
-                }
-            }, {
-                STATE_POINT, {
-                    {CHAR_NUMBER, STATE_FRACTION},
-                    {CHAR_EXP, STATE_EXP},
-                }
-            }, {
-                STATE_POINT_WITHOUT_INT, {
-                    {CHAR_NUMBER, STATE_FRACTION},
-                }
-            }, {
-                STATE_FRACTION,
-                {
-                    {CHAR_NUMBER, STATE_FRACTION},
-                    {CHAR_EXP, STATE_EXP},
-                }
-            }, {
-                STATE_EXP,
-                {
-                    {CHAR_NUMBER, STATE_EXP_NUMBER},
-                    {CHAR_SIGN, STATE_EXP_SIGN},
-                }
-            }, {
-                STATE_EXP_SIGN, {
-                    {CHAR_NUMBER, STATE_EXP_NUMBER},
-                }
-            }, {
-                STATE_EXP_NUMBER, {
-                    {CHAR_NUMBER, STATE_EXP_NUMBER},
-                }
-            }
-        };
+    bool isPureNumber(const string &s, bool must_be_integer) {
+        if (s.empty()) return false;
 
-        int len = s.length();
-        State st = STATE_INITIAL;
+        int st = int(s[0] == '+' || s[0] == '-');
+        bool has_dot = false, has_digit = false;
 
-        for (int i = 0; i < len; i++) {
-            CharType typ = toCharType(s[i]);
-            if (transfer[st].find(typ) == transfer[st].end()) {
-                return false;
-            } else {
-                st = transfer[st][typ];
-            }
-        }
-        return st == STATE_INTEGER || st == STATE_POINT || st == STATE_FRACTION || st == STATE_EXP_NUMBER || st == STATE_END;
-    }
+        for (int i = st; i < s.size(); i++) {
+            if (s[i] == '.') {
+                if (must_be_integer) return false;
+                if (has_dot) return false;
 
-    bool isNumber(string s) {
-        int len = s.size();
-        int i = 0, j = len-1;
-        while(i < len && s[i] == ' ') i++;
-        while(j >= 0 && s[j] == ' ') j--;
-        if(i > j) return false;
-        s = s.substr(i, j-i+1);
-
-        if(s[0] == '-' || s[0] == '+') s = s.substr(1);
-        if(s.empty() || s[0] == '.' && s.size() == 1) return false;
-
-        int dot = 0, e = 0;
-        for(int i = 0; i < s.size(); i++) {
-            if(s[i] >= '0' && s[i] <= '9');
-            else if(s[i] == '.') {
-                dot++;
-                if(e || dot > 1) return false;
-            } else if(s[i] == 'e' || s[i] == 'E') {
-                e++;
-                if(i + 1 == s.size() || !i || e > 1 || i == 1 && s[0] == '.') return false;
-                if(s[i+1] == '+' || s[i+1] == '-') {
-                    if(i+2 == s.size()) return false;
-                    i++;
-                }
+                has_dot = true;
+            } else if (isdigit(s[i])) {
+                has_digit = true;
             } else {
                 return false;
             }
         }
 
-        return true;
+        return has_digit;
     }
 };
