@@ -5,7 +5,7 @@
 
 class Solution {
 public:
-    // https://www.acwing.com/activity/content/code/content/426412/
+    // https://www.acwing.com/activity/content/problem/content/2582/
     string shortestPalindrome(string s) {
         string t(s.rbegin(), s.rend());
         int n = s.size();

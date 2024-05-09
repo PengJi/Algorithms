@@ -24,7 +24,10 @@ public:
 
         return ans;
     }
+};
 
+class Solution {
+public:
     // 排序
     // https://leetcode-cn.com/problems/longest-common-prefix/solution/jin-bi-jiao-liang-ge-zi-fu-chuan-14zui-chang-gong-/
     // 时间复杂度：O(nlogn + m)，n为字符串数组的长度，m为最短字符串的长度

@@ -14,8 +14,7 @@
 class Solution {
 public:
     // 快慢指针
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
+    // O(n)/O(1)
     bool hasCycle(ListNode *head) {
         ListNode *slow = head, *fast = head;
 

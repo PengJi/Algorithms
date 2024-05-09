@@ -7,22 +7,6 @@ class Solution {
 public:
     // 双指针
     string reverseOnlyLetters(string s) {
-        string res = s;
-        int l = 0, r = res.size() - 1;
-        while (l < r) {
-            if (!isalpha(res[l])) l++;
-            if (!isalpha(res[r])) r--;
-            if (isalpha(res[l]) && isalpha(res[r]))
-                swap(res[l++], res[r--]);
-        }
-
-        return res;
-    }
-};
-
-class Solution {
-public:
-    string reverseOnlyLetters(string s) {
         int len = s.size();
         int l = 0, r = len - 1;
 
