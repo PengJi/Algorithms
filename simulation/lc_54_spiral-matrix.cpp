@@ -1,49 +1,48 @@
 /**
  * 54. 螺旋矩阵
  * 给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。
- * 
+ *
  * https://leetcode-cn.com/problems/spiral-matrix/
  */
 
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
-        if(matrix.empty()) return {};
+        if (matrix.empty()) return {};
 
-        int up = 0, down = matrix.size()-1;  // 上下边界
-        int left = 0, right = matrix[0].size()-1;  //左右边界
+        int up = 0, down = matrix.size() - 1;        // 上下边界
+        int left = 0, right = matrix[0].size() - 1;  //左右边界
         vector<int> res;
 
-        while(true) {
+        while (true) {
             // 从左到右
-            for(int i = left; i <= right; i++) {
+            for (int i = left; i <= right; i++) {
                 res.push_back(matrix[up][i]);
             }
-            if(++up > down) break;  // 修改上边界
+            if (++up > down) break;  // 修改上边界
 
             // 从上到下
-            for(int i = up; i <= down; i++) {
+            for (int i = up; i <= down; i++) {
                 res.push_back(matrix[i][right]);
             }
-            if(--right < left) break;  // 修改右边界
+            if (--right < left) break;  // 修改右边界
 
             // 从右到左
-            for(int i = right; i >= left; i--) {
+            for (int i = right; i >= left; i--) {
                 res.push_back(matrix[down][i]);
             }
-            if(--down < up) break;  // 修改下边界
+            if (--down < up) break;  // 修改下边界
 
             // 从下到上
-            for(int i = down; i >= up; i--) {
+            for (int i = down; i >= up; i--) {
                 res.push_back(matrix[i][left]);
             }
-            if(++left > right) break;  // 修改左边界
+            if (++left > right) break;  // 修改左边界
         }
 
         return res;
     }
 };
-
 
 class Solution {
 public:
@@ -60,14 +59,14 @@ public:
         int d = 0;
         // 下一个坐标
         int tx = 0, ty = 0;
-        for(int i = 0, x = 0, y = 0; i < m * n; i++) {
+        for (int i = 0, x = 0, y = 0; i < m * n; i++) {
             res.push_back(matrix[x][y]);
             st[x][y] = true;
-            
+
             // 更新下个坐标
             tx = x + dx[d], ty = y + dy[d];
             // 下个位置是否符合要求
-            if(tx < 0 || tx >= m || ty < 0 || ty >= n || st[tx][ty]) {
+            if (tx < 0 || tx >= m || ty < 0 || ty >= n || st[tx][ty]) {
                 d = (d + 1) % 4;
                 // 更新下个坐标
                 tx = x + dx[d], ty = y + dy[d];

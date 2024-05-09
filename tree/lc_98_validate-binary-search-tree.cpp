@@ -20,6 +20,9 @@ public:
     }
 
     // 递归
+    // 得到左右子树的最大最小值
+    // lower 表示左子树的最小节点
+    // upper 表示右子树的最大节点
     bool dfs(TreeNode* root, TreeNode* lower, TreeNode* upper) {
         if (root == NULL) return true;
         if (lower && root->val <= lower->val || upper && root->val >= upper->val) return false;
@@ -44,9 +47,7 @@ public:
             cur = stk.top();
             stk.pop();
 
-            if (cur->val <= inorder) {
-                return false;
-            }
+            if (cur->val <= inorder) return false;
 
             inorder = cur->val;
             cur = cur->right;
