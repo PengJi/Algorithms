@@ -1,28 +1,28 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 // 快排（升序）
-int partition(vector<int>& arr, int low, int high) {
-    int pivot = arr[low];
-    
-    while(low < high) {
-        while(low < high && pivot <= arr[high]) high--;
-        arr[low] = arr[high];
+int sort(vector<int>& arr, int left, int right) {
+    int pivot = arr[left];
 
-        while(low < high && pivot >= arr[low]) low++;
-        arr[high] = arr[low];
+    while (left < right) {
+        while (left < right && pivot <= arr[right]) right--;  // 升序
+        arr[left] = arr[right];
+
+        while (left < right && pivot >= arr[left]) left++;  // 升序
+        arr[right] = arr[left];
     }
 
-    arr[low] = pivot;
-    return low;
+    arr[left] = pivot;
+    return left;
 }
 
-void quickSort(vector<int>& arr, int low, int high) {
-    if(low < high) {
-        int mid = partition(arr, low, high);
-        quickSort(arr, low, mid-1);
-        quickSort(arr, mid+1, high);
+void quickSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = sort(arr, left, right);  // mid 位置的元素确定
+        quickSort(arr, left, mid - 1);
+        quickSort(arr, mid + 1, right);
     }
 }
 
@@ -31,7 +31,7 @@ int main() {
 
     quickSort(arr, 0, 9);
 
-    for(int i = 0; i < 10; i++) {
+    for (int i = 0; i < 10; i++) {
         cout << arr[i] << " ";
     }
 }
