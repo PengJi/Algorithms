@@ -78,67 +78,67 @@ https://leetcode-cn.com/problems/string-to-integer-atoi/
 14. 最长公共前缀
 https://leetcode-cn.com/problems/longest-common-prefix/
 
-28. 实现 strStr()
+28. 找出字符串中第一个匹配项的下标
 https://leetcode-cn.com/problems/implement-strstr/
 
-43. 字符串相乘
+1.  字符串相乘
 https://leetcode-cn.com/problems/multiply-strings/
 
-49. 字母异位词分组
+1.  字母异位词分组
 https://leetcode-cn.com/problems/group-anagrams/
 
-58. 最后一个单词的长度
+1.  最后一个单词的长度
 https://leetcode-cn.com/problems/length-of-last-word/
 
-151. 翻转字符串里的单词
+1.   翻转字符串里的单词
 https://leetcode-cn.com/problems/reverse-words-in-a-string/
 
-165. 比较版本号
+1.   比较版本号
 https://leetcode-cn.com/problems/compare-version-numbers/
 
-171. Excel表列序号
+1.   Excel表列序号
 https://leetcode-cn.com/problems/excel-sheet-column-number/
 
-205. 同构字符串
+1.   同构字符串
 https://leetcode-cn.com/problems/isomorphic-strings/
 
-344. 反转字符串
+1.   反转字符串
 https://leetcode-cn.com/problems/reverse-string/
 
-387. 字符串中的第一个唯一字符
+1.   字符串中的第一个唯一字符
 https://leetcode-cn.com/problems/first-unique-character-in-a-string/
 
-415. 字符串相加
+1.   字符串相加
 https://leetcode-cn.com/problems/add-strings/
 
-541. 反转字符串 II
+1.   反转字符串 II
 https://leetcode-cn.com/problems/reverse-string-ii/
 
-557. 反转字符串中的单词 III
+1.   反转字符串中的单词 III
 https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/
 
-647. 回文子串
+1.   回文子串
 https://leetcode-cn.com/problems/palindromic-substrings/
 
-709. 转换成小写字母
+1.   转换成小写字母
 https://leetcode-cn.com/problems/to-lower-case/
 
-771. 宝石与石头
+1.   宝石与石头
 https://leetcode-cn.com/problems/jewels-and-stones/
 
-917. 仅仅反转字母
+1.   仅仅反转字母
 https://leetcode-cn.com/problems/reverse-only-letters/
 
-30. 串联所有单词的子串
+1.  串联所有单词的子串
 https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/
 
-60. 排列序列
+1.  排列序列
 https://leetcode-cn.com/problems/permutation-sequence/
 
-68. 文本左右对齐
+1.  文本左右对齐
 https://leetcode-cn.com/problems/text-justification/
 
-214. 最短回文串
+1.   最短回文串
 https://leetcode-cn.com/problems/shortest-palindrome/
 
 
@@ -186,14 +186,14 @@ https://leetcode-cn.com/problems/remove-linked-list-elements/
 206. 反转链表
 https://leetcode-cn.com/problems/reverse-linked-list/
 
+25. K 个一组翻转链表
+https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
+
 234. 回文链表
 https://leetcode-cn.com/problems/palindrome-linked-list/
 
 237. 删除链表中的节点
 https://leetcode-cn.com/problems/delete-node-in-a-linked-list/
-
-25. K 个一组翻转链表
-https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
 
 146. LRU缓存机制
 https://leetcode-cn.com/problems/lru-cache/

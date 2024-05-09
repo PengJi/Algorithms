@@ -78,7 +78,7 @@ while(num) {
 ```cpp
 vector<int> arr(n);
 int l = 0, r = n - 1;
-int bsearch_1(int l, int r, int targe) {
+int bsearch_1(int l, int r, int target) {
     while (l < r) {
         int mid = l + r >> 1;
         if (arr[mid] < target) l = mid + 1;
