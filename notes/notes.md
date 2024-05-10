@@ -81,64 +81,64 @@ https://leetcode-cn.com/problems/longest-common-prefix/
 28. 找出字符串中第一个匹配项的下标
 https://leetcode-cn.com/problems/implement-strstr/
 
-1.  字符串相乘
+43. 字符串相乘
 https://leetcode-cn.com/problems/multiply-strings/
 
-1.  字母异位词分组
+49. 字母异位词分组
 https://leetcode-cn.com/problems/group-anagrams/
 
-1.  最后一个单词的长度
+58. 最后一个单词的长度
 https://leetcode-cn.com/problems/length-of-last-word/
 
-1.   翻转字符串里的单词
+151. 反转字符串中的单词
 https://leetcode-cn.com/problems/reverse-words-in-a-string/
 
-1.   比较版本号
+165. 比较版本号
 https://leetcode-cn.com/problems/compare-version-numbers/
 
-1.   Excel表列序号
+171. Excel 表列序号
 https://leetcode-cn.com/problems/excel-sheet-column-number/
 
-1.   同构字符串
+205. 同构字符串
 https://leetcode-cn.com/problems/isomorphic-strings/
 
-1.   反转字符串
-https://leetcode-cn.com/problems/reverse-string/
-
-1.   字符串中的第一个唯一字符
+387. 字符串中的第一个唯一字符
 https://leetcode-cn.com/problems/first-unique-character-in-a-string/
 
-1.   字符串相加
+415. 字符串相加
 https://leetcode-cn.com/problems/add-strings/
 
-1.   反转字符串 II
+344. 反转字符串
+https://leetcode-cn.com/problems/reverse-string/
+
+541. 反转字符串 II
 https://leetcode-cn.com/problems/reverse-string-ii/
 
-1.   反转字符串中的单词 III
+557. 反转字符串中的单词 III
 https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/
 
-1.   回文子串
+647. 回文子串
 https://leetcode-cn.com/problems/palindromic-substrings/
 
-1.   转换成小写字母
+709. 转换成小写字母
 https://leetcode-cn.com/problems/to-lower-case/
 
-1.   宝石与石头
+771. 宝石与石头
 https://leetcode-cn.com/problems/jewels-and-stones/
 
-1.   仅仅反转字母
+917. 仅仅反转字母
 https://leetcode-cn.com/problems/reverse-only-letters/
 
-1.  串联所有单词的子串
+30. 串联所有单词的子串
 https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/
 
-1.  排列序列
+60. 排列序列
 https://leetcode-cn.com/problems/permutation-sequence/
 
-1.  文本左右对齐
-https://leetcode-cn.com/problems/text-justification/
+68. 文本左右对齐
+https://leetcode-cn.com/problems/text-justification/    
 
-1.   最短回文串
+214. 最短回文串
 https://leetcode-cn.com/problems/shortest-palindrome/
 
 

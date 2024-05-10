@@ -37,10 +37,12 @@ public:
 
 class Solution {
 public:
+    // 反转，反转整个字符串，反转单个单词
     string reverseWords(string s) {
         reverse(s.begin(), s.end());
         int idx = 0, len = s.size();
         int start, end;
+        
         while (idx < len) {
             if (s[idx] == ' ') {
                 idx++;
