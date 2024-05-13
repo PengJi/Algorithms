@@ -63,7 +63,8 @@ int bsearch(int l, int r, int target) {
         if (arr[mid] < target) l = mid + 1;  // 注意：这里为 mid+1
         else r = mid;  // 注意
     }
-    return l;
+    if (ar[l] == target) return l;
+    return -1;
 }
 ```
 
@@ -506,8 +507,8 @@ https://leetcode-cn.com/problems/pascals-triangle/
 45. 跳跃游戏 II
 https://leetcode-cn.com/problems/jump-game-ii/
 
-53. 最大子序和
-https://leetcode-cn.com/problems/maximum-subarray/
+53. 最大子数组和
+https://leetcode.cn/problems/maximum-subarray/
 
 62. 不同路径
 https://leetcode-cn.com/problems/unique-paths/

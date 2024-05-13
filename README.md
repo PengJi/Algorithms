@@ -1503,7 +1503,7 @@ Fib: opt[i] = opt[n-1] + opt[n-2]
 ## 题目
 - [x] [70. 爬楼梯](https://leetcode-cn.com/problems/climbing-stairs/)  
 - [x] [120. 三角形最小路径和](https://leetcode-cn.com/problems/triangle/)  
-- [x] [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)  
+- [x] [53. 最大子序和](https://leetcode.cn/problems/maximum-subarray/)  
 - [x] [152. 乘积最大子数组](https://leetcode-cn.com/problems/maximum-product-subarray/description/)  
 - [x] [322. Coin Change](https://leetcode.com/problems/coin-change/description/)  
 - [x] [198. 打家劫舍](https://leetcode-cn.com/problems/house-robber/)  
