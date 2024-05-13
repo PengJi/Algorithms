@@ -493,8 +493,8 @@ https://leetcode-cn.com/problems/coin-change-2/
 1143. 最长公共子序列
 https://leetcode-cn.com/problems/longest-common-subsequence/
 
-300. 最长上升子序列
-https://leetcode-cn.com/problems/longest-increasing-subsequence/
+300. 最长递增子序列
+https://leetcode.cn/problems/longest-increasing-subsequence/
 
 
 221. 最大正方形
