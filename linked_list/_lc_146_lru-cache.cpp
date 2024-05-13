@@ -5,31 +5,28 @@
 
 struct DListNode {
     int key, value;
-    DListNode* prev;
-    DListNode* next;
-    DListNode(): key(0), value(0), prev(nullptr), next(nullptr) {}
-    DListNode(int k ,int v): key(k), value(v), prev(nullptr), next(nullptr) {}
+    DListNode *prev, *next;
+    DListNode(int k, int v) : key(k), value(v), prev(nullptr), next(nullptr) {}
 }
 
 class LRUCache {
-private:
+public:
     unordered_map<int, DListNode*> cache;
     int size, cap;
     DListNode *head, *tail;
 
-public:
     // https://leetcode-cn.com/problems/lru-cache/solution/lruhuan-cun-ji-zhi-by-leetcode-solution/
-    LRUCache(int capacity): cap(capacity), size(0) {
+    LRUCache(int capacity) : cap(capacity), size(0) {
         // 创建链表
-        head = new DListNode();
-        tail = new DListNode();
+        head = new DListNode(-1, -1);
+        tail = new DListNode(-1, -1);
         head->next = tail;
         tail->prev = head;
     }
-    
+
     int get(int key) {
         // key不存在
-        if(!cache.count(key)) return -1;
+        if (!cache.count(key)) return -1;
 
         // key存在
         DListNode* node = cache[key];
@@ -37,10 +34,10 @@ public:
 
         return node->value;
     }
-    
+
     void put(int key, int value) {
         DListNode* node;
-        if(!cache.count(key)) {  // key不存在
+        if (!cache.count(key)) {  // key不存在
             node = new DListNode(key, value);
 
             // 添加到哈希表和链表
@@ -48,16 +45,13 @@ public:
             addToHead(node);
             size++;
 
-            // 判断容量
-            if(size > cap) {
-                // 超出容量，则删除队尾节点
+            if (size > cap) {  // 超出容量，则删除队尾节点
                 node = removeTail();
                 cache.erase(node->key);
                 size--;
                 delete node;
             }
-        } else {  // key存在
-            // 更新值
+        } else {  // key存在，更新值
             node = cache[key];
             node->value = value;
             moveToHead(node);

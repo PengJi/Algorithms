@@ -11,27 +11,6 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
-    // 递归
-    // O(n)/O(1)
-    ListNode* swapPairs(ListNode* head) {
-        // 如果有一个节点或者没有节点
-        if ((head == NULL) || (head->next == NULL)) {
-            return head;
-        }
-
-        // 待反转的节点
-        ListNode* start = head;
-        ListNode* end = head->next;
-
-        // 反转
-        start->next = swapPairs(end->next);
-        end->next = start;
-
-        return end;
-    }
-};
 
 class Solution {
 public:
