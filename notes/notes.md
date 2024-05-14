@@ -489,13 +489,43 @@ https://leetcode-cn.com/problems/house-robber-iii/
 https://leetcode-cn.com/problems/coin-change/
 
 518. 零钱兑换 II
-https://leetcode-cn.com/problems/coin-change-2/
+https://leetcode.cn/problems/coin-change-ii/
 
-1143. 最长公共子序列
+1.    最长公共子序列
 https://leetcode-cn.com/problems/longest-common-subsequence/
 
-300. 最长递增子序列
+1.   最长递增子序列
 https://leetcode.cn/problems/longest-increasing-subsequence/
+
+115. 不同的子序列
+https://leetcode-cn.com/problems/distinct-subsequences/
+
+53. 最大子数组和
+https://leetcode.cn/problems/maximum-subarray/
+
+152. 乘积最大子数组
+https://leetcode-cn.com/problems/maximum-product-subarray/
+
+410. 分割数组的最大值
+https://leetcode.cn/problems/split-array-largest-sum/
+
+62. 不同路径
+https://leetcode-cn.com/problems/unique-paths/
+
+63. 不同路径 II
+https://leetcode-cn.com/problems/unique-paths-ii/
+
+64. 最小路径和
+https://leetcode-cn.com/problems/minimum-path-sum/
+
+139. 单词拆分
+https://leetcode-cn.com/problems/word-break/
+
+140. 单词拆分 II
+https://leetcode-cn.com/problems/word-break-ii/
+
+120. 三角形最小路径和
+https://leetcode.cn/problems/triangle/
 
 
 221. 最大正方形
@@ -506,18 +536,6 @@ https://leetcode-cn.com/problems/pascals-triangle/
 
 45. 跳跃游戏 II
 https://leetcode-cn.com/problems/jump-game-ii/
-
-53. 最大子数组和
-https://leetcode.cn/problems/maximum-subarray/
-
-62. 不同路径
-https://leetcode-cn.com/problems/unique-paths/
-
-63. 不同路径 II
-https://leetcode-cn.com/problems/unique-paths-ii/
-
-64. 最小路径和
-https://leetcode-cn.com/problems/minimum-path-sum/
 
 72. 编辑距离
 https://leetcode-cn.com/problems/edit-distance/
@@ -534,23 +552,8 @@ https://leetcode-cn.com/problems/unique-binary-search-trees/
 97. 交错字符串
 https://leetcode-cn.com/problems/interleaving-string/
 
-115. 不同的子序列
-https://leetcode-cn.com/problems/distinct-subsequences/
-
-120. 三角形最小路径和
-给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
-
 131. 分割回文串
 https://leetcode-cn.com/problems/palindrome-partitioning/
-
-139. 单词拆分
-https://leetcode-cn.com/problems/word-break/
-
-140. 单词拆分 II
-https://leetcode-cn.com/problems/word-break-ii/
-
-152. 乘积最大子数组
-https://leetcode-cn.com/problems/maximum-product-subarray/
 
 174. 地下城游戏
 https://leetcode-cn.com/problems/dungeon-game/
@@ -566,9 +569,6 @@ https://leetcode-cn.com/problems/max-sum-of-rectangle-no-larger-than-k/
 
 403. 青蛙过河
 https://leetcode-cn.com/problems/frog-jump/
-
-410. 分割数组的最大值
-https://leetcode.cn/problems/split-array-largest-sum/
 
 416. 分割等和子集
 https://leetcode-cn.com/problems/partition-equal-subset-sum/
@@ -593,8 +593,75 @@ https://leetcode-cn.com/problems/unique-paths-iii/
 
 
 # 模拟
+
+27. 移除元素
+https://leetcode-cn.com/problems/remove-element/
+
+29. 两数相除
+https://leetcode-cn.com/problems/divide-two-integers/
+
+31. 下一个排列
+https://leetcode-cn.com/problems/next-permutation/
+
+36. 有效的数独
+ https://leetcode-cn.com/problems/valid-sudoku/description/
+
+38. 外观数列
+https://leetcode-cn.com/problems/count-and-say/
+
+41. 缺失的第一个正数
+https://leetcode-cn.com/problems/first-missing-positive/
+
+48. 旋转图像
+https://leetcode-cn.com/problems/rotate-image/
+
 54. 螺旋矩阵
 https://leetcode-cn.com/problems/spiral-matrix/
 
 59. 螺旋矩阵 II
 https://leetcode-cn.com/problems/spiral-matrix-ii/
+
+189. 旋转数组
+https://leetcode-cn.com/problems/rotate-array/
+
+57. 插入区间
+https://leetcode-cn.com/problems/insert-interval/
+
+66. 加一
+https://leetcode-cn.com/problems/plus-one/
+
+73. 矩阵置零
+https://leetcode-cn.com/problems/set-matrix-zeroes/
+
+88. 合并两个有序数组
+https://leetcode-cn.com/problems/merge-sorted-array/
+
+134. 加油站
+https://leetcode-cn.com/problems/gas-station/
+
+135. 分发糖果
+https://leetcode-cn.com/problems/candy/
+
+149. 直线上最多的点数
+https://leetcode-cn.com/problems/max-points-on-a-line/
+
+164. 最大间距
+https://leetcode-cn.com/problems/maximum-gap/
+
+218. 天际线问题
+https://leetcode-cn.com/problems/the-skyline-problem/
+
+223. 矩形面积
+https://leetcode-cn.com/problems/rectangle-area/
+
+238. 除自身以外数组的乘积
+https://leetcode-cn.com/problems/product-of-array-except-self/
+
+240. 搜索二维矩阵 II
+https://leetcode-cn.com/problems/search-a-2d-matrix-ii/
+
+289. 生命游戏
+https://leetcode-cn.com/problems/game-of-life/
+
+448. 找到所有数组中消失的数字
+https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/
