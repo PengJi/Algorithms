@@ -1,6 +1,6 @@
 /**
  * 120. 三角形最小路径和
- * 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+ * https://leetcode.cn/problems/triangle
  */
 
 class Solution {
@@ -22,7 +22,10 @@ public:
 
         return dp[0];
     }
+};
 
+class Solution {
+public:
     // 动态规划
     // 时间复杂度：O(n^2)
     // 空间复杂度：O(n^2)
@@ -49,16 +52,13 @@ public:
     // 从上往下计算最小路径要考虑边界文问题，而从下往上不需要额外考虑边界。
     // 时间复杂度：O(n^2)
     // 空间复杂度：O(1)
-    int minimumTotal(vector<vector<int>>& f) {
-        // 注意这里是从倒数第二行开始计算
-        for (int i = f.size() - 2; i >= 0; i--) {
-            // 需要注意 j 的范围，最大值为 i。
-            for (int j = 0; j <= i; j++) {
-                // 对每一个节点取最小值并就地修改原数组
-                f[i][j] += min(f[i + 1][j], f[i + 1][j + 1]);
+    int minimumTotal(vector<vector<int>>& triangle) {
+        for (int i = triangle.size() - 2; i >= 0; i--) {                            // 注意这里是从倒数第二行开始计算
+            for (int j = 0; j <= i; j++) {                                          // 需要注意 j 的范围，最大值为 i。
+                triangle[i][j] += min(triangle[i + 1][j], triangle[i + 1][j + 1]);  // 对每一个节点取最小值并就地修改原数组
             }
         }
 
-        return f[0][0];
+        return triangle[0][0];
     }
 };

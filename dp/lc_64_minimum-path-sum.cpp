@@ -5,7 +5,9 @@
 
 class Solution {
 public:
-    // https://leetcode-cn.com/problems/minimum-path-sum/solution/zui-xiao-lu-jing-he-dong-tai-gui-hua-gui-fan-liu-c/
+    // 动态规划
+    // 状态表示：grid[i][j] 表示走到节点 [i,j] 的最短距离
+    // 原地修改数组
     int minPathSum(vector<vector<int>>& grid) {
         int m = grid.size(), n = grid[0].size();
 
@@ -24,27 +26,28 @@ public:
 
         return grid[m - 1][n - 1];
     }
+};
 
+class Solution {
+public:
     // 动态规划
-    // 时间复杂度：O(m * n)
-    // 空间复杂度：O(m)
+    // 状态表示：f[i][j] 表示走到节点 [i,j] 的最短距离
     int minPathSum(vector<vector<int>>& grid) {
-        if (grid.size() == 0) return 0;
-
         int m = grid.size(), n = grid[0].size();
-        vector<int> cur(m, grid[0][0]);
 
-        for (int i = 1; i < m; i++)
-            cur[i] = cur[i - 1] + grid[i][0];
-
-        for (int j = 1; j < n; j++) {
-            cur[0] += grid[0][j];
-
-            for (int i = 1; i < m; i++) {
-                cur[i] = min(cur[i - 1], cur[i]) + grid[i][j];
+        vector<vector<int>> f(m, vector<int>(n, INT_MAX));
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                if (i == 0 && j == 0)
+                    f[i][j] = grid[i][j];
+                else if (i == 0)
+                    f[i][j] = f[i][j - 1] + grid[i][j];
+                else if (j == 0)
+                    f[i][j] = f[i - 1][j] + grid[i][j];
+                else
+                    f[i][j] = min(f[i - 1][j], f[i][j - 1]) + grid[i][j];
             }
-        }
 
-        return cur[m - 1];
+        return f[m - 1][n - 1];
     }
 };

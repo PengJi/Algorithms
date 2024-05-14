@@ -5,9 +5,9 @@
 
 class Solution {
 public:
+    // 动态规划
     // https://www.acwing.com/solution/content/179/
-    // O(n^2)
-    // O(1)
+    // O(m*n)/O(m*n)
     bool isInterleave(string s1, string s2, string s3) {
         int len1 = s1.size(), len2 = s2.size();
         if ((len1 + len2) != s3.size()) return false;

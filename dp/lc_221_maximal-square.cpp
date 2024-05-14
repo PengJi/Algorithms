@@ -1,20 +1,17 @@
 /**
  * 221. 最大正方形
- * 在一个由 0 和 1 组成的二维矩阵内，找到只包含 1 的最大正方形，并返回其面积。
- *
  * https://leetcode-cn.com/problems/maximal-square/
  */
 
 class Solution {
 public:
     // 动态规划
-    // 时间复杂度：O(mn)
-    // 空间复杂度：O(n)
+    // O(mn)/O(n)
     int maximalSquare(vector<vector<char>>& matrix) {
         if (matrix.empty()) return 0;
-
         int m = matrix.size(), n = matrix[0].size(), sz = 0, pre;
         vector<int> cur(n, 0);
+
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 int temp = cur[j];
