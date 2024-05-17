@@ -56,3 +56,34 @@ public:
         return -1;
     }
 };
+
+class Solution {
+public:
+    // 贪心，双指针
+    // 首先用每个位置的 gas 减去 cost 求出当前位置的真正花费 sum，然后将 sum 数组扩展为 2n，使得 sum[i] == sum[i+n]。
+    // 定义两个指针 start 和 end，分别表示当前假设的起点，和在这个起点下能走到的终点，tot 为当前油量。
+    // 如果发现 tot < 0，即不能走到 end 时，需要不断往后移动 start，使得 tot 能满足要求。注意到，向后移动 start 并不会使得 [start, end] 之间出现油量为负的情况。
+    // 如果 end - start + 1 == n，即找到了一个环形路线。
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n = gas.size();
+        vector<int> sum = vector<int>(n * 2, 0);
+
+        for (int i = 0; i < n * 2; i++)
+            sum[i] = gas[i % n] - cost[i % n];
+
+        int start = 0, end = 0, tot = 0;
+        while (start < n && end <= 2 * n) {
+            tot += sum[end];
+            while (tot < 0) {
+                tot -= sum[start];
+                start++;
+            }
+
+            if (end - start + 1 == n)
+                return start;
+
+            end++;
+        }
+        return -1;
+    }
+};

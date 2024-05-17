@@ -5,39 +5,23 @@
 
 class Solution {
 public:
-    // https://leetcode.com/problems/count-and-say/discuss/16446/C%2B%2B-iterative-solution-with-explanation-easy-to-understand.
+    // 直接按照从 2 到 n 的顺序生成字符串，即每次找连续相同的数字段，合并。
     string countAndSay(int n) {
-        string curr_str;
-
-        // The initial case, when n = 1
-        curr_str += '1';
-
-        // The iterative case, when n > 1
-        for (int i = 0; i < n - 1; i++)
-        {
-            string buffer;
-
-            // Handle the current string
-            int index = 0;
-            for (int index = 0; index < curr_str.size(); ++index)
-            {
-                // Count the occurance of each digit
-                int cnt = 1; // At least one occurance
-                
-                while (index + 1 < curr_str.size() and curr_str[index + 1] == curr_str[index]) 
-                {
-                    index++;
-                    cnt++;
+        string last = "1";
+        for (int i = 2; i <= n; i++) {
+            string gen = "";
+            int count = 0;
+            for (int j = 0; j < last.length(); j++) {
+                count++;
+                if (j == last.length() - 1 || last[j] != last[j + 1]) {
+                    gen += to_string(count) + last[j];
+                    count = 0;
                 }
-
-                buffer.push_back(cnt + '0');
-                buffer.push_back(curr_str[index]);
             }
 
-            // Update the current string
-            curr_str = buffer;
+            last = gen;
         }
 
-        return curr_str;
+        return last;
     }
 };

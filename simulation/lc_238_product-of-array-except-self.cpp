@@ -5,27 +5,21 @@
 
 class Solution {
 public:
-    // https://leetcode-cn.com/problems/product-of-array-except-self/solution/chu-zi-shen-yi-wai-shu-zu-de-cheng-ji-by-leetcode-/
+    // 前缀积
+    // 利用 output 数组当做临时存储空间，令 output[i] 为从 nums[0] * nums[1] * ... * num[i - 1]。
+    // 然后从数组末尾，用变量 end 记录末尾若干数字的乘积，每次更新 output[i] 即可得到答案。
     vector<int> productExceptSelf(vector<int>& nums) {
-        int length = nums.size();
-        vector<int> ans(length);
+        int n = nums.size();
+        vector<int> output(n, 1);
+        for (int i = 1; i < n; i++)
+            output[i] = output[i - 1] * nums[i - 1];
 
-        // answer[i] 表示索引 i 左侧所有元素的乘积
-        // 因为索引为 '0' 的元素左侧没有元素， 所以 answer[0] = 1
-        ans[0] = 1;
-        for (int i = 1; i < length; i++) {
-            ans[i] = nums[i - 1] * ans[i - 1];
+        int end = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            output[i] *= end;
+            end *= nums[i];
         }
 
-        // R 为右侧所有元素的乘积
-        // 刚开始右边没有元素，所以 R = 1
-        int R = 1;
-        for (int i = length - 1; i >= 0; i--) {
-            // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
-            ans[i] = ans[i] * R;
-            // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
-            R *= nums[i];
-        }
-        return ans;
+        return output;
     }
 };

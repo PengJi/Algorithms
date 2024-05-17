@@ -5,40 +5,36 @@
 
 class Solution {
 public:
-    // https://www.acwing.com/activity/content/code/content/411101/
-    int maximumGap(vector<int>& nums) {
-        struct Range {
-            int min, max;
-            bool used;
-            Range() : min(INT_MAX), max(INT_MIN), used(false) {}
-        };
-
-        int n = nums.size();
+    struct bucket {
         int Min = INT_MAX, Max = INT_MIN;
-        for(auto x: nums) {
-            Min = min(Min, x);
-            Max = max(Max, x);
+        bool used = false;
+        bucket() {}
+    };
+    //  桶排序
+    // https://www.acwing.com/solution/content/4337/
+    int maximumGap(vector<int>& nums) {
+        int n = nums.size(), Max = INT_MIN, Min = INT_MAX;
+        if (n < 2) return 0;
+        for (int i = 0; i < n; i++) {
+            Max = max(Max, nums[i]);
+            Min = min(Min, nums[i]);
         }
-
-        if(n < 2 || Min == Max) return 0;
-        vector<Range> r(n-1);
-        int len = (Max - Min + n - 2) / (n - 1);
-        for(auto x : nums) {
-            if(x == Min) continue;
-            int k = (x - Min - 1) / len;
-            r[k].used = true;
-            r[k].min = min(r[k].min, x);
-            r[k].max = max(r[k].max, x);
+        int bucketSize = max(1, (Max - Min) / (n - 1));
+        int bucketNum = (Max - Min) / bucketSize + 1;
+        vector<bucket> buckets(bucketNum);
+        for (int i = 0; i < n; i++) {
+            int idx = (nums[i] - Min) / bucketSize;
+            buckets[idx].used = true;
+            buckets[idx].Min = min(buckets[idx].Min, nums[i]);
+            buckets[idx].Max = max(buckets[idx].Max, nums[i]);
         }
-
-        int res = 0;
-        for(int i = 0, last = Min; i < n-1; i++) {
-            if(r[i].used) {
-                res = max(res, r[i].min - last);
-                last = r[i].max;
-            }
+        long long preBucketMax = Min, res = 0;
+        for (int i = 0; i < bucketNum; i++) {
+            if (!buckets[i].used)
+                continue;
+            res = max(res, buckets[i].Min - preBucketMax);
+            preBucketMax = buckets[i].Max;
         }
-
         return res;
     }
 };

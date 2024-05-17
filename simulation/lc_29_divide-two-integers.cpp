@@ -5,38 +5,26 @@
 
 class Solution {
 public:
-    // https://leetcode-cn.com/problems/divide-two-integers/solution/po-su-de-xiang-fa-mei-you-wei-yun-suan-mei-you-yi-/
-    int divide(int dividend, int divisor) {
-        if(dividend == 0) return 0;
-        if(divisor == 1) return dividend;
+    int divide(int x, int y) {
+        typedef long long LL;
+        vector<LL> exp;
+        bool is_minus = false;
+        if (x < 0 && y > 0 || x > 0 && y < 0) is_minus = true;
 
-        if(divisor == -1) {  // 越界处理
-            if(dividend > INT_MIN) return -dividend;
-            return INT_MAX;
-        }
+        LL a = abs((LL)x), b = abs((LL)y);
+        for (LL i = b; i <= a; i = i + i) exp.push_back(i);
 
-        long a = dividend;
-        long b = divisor;
-        int sign = 1;
-        if((a > 0 && b < 0) || (a < 0 && b > 0)) {
-            sign = -1;
-        }
-        a = a > 0 ? a : -a;
-        b = b > 0 ? b : -b;
-        long res = div(a, b);
-        if(sign > 0) return res > INT_MAX ? INT_MAX : res;
-        return -res;
-    }
+        LL res = 0;
+        for (int i = exp.size() - 1; i >= 0; i--)
+            if (a >= exp[i]) {
+                a -= exp[i];
+                res += 1ll << i;
+            }
 
-    int div(long a, long b) {
-        if(a < b) return 0;
-        long count = 1;
-        long tb = b;
-        while((tb + tb) <= a) {
-            count = count + count;
-            tb = tb + tb;
-        }
+        if (is_minus) res = -res;
 
-        return count + div(a-tb, b);
+        if (res > INT_MAX || res < INT_MIN) res = INT_MAX;
+
+        return res;
     }
 };
