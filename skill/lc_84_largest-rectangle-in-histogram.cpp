@@ -42,6 +42,9 @@ public:
 
 class Solution {
 public:
+    // 单调栈
+    // 找到每个柱形条左侧第一个比自己低或相等，以及右侧第一个严格比自己低的矩形条，
+    // 然后用宽度乘上当前柱形条的高度作为备选答案
     int largestRectangleArea(vector<int>& heights) {
         int n = heights.size();
         stack<int> stk;

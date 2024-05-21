@@ -6,43 +6,18 @@
 class Solution {
 public:
     // 双指针法
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(1)
-    int maxArea(vector<int>& height) {
-        if (height.size() <= 1) return 0;
-
-        int left = 0, right = height.size() - 1;
-        int max = 0, area = 0;
-
-        while (left < right) {
-            if (height[left] <= height[right]) {
-                area = height[left] * (right - left);
-                left++;
-            } else {
-                area = height[right] * (right - left);
-                right--;
-            }
-
-            if (area > max) max = area;
-        }
-
-        return max;
-    }
-};
-
-class Solution {
-public:
-    // 双指针
     // O(n)/O(1)
     int maxArea(vector<int>& height) {
+        int left = 0, right = height.size() - 1;
         int res = 0;
-        int n = height.size();
-        int left = 0, right = n-1;
 
-        while(n--) {
+        while (left < right) {
             res = max(res, (right - left) * min(height[left], height[right]));
-            if(height[left] < height[right]) left++;
-            else right--;
+            if (height[left] <= height[right]) {
+                left++;
+            } else {
+                right--;
+            }
         }
 
         return res;
