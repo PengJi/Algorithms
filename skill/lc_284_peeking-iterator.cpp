@@ -1,5 +1,5 @@
 /**
- * 284. 顶端迭代器
+ * 284. 窥视迭代器
  * https://leetcode-cn.com/problems/peeking-iterator/
  */
 
