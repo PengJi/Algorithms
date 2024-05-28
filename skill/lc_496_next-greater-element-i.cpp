@@ -22,7 +22,7 @@ public:
             while (!st.empty() && nums[i] > nums[st.top()]) {
                 greater[st.top()] = nums[i];
                 st.pop();
-            }
+            }z
             st.push(i);
         }
 

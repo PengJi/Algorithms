@@ -5,6 +5,7 @@
 
 class Solution {
 public:
+    // 滑动窗口
     string minWindow(string s, string t) {
         unordered_map<char, int> hs, ht;  // hs 表示窗口内各字符的个数，ht 表示目标字符串中各字符的个数
         for (auto& c : t) ht[c]++;
