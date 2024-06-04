@@ -62,3 +62,5 @@ int main()
     return 0;
 }
 ```
+
+[OJ在线编程常见输入输出练习](https://www.nowcoder.com/exam/test/80567089/detail?pid=27976983#question)
