@@ -21,17 +21,16 @@ public:
     // O(n^2)/O(n）
     int pathSum(TreeNode* root, int targetSum) {
         int res = 0;
-        if (!root)
-            return res;
+        if (!root) return res;
 
         res += dfs(root, targetSum);             // 深度优先计算以当前节点为根节点的路径数
-        res += pathSum(root->left, targetSum);   // 遍历左子树
-        res += pathSum(root->right, targetSum);  // 遍历右子树
+        res += pathSum(root->left, targetSum);   // 计算左子树
+        res += pathSum(root->right, targetSum);  // 计算右子树
 
         return res;
     }
 
-    int dfs(TreeNode* root, long targetSum) {  // 注意：参数为 long
+    int dfs(TreeNode* root, long targetSum) {  // 以 root 为起点，遍历和为 targetSum 的路径，注意：参数为 long
         if (!root) return 0;
         int res = 0;
 

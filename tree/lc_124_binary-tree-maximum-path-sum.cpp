@@ -32,6 +32,6 @@ public:
         int left = max(0, dfs(root->left));
         int right = max(0, dfs(root->right));
         res = max(res, root->val + left + right);
-        return root->val + max(left, right);
+        return root->val + max(left, right);  // 只能选一条路径
     }
 };

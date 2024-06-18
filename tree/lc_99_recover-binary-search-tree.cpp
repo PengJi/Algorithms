@@ -81,7 +81,7 @@ public:
 
             if (pred != nullptr && root->val < pred->val) {
                 y = root;
-                if (x == nullptr) {  // 最多两队逆序
+                if (x == nullptr) {  // 最多两对不同
                     x = pred;
                 } else {
                     break;

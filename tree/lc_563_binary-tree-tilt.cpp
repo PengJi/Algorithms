@@ -17,8 +17,7 @@ public:
     int res = 0;
 
     // 递归
-    // 时间复杂度：O(n)
-    // 空间复杂度：O(n)
+    // O(n)/O(n)
     int findTilt(TreeNode* root) {
         dfs(root);
         return res;

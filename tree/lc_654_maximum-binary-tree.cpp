@@ -45,11 +45,11 @@ public:
     TreeNode* dfs(vector<int> nums, int left, int right) {
         if (left > right) return nullptr;
 
+        // 选取区间 [left, right] 最大的值
         int m = left;
-        for (int i = left + 1; i <= right; i++) {
-            if (nums[m] < nums[i]) m = i;
-        }
+        for (int i = left + 1; i <= right; i++) if (nums[i] > nums[m]) m = i;
 
+        // 递归构造左右子树
         TreeNode* node = new TreeNode(nums[m]);
         node->left = dfs(nums, left, m - 1);
         node->right = dfs(nums, m + 1, right);

@@ -36,8 +36,8 @@ public:
                 pos = que.front().second;
                 que.pop();
 
-                if (node->left) que.push({node->left, 2 * pos});
-                if (node->right) que.push({node->right, 2 * pos + 1});
+                if (node->left) que.push({node->left, 2 * pos});  // 节点左儿子结点编号为当前结点的编号乘 2；
+                if (node->right) que.push({node->right, 2 * pos + 1});  // 节点右儿子的编号为当前结点的编号乘 2 再加 1。
             }
         }
 
@@ -53,7 +53,7 @@ public:
     // 对整个树进行层级遍历。遍历时，记录每一层所有结点的编号。
     // 编号规则如下，根结点编号为 0。某个结点的左儿子结点编号为当前结点的编号乘 2；右儿子结点的编号为当前结点的编号乘 2 再加 1。
     // 遍历完一层后，我们进行编号收缩，以最小编号作为偏移量，让当前层所有编号都减去这个偏移量，然后再进行遍历编号。
-    // 通过编号收缩，保证编号的范围不会超过答案，所以不会
+    // 通过编号收缩，保证编号的范围不会超过答案
     int widthOfBinaryTree(TreeNode* root) {
         vector<pair<TreeNode*, LL>> vec;
         if(root) vec.emplace_back(root, 0);
